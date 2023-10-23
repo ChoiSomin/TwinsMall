@@ -49,6 +49,14 @@ dependencies {
     /* 유효성 검사 */
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+    /* 로그인 security */
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time', version: '3.0.4.RELEASE'
+
+    /* thymeleaf security */
+    implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.1.2.RELEASE'
+
 }
 
 tasks.named('test') {
