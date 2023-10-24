@@ -41,9 +41,6 @@ public class Item extends BaseEntity {
     @Column(nullable = false, length = 5000)
     private String pdesc; // 상품 상세 설명
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDate relaseyear; // 발매일
-
     @Enumerated(EnumType.STRING)  // enum 타입 매핑
     private ItemSellStatus pstatus; //상품 판매 상태
 
