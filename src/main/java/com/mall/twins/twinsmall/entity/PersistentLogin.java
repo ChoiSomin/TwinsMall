@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table (name = "persistentlogin")
-public class PersistentLogin {
+public class PersistentLogin { //쿠키값을 생성할 때 필요한 정보들을 보관하기 위해서
     
     @Id
     @Column (length = 64)

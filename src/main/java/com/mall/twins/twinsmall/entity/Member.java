@@ -4,6 +4,8 @@ import com.mall.twins.twinsmall.constant.Role;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="member")
@@ -42,6 +44,38 @@ public class Member extends BaseEntity {
 
     @Column(nullable = false)
     private String mbirth; // 생년월일
+
+    /* 추가 */
+    private boolean mdel; //탈퇴 여부
+
+    private boolean msocial; //SNS 여부
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    //@ElementCollection : 컬렉션 형태의 데이터를 엔티티와 관련시킬 때 사용
+    //fetch = FetchType.LAZY : 데이터 지연 로딩
+    @Builder.Default
+    //@Builder.Default :  Lombok 라이브러리를 사용하는 경우 사용
+    private Set<Role> roleset = new HashSet<>();
+    //MyEntity 클래스의 빌더를 생성할 때 roleset 초기화하는 기본값이 빈 HashSet으로 설정
+
+    public void changePassword(String mpw){
+        this.mpw = mpw;
+    }
+
+    public void changeDel(boolean mdel){
+        this.mdel = mdel;
+    }
+
+    public void addRole(Role role){
+        this.roleset.add(role);
+    }
+
+    public void changeSocial(boolean msocial){
+        this.msocial = msocial;
+    }
+
+
+
 
 
     /*public static Member createMember(MemberJoinDto memberJoinDto, PasswordEncoder passwordEncoder){

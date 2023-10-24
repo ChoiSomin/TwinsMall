@@ -18,6 +18,10 @@ public class MemberController {
 
         log.info("===============login get================");
         log.info("logout : " + logout);
+
+        if(logout != null){
+            log.info("==============user logout=========");
+        }
     }//loginGET
 
 }
