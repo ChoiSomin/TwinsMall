@@ -30,7 +30,7 @@ public class Shipping extends BaseEntity{
     @Column(nullable = false, length = 500)
     private String address; // 주소
 
-    @Column(nullable = false)
+
     private String saddress; // 상세주소
 
     @Column(nullable = false)
