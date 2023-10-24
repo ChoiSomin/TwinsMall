@@ -36,7 +36,6 @@ public class Shipping extends BaseEntity{
     @Column(nullable = false)
     private String sphone; // 휴대폰 번호
 
-    @Column(nullable = false)
     private String sdefault; // 기본 배송지 여부
 
     @ManyToOne(fetch = FetchType.LAZY)
