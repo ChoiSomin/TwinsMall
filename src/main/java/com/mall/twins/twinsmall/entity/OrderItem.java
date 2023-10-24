@@ -13,7 +13,7 @@ public class OrderItem extends BaseEntity {
     private Long oino;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ipid")
+    @JoinColumn(name = "pno")
     private Item item;
 
     @ManyToOne(fetch = FetchType.LAZY)
