@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orgpder")
 @Getter @Setter
 public class Order extends BaseEntity {
 
