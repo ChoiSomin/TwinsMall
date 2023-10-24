@@ -18,7 +18,7 @@ public class Review extends BaseEntity {
     private Long rno;
 
     @Column(nullable = false, length = 1000)
-    private String rcontent;    // 리뷰 내용
+    private String rcontent;    // 리뷰내용
 
     @Column(nullable = false)
     private int rscore;      // 평점

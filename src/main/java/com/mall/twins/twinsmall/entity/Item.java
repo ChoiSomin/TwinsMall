@@ -30,7 +30,7 @@ public class Item extends BaseEntity {
     private int pprice;    //가격
 
     @Column(nullable = false)
-    private int pstock;      // 재고
+    private Integer pstock;      // 재고
 
     @Column(nullable = false)
     private String pcate;  // 카테고리

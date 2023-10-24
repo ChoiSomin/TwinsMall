@@ -20,7 +20,7 @@ public class Member extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mno;
 
-    @Column(unique = true) // 아이디를 유일하게 구분(동일값이 db에 들어올 수 없음)
+    @Column(nullable = false, unique = true) // 아이디를 유일하게 구분(동일값이 db에 들어올 수 없음)
     private String mid;
 
     @Column(nullable = false)
@@ -42,7 +42,7 @@ public class Member extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String mphone; // 전화번호
 
-    @Column(nullable = false)
+
     private String mbirth; // 생년월일
 
     /* 추가 */
