@@ -14,7 +14,6 @@ public class CartItem extends BaseEntity {
 
     @Id
     @GeneratedValue
-    @Column(name = "cino")
     private Long cino;
 
     @ManyToOne(fetch = FetchType.LAZY)

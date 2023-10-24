@@ -15,22 +15,28 @@ import javax.persistence.*;
 public class Shipping extends BaseEntity{
 
     @Id
-    @Column(nullable = false, length = 50)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sno;
-    
+
+    @Column(nullable = false)
     private String sname; // 배송지명
 
+    @Column(nullable = false)
     private String sperson; // 받는 분
 
+    @Column(nullable = false)
     private String zonecode; // 우편번호
 
+    @Column(nullable = false, length = 500)
     private String address; // 주소
-    
+
+    @Column(nullable = false)
     private String saddress; // 상세주소
-    
+
+    @Column(nullable = false)
     private String sphone; // 휴대폰 번호
-    
+
+    @Column(nullable = false)
     private String sdefault; // 기본 배송지 여부
 
     @ManyToOne(fetch = FetchType.LAZY)

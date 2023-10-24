@@ -23,7 +23,7 @@ public class MemberImage extends BaseEntity{
 
     private String mimgurl; //이미지 조회 경로
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mno")
     private Member member;
 

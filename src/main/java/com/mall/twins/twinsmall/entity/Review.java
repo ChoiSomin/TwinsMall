@@ -16,7 +16,11 @@ public class Review extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rno;
+
+    @Column(nullable = false, length = 1000)
     private String rcontent;    // 리뷰 내용
+
+    @Column(nullable = false)
     private int rscore;      // 평점
 
     // 연관관계

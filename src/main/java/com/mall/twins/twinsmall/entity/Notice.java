@@ -14,13 +14,13 @@ import javax.persistence.*;
 public class Notice extends BaseEntity{
 
     @Id
-    @Column(nullable = false, length = 255)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String nno;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String ntitle;
 
-    @Column(nullable = false, length = 25)
+    @Column(nullable = false, length = 5000)
     private String ncontent;
 
     @ManyToOne(fetch = FetchType.LAZY)

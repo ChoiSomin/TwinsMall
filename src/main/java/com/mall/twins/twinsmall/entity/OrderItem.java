@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Getter @Setter
 public class OrderItem extends BaseEntity {
 
-    @Id @GeneratedValue
-    @Column(name = "oino")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long oino;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -20,8 +20,11 @@ public class OrderItem extends BaseEntity {
     @JoinColumn(name = "ono")
     private Order order;
 
+    @Column(nullable = false, length = 20)
     private int oiprice; // 아이템 단가
-    private int oiquantity; // 주문 수량
+
+    @Column(nullable = false, length = 5)
+    private int oiquantity; // 주문 수량(한번에 5개까지만 구매가능함)
 
     /*public static OrderItem createOrderItem(Item item, int count){
         OrderItem orderItem = new OrderItem();
