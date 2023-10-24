@@ -39,6 +39,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
 
     implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time', version: '3.0.4.RELEASE'
 
