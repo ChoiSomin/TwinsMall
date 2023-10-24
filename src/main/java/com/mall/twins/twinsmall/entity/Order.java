@@ -36,7 +36,7 @@ public class Order extends BaseEntity {
     // orphanRemoval = true -> order 엔티티 (부모)에서 제거된 orderItem 엔티티 (자식)은 영속성 컨텍스트에서 자동으로 삭제됨
     // fetch = FetchType.LAZY -> 지연 로딩을 사용하여 orderItem 엔티티를 실제로 사용할 때에만 로딩되도록 설정
 
-    /*public void addOrderItem(OrderItem orderItem) {
+    public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem); // 주문 상품 정보
         orderItem.setOrder(this); // 양방향 매핑이기 때문에 orderItem에도 order 객체를 넣어줘야 한다
     } // 주문 상품 객체들을 이용해서 주문 객체를 만듦
@@ -50,8 +50,8 @@ public class Order extends BaseEntity {
             // 장바구니에는 여러 상품이 담길 수 있어서 리스트 형태로 값을 받음
         }
 
-        order.setOrderStatus(OrderStatus.ORDER); // 주문 상태 변경
-        order.setOrderDate(LocalDateTime.now()); // 현재 시간을 주문 시간으로 변경
+        order.setOstatus(OrderStatus.ORDER); // 주문 상태 변경
+        order.setOdate(LocalDateTime.now()); // 현재 시간을 주문 시간으로 변경
         return order;
     }
 
@@ -63,8 +63,8 @@ public class Order extends BaseEntity {
         return totalPrice;
     } // 주문 총액
 
-    public void cancelOrder() {
-        this.orderStatus = OrderStatus.CANCEL;
-    } // 주문 상태를 취소 상태로 변경*/
+//    public void cancelOrder() {
+//        this.ostatus = OrderStatus.CANCEL;
+//    } // 주문 상태를 취소 상태로 변경
 
 }
