@@ -15,7 +15,7 @@ public class Notice extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String nno;
+    private Long nno;
 
     @Column(nullable = false)
     private String ntitle;
