@@ -27,4 +27,18 @@ public class Notice extends BaseEntity{
     private Member member; //작성자
 
 
+
+    //수정용 메서드
+    //제목 수정
+    public void changeTitle(String ntitle){
+        this.ntitle = ntitle;
+    }
+
+
+    //내용 수정
+    public void changeContent(String ncontent){
+        this.ncontent = ncontent;
+    }
+
+
 }
