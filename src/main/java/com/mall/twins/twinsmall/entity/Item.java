@@ -2,17 +2,17 @@ package com.mall.twins.twinsmall.entity;
 
 
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
+import com.mall.twins.twinsmall.dto.ItemFormDto;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
 @Entity //클래스를 엔티티로 선언
 @Table(name="item") //엔티티와 매핑할 테이블을 지정(테이블 명)
-@Getter
+@Getter @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,8 +20,9 @@ import java.time.LocalDate;
 public class Item extends BaseEntity {
 
     @Id
+    @Column(name="pno")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long pno;
+    private Long id;
 
     @Column(nullable = false) // not null 설정 및 길이 지정, nullable = false : not null
     private String pname; //상품명
@@ -41,11 +42,15 @@ public class Item extends BaseEntity {
     @Column(nullable = false, length = 5000)
     private String pdesc; // 상품 상세 설명
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDate relaseyear; // 발매일
-
     @Enumerated(EnumType.STRING)  // enum 타입 매핑
     private ItemSellStatus pstatus; //상품 판매 상태
 
-
+    public void updateItem(ItemFormDto itemFormDto){
+        this.pname = itemFormDto.getPname();
+        this.pprice = itemFormDto.getPprice();
+        this.pcate = itemFormDto.getPcate();
+        this.pstock = itemFormDto.getPstock();
+        this.pdesc = itemFormDto.getPdesc();
+        this.pstatus = itemFormDto.getPstatus();
+    }
 }
