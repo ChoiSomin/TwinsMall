@@ -5,6 +5,7 @@ import com.mall.twins.twinsmall.entity.Question;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.JPQLQuery;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
@@ -55,6 +56,6 @@ public class QuestionSearchImpl extends QuerydslRepositorySupport implements Que
         this.getQuerydsl().applyPagination(pageable, query);
         List<Question> list = query.fetch();
         long count = query.fetchCount();
-        return null;
+        return new PageImpl<>(list, pageable, count);
     }
 }

@@ -30,16 +30,16 @@ public class QuestionRepositoryTests {
     @Test
     public void testInsert() {
         Member tmember = Member.builder()
-                .mid("user1")
-                .mname("김철수")
-                .memail("user1@aaa.bbb")
+                .mid("user2")
+                .mname("마민수")
+                .memail("user2@aaa.bbb")
                 .mpw("1234")
                 .mbirth("19900101")
-                .mphone("01000000001")
+                .mphone("01000000002")
                 .role(Role.USER)
                 .build();
 
-        IntStream.rangeClosed(1, 10).forEach(i -> {
+        IntStream.rangeClosed(11, 100).forEach(i -> {
             Question question = Question.builder()
                     .qtitle("문의글 " + i)
                     .qcontent(i + "번째 문의합니다")
@@ -79,6 +79,29 @@ public class QuestionRepositoryTests {
     public void testSearch1() {
         Pageable pageable = PageRequest.of(1, 3, Sort.by("qno").descending());
         questionRepository.search1(pageable);
+    }
+
+    @Test
+    public void testSearchAll() {
+        String[] types = {"t", "c", "w"};
+        String keyword = "1";
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("qno").descending());
+        Page<Question> result = questionRepository.searchAll(types, keyword, pageable);
+    }
+
+    @Test
+    @Transactional
+    public void testSearchAll2() {
+        String[] types = {"t", "c", "w"};
+        String keyword = "1";
+        Pageable pageable = PageRequest.of(0, 5, Sort.by("qno").descending());
+        Page<Question> result = questionRepository.searchAll(types, keyword, pageable);
+
+        log.info("total pages : " + result.getTotalPages());
+        log.info("page size : " + result.getSize());
+        log.info("page number : " + result.getNumber());
+        log.info("prev : " + result.hasPrevious() + " next : " + result.hasNext());
+        result.getContent().forEach(question -> log.info(question));
     }
 
 }
