@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+
+        <h1 class="mt-4">공지사항 등록하기</h1>
+
+        <form th:action="@{/notice/register}" th:method="post">
+            <div class="form-group">
+                <label >제목</label>
+                <input type="text" class="form-control" name="ntitle" placeholder="Enter Title">
+            </div>
+            <div class="form-group">
+                <label >내용</label>
+                <textarea class="form-control" rows="5" name="ncontent"></textarea>
+            </div>
+            <div class="form-group">
+                <label >작성자</label>
+                <input type="text" class="form-control" name="member" placeholder="Enter Writer">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+
+    </th:block>
+
+</th:block>

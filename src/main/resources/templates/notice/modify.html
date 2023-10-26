@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+
+        <h1 class="mt-4">Twin's Mall 공지사항 수정페이지</h1>
+
+        <form action="/notice/modify" method="post">
+
+            <!--페이지 번호  -->
+            <input type="hidden" name="page" th:value="${requestDTO.page}">
+            <input type="hidden" name="type" th:value="${requestDTO.type}" >
+            <input type="hidden" name="keyword" th:value="${requestDTO.keyword}" >
+
+
+            <div class="form-group">
+            <label >번호</label>
+            <input type="text" class="form-control" name="nno" th:value="${dto.nno}" readonly >
+        </div>
+
+        <div class="form-group">
+            <label >제목</label>>
+            <input type="text" class="form-control" name="ntitle" th:value="${dto.ntitle}" >
+        </div>
+        <div class="form-group">
+            <label >내용</label>
+            <textarea class="form-control" rows="5" name="ncontent">[[${dto.ncontent}]]</textarea>
+        </div>
+        <div class="form-group">
+            <label >글쓴이</label>
+            <input type="text" class="form-control" name="member" th:value="${dto.member}" readonly>
+        </div>
+        <div class="form-group">
+            <label >RegTime</label>
+            <input type="text" class="form-control" name="regTime" th:value="${#temporals.format(dto.regTime, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+        </div>
+        <div class="form-group">
+            <label >UpdateTime</label>
+            <input type="text" class="form-control" name="updateTime" th:value="${#temporals.format(dto.updateTime, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+        </div>
+
+        </form>
+
+        <button type="button" class="btn btn-primary modifyBtn">Modify</button>
+
+        <button type="button" class="btn btn-info listBtn">List</button>
+
+        <button type="button" class="btn btn-danger removeBtn">Delete</button>
+
+        <script th:inline="javascript">
+
+            var actionForm = $("form"); //form 태그 객체
+
+            $(".removeBtn").click(function(){
+
+                actionForm
+                    .attr("action", "/notice/remove")
+                    .attr("method","post");
+
+                actionForm.submit();
+
+            });
+
+            $(".modifyBtn").click(function() {
+
+                if(!confirm("수정하시겠습니까?")){
+                    return ;
+                }
+
+                actionForm
+                    .attr("action", "/notice/modify")
+                    .attr("method","post")
+                    .submit();
+            });
+
+            $(".listBtn").click(function() {
+
+                //var pageInfo = $("input[name='page']");
+                var page = $("input[name='page']");
+                var type = $("input[name='type']");
+                var keyword = $("input[name='keyword']");
+
+                actionForm.empty(); //form 태그의 모든 내용을 지우고
+
+                actionForm.append(page);
+                actionForm.append(type);
+                actionForm.append(keyword);
+
+
+                actionForm
+                    .attr("action", "/notice/list")
+                    .attr("method","get");
+
+               actionForm.submit();
+
+            })
+
+        </script>
+
+
+    </th:block>
+
+</th:block>

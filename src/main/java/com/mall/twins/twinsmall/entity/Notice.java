@@ -24,6 +24,7 @@ public class Notice extends BaseEntity{
     private String ncontent;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    /*@JoinColumn(name = "member_mid")*/
     private Member member; //작성자
 
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+
+        <h1 class="mt-4">Twin's Mall 공지사항 조회</h1>
+
+        <div class="form-group">
+            <label >번호</label>
+            <input type="text" class="form-control" name="nno" th:value="${dto.nno}" readonly >
+        </div>
+
+        <div class="form-group">
+            <label >제목</label>>
+            <input type="text" class="form-control" name="ntitle" th:value="${dto.ntitle}" readonly >
+        </div>
+        <div class="form-group">
+            <label >내용</label>
+            <textarea class="form-control" rows="5" name="ncontent" readonly>[[${dto.ncontent}]]</textarea>
+        </div>
+        <div class="form-group">
+            <label >글쓴이</label>
+            <input type="text" class="form-control" name="member" th:value="${dto.member}" readonly>
+        </div>
+        <div class="form-group">
+            <label >RegTime</label>
+            <input type="text" class="form-control" name="regTime" th:value="${#temporals.format(dto.regTime, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+        </div>
+        <div class="form-group">
+            <label >UpdateTime</label>
+            <input type="text" class="form-control" name="updateTime" th:value="${#temporals.format(dto.updateTime, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+        </div>
+
+<!--        <a th:href="@{/notice/modify(gno = ${dto.gno}, page=${requestDTO.page})}"><button type="button" class="btn btn-primary">Modify</button></a>-->
+
+<!--        <a th:href="@{/notice/list(page=${requestDTO.page})}"><button type="button" class="btn btn-info">List</button></a>-->
+
+        <a th:href="@{/notice/modify(nno = ${dto.nno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+            <button type="button" class="btn btn-primary">Modify</button>
+        </a>
+
+        <a th:href="@{/notice/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+            <button type="button" class="btn btn-info">List</button>
+        </a>
+
+    </th:block>
+
+</th:block>

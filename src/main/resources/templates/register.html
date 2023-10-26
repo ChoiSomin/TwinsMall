@@ -1,0 +1,117 @@
+<!DOCTYPE html><!--관리자 상품등록 프론트-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" th:href="@{/globals.css}" /><!--메인 css-->
+  <link rel="stylesheet" th:href="@{/productregister.css}" /><!--관리자 상품등록 페이지 css-->
+</head>
+<body>
+<div class="admin">
+  <div class="div">
+    <div class="nav">
+      <div class="list">
+        <div class="item">
+          <div class="link"></div>
+          <div class="link-david-grey-h">Admin</div>
+          <div class="link-project-manager">Manager</div>
+          <img class="img" src="img/link-2.svg" />
+        </div>
+        <div class="item-2">
+          <div class="link-dashboard">관리자 메인</div>
+          <img class="link-2" src="img/link.svg" />
+        </div>
+        <div class="item-3">
+          <div class="text-wrapper">Statistics</div>
+          <img class="icon" src="img/icon-11.svg" />
+          <div class="list-2">
+            <div class="item-link">
+              <img class="icon-2" src="img/icon-10.svg" />
+              <div class="text-wrapper-2">회원</div>
+            </div>
+            <div class="item-link-2">
+              <img class="icon-2" src="img/icon-4.svg" />
+              <div class="text-wrapper-3">상품</div>
+            </div>
+            <div class="div-2">
+              <img class="icon-2" src="img/icon-9.svg" />
+              <div class="text-wrapper-4">매출</div>
+            </div>
+          </div>
+          <div class="item-4">
+            <div class="text-wrapper">Management</div>
+            <img class="icon" src="img/icon-3.svg" />
+            <div class="list-2">
+              <div class="item-link">
+                <img class="icon-2" src="img/icon-7.svg" />
+                <div class="text-wrapper-5">상품</div>
+              </div>
+              <div class="item-link-2">
+                <img class="icon-2" src="img/image.svg" />
+                <div class="text-wrapper-3">회원</div>
+              </div>
+              <div class="div-2">
+                <div class="item-link">
+                  <img class="icon-2" src="img/icon-12.svg" />
+                  <div class="text-wrapper-4">1:1 문의</div>
+                </div>
+                <div class="item-link">
+                  <img class="icon-2" src="img/icon-5.svg" />
+                  <div class="text-wrapper-4">1:1 문의</div>
+                </div>
+              </div>
+            </div>
+            <div class="item-5">
+              <div class="text-wrapper">Notice</div>
+              <img class="icon" src="img/icon.svg" />
+              <div class="list-2">
+                <div class="item-link">
+                  <img class="icon-2" src="img/icon-6.svg" />
+                  <div class="text-wrapper-6">공지사항 등록</div>
+                </div>
+                <div class="item-link-2">
+                  <img class="icon-2" src="img/icon-8.svg" />
+                  <div class="text-wrapper-7">공지사항 목록</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item-link-3">
+          <img class="icon-2" src="img/icon-2.svg" />
+          <div class="text-wrapper-4">리뷰</div>
+        </div>
+      </div>
+    </div>
+    <div class="heading-basic">상품등록 페이지</div>
+    <div class="div-card">
+      <div class="heading"><div class="twin-s-mall-product">Twin’s Mall Product Registration</div></div>
+      <div class="form">
+        <div class="label-name">상품명</div>
+        <div class="input"></div>
+        <div class="label-name-2">상품명</div>
+        <div class="input-2"></div>
+        <div class="label-email-address">판매가격</div>
+        <div class="input-3"></div>
+        <div class="label-password">재고</div>
+        <div class="input-4"></div>
+        <div class="label-gender">카테고리</div>
+        <div class="options"></div>
+        <div class="label-textarea">상품설명</div>
+        <div class="textarea"></div>
+      </div>
+      <div class="label-file-upload">사진 첨부</div>
+      <div class="label">
+        <div class="text-wrapper-8">Upload image</div>
+        <div class="pseudo"><div class="text-wrapper-9">Browse</div></div>
+      </div>
+      <div class="label-2">
+        <div class="text-wrapper-8">Upload image</div>
+        <div class="pseudo"><div class="text-wrapper-9">Browse</div></div>
+      </div>
+    </div>
+    <button class="button"><div class="text-wrapper-10">등록</div></button>
+    <button class="button"><div class="text-wrapper-10">수정</div></button>
+  </div>
+</div>
+</body>
+</html>
