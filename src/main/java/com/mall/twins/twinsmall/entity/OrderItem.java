@@ -20,11 +20,11 @@ public class OrderItem extends BaseEntity {
     @JoinColumn(name = "ono")
     private Order order;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private int oiprice; // 아이템 단가
 
     @Column(nullable = false)
-    private int oiquantity; // 주문 수량
+    private int oiquantity; // 주문 수량(한번에 5개까지만 구매가능함)
 
     public static OrderItem createOrderItem(Item item, int count){
         OrderItem orderItem = new OrderItem();

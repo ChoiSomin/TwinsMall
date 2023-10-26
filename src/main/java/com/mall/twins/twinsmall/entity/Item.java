@@ -2,7 +2,6 @@ package com.mall.twins.twinsmall.entity;
 
 
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
-import com.mall.twins.twinsmall.exception.OutOfStockException;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,7 +17,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Setter
 public class Item extends BaseEntity {
 
     @Id
@@ -32,7 +30,11 @@ public class Item extends BaseEntity {
     private int pprice;    //가격
 
     @Column(nullable = false)
+<<<<<<<<< Temporary merge branch 1
     private Integer pstock;      // 재고
+=========
+    private Integer pstock; // 재고
+>>>>>>>>> Temporary merge branch 2
 
     @Column(nullable = false)
     private String pcate;  // 카테고리
@@ -49,13 +51,5 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)  // enum 타입 매핑
     private ItemSellStatus pstatus; //상품 판매 상태
 
-    public void removeStock(int pstock){
-        int restStock = this.pstock - pstock;
-        if(restStock<0){
-            throw new OutOfStockException("상품의 재고가 부족합니다.(현재 재고 수량 : " + this.pstock +  ")");
-        }
-        this.pstock = restStock;
-        }
 
 }
-
