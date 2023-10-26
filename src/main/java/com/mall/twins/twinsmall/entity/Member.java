@@ -12,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Setter
 public class Member extends BaseEntity {
 
     @Id

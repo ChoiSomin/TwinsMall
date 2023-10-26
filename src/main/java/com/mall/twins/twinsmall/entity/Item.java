@@ -18,6 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Setter
 public class Item extends BaseEntity {
 
     @Id
@@ -55,5 +56,6 @@ public class Item extends BaseEntity {
         }
         this.pstock = restStock;
         }
-    }
+
+}
 
