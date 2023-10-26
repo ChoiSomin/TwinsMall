@@ -29,13 +29,12 @@ public class Shipping extends BaseEntity{
     @Column(nullable = false, length = 500)
     private String address; // 주소
 
-    @Column(nullable = false)
+
     private String saddress; // 상세주소
 
     @Column(nullable = false)
     private String sphone; // 휴대폰 번호
 
-    @Column(nullable = false)
     private String sdefault; // 기본 배송지 여부
 
     @ManyToOne(fetch = FetchType.LAZY)
