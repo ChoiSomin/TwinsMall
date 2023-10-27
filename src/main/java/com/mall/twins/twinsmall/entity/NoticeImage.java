@@ -15,8 +15,9 @@ import javax.persistence.*;
 public class NoticeImage extends BaseEntity{
 
     @Id
+    @Column(name = "nimgno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long nimgno;
+    private Long nid;
 
     private String nimgnew; //이미지 파일명
 

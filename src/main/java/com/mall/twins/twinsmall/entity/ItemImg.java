@@ -14,8 +14,9 @@ import javax.persistence.*;
 public class ItemImg extends BaseEntity{
 
     @Id
+    @Column(name = "iimgno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long iimgno;
+    private Long id;
 
     private String iimgnew; //이미지 파일명
 
@@ -25,8 +26,7 @@ public class ItemImg extends BaseEntity{
 
     private String iimgrep; //대표 이미지 여부
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "pno")
     private Item item;
 

@@ -1,0 +1,658 @@
+.admin {
+    background-color: #f5e4f8;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.admin .div {
+    background-color: #f5e4f8;
+    width: 1920px;
+    height: 1444px;
+    position: relative;
+}
+
+.admin .nav {
+    position: absolute;
+    width: 260px;
+    height: 1444px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+}
+
+.admin .list {
+    position: relative;
+    height: 862px;
+}
+
+.admin .item {
+    position: absolute;
+    width: 260px;
+    height: 84px;
+    top: 0;
+    left: 0;
+}
+
+.admin .link {
+    width: 44px;
+    height: 44px;
+    left: 36px;
+    border-radius: 44px;
+    background-image: url(./img/link-face1-42d41e61-jpg.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 20px;
+}
+
+.admin .link-david-grey-h {
+    position: absolute;
+    width: 90px;
+    height: 14px;
+    top: 24px;
+    left: 96px;
+    font-family: "Ubuntu-Bold", Helvetica;
+    font-weight: 700;
+    color: #3e4b5b;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .link-project-manager {
+    position: absolute;
+    width: 90px;
+    height: 12px;
+    top: 46px;
+    left: 96px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #d8d8d8;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 12px;
+    white-space: nowrap;
+}
+
+.admin .img {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 33px;
+    left: 206px;
+}
+
+.admin .item-2 {
+    width: 260px;
+    height: 56px;
+    top: 84px;
+    position: absolute;
+    left: 0;
+}
+
+.admin .link-dashboard {
+    width: 69px;
+    height: 14px;
+    left: 36px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #3e4b5b;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+    position: absolute;
+    top: 20px;
+}
+
+.admin .link-2 {
+    width: 18px;
+    height: 18px;
+    left: 206px;
+    position: absolute;
+    top: 20px;
+}
+
+.admin .item-3 {
+    width: 260px;
+    height: 191px;
+    top: 140px;
+    position: absolute;
+    left: 0;
+}
+
+.admin .text-wrapper {
+    position: absolute;
+    width: 115px;
+    height: 14px;
+    top: 22px;
+    left: 36px;
+    font-family: "Ubuntu-Medium", Helvetica;
+    font-weight: 500;
+    color: #b66dff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 39px;
+    left: 166px;
+}
+
+.admin .list-2 {
+    position: absolute;
+    width: 188px;
+    height: 111px;
+    top: 60px;
+    left: 36px;
+}
+
+.admin .item-link {
+    width: 188px;
+    height: 37px;
+    top: 0;
+    position: absolute;
+    left: 0;
+}
+
+.admin .icon-2 {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 12px;
+    left: 0;
+}
+
+.admin .text-wrapper-2 {
+    position: absolute;
+    width: 47px;
+    height: 14px;
+    top: 10px;
+    left: 32px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #888888;
+    font-size: 13px;
+    letter-spacing: 0;
+    line-height: 13px;
+    white-space: nowrap;
+}
+
+.admin .item-link-2 {
+    top: 37px;
+    left: 0;
+    position: absolute;
+    width: 188px;
+    height: 37px;
+}
+
+.admin .text-wrapper-3 {
+    position: absolute;
+    width: 68px;
+    height: 14px;
+    top: 10px;
+    left: 32px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #b66dff;
+    font-size: 13px;
+    letter-spacing: 0;
+    line-height: 13px;
+    white-space: nowrap;
+}
+
+.admin .div-2 {
+    top: 74px;
+    left: 0;
+    position: absolute;
+    width: 188px;
+    height: 37px;
+}
+
+.admin .text-wrapper-4 {
+    width: 70px;
+    height: 14px;
+    top: 10px;
+    left: 32px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #888888;
+    font-size: 13px;
+    line-height: 13px;
+    position: absolute;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.admin .item-4 {
+    width: 260px;
+    height: 191px;
+    top: 180px;
+    position: absolute;
+    left: 0;
+}
+
+.admin .text-wrapper-5 {
+    width: 58px;
+    height: 14px;
+    top: 10px;
+    left: 32px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #888888;
+    font-size: 13px;
+    line-height: 13px;
+    position: absolute;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.admin .item-5 {
+    width: 260px;
+    height: 191px;
+    top: 233px;
+    position: absolute;
+    left: 0;
+}
+
+.admin .text-wrapper-6 {
+    width: 81px;
+    height: 14px;
+    top: 10px;
+    left: 32px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #888888;
+    font-size: 13px;
+    line-height: 13px;
+    position: absolute;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.admin .text-wrapper-7 {
+    width: 83px;
+    height: 14px;
+    top: 10px;
+    left: 32px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #b66dff;
+    font-size: 13px;
+    line-height: 13px;
+    position: absolute;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.admin .item-link-3 {
+    top: 493px;
+    left: 36px;
+    position: absolute;
+    width: 188px;
+    height: 37px;
+}
+
+.admin .heading-basic {
+    position: absolute;
+    width: 128px;
+    height: 20px;
+    top: 52px;
+    left: 303px;
+    font-family: "Ubuntu-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 21.6px;
+    white-space: nowrap;
+}
+
+.admin .div-card {
+    position: absolute;
+    width: 1588px;
+    height: 1220px;
+    top: 112px;
+    left: 294px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.admin .heading {
+    position: absolute;
+    width: 1508px;
+    height: 22px;
+    top: 57px;
+    left: 40px;
+}
+
+.admin .twin-s-mall-product {
+    position: absolute;
+    width: 285px;
+    height: 20px;
+    top: -1px;
+    left: 0;
+    font-family: "Ubuntu-Medium", Helvetica;
+    font-weight: 500;
+    color: #343a40;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 21.6px;
+    white-space: nowrap;
+}
+
+.admin .form {
+    position: absolute;
+    width: 1508px;
+    height: 716px;
+    top: 120px;
+    left: 40px;
+}
+
+.admin .label-name {
+    position: absolute;
+    width: 52px;
+    height: 14px;
+    top: 15px;
+    left: 0;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #343a40;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .input {
+    position: absolute;
+    width: 1508px;
+    height: 46px;
+    top: 38px;
+    left: 0;
+    background-color: #f8f9fa;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #ebedf2;
+}
+
+.admin .label-name-2 {
+    position: absolute;
+    width: 52px;
+    height: 14px;
+    top: 94px;
+    left: 0;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #343a40;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .input-2 {
+    top: 117px;
+    left: 0;
+    position: absolute;
+    width: 1508px;
+    height: 46px;
+    background-color: #f8f9fa;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #ebedf2;
+}
+
+.admin .label-email-address {
+    position: absolute;
+    width: 88px;
+    height: 14px;
+    top: 190px;
+    left: 0;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #343a40;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .input-3 {
+    top: 213px;
+    left: 0;
+    position: absolute;
+    width: 1508px;
+    height: 46px;
+    background-color: #f8f9fa;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #ebedf2;
+}
+
+.admin .label-password {
+    position: absolute;
+    width: 61px;
+    height: 14px;
+    top: 292px;
+    left: 1px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #343a40;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .input-4 {
+    top: 315px;
+    left: 1px;
+    position: absolute;
+    width: 1508px;
+    height: 46px;
+    background-color: #f8f9fa;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #ebedf2;
+}
+
+.admin .label-gender {
+    position: absolute;
+    width: 61px;
+    height: 14px;
+    top: 390px;
+    left: 0;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #343a40;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .options {
+    position: absolute;
+    width: 1510px;
+    height: 48px;
+    top: 412px;
+    left: -1px;
+    background-color: #f8f9fa;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #ebedf2;
+}
+
+.admin .label-textarea {
+    position: absolute;
+    width: 56px;
+    height: 14px;
+    top: 492px;
+    left: 0;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #343a40;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .textarea {
+    position: absolute;
+    width: 1508px;
+    height: 293px;
+    top: 519px;
+    left: 0;
+    background-color: #f8f9fa;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #ebedf2;
+}
+
+.admin .label-file-upload {
+    position: absolute;
+    width: 70px;
+    height: 14px;
+    top: 969px;
+    left: 40px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #343a40;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .label {
+    position: absolute;
+    width: 1508px;
+    height: 77px;
+    top: 995px;
+    left: 40px;
+    background-color: #f8f9fa;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #ebedf2;
+}
+
+.admin .text-wrapper-8 {
+    position: absolute;
+    width: 88px;
+    height: 16px;
+    top: 9px;
+    left: 12px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #495057;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.admin .pseudo {
+    position: absolute;
+    width: 72px;
+    height: 36px;
+    top: 1px;
+    left: 1435px;
+    background-color: #b66dff;
+    border-radius: 0px 4px 4px 0px;
+    border-left-width: 1px;
+    border-left-style: solid;
+}
+
+.admin .text-wrapper-9 {
+    position: absolute;
+    width: 48px;
+    height: 24px;
+    top: 5px;
+    left: 13px;
+    font-family: "Ubuntu-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 21px;
+    white-space: nowrap;
+}
+
+.admin .label-2 {
+    position: absolute;
+    width: 1508px;
+    height: 77px;
+    top: 1106px;
+    left: 40px;
+    background-color: #f8f9fa;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #ebedf2;
+}
+
+.admin .button {
+    position: absolute;
+    width: 127px;
+    height: 42px;
+    top: 1360px;
+    left: 894px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, rgb(218, 140, 255) 0%, rgb(154, 85, 255) 100%);
+    all: unset;
+    box-sizing: border-box;
+}
+
+.admin .text-wrapper-10 {
+    width: 48px;
+    height: 16px;
+    top: 12px;
+    left: 40px;
+    font-family: "Ubuntu-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 14px;
+    position: absolute;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.admin .div-wrapper {
+    position: absolute;
+    width: 126px;
+    height: 44px;
+    top: 1359px;
+    left: 1143px;
+    background-color: #f8f9fa;
+    border-radius: 3px;
+    border: 1px solid;
+    all: unset;
+    box-sizing: border-box;
+}
+
+.admin .text-wrapper-11 {
+    width: 45px;
+    height: 16px;
+    top: 13px;
+    left: 41px;
+    font-family: "Ubuntu-Bold", Helvetica;
+    font-weight: 700;
+    color: #212529;
+    font-size: 14px;
+    text-align: center;
+    line-height: 14px;
+    position: absolute;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
