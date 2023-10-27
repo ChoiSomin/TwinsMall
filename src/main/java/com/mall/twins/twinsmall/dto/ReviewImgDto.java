@@ -14,7 +14,7 @@ import org.modelmapper.ModelMapper;
 @Builder
 public class ReviewImgDto {
 
-    private Long rid;
+    private Long rimgno;
 
     private String rimgnew;
 

@@ -37,7 +37,7 @@ public class NoticeImgService {
         }
 
         //상품 이미지 정보 저장
-        noticeImage.updateItemImg(nimgori, nimgnew, nimgurl);
+        noticeImage.updateNoticeImg(nimgori, nimgnew, nimgurl);
         noticeImgRepository.save(noticeImage);
     }
 
@@ -54,7 +54,7 @@ public class NoticeImgService {
             String nimgori = noticeImgFile.getOriginalFilename();
             String nimgnew = fileService.uploadFile(noticeImgLocation, nimgori, noticeImgFile.getBytes());
             String nimgurl = "/images/noticeImages/" + nimgnew;
-            savedNoticeImg.updateItemImg(nimgori, nimgnew, nimgurl);
+            savedNoticeImg.updateNoticeImg(nimgori, nimgnew, nimgurl);
         }
     }
 }
