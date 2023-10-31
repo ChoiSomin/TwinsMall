@@ -2,6 +2,8 @@ package com.mall.twins.twinsmall.service;
 
 import com.mall.twins.twinsmall.dto.ItemFormDto;
 import com.mall.twins.twinsmall.dto.ItemImgDto;
+import com.mall.twins.twinsmall.dto.ItemSearchDto;
+import com.mall.twins.twinsmall.dto.MainItemDto;
 import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.ItemImg;
 import com.mall.twins.twinsmall.repository.ItemImgRepository;
@@ -84,7 +86,7 @@ public class ItemService {
 
         return item.getId();
     }
-/*
+
     @Transactional(readOnly = true)
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
@@ -93,6 +95,6 @@ public class ItemService {
     @Transactional(readOnly = true)
     public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
         return itemRepository.getMainItemPage(itemSearchDto, pageable);
-    }*/
+    }
 
 }
