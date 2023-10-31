@@ -38,8 +38,8 @@
 
                 <div>
                     <div>
-                        <button type="button" class="join">회원가입</button>
                         <button type="submit">로그인</button>
+                        <button type="button" class="joinBtn">회원가입</button>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
 
     const formObj = document.querySelector("#loginForm")
 
-    document.querySelector(".join").addEventListener("click", function(e) {
+    document.querySelector(".joinBtn").addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()

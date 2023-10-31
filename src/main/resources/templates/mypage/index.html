@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원정보 페이지</title>
+</head>
+<body>
+
+<div>
+
+    <div>
+        회원정보 페이지
+    </div>
+
+    <div>
+        <form th:action="@{/mypage/modify}" method="get">
+            <div>
+                <span>아이디</span>
+                <input type="text" th:value="${dto.mid}" readonly>
+            </div>
+
+            <div>
+                <span>이름</span>
+                <input type="text" th:value="${dto.mname}" readonly>
+            </div>
+
+            <div>
+                <span >이메일</span>
+                <input type="email" th:value="${dto.memail}" readonly>
+            </div>
+
+            <div>
+                <span>생년월일</span>
+                <input type="text" th:value="${dto.mbirthday}" readonly>
+            </div>
+
+            <div>
+                <span>전화번호</span>
+                <input type="text" th:value="${dto.mphone}" readonly>
+            </div>
+
+            <!-- 사용자 정보를 이용해야 할 때 ${#authentication.principal} 이용 -->
+            <div>
+
+                <!-- 회원정보 수정 버튼 -->
+                <button type="submit">회원정보 수정</button>
+
+                <!-- 회원탈퇴 버튼 -->
+                <a th:href="|@{/index}|">
+                    <button type="button">메인화면</button>
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
