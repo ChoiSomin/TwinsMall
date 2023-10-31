@@ -14,10 +14,10 @@ import javax.persistence.*;
 @ToString
 public class Member extends BaseEntity {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mno;
 
+    @Id
     @Column(nullable = false, unique = true) // 아이디를 유일하게 구분(동일값이 db에 들어올 수 없음)
     private String mid;
 
