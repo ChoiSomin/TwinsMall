@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
     @GetMapping("/index")
-    public void list(){
+    public void list() {
+
         log.info("IndexController.list() 인덱스 페이지 호출");
-
     }
-
-
 }
