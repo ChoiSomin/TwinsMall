@@ -7,8 +7,8 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 
 @Entity
-@Table (name = "persistentlogin")
-public class PersistentLogin {
+@Table (name = "persistent_logins")
+public class PersistentLogins { //쿠키값을 생성할 때 필요한 정보들을 보관하기 위해서
     
     @Id
     @Column (length = 64)
@@ -21,5 +21,5 @@ public class PersistentLogin {
     private String token;
 
     @Column (length = 64, nullable = false)
-    private Timestamp lastused; // 생성 시간 자동 기록
+    private Timestamp last_used; // 생성 시간 자동 기록
 }

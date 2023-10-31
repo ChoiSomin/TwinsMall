@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+
+    <div>
+
+        <div>
+            로그인 페이지
+        </div>
+
+        <div>
+
+            <th:block th:if="${param.logout != null}">
+                <h1>로그아웃</h1>
+            </th:block>
+
+            <form id="loginForm" action="/member/login" method="post" th:if="${param.logout == null}">
+
+                <div>
+                    <span>아이디</span>
+                    <input type="text" name="username" placeholder="USER ID">
+                </div>
+
+                <div>
+                    <span>패스워드</span>
+                    <input type="text" name="password" placeholder="PASSWORD">
+                </div>
+
+                <div>
+                    <input type="checkbox" name="remember-me">
+                    <label>자동 로그인</label>
+                </div>
+
+                <div>
+                    <div>
+                        <button type="button" class="join">회원가입</button>
+                        <button type="submit">로그인</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- 카카오 로그인 (자동 생성 링크) -->
+            <div>
+                <a href="/oauth2/authorization/kakao">카카오 소셜 로그인</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<script layout:fragment="script" th:inline="javascript">
+
+    const formObj = document.querySelector("#loginForm")
+
+    document.querySelector(".join").addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = `/member/join`
+        formObj.method = 'get'
+        formObj.submit()
+
+    }, false)
+
+</script>
+
+</html>

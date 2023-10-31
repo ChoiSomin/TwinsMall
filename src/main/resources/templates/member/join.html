@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+</head>
+<body>
+
+<div>
+
+    <div>
+        회원가입
+    </div>
+
+    <div>
+        <form action="/member/join" method="post">
+
+            <div>
+                <span>아이디</span>
+                <input type="text" name="mid">
+            </div>
+
+            <div>
+                <span>비밀번호</span>
+                <input type="password" name="mpassword">
+            </div>
+
+            <div>
+                <span>이름</span>
+                <input type="text" name="mname">
+            </div>
+
+            <div>
+                <span>이메일</span>
+                <input type="email" name="memail">
+            </div>
+
+            <div>
+                <span>생년월일</span>
+                <input type="text" name="mbirthday">
+            </div>
+
+            <div>
+                <span>전화번호</span>
+                <input type="text" name="mphone">
+            </div>
+
+            <div>
+
+                <div>
+                    <button type="submit">회원가입</button>
+                    <button type="reset">다시 입력</button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+
+<script layout:fragment="script" th:inline="javascript">
+
+    const error = [[${error}]]
+
+    if(error && error === 'mid') {
+        alert("동일한 아이디를 가진 계정이 존재합니다.")
+    }
+
+</script>
+
+</html>
