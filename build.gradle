@@ -61,6 +61,12 @@ dependencies {
     /* test log4j2 사용*/
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+
+    /* SNS  로그인 */
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    /* ModelMapper : DTO와 엔티티 간의 변환 처리 */
+    implementation 'org.modelmapper:modelmapper:3.1.1'
 }
 
 tasks.named('test') {
