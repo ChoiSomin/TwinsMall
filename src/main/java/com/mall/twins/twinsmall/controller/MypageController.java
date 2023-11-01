@@ -19,13 +19,11 @@ import java.security.Principal;
 @RequestMapping("/mypage")
 @Log4j2
 @RequiredArgsConstructor
-@PreAuthorize("isAuthenticated()")  // 로그인한 사용자만 조회 가능
 public class MypageController {
 
     private final MemberService memberService;
 
     // 회원정보 조회
-    @PreAuthorize("isAuthenticated()")  // 로그인한 사용자만 조회 가능
     @GetMapping({"/index", "/modify"})
     public void read(Principal principal, Model model) {
 

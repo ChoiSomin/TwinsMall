@@ -2,6 +2,7 @@ package com.mall.twins.twinsmall.entity;
 
 import com.mall.twins.twinsmall.constant.MemberRole;
 import lombok.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -19,10 +20,6 @@ public class Member extends BaseEntity {
     @Id
     @Column(nullable = false, unique = true)
     private String mid;         // 아이디
-
-    @Column(unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mno;           // 회원 번호
 
     @Column(nullable = false, length = 1000)
     private String mpassword;   // 비밀번호

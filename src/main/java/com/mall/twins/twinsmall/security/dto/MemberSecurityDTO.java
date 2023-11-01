@@ -20,8 +20,6 @@ public class MemberSecurityDTO extends User implements OAuth2User {
     @NotEmpty
     private String mid;
 
-    private Long mno;
-
     @NotEmpty
     private String mpassword;
 

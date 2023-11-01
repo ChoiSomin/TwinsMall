@@ -14,8 +14,6 @@ public class MemberJoinDTO {
     @NotEmpty
     private String mid;
 
-    private Long mno;
-
     @NotEmpty
     private String mpassword;
 
