@@ -25,9 +25,7 @@
             <div class="heading-check-out">login</div>
             <div class="overlap-group">
                 <div class="link-home">로그인</div>
-                <div class="symbol"></div>
             </div>
-            <div class="symbol-2"></div>
         </div>
         <div class="details">
             <th:block th:if="${param.logout != null}">
@@ -35,10 +33,14 @@
             </th:block>
             <form id="loginForm" action="/member/login" method="post" th:if="${param.logout == null}">
                 <div class="heading">
-                    <p class="p">아직 회원이 아니신가요? 가입하고 특별한 해택을 누려보세요!</p>
-                    <img class="family" src="img/family.png"/>
+                    <p class="p">아직 회원이 아니신가요? 가입하고 특별한 혜택을 누려보세요!</p>
+                    <img class="family" src="/img/family.png"/>
                 </div>
                 <div class="overlap">
+                    <div th:if="${loginError}" class="alert alert-danger">Wrong Username or Password</div>
+                    <div th:if="${loginVerified}" class="alert alert-success">Account has been verified. Please sign-in</div>
+                    <div th:if="${loginDisabled}" class="alert alert-danger">Account is not yet active. Please check your email</div>
+                    <div th:if="${loginLocked}" class="alert alert-danger">Account locked due to multiple incorrect login attempts.</div>
                     <div class="text-wrapper-3">아이디</div>
                     <div class="text-wrapper-4">*</div>
                 </div>
@@ -49,11 +51,13 @@
                 </div>
                 <div class="overlap-3">
                     <input class="input-2" type="password" name="password">
-                    <div class="text-wrapper-7">아이디/비밀번호 찾기</div>
+                    <input type="checkbox" name="remember-me" class="text-wrapper-7">
+                    <div class="text-wrapper-7">자동로그인</div>
                 </div>
                 <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
                 <div class="group">
                     <div class="div-wrapper">
+                        <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
                         <button type="submit" class="text-wrapper-8">로그인</button>
                     </div>
                 </div>
@@ -62,11 +66,13 @@
                         <button type="button" class="text-wrapper-9">회원가입</button>
                     </div>
                 </div>
-                <img class="icon-google-icon" src="/img/icon-google-icon.png"/>
-                <img class="SNS-kakaotalk" src="/img/sns-kakaotalk.svg"/>
+                <a href="/oauth2/authorization/google">
+                    <img class="icon-google-icon" src="/img/icon-google-icon.png"></a>
+                <a href="/oauth2/authorization/kakao">
+                    <img class="SNS-kakaotalk" src="/img/sns-kakaotalk.svg"></a>
                 <!-- 카카오 로그인 (자동 생성 링크) -->
                 <div class="text-wrapper-10">
-                    <a href="/oauth2/authorization/kakao">카카오 소셜 로그인</a>
+                    간편 로그인
                 </div>
             </form>
         </div>

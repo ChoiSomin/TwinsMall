@@ -28,6 +28,19 @@ public class indexController {
 
     }
 
+    @GetMapping("/aboutus")
+    public String aboutus(){
+        return "aboutus";
+
+    }
+
+    @GetMapping("/checkout")
+    public String checkout(){
+        return "checkout";
+
+    }
+
+
     @GetMapping(value = "/")
     public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
