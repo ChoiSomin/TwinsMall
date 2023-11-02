@@ -65,7 +65,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // Thymeleaf Extras Springsecurity5 : Thymeleaf에서 로그인 인증 정보 처리 https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.1.2.RELEASE'
+    // 가장 최신 버전으로 적용하면 배송지 관리에서 java.lang.NoSuchMethodError 에러 발생 https://ryumodrn.tistory.com/90
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
 
     // Lombok을 테스트 환경에서도 사용
     testCompileOnly 'org.projectlombok:lombok'

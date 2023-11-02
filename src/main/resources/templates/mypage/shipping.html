@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>배송지 관리</title>
+    <style>
+        .modal {
+            position: absolute;
+            display: none;
+            justify-content: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal_body {
+            position: absolute;
+            top: 50%;
+            width: 1000px;
+            height: 600px;
+            padding: 40px;
+            text-align: center;
+
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <h2>배송지 관리</h2>
+    <button type="button" class="btn-open-modal">배송지 추가</button>
+</div>
+
+<div th:each="dto : ${shippingDTO}">
+
+    <form name="frm_shippingList" action="/mypage/removeShipping" method="post">
+
+        <input type="hidden" name="sno" th:value="${dto.sno}">
+
+        <p>[[${dto.sname}]]</p>
+        <div th:if="${dto.sdefault} != null">기본 배송지</div>
+        [[${dto.sperson}]]
+        [[${dto.address}]]
+        [[${dto.saddress}]]
+        [[${dto.sphone}]]
+
+        <button type="submit" th:if="${dto.sdefault} == null">삭제</button>
+        <button type="button" th:class="button-modify-modal" th:id="shippingList"
+                th:attr="onclick=|sendAttr('${dto.sno}', '${dto.sdefault}', '${dto.sname}', '${dto.sperson}', '${dto.zonecode}', '${dto.address}', '${dto.saddress}', '${dto.sphone}')|">수정</button>
+
+    </form>
+
+</div>
+
+<!--/* 배송지 모달창 */-->
+<div class="modal" id="modal">
+    <div class="modal_body" id="modalBody">
+
+        <form name="frm_shipping" id="shippingForm" action="/mypage/shipping" method="post">
+            <input type="hidden" name="mid" th:value="${#authentication.principal.username}">
+            <input type="hidden" name="sno">
+
+            <h3>배송지 추가</h3>
+
+            <div>
+                <p>배송지를 입력해 주세요.</p>
+                <input type="checkbox" name="sdefault" id="checkbox"><span>기본 배송지로 설정</span>
+            </div>
+
+            <div>
+                <label>배송지명</label>
+                <input type="text" name="sname">
+            </div>
+
+            <div>
+                <label>받는 분</label>
+                <input type="text" name="sperson">
+            </div>
+
+            <div>
+                <label>우편번호</label>
+                <input type="text" name="zonecode" readonly>
+                <input type="button" value="우편번호 검색" id="btnZipcode">
+            </div>
+
+            <div>
+                <label>주소</label>
+                <input type="text" name="address" size="50" readonly>
+            </div>
+
+            <div>
+                <label>상세주소</label>
+                <input type="text" name="saddress">
+            </div>
+
+            <div>
+                <label>휴대폰 번호(-제외)</label>
+                <input type="text" name="sphone" maxlength="11">
+            </div>
+
+            <div>
+                <button class="btn-cancel-modal">취소</button>
+                <button type="submit" class="btn-save-modal">저장</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!--/* 다음 주소 API */-->
+<script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'></script>
+
+<script>
+    // 다음 주소
+    var btnZipcode = document.getElementById('btnZipcode');
+    if(btnZipcode != null){
+        btnZipcode.onclick = function(){
+            var frm = document.frm_shipping;
+            new daum.Postcode({
+                oncomplete : function(data){
+                    frm.zonecode.value = data.zonecode;
+                    frm.address.value = data.address;
+                }
+            }).open();
+        }
+    }
+
+    // 리스트
+    const btnOpenModal = document.querySelector('.btn-open-modal');                         // 배송지 추가 버튼
+    var btnModifyModal = document.querySelectorAll('#shippingList, .button-modify-modal');  // 수정 버튼
+
+    // 모달창
+    const modal = document.querySelector('.modal');                                         // 모달창 바깥
+    const btnCancelModal = document.querySelector('.btn-cancel-modal');                     // 취소 버튼 (모달창 안)
+
+    // 모달창 화면에 띄우기
+    function showModal(){
+
+        modal.style.display = "flex";
+    }
+
+    // 모달창 숨기기
+    function hideModal() {
+
+        modal.style.display = "none";
+    }
+
+    // 배송지 추가 버튼 눌렀을 때 모달창 띄우기
+    btnOpenModal.addEventListener("click", () => {
+
+        showModal();
+    });
+
+    // 모달창 내부의 취소 버튼 동작
+    btnCancelModal.addEventListener("click", function(e) {
+
+        e.stopPropagation();    // 상위 엘리먼트로의 이벤트 전파 방지
+        e.preventDefault();     // 고유 동작 중단
+
+        // 모달창 내부 폼 값 리셋
+        document.getElementById('shippingForm').reset();
+
+        hideModal();
+    });
+
+    // 리스트 데이터 추가 됐을 때 추가된 수정 버튼도 작동 되게 하기
+    [].forEach.call(btnModifyModal, function (mod) {
+
+        mod.addEventListener("click", function(e){
+
+            e.stopPropagation();
+            e.preventDefault();
+
+            showModal();
+
+        }, false);
+    });
+
+    // 각 리스트 값을 모달창 폼 내부로 넘기기
+    function sendAttr(sno, sdefault, sname, sperson, zonecode, address, saddress, sphone) {
+
+        document.forms.frm_shipping.sno.value = sno;
+        if(sdefault == "on") {
+            document.querySelector('#checkbox').checked = true;
+        }
+        document.forms.frm_shipping.sname.value = sname;
+        document.forms.frm_shipping.sperson.value = sperson;
+        document.forms.frm_shipping.zonecode.value = zonecode;
+        document.forms.frm_shipping.address.value = address;
+        document.forms.frm_shipping.saddress.value = saddress;
+        document.forms.frm_shipping.sphone.value = sphone;
+    }
+</script>
+</body>
+</html>
