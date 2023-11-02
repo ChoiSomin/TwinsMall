@@ -2,6 +2,8 @@ package com.mall.twins.twinsmall.entity;
 
 
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
+import com.mall.twins.twinsmall.dto.ItemFormDto;
+import com.mall.twins.twinsmall.exception.OutOfStockException;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,11 +19,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Setter
 public class Item extends BaseEntity {
 
     @Id
+    @Column(name="pno")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long pno;
+    private Long id;
 
     @Column(nullable = false) // not null 설정 및 길이 지정, nullable = false : not null
     private String pname; //상품명
@@ -30,11 +34,8 @@ public class Item extends BaseEntity {
     private int pprice;    //가격
 
     @Column(nullable = false)
-<<<<<<<<< Temporary merge branch 1
     private Integer pstock;      // 재고
-=========
-    private Integer pstock; // 재고
->>>>>>>>> Temporary merge branch 2
+
 
     @Column(nullable = false)
     private String pcate;  // 카테고리
@@ -51,5 +52,25 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)  // enum 타입 매핑
     private ItemSellStatus pstatus; //상품 판매 상태
 
+    public void updateItem(ItemFormDto itemFormDto) {
+        this.pname = itemFormDto.getPname();
+        this.pprice = itemFormDto.getPprice();
+        this.pcate = itemFormDto.getPcate();
+        this.pstock = itemFormDto.getPstock();
+        this.pdesc = itemFormDto.getPdesc();
+        this.pstatus = itemFormDto.getPstatus();
+    }
 
+    public void removeStock(int pstock){
+        int restStock = this.pstock - pstock;
+        if(restStock<0){
+            throw new OutOfStockException("상품의 재고가 부족 합니다. (현재 재고 수량: " + this.pstock + ")");
+        }
+        this.pstock = restStock;
+    }
+
+    //상품의 재고를 증가시키는 메서드
+    public void addStock(int pstock){
+        this.pstock += pstock;
+    }
 }

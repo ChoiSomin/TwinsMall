@@ -39,6 +39,10 @@ public class OrderItem extends BaseEntity {
     public int getTotalPrice(){
         return oiprice * oiquantity; // 아이템 단가와 주문 수량을 곱한 총액 반환
     }
+
+    public void cancel(){
+        this.getItem().addStock(oiquantity);
+    }
 }
 
 

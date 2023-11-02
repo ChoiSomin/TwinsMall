@@ -2,6 +2,7 @@ package com.mall.twins.twinsmall.service;
 
 
 
+import com.mall.twins.twinsmall.constant.Role;
 import com.mall.twins.twinsmall.dto.OrderDto;
 import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.Member;
@@ -14,17 +15,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
+
 import org.springframework.transaction.annotation.Transactional;
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest
 @Transactional
-@TestPropertySource(locations = "classpath:application-test.properties")
 public class OrderSreviceTest {
     @Autowired
     private OrderService orderService;
@@ -37,12 +39,14 @@ public class OrderSreviceTest {
 
     public Item saveItem(){
         Item item = new Item();
-        item.setPname("테스트1");
+        item.setPname("테스트상품");
         item.setPprice(10000);
-        item.setPdesc("테스트상품임");
-        item.setPcate("냉장고");
+        item.setPdesc("테스트 상품 상세 설명");
         item.setPstatus(ItemSellStatus.SELL);
+        item.setPcate("TV");
         item.setPstock(100);
+        item.setRegTime(LocalDateTime.now());
+        item.setUpdateTime(LocalDateTime.now());
 
         return itemRepository.save(item);
     }
@@ -51,7 +55,12 @@ public class OrderSreviceTest {
         Member member = new Member();
         member.setMid("aaaa");
         member.setMpw("1111");
+        member.setMname("최소민");
+        member.setMbirth("19930518");
         member.setMemail("test@test.com");
+        member.setMphone("0100000000");
+        member.setRole(Role.USER);
+
         return memberRepository.save(member);
     }
 
@@ -63,7 +72,7 @@ public class OrderSreviceTest {
 
         OrderDto orderDto = new OrderDto();
         orderDto.setOquantity(10);
-        orderDto.setPname(item.getPname());
+        orderDto.setItemId(item.getId());
 
         Long ono = orderService.order(orderDto, member.getMid());
 
@@ -72,6 +81,8 @@ public class OrderSreviceTest {
         List<OrderItem> orderItems = order.getOrderItems();
 
         int totalPrice = orderDto.getOquantity()*item.getPprice();
+
+        assertEquals(totalPrice, order.getTotalPrice());
 
     }
 }

@@ -67,4 +67,11 @@ public class Order extends BaseEntity {
 //        this.ostatus = OrderStatus.CANCEL;
 //    } // 주문 상태를 취소 상태로 변경
 
+    public void cancelOrder(){
+        this.ostatus = ostatus.CANCEL;
+
+        for(OrderItem orderItem : orderItems){
+            orderItem.cancel();
+        }
+    }
 }

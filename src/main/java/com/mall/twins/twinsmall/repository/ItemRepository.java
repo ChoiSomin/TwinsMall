@@ -2,21 +2,15 @@ package com.mall.twins.twinsmall.repository;
 
 import com.mall.twins.twinsmall.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
-<<<<<<< HEAD
-
-import java.util.Optional;
-
-public interface ItemRepository extends JpaRepository<Item, Long> {
-    Item findById(String pname);
-=======
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
+
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>{
+    Item findById(String pname);
 
     // Optional<Item> findByPname(@Param("pname") String pname); // Review에서 사용
 
@@ -36,5 +30,5 @@ public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredi
     @Query(value = "select * from item i where i.pdesc like %:pdesc% order by i.pprice desc", nativeQuery = true)
     List<Item> findByPdescByNative(@Param("pdesc") String pdesc);
 
->>>>>>> c8f9125c522ff799ca0fcc6d80afc430f7e9d230
+
 }
