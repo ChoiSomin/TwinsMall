@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+  <script th:inline="javascript">
+    $(document).ready(function () {
+      var errorMessage = [[${errorMessage}]];
+      if (errorMessage != null) {
+        alert(errorMessage);
+      }
+
+      bindDomEvent();
+
+    });
+
+    function bindDomEvent() {
+      $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();  //이미지 파일명
+        var fileExt = fileName.substring(fileName.lastIndexOf(".") + 1); // 확장자 추출
+        fileExt = fileExt.toLowerCase(); //소문자 변환
+
+        if (fileExt != "jpg" && fileExt != "jpeg" && fileExt != "gif" && fileExt != "png" && fileExt != "bmp") {
+          alert("이미지 파일만 등록이 가능합니다.");
+          return;
+        }
+
+        $(this).siblings(".custom-file-label").html(fileName);
+      });
+    }
+
+  </script>
+
+</th:block>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+
+  <link rel="stylesheet" href="/css/globals.css" type="text/css">
+  <link rel="stylesheet" href="/css/productregister.css" type="text/css">
+
+</th:block>
+
+<div layout:fragment="content">
+  <div class="admin">
+    <div class="div">
+      <div class="nav">
+        <div class="list">
+          <div class="item">
+            <div class="link"></div>
+            <div class="link-david-grey-h">Admin</div>
+            <div class="link-project-manager">Manager</div>
+            <img class="img" src="img/link-2.svg"/>
+          </div>
+          <div class="item-2">
+            <div class="link-dashboard">관리자 메인</div>
+            <img class="link-2" src="img/link.svg"/>
+          </div>
+          <div class="item-3">
+            <div class="text-wrapper">Statistics</div>
+            <img class="icon" src="img/icon-11.svg"/>
+            <div class="list-2">
+              <div class="item-link">
+                <img class="icon-2" src="img/icon-10.svg"/>
+                <div class="text-wrapper-2">회원</div>
+              </div>
+              <div class="item-link-2">
+                <img class="icon-2" src="img/icon-4.svg"/>
+                <div class="text-wrapper-3">상품</div>
+              </div>
+              <div class="div-2">
+                <img class="icon-2" src="img/icon-9.svg"/>
+                <div class="text-wrapper-4">매출</div>
+              </div>
+            </div>
+            <div class="item-4">
+              <div class="text-wrapper">Management</div>
+              <img class="icon" src="img/icon-3.svg"/>
+              <div class="list-2">
+                <div class="item-link">
+                  <img class="icon-2" src="img/icon-7.svg"/>
+                  <div class="text-wrapper-5">상품</div>
+                </div>
+                <div class="item-link-2">
+                  <img class="icon-2" src="img/image.svg"/>
+                  <div class="text-wrapper-3">회원</div>
+                </div>
+                <div class="div-2">
+                  <div class="item-link">
+                    <img class="icon-2" src="img/icon-12.svg"/>
+                    <div class="text-wrapper-4">1:1 문의</div>
+                  </div>
+                  <div class="item-link">
+                    <img class="icon-2" src="img/icon-5.svg"/>
+                    <div class="text-wrapper-4">1:1 문의</div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-5">
+                <div class="text-wrapper">Notice</div>
+                <img class="icon" src="img/icon.svg"/>
+                <div class="list-2">
+                  <div class="item-link">
+                    <img class="icon-2" src="img/icon-6.svg"/>
+                    <div class="text-wrapper-6">공지사항 등록</div>
+                  </div>
+                  <div class="item-link-2">
+                    <img class="icon-2" src="img/icon-8.svg"/>
+                    <div class="text-wrapper-7">공지사항 목록</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item-link-3">
+            <img class="icon-2" src="img/icon-2.svg"/>
+            <div class="text-wrapper-4">리뷰</div>
+          </div>
+        </div>
+      </div>
+
+      <form role="form" method="post" enctype="multipart/form-data" th:object="${NoticeFormDto}">
+        <input type="hidden" th:field="*{nno}">
+        <div class="div-card">
+          <div class="heading">
+            <div class="twin-s-mall-product">Twin’s Mall Product Registration</div>
+          </div>
+          <div class="form">
+            <div>
+              <div class="label-name-2">제목</div>
+              <input type="text" th:field="*{ntitle}" class="input-2" placeholder="제목을 입력해주세요">
+            </div>
+            <p th:if="${#fields.hasErrors('ntitle')}" th:errors="*{ntitle}" class="fieldError">Incorrect
+              data</p>
+            <div>
+              <div class="label-email-address">내용</div>
+              <input type="number" th:field="*{ncontent}" class="input-3" placeholder="내용을 입력해주세요">
+            </div>
+            <p th:if="${#fields.hasErrors('ncontent')}" th:errors="*{ncontent}" class="fieldError">Incorrect
+              data</p>
+
+
+          </div>
+
+          <div class="label-file-upload">사진 첨부</div>
+
+          <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
+            <div th:each="num: ${#numbers.sequence(1,5)}">
+              <div class="label">
+                <div class="pseudo">
+                  <input type="file" class="text-wrapper-9" name="itemImgFile">
+                  <label class="custom-file-label" th:text="상품이미지 + ${num}"></label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div th:if="${not #lists.isEmpty(itemFormDto.itemImgDtoList)}">
+            <div class="form-group" th:each="itemImgDto, status: ${itemFormDto.itemImgDtoList}">
+              <div class="label">
+                <div class="pseudo">
+                  <input type="file" class="text-wrapper-9" name="itemImgFile">
+                  <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">
+                </div>
+                <label class="custom-file-label"
+                       th:text="${not #strings.isEmpty(itemImgDto.iimgori)} ? ${itemImgDto.iimgori} : '상품이미지' + ${status.index+1}"></label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
+          <button th:formaction="@{/admin/item/new}" type="submit" class="text-wrapper-10">저장</button>
+        </div>
+
+        <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
+          <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
+                  class="text-wrapper-10">수정
+          </button>
+        </div>
+        <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+      </form>
+    </div>
+  </div>
+</div>
+
+</html>

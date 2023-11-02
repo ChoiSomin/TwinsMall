@@ -15,8 +15,9 @@ import javax.persistence.*;
 public class ReviewImage extends BaseEntity{
 
     @Id
+    @Column(name = "rimgno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rimgno;
+    private Long rid;
 
     private String rimgnew; //이미지 파일명
 
@@ -24,11 +25,14 @@ public class ReviewImage extends BaseEntity{
 
     private String rimgurl; //이미지 조회 경로
 
+    private String rimgrep; //대표 이미지 여부
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rno")
     private Review review;
 
-    public void updateItemImg(String rimgori, String rimgnew, String rimgurl){
+    public void updateReviewImg(String rimgori, String rimgnew, String rimgurl){
         // 원본 이미지 파일명, 업데이트할 이미지 파일명, 이미지 경로를 파라미터로 입력받아 이미지 정보를 업데이트
         this.rimgori = rimgori;
         this.rimgnew = rimgnew;

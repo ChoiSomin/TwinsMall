@@ -1,11 +1,6 @@
 package com.mall.twins.twinsmall.config;
 
 
-import com.mall.twins.twinsmall.dto.ItemFormDto;
-import com.mall.twins.twinsmall.entity.Item;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

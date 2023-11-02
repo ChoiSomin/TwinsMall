@@ -15,8 +15,9 @@ import javax.persistence.*;
 public class NoticeImage extends BaseEntity{
 
     @Id
+    @Column(name = "nimgno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long nimgno;
+    private Long nid;
 
     private String nimgnew; //이미지 파일명
 
@@ -31,7 +32,7 @@ public class NoticeImage extends BaseEntity{
     @JoinColumn(name = "nno")
     private Notice notice;
 
-    public void updateItemImg(String nimgori, String nimgnew, String nimgurl){
+    public void updateNoticeImg(String nimgori, String nimgnew, String nimgurl){
         // 원본 이미지 파일명, 업데이트할 이미지 파일명, 이미지 경로를 파라미터로 입력받아 이미지 정보를 업데이트
         this.nimgori = nimgori;
         this.nimgnew = nimgnew;

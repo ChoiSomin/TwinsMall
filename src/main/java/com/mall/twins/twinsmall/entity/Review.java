@@ -9,16 +9,18 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@ToString(exclude = {"item","member", "order"})
+@Getter @Setter
+@ToString(exclude = {"item" ,"member", "order"})
 public class Review extends BaseEntity {
 
     @Id
+    @Column(name="rno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rno;
+    private Long rid;
 
+    @Lob
     @Column(nullable = false, length = 1000)
-    private String rcontent;    // 리뷰 내용
+    private String rcontent;    // 리뷰내용
 
     @Column(nullable = false)
     private int rscore;      // 평점
@@ -30,5 +32,7 @@ public class Review extends BaseEntity {
     private Member member;
     @OneToOne(fetch = FetchType.LAZY)
     private Order order;
+
+
 
 }

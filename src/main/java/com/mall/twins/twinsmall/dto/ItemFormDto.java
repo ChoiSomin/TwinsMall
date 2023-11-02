@@ -3,12 +3,10 @@ package com.mall.twins.twinsmall.dto;
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
 import com.mall.twins.twinsmall.entity.Item;
 import lombok.Data;
-import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

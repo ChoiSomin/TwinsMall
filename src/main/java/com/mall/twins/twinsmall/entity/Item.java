@@ -4,7 +4,6 @@ package com.mall.twins.twinsmall.entity;
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
 import com.mall.twins.twinsmall.dto.ItemFormDto;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 
@@ -31,7 +30,7 @@ public class Item extends BaseEntity {
     private int pprice;    //가격
 
     @Column(nullable = false)
-    private Integer pstock; // 재고
+    private Integer pstock;      // 재고
 
     @Column(nullable = false)
     private String pcate;  // 카테고리
