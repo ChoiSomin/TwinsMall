@@ -1,6 +1,6 @@
 package com.mall.twins.twinsmall.entity;
 
-import com.mall.twins.twinsmall.constant.MemberRole;
+import com.mall.twins.twinsmall.constant.Role;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "roleSet")
 public class Member extends BaseEntity {
 
 
@@ -33,8 +33,12 @@ public class Member extends BaseEntity {
     @Column(nullable = false)
     private String mpw;
 
+    /*public void changePassword(String mpw){
+        this.mpw = mpw;
+    }*/
+
     @Enumerated(EnumType.STRING)
-    private MemberRole role;
+    private Role role;
 
     @Column(nullable = false, unique = true)
     private String mphone; // 전화번호
@@ -52,39 +56,35 @@ public class Member extends BaseEntity {
     //fetch = FetchType.LAZY : 데이터 지연 로딩
     @Builder.Default
     //@Builder.Default :  Lombok 라이브러리를 사용하는 경우 사용
-    private Set<MemberRole> roleSet = new HashSet<>();
+    private Set<Role> roleset = new HashSet<>();
     //MyEntity 클래스의 빌더를 생성할 때 roleset 초기화하는 기본값이 빈 HashSet으로 설정
 
-    public void changePassword(String mpassword){
+    public void changePassword(String mpw){
         this.mpw = mpw;
     }
 
-    public void changeEmail(String memail) {
-        this.memail = memail;
+    public void changeDel(boolean mdel){
+        this.mdel = mdel;
     }
-
-    public void changeName(String mname) {
-        this.mname = mname;
-    }
-
-    public void changePhone(String mphone) {
-        this.mphone = mphone;
+    public void addRole(Role role){
+        this.roleset.add(role);
     }
 
     public void changeSocial(boolean msocial){
         this.msocial = msocial;
     }
 
-    public void changeDel(boolean mdel){
-        this.mdel = mdel;
-    }
-    public void addRole(MemberRole role){
-        this.roleSet.add(role);
-    }
+    /*public static Member createMember(MemberJoinDto memberJoinDto, PasswordEncoder passwordEncoder){
 
-    public void clearRoles() {
-        this.roleSet.clear();
-    }
+        Member member = Member.builder()
+                .name(memberJoinDto.getName())
+                .email(memberJoinDto.getEmail())
+                .password( passwordEncoder.encode( memberJoinDto.getPassword() ) ) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
+                .role(Role.USER)  // 유저
+                //.role(Role.ADMIN)   // 관리자
+                .build();
 
+        return member;
+    }*/
 
 }

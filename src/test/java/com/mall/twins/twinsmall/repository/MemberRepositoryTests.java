@@ -1,6 +1,6 @@
 package com.mall.twins.twinsmall.repository;
 
-import com.mall.twins.twinsmall.constant.MemberRole;
+import com.mall.twins.twinsmall.constant.Role;
 import com.mall.twins.twinsmall.entity.Member;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -46,10 +46,10 @@ public class MemberRepositoryTests {
                     .mphone("0100"+i+"0000")
                     .build();
 
-            member.addRole(MemberRole.USER);
+            member.addRole(Role.USER);
 
             if(i >= 108) {
-                member.addRole(MemberRole.ADMIN);
+                member.addRole(Role.ADMIN);
             }
             memberRepository.save(member);
         });
@@ -62,9 +62,9 @@ public class MemberRepositoryTests {
         Member member = result.orElseThrow();
 
         log.info(member);
-        log.info(member.getRoleSet());
+        log.info(member.getRoleset());
 
-        member.getRoleSet().forEach(memberRole -> log.info(memberRole.name()));
+        member.getRoleset().forEach(memberRole -> log.info(memberRole.name()));
     }
 
     @Test

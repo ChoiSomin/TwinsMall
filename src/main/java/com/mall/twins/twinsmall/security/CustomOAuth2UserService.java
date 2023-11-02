@@ -1,6 +1,6 @@
 package com.mall.twins.twinsmall.security;
 
-import com.mall.twins.twinsmall.constant.MemberRole;
+import com.mall.twins.twinsmall.constant.Role;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
@@ -72,7 +72,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                     .msocial(true)
                     .build();
             
-            member.addRole(MemberRole.USER);
+            member.addRole(Role.USER);
             memberRepository.save(member);
             
             MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(mem.getMid(), "1111", null,
@@ -96,7 +96,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                             member.getMphone(),
                             member.isMdel(),
                             member.isMsocial(),
-                            member.getRoleSet()
+                            member.getRoleset()
                                     .stream().map(memberRole -> new SimpleGrantedAuthority("ROLE_" + memberRole.name()))
                                     .collect(Collectors.toList())
                     );
@@ -105,7 +105,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         }
     }
 
-    // 카카오 계정 이름과 이메일 주소 반환
+    /* 카카오 계정 이름과 이메일 주소 반환 */
     private String getKaKaoEmail(Map<String, Object> paramMap) {
 
         log.info("Kakao 로그인 이메일 정보");
