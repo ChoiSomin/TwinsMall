@@ -39,6 +39,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.projectlombok:lombok:1.18.22'
 
     //일단 제외 : 28행에 있는 것 사용 ->compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client'
@@ -60,6 +61,9 @@ dependencies {
 
     // Spring Boot Starter Validation : 컨트롤러에서 객체의 제약 조건 검증 https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
     implementation 'org.springframework.boot:spring-boot-starter-validation:3.1.4'
+
+    // Thymeleaf의 레이아웃 기능
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 
     // 스프링 시큐리티 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-security'

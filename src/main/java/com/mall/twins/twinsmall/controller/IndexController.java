@@ -13,4 +13,5 @@ public class IndexController {
 
         log.info("IndexController.list() 인덱스 페이지 호출");
     }
+
 }
