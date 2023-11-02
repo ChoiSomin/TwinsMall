@@ -39,9 +39,9 @@ public class ItemImgService {
         itemImgRepository.save(itemImg);
     }
 
-    public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception{
+    public void updateItemImg(Long id, MultipartFile itemImgFile) throws Exception{
         if(!itemImgFile.isEmpty()) { // 상품 이미지를 수정한 경우 상품 이미지를 업데이트
-            ItemImg savedItemImg = itemImgRepository.findById(itemImgId).orElseThrow(EntityNotFoundException::new);
+            ItemImg savedItemImg = itemImgRepository.findById(id).orElseThrow(EntityNotFoundException::new);
 
             //기존 이미지 파일 삭제
             if(!StringUtils.isEmpty(savedItemImg.getIimgnew())) {
