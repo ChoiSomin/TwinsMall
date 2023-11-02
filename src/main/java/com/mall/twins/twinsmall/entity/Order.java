@@ -28,7 +28,7 @@ public class Order extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus ostatus; //주문상태
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL
             , orphanRemoval = true, fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new ArrayList<>();
     // mappedBy = "order" -> 양방향 관계에서 주인 엔티티는 order

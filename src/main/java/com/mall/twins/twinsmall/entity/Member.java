@@ -1,8 +1,11 @@
 package com.mall.twins.twinsmall.entity;
 
-import com.mall.twins.twinsmall.constant.Role;
+import com.mall.twins.twinsmall.constant.MemberRole;
+import com.mall.twins.twinsmall.dto.MemberJoinDTO;
 import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,73 +20,83 @@ import java.util.Set;
 public class Member extends BaseEntity {
 
     @Id
+    @Column(nullable = false, unique = true)
+    private String mid;         // 아이디
+
+    @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mno;
+    private Long mno;           // 회원 번호
 
-    @Column(nullable = false, unique = true) // 아이디를 유일하게 구분(동일값이 db에 들어올 수 없음)
-    private String mid;
+    @Column(nullable = false, length = 1000)
+    private String mpassword;   // 비밀번호
 
-    @Column(nullable = false)
-    private String mname;
+    private String mname;       // 이름
 
     @Column(nullable = false, unique = true)
-    private String memail;
+    private String memail;      // 이메일
 
-    @Column(nullable = false)
-    private String mpw;
+    private String mbirthday;   // 생년월일
 
-    /*public void changePassword(String mpw){
-        this.mpw = mpw;
-    }*/
+    @Column(unique = true)
+    private String mphone;      // 전화번호
+
+    private boolean mdel;       // 회원탈퇴
+
+    private boolean msocial;    // 소셜 로그인
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private MemberRole role;
 
-    @Column(nullable = false, unique = true)
-    private String mphone; // 전화번호
-
-
-    private String mbirth; // 생년월일
-
-    /* 추가 */
-    private boolean mdel; //탈퇴 여부
-
-    private boolean msocial; //SNS 여부
-
-    @ElementCollection(fetch = FetchType.LAZY)
-    //@ElementCollection : 컬렉션 형태의 데이터를 엔티티와 관련시킬 때 사용
-    //fetch = FetchType.LAZY : 데이터 지연 로딩
-    @Builder.Default
-    //@Builder.Default :  Lombok 라이브러리를 사용하는 경우 사용
-    private Set<Role> roleset = new HashSet<>();
-    //MyEntity 클래스의 빌더를 생성할 때 roleset 초기화하는 기본값이 빈 HashSet으로 설정
-
-    public void changePassword(String mpw){
-        this.mpw = mpw;
-    }
-
-    public void changeDel(boolean mdel){
-        this.mdel = mdel;
-    }
-    public void addRole(Role role){
-        this.roleset.add(role);
-    }
-
-    public void changeSocial(boolean msocial){
-        this.msocial = msocial;
-    }
-
-    /*public static Member createMember(MemberJoinDto memberJoinDto, PasswordEncoder passwordEncoder){
+    public static Member createMember(MemberJoinDTO memberJoinDto, PasswordEncoder passwordEncoder){
 
         Member member = Member.builder()
-                .name(memberJoinDto.getName())
-                .email(memberJoinDto.getEmail())
-                .password( passwordEncoder.encode( memberJoinDto.getPassword() ) ) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
-                .role(Role.USER)  // 유저
-                //.role(Role.ADMIN)   // 관리자
+                .mname(memberJoinDto.getMname())
+                .mbirthday(memberJoinDto.getMbirthday())
+                .mid(memberJoinDto.getMid())
+                .mphone(memberJoinDto.getMphone())
+                .memail(memberJoinDto.getMemail())
+                .mpassword( passwordEncoder.encode( memberJoinDto.getMpassword() ) ) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
+                .role(MemberRole.USER)  // 유저
+                //.role(MemberRole.ADMIN)   // 관리자
                 .build();
 
         return member;
-    }*/
+    }
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<MemberRole> roleSet = new HashSet<>();
+
+    public void changePassword(String mpassword) {
+        this.mpassword = mpassword;
+    }
+
+    public void changeName(String mname) {
+        this.mname = mname;
+    }
+
+    public void changeEmail(String memail) {
+        this.memail = memail;
+    }
+
+    public void changePhone(String mphone) {
+        this.mphone = mphone;
+    }
+
+    public void changeDel(boolean mdel) {
+        this.mdel = mdel;
+    }
+
+    public void addRole(MemberRole memberRole) {
+        this.roleSet.add(memberRole);
+    }
+
+    public void clearRoles() {
+        this.roleSet.clear();
+    }
+
+    public void changeSocial(boolean msocial) {
+        this.msocial = msocial;
+    }
 
 }
