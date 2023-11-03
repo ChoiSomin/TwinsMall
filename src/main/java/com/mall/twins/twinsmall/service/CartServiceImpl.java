@@ -37,7 +37,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Long addCart(CartItemDto cartItemDto, String mid) {
-        
+        //ss
         //장바구니에 담을 ㅅ강품 엔티티를 조회합니다.
         Item item = itemRepository.findById(cartItemDto.getItemId()).orElseThrow(EntityNotFoundException :: new);
         //현재 로그인한 회원 엔티티를 조회합니다.
