@@ -170,9 +170,10 @@
 
 .footer .footer {
   position: absolute;
+  bottom: 0;
   width: 1920px;
-  height: 390px;
-  top: 1080px;
+  height: 400px;
+  top: 5000px;
   left: 0;
   background-color: #111111;
 }
@@ -1027,7 +1028,7 @@
   width: 144px;
   height: 49px;
   top: 0;
-  left: 0;
+  right: 238px;
   font-weight: 700;
   color: #111111;
   font-size: 36px;
@@ -1043,7 +1044,7 @@
   width: 282px;
   height: 49px;
   top: 46px;
-  left: 0;
+  right: 100px;
   font-family: "Nunito Sans", Helvetica;
   font-weight: 700;
   color: #111111;
