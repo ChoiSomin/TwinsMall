@@ -2,7 +2,7 @@ package com.mall.twins.twinsmall.service;
 
 
 
-import com.mall.twins.twinsmall.constant.Role;
+import com.mall.twins.twinsmall.constant.MemberRole;
 import com.mall.twins.twinsmall.dto.OrderDto;
 import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.Member;
@@ -59,7 +59,7 @@ public class OrderSreviceTest {
         member.setMbirth("19930518");
         member.setMemail("test@test.com");
         member.setMphone("0100000000");
-        member.setRole(Role.USER);
+        member.setRole(MemberRole.USER);
 
         return memberRepository.save(member);
     }

@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
 
 @SpringBootTest
 @Log4j2
+@Transactional
 public class MemberRepositoryTests {
 
     @Autowired
@@ -25,10 +27,10 @@ public class MemberRepositoryTests {
     @Test
     public void insertMembers() {
 
-        IntStream.rangeClosed(1,100).forEach(i -> {
+        IntStream.rangeClosed(1,10).forEach(i -> {
             Member member = Member.builder()
                     .mid("member" + i)
-                    .mpassword(passwordEncoder.encode("1111"))
+                    .mpw(passwordEncoder.encode("1111"))
                     .mname("테스트")
                     .memail("email" + i + "@aaa.bbb")
                     .mphone("010" + i + "0000")
@@ -47,8 +49,8 @@ public class MemberRepositoryTests {
     @Test
     public void testRead() {
 
-        Optional<Member> result = memberRepository.getWithRoles("member100");
-        Member member = result.orElseThrow();
+        Optional<Member> result = memberRepository.getWithRoles("member10");
+        Member member = result.orElseThrow(ExceptionInInitializerError::new);
 
         log.info(member);
         log.info(member.getRoleSet());

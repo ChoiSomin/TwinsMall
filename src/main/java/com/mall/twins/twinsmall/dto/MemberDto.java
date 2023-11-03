@@ -1,6 +1,6 @@
 package com.mall.twins.twinsmall.dto;
 
-import com.mall.twins.twinsmall.constant.Role;
+import com.mall.twins.twinsmall.constant.MemberRole;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,7 +24,7 @@ public class MemberDto {
 
     private String mpw;
 
-    private Role role;
+    private MemberRole role;
 
     private String mphone; // 전화번호
 

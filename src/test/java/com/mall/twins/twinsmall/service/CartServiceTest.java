@@ -37,12 +37,17 @@ public class CartServiceTest {
         item.setPdesc("테스트상품입니다.");
         item.setPstatus(ItemSellStatus.SELL);
         item.setPstock(50);
+        item.setPcate("냉장고");
         return itemRepository.save(item);
     }
 
     public Member saveMember(){
         Member member = new Member();
         member.setMid("aaaaaa");
+        member.setMpw("1111");
+        member.setMname("테스트");
+        member.setMemail("email@aaa.bbb");
+        member.setMphone("010-0000-0000");
         return memberRepository.save(member);
     }
 
