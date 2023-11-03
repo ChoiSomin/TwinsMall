@@ -2,7 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="globals.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="adminstyle.css" />
 </head>
 <body>
 <div class="admin-product">
@@ -29,20 +29,14 @@
       <div class="input"></div>
       <div class="text-wrapper-4">판매상태</div>
       <div class="frame">
-        <div class="radio-button">
-          <div class="div-wrapper">
-            <div class="overlap-group"><div class="ellipse"></div></div>
-          </div>
-        </div>
-        <div class="text-wrapper-5">판매 중</div>
-        <div class="frame-wrapper">
-          <div class="div-wrapper"><div class="ellipse-2"></div></div>
-        </div>
-        <div class="text-wrapper-6">품절</div>
-        <div class="radio-button-2">
-          <div class="div-wrapper"><div class="ellipse-2"></div></div>
-        </div>
-        <div class="text-wrapper-7">판매 중단</div>
+        <label for="selling">판매 중</label>
+        <input type="radio" id="selling" name="sales_status" value="판매 중">
+
+        <label for="sold-out">품절</label>
+        <input type="radio" id="sold-out" name="sales_status" value="품절">
+
+        <label for="discontinued">판매 중단</label>
+        <input type="radio" id="discontinued" name="sales_status" value="판매 중단">
       </div>
       <div class="text-wrapper-8">가격</div>
       <div class="input-2"></div>
@@ -54,13 +48,48 @@
       <div class="input-5"></div>
       <div class="text-wrapper-12">첨부파일(최대 5개 까지 가능합니다.)</div>
       <div class="frame-2">
-        <div class="list-item"><div class="text-wrapper-13">첨부파일1.jdk</div></div>
-        <div class="list-item-2"><div class="text-wrapper-14">첨부파일1.jdk</div></div>
-        <div class="list-item-3"><div class="text-wrapper-14">첨부파일1.jdk</div></div>
-        <div class="list-item-4"><div class="text-wrapper-14">첨부파일1.jdk</div></div>
-        <div class="list-item-5"><div class="text-wrapper-14">첨부파일1.jdk</div></div>
-        <img class="icon-folder" src="img/icon-folder.png" />
+        <div class="list-item" id="file-list">
+          <!-- 첨부파일이 여기에 나열될 것입니다. -->
+        </div>
+        <img class="icon-folder" src="img/icon-folder.png" id="add-file-button" style="cursor: pointer;" />
+        <input type="file" id="file-input" style="display: none" multiple />
       </div>
+      <script>
+        // 파일 업로드 버튼을 클릭할 때
+        document.getElementById("add-file-button").addEventListener("click", function() {
+          document.getElementById("file-input").click();
+        });
+
+        // 파일 선택 시
+        document.getElementById("file-input").addEventListener("change", function(event) {
+          const fileList = event.target.files;
+          const fileContainer = document.getElementById("file-list");
+
+          for (let i = 0; i < fileList.length; i++) {
+            const file = fileList[i];
+
+            if (fileContainer.childElementCount < 5) {
+              // 최대 5개까지 파일 표시
+              const fileItem = document.createElement("div");
+              fileItem.classList.add("text-wrapper-13");
+              fileItem.textContent = file.name;
+
+              const deleteButton = document.createElement("button");
+              deleteButton.textContent = "삭제";
+              deleteButton.addEventListener("click", function() {
+                // 파일 삭제 버튼을 클릭했을 때
+                fileItem.remove();
+              });
+
+              fileItem.appendChild(deleteButton);
+              fileContainer.appendChild(fileItem);
+            } else {
+              alert("최대 5개의 파일만 첨부할 수 있습니다.");
+              break;
+            }
+          }
+        });
+      </script>
       <div class="frame-3"><div class="text-wrapper-15">취소하기</div></div>
       <div class="frame-4"><div class="text-wrapper-16">다시입력</div></div>
       <div class="frame-5"><div class="text-wrapper-16">가입하기</div></div>

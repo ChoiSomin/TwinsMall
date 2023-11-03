@@ -502,9 +502,8 @@
 
 .admin-product .text-wrapper-13 {
   top: 2px;
-  position: absolute;
+  position: static;
   width: 224px;
-  height: 19px;
   left: 11px;
   font-family: "Nunito Sans-Regular", Helvetica;
   font-weight: 400;
@@ -1040,4 +1039,38 @@
   height: 44px;
   top: 3px;
   left: 0;
+}
+
+.frame-2 {
+  display: flex;
+  align-items: center;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.list-item .text-wrapper-14 {
+  margin-right: 10px;
+}
+
+.list-item .delete-button {
+  cursor: pointer;
+  color: red;
+}
+
+#file-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-wrapper-13 {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.text-wrapper-13 button {
+  margin-left: 10px;
 }
