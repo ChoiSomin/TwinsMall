@@ -11,6 +11,7 @@ import com.mall.twins.twinsmall.entity.QItemImg;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +21,7 @@ import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Log4j2
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
     private JPAQueryFactory queryFactory; // 동적으로 쿼리를 생성하기 위해서 JPAQueryFactory 클래스를 사용
@@ -95,8 +97,11 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
     @Override
     public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+
         QItem item = QItem.item;
         QItemImg itemImg = QItemImg.itemImg;
+
+        log.info("getMainItemPage query parameters: itemSearchDto = {}, pageable = {}", itemSearchDto, pageable);
 
         List<MainItemDto> content = queryFactory
                 .select(
