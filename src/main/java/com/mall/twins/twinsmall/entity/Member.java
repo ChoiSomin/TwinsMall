@@ -5,8 +5,9 @@ import com.mall.twins.twinsmall.dto.MemberJoinDTO;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.management.relation.Role;
+
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,8 +26,7 @@ public class Member extends BaseEntity {
     private String mid;         // 아이디
 
     @Column(unique = true)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
-    @SequenceGenerator(name = "member_seq", sequenceName = "member_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long mno;           // 회원 번호
 
     @Column(nullable = false, length = 1000)
@@ -49,7 +49,7 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private MemberRole role;
 
-    public static Member createMember(MemberJoinDTO memberJoinDto, PasswordEncoder passwordEncoder){
+    public static Member createMember(MemberJoinDTO memberJoinDto, PasswordEncoder passwordEncoder) {
 
         Member member = Member.builder()
                 .mname(memberJoinDto.getMname())
@@ -57,7 +57,7 @@ public class Member extends BaseEntity {
                 .mid(memberJoinDto.getMid())
                 .mphone(memberJoinDto.getMphone())
                 .memail(memberJoinDto.getMemail())
-                .mpw( passwordEncoder.encode( memberJoinDto.getMpw() ) ) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
+                .mpw(passwordEncoder.encode(memberJoinDto.getMpw())) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
                 .role(MemberRole.USER)  // 유저
                 //.role(MemberRole.ADMIN)   // 관리자
                 .build();
@@ -101,4 +101,4 @@ public class Member extends BaseEntity {
         this.msocial = msocial;
     }
 
-}
+   }

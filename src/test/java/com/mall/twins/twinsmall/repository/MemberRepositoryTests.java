@@ -10,12 +10,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
 @SpringBootTest
 @Log4j2
-@Transactional
 public class MemberRepositoryTests {
 
     @Autowired
@@ -50,7 +51,7 @@ public class MemberRepositoryTests {
     public void testRead() {
 
         Optional<Member> result = memberRepository.getWithRoles("member10");
-        Member member = result.orElseThrow(ExceptionInInitializerError::new);
+        Member member = result.orElseThrow(EntityNotFoundException::new);
 
         log.info(member);
         log.info(member.getRoleSet());
