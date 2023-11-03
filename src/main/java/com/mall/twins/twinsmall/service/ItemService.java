@@ -9,6 +9,7 @@ import com.mall.twins.twinsmall.entity.ItemImg;
 import com.mall.twins.twinsmall.repository.ItemImgRepository;
 import com.mall.twins.twinsmall.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Log4j2
 public class ItemService {
 
     private final ItemRepository itemRepository;
@@ -94,6 +96,7 @@ public class ItemService {
 
     @Transactional(readOnly = true)
     public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        log.info("getMainItemPage method is called with itemSearchDto: {}", itemSearchDto);
         return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 
