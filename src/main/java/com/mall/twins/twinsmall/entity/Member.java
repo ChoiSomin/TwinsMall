@@ -13,11 +13,11 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "roleSet")
 public class Member extends BaseEntity {
 
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
     private Long mno;
 
     @Id
