@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Log4j2
 public class indexController {
 
-    @GetMapping("/index")
+    @GetMapping({"/index", "/aboutAs", "/join", "login", "product", "productDetail"})
     public void list(){
         log.info("list....");
 

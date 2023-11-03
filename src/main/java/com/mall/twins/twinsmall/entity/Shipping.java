@@ -1,6 +1,5 @@
 package com.mall.twins.twinsmall.entity;
 
-import com.mall.twins.twinsmall.constant.Role;
 import lombok.*;
 
 import javax.persistence.*;
