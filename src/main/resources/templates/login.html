@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+
+    <div class="login">
+        <div class="top">
+            <div class="heading-check-out">login</div>
+            <div class="overlap-group">
+                <div class="link-home">로그인</div>
+            </div>
+        </div>
+        <div class="details">
+            <th:block th:if="${param.logout != null}">
+                <h1>로그아웃</h1>
+            </th:block>
+            <form id="loginForm" action="/member/login" method="post" th:if="${param.logout == null}">
+                <div class="heading">
+                    <p class="p">아직 회원이 아니신가요? 가입하고 특별한 해택을 누려보세요!</p>
+                    <img class="family" src="img/family.png"/>
+                </div>
+                <div class="overlap">
+                    <div class="text-wrapper-3">아이디</div>
+                    <div class="text-wrapper-4">*</div>
+                </div>
+                <input class="input" type="text" name="username">
+                <div class="overlap-2">
+                    <div class="text-wrapper-5">비밀번호</div>
+                    <div class="text-wrapper-6">*</div>
+                </div>
+                <div class="overlap-3">
+                    <input class="input-2" type="password" name="password">
+                    <input type="checkbox" name="remember-me" class="text-wrapper-7">
+                    <div class="text-wrapper-7">자동로그인</div>
+                </div>
+                <div class="overlap-3">
+                    <div class="input-2"></div>
+                    <div class="text-wrapper-7">아이디/비밀번호 찾기</div>
+                </div>
+                <div class="group">
+                    <div class="div-wrapper">
+                        <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+                        <button type="submit" class="text-wrapper-8">로그인</button>
+                    </div>
+                </div>
+                <div class="overlap-wrapper">
+                    <div class="overlap-4">
+                        <div class="text-wrapper-9">회원가입</div>
+                    </div>
+                </div>
+                <a href="/oauth2/authorization/google">
+                    <img class="icon-google-icon" src="/img/icon-google-icon.png"></a>
+                <a href="/oauth2/authorization/kakao">
+                    <img class="SNS-kakaotalk" src="/img/sns-kakaotalk.svg"></a>
+                <div class="text-wrapper-10">간편 로그인</div>
+            </form>
+        </div>
+    </div>
+</div>
+</html>
+

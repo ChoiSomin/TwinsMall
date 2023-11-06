@@ -37,10 +37,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(
                 member.getMid(),
-                member.getMpassword(),
+                member.getMpw(),
                 member.getMname(),
                 member.getMemail(),
-                member.getMbirthday(),
+                member.getMbirth(),
                 member.getMphone(),
                 member.isMdel(),
                 false,

@@ -3,19 +3,23 @@ package com.mall.twins.twinsmall.entity;
 
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
 import com.mall.twins.twinsmall.dto.ItemFormDto;
+import com.mall.twins.twinsmall.exception.OutOfStockException;
 import lombok.*;
 
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
 @Entity //클래스를 엔티티로 선언
 @Table(name="item") //엔티티와 매핑할 테이블을 지정(테이블 명)
-@Getter @Setter
+@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Setter
 public class Item extends BaseEntity {
 
     @Id
@@ -32,6 +36,7 @@ public class Item extends BaseEntity {
     @Column(nullable = false)
     private Integer pstock;      // 재고
 
+
     @Column(nullable = false)
     private String pcate;  // 카테고리
 
@@ -41,15 +46,31 @@ public class Item extends BaseEntity {
     @Column(nullable = false, length = 5000)
     private String pdesc; // 상품 상세 설명
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private LocalDate relaseyear; // 발매일
+
     @Enumerated(EnumType.STRING)  // enum 타입 매핑
     private ItemSellStatus pstatus; //상품 판매 상태
 
-    public void updateItem(ItemFormDto itemFormDto){
+    public void updateItem(ItemFormDto itemFormDto) {
         this.pname = itemFormDto.getPname();
         this.pprice = itemFormDto.getPprice();
         this.pcate = itemFormDto.getPcate();
         this.pstock = itemFormDto.getPstock();
         this.pdesc = itemFormDto.getPdesc();
         this.pstatus = itemFormDto.getPstatus();
+    }
+
+    public void removeStock(int pstock){
+        int restStock = this.pstock - pstock;
+        if(restStock<0){
+            throw new OutOfStockException("상품의 재고가 부족 합니다. (현재 재고 수량: " + this.pstock + ")");
+        }
+        this.pstock = restStock;
+    }
+
+    //상품의 재고를 증가시키는 메서드
+    public void addStock(int pstock){
+        this.pstock += pstock;
     }
 }

@@ -11,19 +11,24 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 public class MemberJoinDTO {
 
-    @NotEmpty
+    @NotEmpty (message = "아이디는 필수 입력 값입니다.")
     private String mid;
 
-    @NotEmpty
-    private String mpassword;
+    private Long mno;
 
+    @NotEmpty (message = "비밀번호는 필수 입력 값입니다.")
+    private String mpw;
+
+    @NotEmpty (message = "이름은 필수 입력 값입니다.")
     private String mname;
 
-    @NotEmpty
+    @NotEmpty (message = "이메일은 필수 입력 값입니다.")
     private String memail;
 
-    private String mbirthday;
+    @NotEmpty (message = "생년월일은 필수 입력 값입니다.")
+    private String mbirth;
 
+    @NotEmpty (message = "전화번호는 필수 입력 값입니다.")
     private String mphone;
 
     private boolean mdel;

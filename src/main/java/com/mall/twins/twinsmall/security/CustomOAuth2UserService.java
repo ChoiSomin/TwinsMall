@@ -65,7 +65,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             // 회원 추가
             Member member = Member.builder()
                     .mid(memail)
-                    .mpassword(passwordEncoder.encode("1111"))
+                    .mpw(passwordEncoder.encode("1111"))
                     .memail(memail)
                     .msocial(true)
                     .build();
@@ -88,10 +88,10 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             MemberSecurityDTO memberSecurityDTO =
                     new MemberSecurityDTO(
                             member.getMid(),
-                            member.getMpassword(),
+                            member.getMpw(),
                             member.getMname(),
                             member.getMemail(),
-                            member.getMbirthday(),
+                            member.getMbirth(),
                             member.getMphone(),
                             member.isMdel(),
                             member.isMsocial(),

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 public class Answer extends BaseEntity{
-
+//sdasdas
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ano; //답변 번호(pk)

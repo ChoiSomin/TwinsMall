@@ -8,7 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
+
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>, ItemRepositoryCustom{
+    Item findById(String pname);
 
     // Optional<Item> findByPname(@Param("pname") String pname); // Review에서 사용
 
@@ -27,5 +29,6 @@ public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredi
 
     @Query(value = "select * from item i where i.pdesc like %:pdesc% order by i.pprice desc", nativeQuery = true)
     List<Item> findByPdescByNative(@Param("pdesc") String pdesc);
+
 
 }

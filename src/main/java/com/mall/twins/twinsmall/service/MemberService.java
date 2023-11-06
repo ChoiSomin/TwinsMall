@@ -1,7 +1,7 @@
 package com.mall.twins.twinsmall.service;
 
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
-import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
+import com.mall.twins.twinsmall.entity.Member;
 
 public interface MemberService {
 
@@ -9,12 +9,8 @@ public interface MemberService {
 
     }
 
-    // 회원가입
+    Member saveMember(Member member);
+
+
     void join(MemberJoinDTO memberJoinDTO) throws MidExistException;
-
-    // 조회
-    MemberSecurityDTO readOne(String id);
-
-    // 수정
-    void modify(MemberSecurityDTO memberSecurityDTO);
 }
