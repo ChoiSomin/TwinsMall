@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @Log4j2
-public class indexController {
+public class IndexController {
 
     @GetMapping({"/index", "/aboutAs", "/join", "login", "product", "productDetail"})
     public void list(){
-        log.info("list....");
+        log.info("IndexController.list() 인덱스 페이지 호출");
 
     }
 

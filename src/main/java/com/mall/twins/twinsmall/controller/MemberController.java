@@ -61,7 +61,7 @@ public class MemberController {
         log.info(memberJoinDto);
 
         if (bindingResult.hasErrors()) {
-            log.error("Validation errors detected.");
+            log.error("회원가입 유효성 검사 중 오류 발생");
             return "member/join";
         }
 
@@ -70,7 +70,7 @@ public class MemberController {
             memberService.saveMember(member);
         } catch (IllegalStateException e) {
             String errorMessage = e.getMessage();
-            log.error("Failed to save member: {}", errorMessage);
+            log.error("회원가입 member 저장 중 오류 발생", errorMessage);
             model.addAttribute("errorMessage", e.getMessage());
 
             return "member/join";
