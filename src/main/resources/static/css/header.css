@@ -1,0 +1,167 @@
+.header {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.header .div {
+    background-color: #ffffff;
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+}
+
+.header .header {
+    position: absolute;
+    width: 1920px;
+    height: 131px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+}
+
+.header .frame {
+    position: absolute;
+    width: 245px;
+    height: 56px;
+    top: 62px;
+    left: 325px;
+}
+
+.header .link-logo-png {
+    position: absolute;
+    width: 225px;
+    height: 36px;
+    top: 10px;
+    left: 10px;
+}
+
+.header .navbar {
+    position: absolute;
+    width: 334px;
+    height: 24px;
+    top: 78px;
+    left: 786px;
+}
+
+.header .nav-list-item-link {
+    width: 52px;
+    left: 0;
+    position: absolute;
+    height: 24px;
+    top: -1px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.header .text-wrapper {
+    width: 88px;
+    left: 79px;
+    position: absolute;
+    height: 24px;
+    top: -1px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.header .nav-list-item-link-2 {
+    width: 45px;
+    left: 194px;
+    position: absolute;
+    height: 24px;
+    top: -1px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.header .nav-list-item-link-3 {
+    width: 69px;
+    left: 265px;
+    position: absolute;
+    height: 24px;
+    top: -1px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.header .icon-search {
+    left: 1474px;
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 81px;
+}
+
+.header .icon-favorite-border {
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 81px;
+    left: 1516px;
+}
+
+.header .icon-shopping-bag {
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 80px;
+    left: 1560px;
+}
+
+.header .icon-person {
+    left: 1431px;
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 81px;
+}
+
+.header .div-header-top {
+    position: absolute;
+    width: 1920px;
+    height: 46px;
+    top: 0;
+    left: 0;
+    background-color: #111111;
+}
+
+.header .text-wrapper-2 {
+    position: absolute;
+    width: 333px;
+    height: 25px;
+    top: 9px;
+    left: 391px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
