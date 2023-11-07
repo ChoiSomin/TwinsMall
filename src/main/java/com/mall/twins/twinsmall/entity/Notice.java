@@ -27,8 +27,8 @@ public class Notice extends BaseEntity{
     @Column(nullable = false, length = 5000)
     private String ncontent;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Member member; //작성자
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    private Member member; //작성자*/
 
     public void updateNotice(NoticeFormDto noticeFormDto){
         this.ntitle = noticeFormDto.getNtitle();
