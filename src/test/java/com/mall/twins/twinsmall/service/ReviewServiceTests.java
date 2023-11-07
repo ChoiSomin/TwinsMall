@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
@@ -46,7 +45,6 @@ public class ReviewServiceTests {
     }
 
     @Test
-    @WithMockUser(username = "admin", roles = "ADMIN")
     void saveReview() throws Exception {
         ReviewFormDto reviewFormDto = new ReviewFormDto();
         reviewFormDto.setRcontent("리뷰내용입니당...");
