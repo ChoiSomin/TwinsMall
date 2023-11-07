@@ -576,6 +576,9 @@
   background-color: #f68181;
   border-radius: 7px;
   box-shadow: 0px 4px 4px #00000040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .admin-product .text-wrapper-15 {
@@ -603,13 +606,16 @@
   background-color: #d9d9d9;
   border-radius: 7px;
   box-shadow: 0px 4px 4px #00000040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .admin-product .text-wrapper-16 {
-  width: 63px;
-  height: 18px;
-  top: 7px;
-  left: 18px;
+  /* width: 63px;
+   height: 18px;
+   top: 7px;
+   left: 18px;*/
   font-family: "Nunito Sans-Bold", Helvetica;
   font-weight: 700;
   color: #000000;
@@ -630,6 +636,18 @@
   background-color: #c0e8c4;
   border-radius: 7px;
   box-shadow: 0px 4px 4px #00000040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-product .frame-4 button,
+.admin-product .frame-5 button {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능한 것처럼 보이게 함 */
 }
 
 .admin-product .footer {
