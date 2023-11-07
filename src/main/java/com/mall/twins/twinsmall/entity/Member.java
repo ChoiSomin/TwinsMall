@@ -28,14 +28,14 @@ public class Member extends BaseEntity {
     private Long mno;           // 회원 번호
 
     @Column(nullable = false, length = 1000)
-    private String mpassword;   // 비밀번호
+    private String mpw;   // 비밀번호
 
     private String mname;       // 이름
 
     @Column(nullable = false, unique = true)
     private String memail;      // 이메일
 
-    private String mbirthday;   // 생년월일
+    private String mbirth;   // 생년월일
 
     @Column(unique = true)
     private String mphone;      // 전화번호
@@ -51,11 +51,11 @@ public class Member extends BaseEntity {
 
         Member member = Member.builder()
                 .mname(memberJoinDto.getMname())
-                .mbirthday(memberJoinDto.getMbirthday())
+                .mbirth(memberJoinDto.getMbirth())
                 .mid(memberJoinDto.getMid())
                 .mphone(memberJoinDto.getMphone())
                 .memail(memberJoinDto.getMemail())
-                .mpassword( passwordEncoder.encode( memberJoinDto.getMpassword() ) ) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
+                .mpw( passwordEncoder.encode( memberJoinDto.getMpw() ) ) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
                 .role(MemberRole.USER)  // 유저
                 //.role(MemberRole.ADMIN)   // 관리자
                 .build();
@@ -67,8 +67,8 @@ public class Member extends BaseEntity {
     @Builder.Default
     private Set<MemberRole> roleSet = new HashSet<>();
 
-    public void changePassword(String mpassword) {
-        this.mpassword = mpassword;
+    public void changePassword(String mpw) {
+        this.mpw = mpw;
     }
 
     public void changeName(String mname) {

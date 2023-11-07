@@ -17,7 +17,7 @@ public class MemberJoinDTO {
     private Long mno;
 
     @NotEmpty (message = "비밀번호는 필수 입력 값입니다.")
-    private String mpassword;
+    private String mpw;
 
     @NotEmpty (message = "이름은 필수 입력 값입니다.")
     private String mname;
@@ -26,7 +26,7 @@ public class MemberJoinDTO {
     private String memail;
 
     @NotEmpty (message = "생년월일은 필수 입력 값입니다.")
-    private String mbirthday;
+    private String mbirth;
 
     @NotEmpty (message = "전화번호는 필수 입력 값입니다.")
     private String mphone;

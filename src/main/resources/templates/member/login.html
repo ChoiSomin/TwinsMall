@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="/css/globals.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/login.css"/>
 </head>
 <body>
 <div class="login">
@@ -31,46 +31,45 @@
             <th:block th:if="${param.logout != null}">
                 <h1>로그아웃</h1>
             </th:block>
+
             <form id="loginForm" action="/member/login" method="post" th:if="${param.logout == null}">
                 <div class="heading">
                     <p class="p">아직 회원이 아니신가요? 가입하고 특별한 혜택을 누려보세요!</p>
                     <img class="family" src="/img/family.png"/>
                 </div>
                 <div class="overlap">
-                    <div th:if="${loginError}" class="alert alert-danger">Wrong Username or Password</div>
-                    <div th:if="${loginVerified}" class="alert alert-success">Account has been verified. Please sign-in</div>
-                    <div th:if="${loginDisabled}" class="alert alert-danger">Account is not yet active. Please check your email</div>
-                    <div th:if="${loginLocked}" class="alert alert-danger">Account locked due to multiple incorrect login attempts.</div>
                     <div class="text-wrapper-3">아이디</div>
                     <div class="text-wrapper-4">*</div>
                 </div>
-                <input class="input" type="text" name="username">
+                <input class="input" type="text" name="username" placeholder="아이디 입력">
                 <div class="overlap-2">
                     <div class="text-wrapper-5">비밀번호</div>
                     <div class="text-wrapper-6">*</div>
                 </div>
                 <div class="overlap-3">
-                    <input class="input-2" type="password" name="password">
-                    <input type="checkbox" name="remember-me" class="text-wrapper-7">
-                    <div class="text-wrapper-7">자동로그인</div>
+                    <input class="input-2" type="password" id="password" name="password" placeholder="비밀번호 입력">
+                    <div class="remember">
+                        <input type="checkbox" id="keep" name="remember-me" class="input_keep" value="off">
+                        <label for="keep" class="keep_text">로그인 상태 유지</label>
+                    </div>
+                    <div class="text-wrapper-7">아이디/비밀번호 찾기</div>
                 </div>
                 <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
                 <div class="group">
-                    <div class="div-wrapper">
-                        <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-                        <button type="submit" class="text-wrapper-8">로그인</button>
-                    </div>
+                    <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+                    <button type="submit" class="div-wrapper">로그인</button>
                 </div>
                 <div class="overlap-wrapper">
                     <div class="overlap-4">
-                        <button type="button" class="text-wrapper-9">회원가입</button>
+                        <a th:href="@{/member/join}">
+                            <div class="text-wrapper-9">회원가입</div>
+                        </a>
                     </div>
                 </div>
                 <a href="/oauth2/authorization/google">
                     <img class="icon-google-icon" src="/img/icon-google-icon.png"></a>
                 <a href="/oauth2/authorization/kakao">
                     <img class="SNS-kakaotalk" src="/img/sns-kakaotalk.svg"></a>
-                <!-- 카카오 로그인 (자동 생성 링크) -->
                 <div class="text-wrapper-10">
                     간편 로그인
                 </div>
@@ -131,7 +130,7 @@
 
     const formObj = document.querySelector("#loginForm")
 
-    document.querySelector(".text-wrapper-9").addEventListener("click", function(e) {
+    document.querySelector(".text-wrapper-9").addEventListener("click", function (e) {
 
         e.preventDefault()
         e.stopPropagation()

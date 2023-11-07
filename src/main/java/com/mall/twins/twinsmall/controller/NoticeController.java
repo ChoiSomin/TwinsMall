@@ -45,17 +45,17 @@ public class NoticeController {
                             Model model){
 
         if(bindingResult.hasErrors()){
-            return "notice/list";
+            return "notice/noticeRegister";
         }
 
         try {
             noticeService.saveNotice(noticeFormDto);
         }catch (Exception e){
-            model.addAttribute("errorMessage", "등록중 오류가 발생하였습니다.");
+            model.addAttribute("errorMessage", "등록 중 오류가 발생하였습니다.");
             return "notice/noticeRegister";
         }
 
-        return "redirect:/";
+        return "redirect:/notice/list";
     }
 
     @GetMapping(value = "/{NoticeNid}")

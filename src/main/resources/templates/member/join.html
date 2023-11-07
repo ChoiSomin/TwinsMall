@@ -52,8 +52,8 @@
                     <div class="text-wrapper-6">비밀번호</div>
                     <div class="text-wrapper-7">*</div>
                 </div>
-                <input class="input-2" th:field="*{mpassword}" type="password" placeholder="비밀번호를 입력해주세요">
-                <p th:if="${#fields.hasErrors('mpassword')}" th:errors="*{mpassword}" class="fieldError2">Incorrect data</p>
+                <input class="input-2" th:field="*{mpw}" type="password" placeholder="비밀번호를 입력해주세요">
+                <p th:if="${#fields.hasErrors('mpw')}" th:errors="*{mpw}" class="fieldError2">Incorrect data</p>
                 <div class="overlap-3">
                     <div class="text-wrapper-8">핸드폰번호</div>
                     <div class="text-wrapper-9">*</div>
@@ -84,13 +84,13 @@
                 <p th:if="${#fields.hasErrors('mname')}" th:errors="*{mname}" class="fieldError5">Incorrect data</p>
                 <div class="text-wrapper-17">생년월일</div>
                 <div class="text-wrapper-18">*</div>
-                <input type="text" th:field="*{mbirthday}" class="input-7" placeholder="생일을 입력해주세요">
-                <p th:if="${#fields.hasErrors('mbirthday')}" th:errors="*{mbirthday}" class="fieldError6">Incorrect data</p>
-                <div class="frame">
-                    <button class="text-wrapper-19" type="reset">다시 입력</button>
-                </div>
+                <input type="text" th:field="*{mbirth}" class="input-7" placeholder="생일을 입력해주세요">
+                <p th:if="${#fields.hasErrors('mbirth')}" th:errors="*{mbirth}" class="fieldError6">Incorrect data</p>
                 <div class="frame-2">
                     <a th:href="@{/index}" class="text-wrapper-20">취소하기</a>
+                </div>
+                <div class="frame">
+                    <button class="text-wrapper-19" type="reset">다시 입력</button>
                 </div>
                 <div class="frame-3">
                     <button type="submit" class="text-wrapper-19">가입하기</button>

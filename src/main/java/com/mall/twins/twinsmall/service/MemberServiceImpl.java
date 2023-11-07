@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
         }
 
         Member member = modelMapper.map(memberJoinDTO, Member.class);
-        member.changePassword(passwordEncoder.encode(memberJoinDTO.getMpassword()));
+        member.changePassword(passwordEncoder.encode(memberJoinDTO.getMpw()));
         member.addRole(MemberRole.USER);
 
         log.info("====== MemberServiceImpl 클래스 member 로그 출력 ======");
