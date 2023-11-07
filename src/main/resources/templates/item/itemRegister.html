@@ -103,7 +103,7 @@
                     </div>
                 </div>
 
-                <div class="frame-3">
+                <!--<div class="frame-3">
                     <a th:href="@{/index}" class="text-wrapper-15">취소하기</a>
                 </div>
                 <div class="frame-4">
@@ -118,8 +118,22 @@
                                 class="text-wrapper-16">수정
                         </button>
                     </div>
+                    </div>-->
+               <div class="frame-3">취소하기
+                    <a th:href="@{/index}" class="text-wrapper-15"></a>
                 </div>
-                <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+                <div class="frame-4">다시하기
+                    <button class="text-wrapper-16" type="reset"></button>
+                </div>
+                <div class="frame-5">등록하기
+                        <button th:if="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{/itemRegister}" type="submit" class="text-wrapper-16"></button>
+                        <button th:unless="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit" class="text-wrapper-16"></button>
+                </div>
+
+
+
+
+
             </div>
         </form>
     </div>
