@@ -1,88 +1,88 @@
 package com.mall.twins.twinsmall.controller;
 
-import com.mall.twins.twinsmall.dto.ItemFormDto;
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
 import com.mall.twins.twinsmall.service.NoticeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
-import java.util.List;
+import java.util.Optional;
 
 @Controller
+@RequestMapping("/notice")
 @RequiredArgsConstructor
 public class NoticeController {
 
     private final NoticeService noticeService;
 
-    @GetMapping(value = "/admin/notice/register")
+
+    @GetMapping(value = "/list")
+    public String notice(Optional<Integer> page, Model model){
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
+        Page<NoticeFormDto> notices = noticeService.getNoticeList(pageable);
+
+        model.addAttribute("notice", notices);
+        model.addAttribute("maxPage", 5);
+
+        return "Notice/notice";
+    }
+    @GetMapping(value = "/register")
     public String NoticeForm(Model model){
-        model.addAttribute("noticeFromDto", new NoticeFormDto());
-        return "notice/noticeForm";
+        model.addAttribute("noticeFormDto", new NoticeFormDto());
+
+        return "notice/noticeRegister";
     }
 
-    @PostMapping(value = "/admin/notice/register")
+    @PostMapping(value = "/register")
     public String NoticeNew(@Valid NoticeFormDto noticeFormDto, BindingResult bindingResult,
-                            Model model, @RequestParam("noticeImgFile") List<MultipartFile> noticeImgFileList){
+                            Model model){
 
         if(bindingResult.hasErrors()){
-            return "notice/noticeForm";
-        }
-
-        if(noticeImgFileList.get(0).isEmpty() && noticeFormDto.getNno() == null){
-            model.addAttribute("errorMessage", "첫번째 이미지는 필수 입니다");
-            return "notice/noticeForm";
+            return "notice/list";
         }
 
         try {
-            noticeService.saveNotice(noticeFormDto, noticeImgFileList);
+            noticeService.saveNotice(noticeFormDto);
         }catch (Exception e){
             model.addAttribute("errorMessage", "등록중 오류가 발생하였습니다.");
-            return "notice/noticeFrom";
+            return "notice/noticeRegister";
         }
 
         return "redirect:/";
     }
 
-    @GetMapping(value = "/admin/notice/{NoticeNid}")
+    @GetMapping(value = "/{NoticeNid}")
     public String noticeDtl(@PathVariable("NoticeNid") Long NoticeNid, Model model){
         try{
             NoticeFormDto noticeFormDto = noticeService.getNoticeDtl(NoticeNid); // 조회한 상품 데이터를 모델에 담아서 뷰로 전달
             model.addAttribute("noticeFormDto", noticeFormDto);
         } catch (EntityNotFoundException e) {
             model.addAttribute("errormessage", "존재하지 않는 상품입니다.");
-            model.addAttribute("noticeFormDto", new NoticeFormDto());
+            /*model.addAttribute("noticeFormDto", new NoticeFormDto());*/
 
-            return "notice/noticeForm";
+            return "notice/noticeRegister";
         }
-        return "notice/noticeForm";
+        return "notice/noticeRegister";
     }
 
-    @PostMapping(value = "/admin/notice/{NoticeNid}")
-    public String noticeUpdate(@Valid NoticeFormDto noticeFormDto, BindingResult bindingResult,
-                             @RequestParam("noticeImgFile") List<MultipartFile> noticeImgFileList, Model model){
+    @PostMapping(value = "/{NoticeNid}")
+    public String noticeUpdate(@Valid NoticeFormDto noticeFormDto, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
-            return "notice/noticeForm";
-        }
-
-        if(noticeImgFileList.get(0).isEmpty() && noticeFormDto.getNno() == null){
-            model.addAttribute("errorMessage", "첫번째 이미지는 필수 입력 값 입니다.");
-            return "notice/noticeForm";
+            return "notice/noticeRegister";
         }
 
         try {
-            noticeService.updateNotice(noticeFormDto, noticeImgFileList);
+            noticeService.updateNotice(noticeFormDto);
         } catch (Exception e){
             model.addAttribute("errorMessage", "수정 중 에러가 발생하였습니다.");
-            return "notice/noticeForm";
+            return "notice/noticeRegister";
         }
 
         return "redirect:/";

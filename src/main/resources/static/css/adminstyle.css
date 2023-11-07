@@ -612,10 +612,10 @@
 }
 
 .admin-product .text-wrapper-16 {
- /* width: 63px;
-  height: 18px;
-  top: 7px;
-  left: 18px;*/
+  /* width: 63px;
+   height: 18px;
+   top: 7px;
+   left: 18px;*/
   font-family: "Nunito Sans-Bold", Helvetica;
   font-weight: 700;
   color: #000000;
@@ -1055,4 +1055,79 @@
   height: 44px;
   top: 3px;
   left: 0;
+}
+
+.admin-product .fieldError {
+  width: 46px;
+  height: 25px;
+  top: 72px;
+  left: 15px;
+  font-family: "Nunito Sans", Helvetica;
+  font-weight: 400;
+  color: #e80000;
+  font-size: 12px;
+  line-height: 25px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+}
+
+.admin-product .fieldError2 {
+  width: 46px;
+  height: 25px;
+  top: 284px;
+  left: 15px;
+  font-family: "Nunito Sans", Helvetica;
+  font-weight: 400;
+  color: #e80000;
+  font-size: 12px;
+  line-height: 25px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+}
+
+.admin-product .fieldError3 {
+  width: 46px;
+  height: 25px;
+  top: 398px;
+  left: 15px;
+  font-family: "Nunito Sans", Helvetica;
+  font-weight: 400;
+  color: #e80000;
+  font-size: 12px;
+  line-height: 25px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+}
+
+.admin-product .fieldError4 {
+  width: 46px;
+  height: 25px;
+  top: 511px;
+  left: 15px;
+  font-family: "Nunito Sans", Helvetica;
+  font-weight: 400;
+  color: #e80000;
+  font-size: 12px;
+  line-height: 25px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+}
+
+.admin-product .fieldError5 {
+  width: 46px;
+  height: 25px;
+  top: 620px;
+  left: 15px;
+  font-family: "Nunito Sans", Helvetica;
+  font-weight: 400;
+  color: #e80000;
+  font-size: 12px;
+  line-height: 25px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
 }

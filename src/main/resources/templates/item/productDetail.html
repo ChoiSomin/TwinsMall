@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <link rel="stylesheet" href="/css/globals.css" />
   <link rel="stylesheet" href="/css/style.css" />
@@ -8,201 +8,56 @@
 <div class="product-detail">
   <div class="div">
     <header class="header">
-      <img class="link-logo-png" src="img/link-logo-png.png" />
+      <img class="link-logo-png" src="/img/link-logo-png.png" />
       <div class="nav-list-item-link">Home</div>
       <div class="text-wrapper">Shop</div>
       <div class="nav-list-item-link-2">Notice</div>
       <div class="nav-list-item-link-3">About us</div>
-      <img class="icon-search" src="img/icon-search.png" />
-      <img class="icon-favorite-border" src="img/icon-favorite-border.png" />
-      <img class="icon-shopping-bag" src="img/icon-shopping-bag.png" />
-      <img class="icon-person" src="img/icon-person.png" />
+      <img class="icon-search" src="/img/icon-search.png" />
+      <img class="icon-favorite-border" src="/img/icon-favorite-border.png" />
+      <img class="icon-shopping-bag" src="/img/icon-shopping-bag.png" />
+      <img class="icon-person" src="/img/icon-person.png" />
       <div class="div-header-top"><div class="text-wrapper-2">Welcome to Twin’s Mall</div></div>
     </header>
+
     <div class="image">
+      <input type="hidden" id="itemId" th:value="${item.id}">
+
       <div class="div-container">
-        <div class="link-home">Home</div>
-        <div class="symbol"></div>
-        <div class="link-shop">Shop</div>
-        <div class="symbol-2"></div>
-        <div class="text-wrapper-3">Product Details</div>
-        <img class="tablist-item-tab" src="img/tablist-item-tab-3.png" />
-        <img class="img" src="img/tablist-item-tab-2.png" />
-        <img class="tablist-item-tab-2" src="img/tablist-item-tab-1.png" />
-        <div class="i-fa-play-wrapper">
-          <div class="i-fa-play"><div class="symbol-3"></div></div>
-        </div>
-        <img class="tabpanel-product-big" src="img/tabpanel-product-big-2-png.png" />
+        <img class="tablist-item-tab" th:style="'background-image: url(' + ${item.itemImgDtoList[1].iimgurl} + ')'">
+        <img class="img" th:style="'background-image: url(' + ${item.itemImgDtoList[2].iimgurl} + ')'" >
+        <img class="tablist-item-tab-2" th:style="'background-image: url(' + ${item.itemImgDtoList[3].iimgurl} + ')'">
+        <img class="i-fa-play-wrapper" th:style="'background-image: url(' + ${item.itemImgDtoList[4].iimgurl} + ')'">
+
+        <img class="tabpanel-product-big" th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'" >
       </div>
     </div>
-    <div class="view">
-      <div class="heading-hooded">Hooded thermal anorak</div>
-      <div class="overlap">
-        <div class="symbol-4"></div>
-        <div class="symbol-5"></div>
-        <div class="symbol-6"></div>
-        <div class="symbol-7"></div>
-        <div class="symbol-8"></div>
-      </div>
-      <div class="text-wrapper-4">- 5 Reviews</div>
-      <div class="heading">$270.00</div>
-      <div class="heading-2">70.00</div>
-      <p class="p">
-        Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable cuff tabs,
-        adjustable
-      </p>
-      <p class="text-wrapper-5">asymmetric hem with elastic side tabs and a front zip fastening with placket.</p>
-      <div class="text-wrapper-6">Size:</div>
-      <div class="label"><div class="xxl">XXL</div></div>
-      <div class="xl-wrapper"><div class="xl">XL</div></div>
-      <div class="l-wrapper"><div class="l">L</div></div>
-      <div class="s-wrapper"><div class="s">S</div></div>
-      <div class="text-wrapper-7">Color:</div>
-      <div class="pseudo-wrapper"><div class="pseudo"></div></div>
-      <div class="div-wrapper"><div class="pseudo"></div></div>
-      <div class="label-2"><div class="pseudo"></div></div>
-      <div class="label-3"><div class="pseudo"></div></div>
-      <div class="label-4"><div class="pseudo"></div></div>
-      <div class="div-pro-qty">
-        <div class="overlap-group">
-          <div class="input">
-            <div class="div-2"><div class="text-wrapper-8">1</div></div>
-          </div>
-          <div class="symbol-9"></div>
-          <div class="symbol-10"></div>
+    <div class="heading" data-th-text="|￦ ${#numbers.formatInteger(item.pprice, 3, 'COMMA')}  |"></div>
+
+        <div class="input">
+          <input type="number" name="count" id="count" class="div-pro-qty" value="1" min="1" style="text-align : center">
         </div>
-      </div>
-      <div class="link"><div class="add-to-cart">ADD TO CART</div></div>
-      <div class="overlap-2">
-        <div class="symbol-11"></div>
-        <div class="link-add-to-wishlist">ADD TO WISHLIST</div>
-      </div>
-      <div class="overlap-3">
-        <div class="symbol-11"></div>
-        <div class="link-add-to-compare">ADD TO COMPARE</div>
-      </div>
-      <div class="overlap-4">
-        <div class="list-item-SKU">SKU:</div>
-        <div class="list-item">3812912</div>
-      </div>
-      <div class="overlap-5">
-        <div class="list-item-categories">Categories:</div>
-        <div class="list-item-clothes">Clothes</div>
-      </div>
-      <div class="overlap-6">
-        <div class="list-item-tag">Tag:</div>
-        <div class="list-item-clothes-2">Clothes, Skin, Body</div>
-      </div>
-      <div class="heading-3"></div>
-      <div class="tablist">
-        <div class="item-tab"><div class="text-wrapper-9">Description</div></div>
-        <div class="item-tab-2"><div class="text-wrapper-10">Customer Previews(5)</div></div>
-        <div class="item-tab-3"><div class="text-wrapper-11">Additional information</div></div>
-      </div>
-      <p class="tabpanel-nam-tempus">
-        Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor,
-        elementum etos lobortis des
-      </p>
-      <p class="tabpanel-mollis-ut">
-        mollis ut risus. Sedcus faucibus an sullamcorper mattis drostique des commodo pharetras loremos.
-      </p>
-      <div class="tabpanel-heading">Products Infomation</div>
+
+    <div class="link">
+      <div class="text-wrapper-4">ADD TO CART</div>
+    </div>
+    <div class="heading-hooded">[[${item.pname}]]</div>
+    <div class="link-2"><div class="text-wrapper-4">BUY</div></div>
+    <div class="frame">
+      <div class="tabpanel-heading">상품 정보</div>
       <p class="tabpanel-a-pocket-PC">
-        A Pocket PC is a handheld computer, which features many of the same capabilities as a modern PC. These handy
-        little devices allow individuals to retrieve and store e-
+        [[${item.pdesc}]]
       </p>
-      <p class="tabpanel-mail">
-        mail messages, create a contact file, coordinate appointments, surf the internet, exchange text messages and
-        more. Every product that is labeled as a Pocket PC must be
-      </p>
-      <p class="tabpanel-accompanied">
-        accompanied with specific software to operate the unit and must feature a touchscreen and touchpad.
-      </p>
-      <p class="tabpanel-as-is-the">
-        As is the case with any new technology product, the cost of a Pocket PC was substantial during it’s early
-        release. For approximately $700.00, consumers could purchase
-      </p>
-      <p class="tabpanel-one-of-top">
-        one of top-of-the-line Pocket PCs in 2003. These days, customers are finding that prices have become much
-        more reasonable now that the newness is wearing off. For
-      </p>
-      <p class="tabpanel">approximately $350.00, a new Pocket PC can now be purchased.</p>
-      <div class="tabpanel-heading-2">Material used</div>
-      <p class="tabpanel-polyester">
-        Polyester is deemed lower quality due to its none natural quality’s. Made from synthetic materials, not
-        natural like wool. Polyester suits become creased easily and are
-      </p>
-      <p class="tabpanel-known-for">
-        known for not being breathable. Polyester suits tend to have a shine to them compared to wool and cotton
-        suits, this can make the suit look cheap. The texture of velvet is
-      </p>
-      <p class="tabpanel-luxurious">
-        luxurious and breathable. Velvet is a great choice for dinner party jacket and can be worn all year round.
-      </p>
-    </div>
-    <div class="view-2">
-      <div class="heading-related">Related Product</div>
-      <div class="div-product-item">
-        <div class="div-product-item-pic">
-          <div class="span-label"><div class="new">NEW</div></div>
-        </div>
-        <div class="heading-piqu-biker">Piqué Biker Jacket</div>
-        <div class="overlap-group-2">
-          <div class="symbol-12"></div>
-          <div class="symbol-13"></div>
-          <div class="symbol-14"></div>
-          <div class="symbol-15"></div>
-          <div class="symbol-16"></div>
-        </div>
-        <div class="heading-4">$67.24</div>
-      </div>
-      <div class="div-product-item-2">
-        <div class="div-product-item-pic-2"></div>
-        <div class="heading-piqu-biker">Piqué Biker Jacket</div>
-        <div class="overlap-group-2">
-          <div class="symbol-12"></div>
-          <div class="symbol-13"></div>
-          <div class="symbol-14"></div>
-          <div class="symbol-15"></div>
-          <div class="symbol-16"></div>
-        </div>
-        <div class="heading-4">$67.24</div>
-      </div>
-      <div class="div-product-item-3">
-        <div class="span-label-wrapper">
-          <div class="sale-wrapper"><div class="sale">SALE</div></div>
-        </div>
-        <div class="heading-multi">Multi-pocket Chest Bag</div>
-        <div class="overlap-group-2">
-          <div class="symbol-17"></div>
-          <div class="symbol-18"></div>
-          <div class="symbol-19"></div>
-          <div class="symbol-20"></div>
-          <div class="symbol-16"></div>
-        </div>
-        <div class="heading-4">$43.48</div>
-      </div>
-      <div class="div-product-item-4">
-        <div class="div-product-item-pic-3"></div>
-        <div class="heading-diagonal">Diagonal Textured Cap</div>
-        <div class="overlap-group-2">
-          <div class="symbol-12"></div>
-          <div class="symbol-13"></div>
-          <div class="symbol-14"></div>
-          <div class="symbol-15"></div>
-          <div class="symbol-16"></div>
-        </div>
-        <div class="heading-5">$60.9</div>
-      </div>
+      <div class="item-tab"><div class="text-wrapper-5">상세 설명</div></div>
     </div>
     <footer class="footer">
-      <div class="overlap-7">
+      <div class="overlap">
         <div class="div-container-2">
           <p class="based-on-the-life-s">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</p>
-          <p class="text-wrapper-12">we always strives to provide First, Unique,</p>
-          <div class="overlap-8">
-            <p class="text-wrapper-13">and New F·U·N experiences to provide</p>
-            <p class="text-wrapper-14">customers with a better life.</p>
+          <p class="p">we always strives to provide First, Unique,</p>
+          <div class="overlap-2">
+            <p class="text-wrapper-6">and New F·U·N experiences to provide</p>
+            <p class="text-wrapper-7">customers with a better life.</p>
           </div>
           <div class="heading-shopping">SHOPPING</div>
           <div class="list-item-link">Refrigerator</div>
@@ -214,10 +69,10 @@
           <div class="list-item-link-6">Cleaner</div>
           <div class="heading-newletter">OTHERS</div>
           <div class="div-footer-copyright">
-            <div class="overlap-group-3">
-              <div class="text-wrapper-15">Copyright ©</div>
-              <p class="text-wrapper-16">20232020 All rights reserved | This template is made with</p>
-              <div class="symbol-21"></div>
+            <div class="overlap-group-2">
+              <div class="text-wrapper-8">Copyright ©</div>
+              <p class="text-wrapper-9">20232020 All rights reserved | This template is made with</p>
+              <div class="symbol-4"></div>
               <div class="by">by</div>
               <div class="link-colorlib">Colorlib</div>
             </div>
@@ -230,7 +85,7 @@
                 >개인정보처리방침<br />이벤트 개인정보처리방침<br />영상정보처리기기운영관리방침<br /><br />대표번호 :
                 </span>
             <a href="tel:02-3777-1114" target="_blank" rel="noopener noreferrer"
-            ><span class="text-wrapper-17">02-</span></a
+            ><span class="text-wrapper-10">02-</span></a
             >
             <span class="span"
             >1234-1234<br />전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 :
@@ -240,10 +95,21 @@
             >
           </p>
         </div>
-        <img class="link-logo-png-2" src="img/link-logo-png-1.png" />
+        <img class="link-logo-png-2" src="/img/link-logo-png-1.png" />
       </div>
     </footer>
   </div>
 </div>
 </body>
+<script th:inline="javascript">
+  var bigPic = document.querySelector("#mainImage");
+  var smallPic = document.querySelector(".tablist-item-tab");
+
+  smallPic.addEventListener('click', changepic);
+
+  function changepic() {
+    var smallPicAttribute = this.getAttribute("th:style");
+    bigPic.setAttribute("th:style", smallPicAttribute);
+  }
+</script>
 </html>
