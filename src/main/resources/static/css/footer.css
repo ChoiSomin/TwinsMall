@@ -1,0 +1,408 @@
+/* FOOTER */
+
+.footer .footer {
+    position: absolute;
+    width: 1920px;
+    height: 400px;
+    top: 5500px;
+    left: 0;
+    background-color: #111111;
+}
+
+.footer .overlap-5 {
+    position: relative;
+    width: 1391px;
+    height: 320px;
+    top: 70px;
+    left: 154px;
+}
+
+.footer .div-container {
+    position: absolute;
+    width: 1170px;
+    height: 320px;
+    top: 0;
+    left: 221px;
+}
+
+.footer .based-on-the-life-s {
+    position: absolute;
+    width: 325px;
+    height: 22px;
+    top: 67px;
+    left: -192px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.footer .text-wrapper-11 {
+    position: absolute;
+    width: 366px;
+    height: 27px;
+    top: 91px;
+    left: -192px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.footer .overlap-6 {
+    position: absolute;
+    width: 325px;
+    height: 41px;
+    top: 120px;
+    left: -192px;
+}
+
+.footer .text-wrapper-12 {
+    position: absolute;
+    width: 325px;
+    height: 22px;
+    top: 0;
+    left: 0;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.footer .text-wrapper-13 {
+    position: absolute;
+    width: 299px;
+    height: 23px;
+    top: 18px;
+    left: 15px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.footer .heading-shopping {
+    position: absolute;
+    width: 95px;
+    height: 18px;
+    top: -1px;
+    left: 266px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link {
+    position: absolute;
+    width: 97px;
+    height: 20px;
+    top: 33px;
+    left: 266px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-2 {
+    position: absolute;
+    width: 105px;
+    height: 20px;
+    top: 69px;
+    left: 266px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-3 {
+    width: 80px;
+    top: 105px;
+    left: 266px;
+    position: absolute;
+    height: 20px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-sale {
+    width: 122px;
+    top: 141px;
+    left: 266px;
+    position: absolute;
+    height: 20px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-4 {
+    position: absolute;
+    width: 74px;
+    height: 20px;
+    top: 33px;
+    left: 439px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-5 {
+    position: absolute;
+    width: 122px;
+    height: 20px;
+    top: 81px;
+    left: 440px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-6 {
+    width: 56px;
+    top: 117px;
+    left: 440px;
+    position: absolute;
+    height: 20px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .heading-newletter {
+    position: absolute;
+    width: 121px;
+    height: 18px;
+    top: -1px;
+    left: 657px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.footer .div-footer-copyright {
+    position: absolute;
+    width: 1140px;
+    height: 66px;
+    top: 254px;
+    left: 15px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #ffffff1a;
+}
+
+.footer .overlap-group-2 {
+    position: relative;
+    width: 576px;
+    height: 25px;
+    top: 20px;
+    left: 282px;
+}
+
+.footer .text-wrapper-14 {
+    position: absolute;
+    width: 86px;
+    height: 25px;
+    top: 0;
+    left: 0;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.footer .text-wrapper-15 {
+    position: absolute;
+    width: 399px;
+    height: 25px;
+    top: 0;
+    left: 86px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.footer .symbol-3 {
+    width: 15px;
+    height: 15px;
+    top: 4px;
+    left: 484px;
+    color: #e53637;
+    text-align: center;
+    line-height: 15px;
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.footer .by {
+    position: absolute;
+    width: 24px;
+    height: 25px;
+    top: 0;
+    left: 499px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.footer .link-colorlib {
+    position: absolute;
+    width: 53px;
+    height: 20px;
+    top: 2px;
+    left: 523px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #e53637;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-7 {
+    position: absolute;
+    width: 97px;
+    height: 20px;
+    top: 45px;
+    left: 657px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-8 {
+    position: absolute;
+    width: 105px;
+    height: 20px;
+    top: 81px;
+    left: 657px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .list-item-link-9 {
+    position: absolute;
+    width: 80px;
+    height: 20px;
+    top: 117px;
+    left: 657px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.footer .element {
+    width: 456px;
+    height: 250px;
+    top: 3px;
+    left: 942px;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 25px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    letter-spacing: 0;
+}
+
+.footer .span {
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.footer .text-wrapper-16 {
+    text-decoration: underline;
+}
+
+.footer .img {
+    position: absolute;
+    width: 233px;
+    height: 44px;
+    top: 3px;
+    left: 0;
+}

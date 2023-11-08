@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
+
+<div th:fragment="header">
+    <div class="header">
+        <div class="div">
+            <header class="header">
+                <div class="frame">
+                    <a th:href="@{/index}">
+                        <img class="link-logo-png" th:src="@{/img/link-logo-png.png}"/></a>
+                </div>
+                <div class="navbar">
+                    <a th:href="@{/index}">
+                        <div class="nav-list-item-link">Home</div>
+                    </a>
+                    <a th:href="@{/aboutus}">
+                        <div class="text-wrapper">About us</div>
+                    </a>
+                    <a th:href="@{/product}">
+                        <div class="nav-list-item-link-2">Shop</div>
+                    </a>
+                    <a th:href="@{/notice/list}">
+                        <div class="nav-list-item-link-3">Notice</div>
+                    </a>
+                    <li sec:authorize="isAuthenticated() and !hasAuthority('ROLE_ADMIN')">
+                        <a href="#">
+                            <div class="nav-list-item-link-4">Mypage</div>
+                        </a>
+                    </li>
+                </div>
+                <a href="#">
+                    <img class="icon-search" th:src="@{/img/icon-search.png}"/></a>
+                <a href="#">
+                    <img class="icon-favorite-border" th:src="@{/img/icon-favorite-border.png}"/></a>
+                <a href="#">
+                    <img class="icon-shopping-bag" th:src="@{/img/icon-shopping-bag.png}"/></a>
+                <a th:href="@{/member/login}">
+                    <img class="icon-person" th:src="@{/img/icon-person.png}"/></a>
+                <div class="div-header-top">
+                    <div class="text-wrapper-2">Welcome to Twin’s Mall</div>
+                </div>
+            </header>
+        </div>
+    </div>
+</div>
+</html>
