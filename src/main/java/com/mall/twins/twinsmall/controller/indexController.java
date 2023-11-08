@@ -40,6 +40,12 @@ public class indexController {
 
     }
 
+    @GetMapping("/cart")
+    public String cart(){
+        return "cart";
+
+    }
+
 
     @GetMapping(value = "/")
     public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){

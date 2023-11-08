@@ -51,8 +51,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     private void validateDuplicateMember(Member member){
-        Optional<Member> findMember = memberRepository.findByMid(member.getMid());
-        if(findMember.isPresent()){
+        Member findMember = memberRepository.findByMid(member.getMid());
+        if(findMember != null){
             throw new IllegalStateException("이미 가입된 회원입니다.");
         } // 이미 가입된 회원의 경우 IllegalStateException 예외를 발생
     }
