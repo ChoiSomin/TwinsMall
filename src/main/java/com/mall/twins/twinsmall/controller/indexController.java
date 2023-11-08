@@ -32,7 +32,7 @@ public class indexController {
     public String aboutus(){
         return "aboutus";
 
-    }
+    }//
 
     @GetMapping("/checkout")
     public String checkout(){
