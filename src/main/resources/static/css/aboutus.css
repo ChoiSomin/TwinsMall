@@ -1,0 +1,1126 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 192rem;
+}.aboutus-GvM {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+.aboutus-GvM .header-bSq {
+  box-sizing: border-box;
+  padding-bottom: 2.261rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .divheadertop-Js3 {
+  margin-bottom: 2.6rem;
+  box-sizing: border-box;
+  padding: 1rem 39.1rem 1.1rem 39.1rem;
+  width: 100%;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  background-color: #111111;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 {
+  margin: 0rem 34.41rem 0rem 33.5rem;
+  width: calc(100% - 67.9098rem);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .link-logopng-rXB {
+  margin-right: 22.679rem;
+  width: 22.5rem;
+  height: 3.6rem;
+  position: relative;
+  background-size: 100% 890.909%;
+  background-position: 0.1246rem -12.638rem;
+  background-image: url('../assets/link-logopng-Uc9.png');
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .nav-list-item-link-home-5uj {
+  margin-right: 3.401rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .nav-list-item-link-contacts-bNH {
+  margin-right: 3.4355rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .nav-list-item-link-shop-6pq {
+  margin-right: 3.5845rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .nav-list-item-link-pages-nSm {
+  margin-right: 31.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .icon-person-tVo {
+  margin: 0rem 2.7rem 0.1rem 0rem;
+  width: 1.6rem;
+  height: 1.7rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .icon-search-p8Z {
+  margin: 0rem 2.595rem 0.1rem 0rem;
+  width: 1.6rem;
+  height: 1.7rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .icon-favorite-border-Kb7 {
+  margin: 0rem 2.796rem 0.115rem 0rem;
+  width: 1.6rem;
+  height: 1.7rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .header-bSq .auto-group-wd5t-ZY5 .icon-shopping-bag-2VX {
+  margin-bottom: 0.3098rem;
+  width: 1.6rem;
+  height: 1.7rem;
+  cursor: pointer;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .section-M21 {
+  box-sizing: border-box;
+  padding: 3.99rem 39rem 4.025rem 39rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f2ee;
+  flex-shrink: 0;
+}
+.aboutus-GvM .section-M21 .heading-4-about-us-V8D {
+  margin-bottom: 0.865rem;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .section-M21 .auto-group-ygxq-mrR {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .section-M21 .auto-group-ygxq-mrR .link-home-WJD {
+  margin-right: 0.822rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .section-M21 .auto-group-ygxq-mrR .symbol-qrH {
+  margin-right: 0.348rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #111111;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .section-M21 .auto-group-ygxq-mrR .about-us-aos {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #b7b7b7;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK {
+  box-sizing: border-box;
+  padding: 10rem 24.35rem 10.764rem 27.4rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw {
+  margin: 0rem 14.65rem 3.044rem 11.6rem;
+  width: calc(100% - 26.25rem);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .about-usjpg-kbs {
+  width: 114rem;
+  height: 57.486rem;
+  position: relative;
+  background-size: 100% 100%;
+  background-position: -0rem -0rem;
+  background-image: url('../assets/about-usjpg.png');
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD {
+  box-sizing: border-box;
+  padding-top: 3.49rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-bhcm-Peq {
+  margin-bottom: 0.939rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-bhcm-Peq .heading-4-who-we-are--jyb {
+  margin-right: 22.6rem;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-bhcm-Peq .heading-4-who-we-do--nws {
+  margin-right: 23.4rem;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-bhcm-Peq .heading-4-why-choose-us-fkm {
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-vcp1-zo3 {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-vcp1-zo3 .contextual-advertising-programs-sometimes-have-Xny {
+  margin-right: 5.6rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-vcp1-zo3 .in-this-digital-generation-where-information-can-be-cpR {
+  margin-right: 5.2rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-vcp1-zo3 .a-two-or-three-storey-house-is-the-ideal-way-to-Wuo {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-97rb-SYZ {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-97rb-SYZ .strict-policies-that-need-to-be-adhered-too-lets-take-Cnd {
+  margin-right: 4rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-97rb-SYZ .easily-obtained-within-seconds-business-cards-still-8AV {
+  margin-right: 4.9rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-97rb-SYZ .maximise-the-piece-of-earth-on-which-our-home-sits-TCm {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-9qv5-ZWh {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-9qv5-ZWh .google-as-an-example-JDP {
+  margin-right: 23.7rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-9qv5-ZWh .have-retained-their-importance-1tV {
+  margin-right: 18.1rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .section-Dbw .auto-group-bkgm-qtD .auto-group-9qv5-ZWh .but-for-older-or-infirm-people-xHw {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #3d3d3d;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P {
+  margin-bottom: 15.361rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-nkmf-BRb {
+  box-sizing: border-box;
+  padding: 0rem 57.236rem 4.2rem 57.214rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-nkmf-BRb .our-team-7q3 {
+  margin: 0rem 0rem 1.5rem 0.006rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #e53637;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-nkmf-BRb .heading-2-meet-our-team-pzM {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1.2777777778;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-zfpm-gFs {
+  width: 100%;
+  height: 35.6rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-zfpm-gFs .auto-group-mfih-Rz9 {
+  box-sizing: border-box;
+  padding-right: 3.05rem;
+  height: 100%;
+  display: flex;
+  column-gap: 3rem;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-zfpm-gFs .auto-group-mfih-Rz9 .stuck-at-home-celebrating-YJ5 {
+  width: 26.25rem;
+  height: 35rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-zfpm-gFs .auto-group-mfih-Rz9 .fresh-folk-walking-t73 {
+  width: 26.25rem;
+  height: 35rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-zfpm-gFs .auto-group-mfih-Rz9 .croods-standing-q2H {
+  width: 26.25rem;
+  height: 35rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-zfpm-gFs .auto-group-cz9t-nCR {
+  width: 52.45rem;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-zfpm-gFs .auto-group-cz9t-nCR .allura-standing-colors-7Vb {
+  width: 26.25rem;
+  height: 35rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: contain;
+  vertical-align: top;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-zfpm-gFs .auto-group-cz9t-nCR .people-of-brooklyn-standing-f1K {
+  width: 26.25rem;
+  height: 35rem;
+  position: absolute;
+  left: 26.2rem;
+  top: 0;
+  object-fit: contain;
+  vertical-align: top;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 {
+  box-sizing: border-box;
+  padding: 2.09rem 5.55rem 0rem 5.4rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 {
+  margin-bottom: 0.66rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-john-smith-Zku {
+  margin: 0.02rem 16.2rem 0rem 0rem;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-christine-wise-rzu {
+  margin: 0rem 16rem 0.2rem 0rem;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-sean-robbins-9DK {
+  margin-right: 18.2rem;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .auto-group-xpnh-Goj {
+  margin: 0.1rem 4.9rem 0rem 0rem;
+  width: 17.6rem;
+  height: 3rem;
+  position: relative;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .auto-group-xpnh-Goj .heading-4-sean-robbins-CxH {
+  width: 12.7rem;
+  height: 2.9rem;
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .auto-group-xpnh-Goj .heading-4-sean-robbins-vNV {
+  width: 13.5rem;
+  height: 2.9rem;
+  position: absolute;
+  left: 4.1rem;
+  top: 0;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-sean-robbins-3T7 {
+  margin-bottom: 0.18rem;
+  display: flex;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH {
+  margin: 0rem 4.6rem 0rem 2.5rem;
+  width: calc(100% - 7.1rem);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .full-stack-5ub {
+  margin: 0.025rem 21.9rem 0rem 0rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #b7b7b7;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .backend-L4q {
+  margin: 0rem 24.6rem 0.025rem 0rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #b7b7b7;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .manager-Evu {
+  margin: 0.025rem 26rem 0rem 0rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #b7b7b7;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .manager-Sn5 {
+  margin: 0.025rem 19.1rem 0rem 0rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #b7b7b7;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .manager-PBX {
+  margin-top: 0.025rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #b7b7b7;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 {
+  margin: 0rem 15.65rem 0rem 21.275rem;
+  width: calc(100% - 36.925rem);
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-azyh-QcR {
+  margin-right: 21.75rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-azyh-QcR .link-client-1png-N3T {
+  margin: 0rem 0.6rem 7.6rem 0rem;
+  width: 6.9rem;
+  height: 7.6rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-azyh-QcR .link-client-5png-DLu {
+  margin-left: 0.6rem;
+  width: 6.9rem;
+  height: 7.6rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-ybhb-9EZ {
+  margin-right: 3.7937rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-ybhb-9EZ .link-client-2png-UGq {
+  margin: 0rem 0rem 7.6rem 0.2rem;
+  width: 6.9rem;
+  height: 7.6rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-ybhb-9EZ .link-client-6png-Cid {
+  margin-right: 0.2rem;
+  width: 6.9rem;
+  height: 7.6rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .heading-2-happy-clients-9Ny {
+  margin: 0rem 3.956rem 27.3rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1.2777777778;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-lich-nRw {
+  margin-right: 19.875rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-lich-nRw .link-client-3png-jry {
+  margin: 0rem 0.25rem 7.6rem 0rem;
+  width: 6.9rem;
+  height: 7.6rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-lich-nRw .link-client-7png-siH {
+  margin-left: 0.25rem;
+  width: 6.9rem;
+  height: 7.6rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-hqxd-RE1 {
+  margin-bottom: 0.036rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-hqxd-RE1 .link-client-4png-aMo {
+  margin: 0rem 0rem 7.564rem 1.975rem;
+  width: 6.9rem;
+  height: 7.6rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--KL5 .auto-group-hqxd-RE1 .link-client-8png-sbo {
+  width: 17.8rem;
+  height: 7.6rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms {
+  width: 100%;
+  height: 39.022rem;
+  position: relative;
+  background-color: #111111;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf {
+  width: 144.6rem;
+  height: 32.022rem;
+  position: absolute;
+  left: 18.3rem;
+  top: 7rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D {
+  margin-bottom: 0rem;
+  width: 100%;
+  height: 25.422rem;
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-mzvt-auX {
+  margin: 6.672rem 16rem 9.1rem 0rem;
+  height: calc(100% - 15.772rem);
+  row-gap: 0.15rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-mzvt-auX .based-on-the-lifes-good-brand-philosophy-JqX {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-mzvt-auX .we-always-strives-to-provide-first-unique-DBo {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-mzvt-auX .auto-group-f4bk-vM7 {
+  width: 25.7rem;
+  height: 4.35rem;
+  position: relative;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-mzvt-auX .auto-group-f4bk-vM7 .and-new-fun-experiences-to-provide-4y7 {
+  width: 25.7rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-mzvt-auX .auto-group-f4bk-vM7 .customers-with-a-better-life-Nyo {
+  width: 18.7rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 1.5rem;
+  top: 1.85rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-aaem-G3b {
+  margin-right: 5.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-aaem-G3b .heading-6-shopping-1G5 {
+  margin-bottom: 0.822rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-aaem-G3b .list-item-link-clothing-store-JW5 {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-aaem-G3b .list-item-link-trending-shoes-bk5 {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-aaem-G3b .list-item-link-accessories-shb {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-aaem-G3b .list-item-link-sale-bNh {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-6qbp-XGM {
+  margin: 2.622rem 11.5rem 0rem 0rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-6qbp-XGM .list-item-link-contact-us-EgZ {
+  margin-bottom: 1.2rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-6qbp-XGM .list-item-link-payment-methods-jtD {
+  margin-left: 0.1rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-6qbp-XGM .list-item-link-delivary-fWy {
+  margin-left: 0.1rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-1w8d-Aid {
+  margin: 0.022rem 21.1rem 0rem 0rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-1w8d-Aid .heading-6-newletter-Jpq {
+  margin-bottom: 2rem;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-1w8d-Aid .list-item-link-clothing-store-ReZ {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-1w8d-Aid .list-item-link-trending-shoes-xuP {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .auto-group-1w8d-Aid .list-item-link-accessories-hc5 {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.4;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj {
+  margin-top: 0.422rem;
+  max-width: 31.2rem;
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2.0833333333;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj-sub-0 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2.0833333333;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj-sub-1 {
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj-sub-2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2.0833333333;
+  text-decoration-line: underline;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .auto-group-eadx-T4D .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj .item-02-1234-1234-09-00-18-00-24-899-1-304--Coj-sub-3 {
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .divfootercopyrighttext-AUy {
+  margin: 0rem 9.9rem 0rem 20.7rem;
+  box-sizing: border-box;
+  padding: 2.05rem 28.188rem 2rem 28.22rem;
+  width: calc(100% - 30.6rem);
+  height: 6.6rem;
+  display: flex;
+  align-items: center;
+  border: solid 0.1rem rgba(255, 255, 255, 0.1000000015);
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .divfootercopyrighttext-AUy .auto-group-dj9x-e9F {
+  margin: 0.05rem 0.203rem 0rem 0rem;
+  width: 48.4411rem;
+  height: calc(100% - 0.05rem);
+  position: relative;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .divfootercopyrighttext-AUy .auto-group-dj9x-e9F .copyright--mDs {
+  width: 8.6rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .divfootercopyrighttext-AUy .auto-group-dj9x-e9F .all-rights-reserved-this-template-is-made-with-cVP {
+  width: 39.9rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 8.5411rem;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .divfootercopyrighttext-AUy .symbol-46V {
+  margin: 0rem 0.411rem 0.15rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #e53637;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .divfootercopyrighttext-AUy .by-igq {
+  margin: 0.05rem 0.137rem 0rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #ffffff;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .divcontainer-Wuf .divfootercopyrighttext-AUy .link-colorlib-r2M {
+  margin-bottom: 0.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6666666667;
+  color: #e53637;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aboutus-GvM .footer-Mms .link-logopng-91T {
+  width: 22.5rem;
+  height: 3.6rem;
+  position: relative;
+  left: 15.8rem;
+  top: 7.3rem;
+  background-size: 100% 890.909%;
+  background-position: 0.1246rem -12.638rem;
+  background-image: url('../assets/link-logopng-GCR.png');
+}

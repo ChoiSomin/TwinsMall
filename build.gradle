@@ -1,0 +1,107 @@
+buildscript {
+    ext {
+        queryDslVersion = "5.0.0"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.springframework.boot' version '2.7.6'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10' //쿼리dsl 관련 설정 추가
+}
+
+group = 'com.mall.twins'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    annotationProcessor 'org.projectlombok:lombok'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
+
+    //일단 제외 : 28행에 있는 것 사용 ->compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+    implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time', version: '3.0.4.RELEASE'
+
+    // 쿼리 DSL
+    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
+
+    // 파일 이미지 썸네일 생성
+    implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.20'
+
+    // 유효성 검사
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // ModelMapper : DTO와 엔티티 간의 변환 처리 https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+    implementation 'org.modelmapper:modelmapper:3.1.1'
+
+    // Spring Boot Starter Validation : 컨트롤러에서 객체의 제약 조건 검증 https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.1.4'
+
+    // 스프링 시큐리티 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Thymeleaf Extras Springsecurity5 : Thymeleaf에서 로그인 인증 정보 처리 https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.1.2.RELEASE'
+
+    // Lombok을 테스트 환경에서도 사용
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // 카카오 소셜 로그인
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    /* 스프링 시큐리티 테스트 코드 */
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'junit:junit:4.12'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+/* 쿼리dsl 관련 설정 추가 */
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDir querydslDir
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    querydsl.extendsFrom compileClasspath
+}
