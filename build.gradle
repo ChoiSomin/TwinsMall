@@ -65,7 +65,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // Thymeleaf Extras Springsecurity5 : Thymeleaf에서 로그인 인증 정보 처리 https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.1.2.RELEASE'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
     // Lombok을 테스트 환경에서도 사용
     testCompileOnly 'org.projectlombok:lombok'
@@ -77,6 +77,10 @@ dependencies {
     /* 스프링 시큐리티 테스트 코드 */
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'junit:junit:4.12'
+
+    /* Thymeleaf의 레이아웃 기능 */
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+
 }
 
 tasks.named('test') {
