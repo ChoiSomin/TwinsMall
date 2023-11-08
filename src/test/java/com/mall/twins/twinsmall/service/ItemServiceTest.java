@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
@@ -47,7 +46,6 @@ public class ItemServiceTest {
     }
 
     @Test
-    @WithMockUser(username = "admin", roles = "ADMIN")
     void saveItem() throws Exception {
         ItemFormDto itemFormDto = new ItemFormDto();
         itemFormDto.setPname("테스트상품");

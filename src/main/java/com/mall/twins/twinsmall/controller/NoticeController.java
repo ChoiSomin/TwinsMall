@@ -31,7 +31,7 @@ public class NoticeController {
         model.addAttribute("notice", notices);
         model.addAttribute("maxPage", 5);
 
-        return "Notice/notice";
+        return "notice/notice";
     }
     @GetMapping(value = "/register")
     public String NoticeForm(Model model){
