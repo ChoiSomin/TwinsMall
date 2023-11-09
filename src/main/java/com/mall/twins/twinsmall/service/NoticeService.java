@@ -63,4 +63,9 @@ public class NoticeService {
 
         return noticeRepositoryCustom.getNoticeList(noticeSearchDto, pageable);
     }
+
+    @Transactional
+    public int updateView(Long nid) {
+        return noticeRepository.updateView(nid);
+    }
 }

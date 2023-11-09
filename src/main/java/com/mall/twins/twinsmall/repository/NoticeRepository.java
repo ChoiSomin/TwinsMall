@@ -8,6 +8,7 @@ import com.mall.twins.twinsmall.entity.Notice;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
@@ -28,6 +29,12 @@ public interface NoticeRepository extends JpaRepository<Notice, Long>, QuerydslP
 
     @Query(value = "select * from notice n where n.ncontent like %:ncontent%", nativeQuery = true)
     List<Notice> findByNcontentByNative(@Param("ncontent") String ncontent);
+
+    @Modifying
+    @Query(value = "update Notice n set n.view = n.view + 1 where n.nid = :nid")
+    int updateView(@Param("nid") Long id);
+
+
 
 
 }

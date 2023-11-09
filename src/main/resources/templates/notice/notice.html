@@ -9,7 +9,7 @@
       <div class="text-wrapper-3">공지사항</div>
       <div class="view">
         <div class="group">
-          <button type="button" class="div-wrapper"><a th:href="@{/notice/register}" type="button" class="text-wrapper-19">작성</a></button>
+          <button type="button" class="register-Btn"><a th:href="@{/notice/register}" type="button" class="text-wrapper-19">작성</a></button>
         </div>
       </div>
       <div class="div-2">
@@ -41,7 +41,7 @@
                   <div class="content-2"><div class="text-2" th:text="${#temporals.format(notice.regTime, 'yyyy-MM-dd HH:mm:ss')}"></div></div>
                 </div>
                 <div class="cell-2">
-                  <div class="div-wrapper"><div class="text-3">1234</div></div>
+                  <div class="div-wrapper"><div class="text-3">[[${notice.view}]]</div></div>
                 </div>
               </div>
             </th:block>

@@ -389,6 +389,7 @@
     position: relative;
     width: fit-content;
     margin-top: -1px;
+    left: 46px;
     font-family: "Inter-Regular", Helvetica;
     font-weight: 400;
     color: #000000;
@@ -954,6 +955,34 @@
     height: 44px;
     top: 3px;
     left: 0;
+}
+
+.notice .text-wrapper-19 {
+    width: 44px;
+    height: 22px;
+    top: 5px;
+    font-weight: 700;
+    color: #4a4a4a;
+    font-size: 17px;
+    line-height: 25px;
+    white-space: nowrap;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.notice .register-Btn {
+    position: absolute;
+    width: 75px;
+    height: 33px;
+    right: 7px;
+    background-color: #d3d3d3;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px #00000040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .notice-register {

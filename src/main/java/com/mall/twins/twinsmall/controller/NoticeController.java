@@ -62,21 +62,22 @@ public class NoticeController {
         return "redirect:/notice/list";
     }
 
-    @GetMapping(value = "/{NoticeNid}")
-    public String noticeDtl(@PathVariable("NoticeNid") Long NoticeNid, Model model){
+    @GetMapping(value = "/{nid}")
+    public String noticeDtl(@PathVariable("nid") Long nid, Model model){
         try{
-            NoticeFormDto noticeFormDto = noticeService.getNoticeDtl(NoticeNid); // 조회한 상품 데이터를 모델에 담아서 뷰로 전달
+            NoticeFormDto noticeFormDto = noticeService.getNoticeDtl(nid); // 조회한 공지사항 데이터를 모델에 담아서 뷰로 전달
+            noticeService.updateView(nid);
             model.addAttribute("noticeFormDto", noticeFormDto);
         } catch (EntityNotFoundException e) {
-            model.addAttribute("errormessage", "존재하지 않는 상품입니다.");
+            model.addAttribute("errormessage", "존재하지 않는 게시글입니다.");
             /*model.addAttribute("noticeFormDto", new NoticeFormDto());*/
 
-            return "notice/noticeRegister";
+            return "notice/notice";
         }
-        return "notice/noticeRegister";
+        return "notice/noticeDetail";
     }
 
-    @PostMapping(value = "/{NoticeNid}")
+    @PostMapping(value = "/{nid}")
     public String noticeUpdate(@Valid NoticeFormDto noticeFormDto, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             return "notice/noticeRegister";

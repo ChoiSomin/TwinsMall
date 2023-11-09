@@ -42,7 +42,8 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
                                 notice.ntitle,
                                 notice.ncontent,
                                 notice.regTime,
-                                notice.updateTime
+                                notice.updateTime,
+                                notice.view
                                 )
                 )
                 .from(notice)
@@ -59,6 +60,7 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
 
         return new PageImpl<>(content, pageable, total);
     }
+
 
 
 }
