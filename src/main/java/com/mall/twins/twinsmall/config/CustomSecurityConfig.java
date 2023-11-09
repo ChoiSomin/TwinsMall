@@ -45,6 +45,7 @@ public class CustomSecurityConfig {
         http.formLogin()
                 .loginPage("/member/login")                                                // Form 로그인 기능 작동, 커스텀 로그인 페이지
                 .defaultSuccessUrl("/index")                                               // 로그인 성공시 index 페이지로 이동
+                .failureUrl("/member/login/error")                      // 로그인 실패 시 이동할 URL 설정
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("member/logout"))   // 로그아웃 URL

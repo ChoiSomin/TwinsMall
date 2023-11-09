@@ -1846,7 +1846,7 @@
     height: 38px;
     top: 0;
     left: 0;
-    background-color: #ffffff;
+    background-color: #000000;
 }
 
 .product-detail .div-wrapper {
@@ -1939,7 +1939,7 @@
     font-family: "Nunito Sans", Helvetica;
     font-weight: 700;
     color: #111111;
-    font-size: 36px;
+    font-size: 28px;
     text-align: center;
     letter-spacing: 0;
     line-height: 28.8px;

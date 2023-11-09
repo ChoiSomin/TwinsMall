@@ -44,7 +44,6 @@
                     </div>
                     <div class="text-wrapper-7">아이디/비밀번호 찾기</div>
                 </div>
-                <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
                 <div class="group">
                     <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
                     <button type="submit" class="div-wrapper">로그인</button>
@@ -69,7 +68,18 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
+    /* 로그인이 실패했다면 에러 메시지를 경고창으로 보여줌 */
+    $(document).ready(function () {
+        var loginErrorMsg = [[${loginErrorMsg}]];
+
+        console.log(loginErrorMsg);
+
+        if (loginErrorMsg != null) {
+            alert(loginErrorMsg);
+        }
+    });
 
     const formObj = document.querySelector("#loginForm")
 
@@ -85,4 +95,5 @@
     }, false)
 
 </script>
+
 </html>

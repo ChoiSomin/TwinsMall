@@ -19,12 +19,16 @@
     <link rel="stylesheet" th:href="@{/css/product.css}"/>
     <link rel="stylesheet" th:href="@{/css/cart.css}"/>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
 
 <div th:replace="~{fragments/header::header}"></div>
 
 <div layout:fragment="content" class="content"></div>
+
+<th:block layout:fragment="script"></th:block>
 
 <div th:replace="~{fragments/footer::footer}"></div>
 

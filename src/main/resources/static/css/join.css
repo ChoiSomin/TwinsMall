@@ -671,42 +671,50 @@
     border-color: #e1e1e1;
 }
 
+/* add */
+
 .join .frame {
-    left: 331px;
-    background-color: #d9d9d9;
     position: absolute;
     width: 100px;
     height: 35px;
-    top: 888px;
+    top: 889px;
+    left: 331px;
+    background-color: #d9d9d9;
     border-radius: 7px;
     box-shadow: 0px 4px 4px #00000040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .join .text-wrapper-19 {
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    font-family: "Nunito Sans", Helvetica;
+    /* width: 63px;
+     height: 18px;
+     top: 7px;
+     left: 18px;*/
+    font-family: "Nunito Sans-Bold", Helvetica;
     font-weight: 700;
     color: #000000;
     font-size: 15px;
     text-align: center;
-    line-height: 25px;
     white-space: nowrap;
     position: absolute;
     letter-spacing: 0;
+    line-height: 25px;
 }
 
 .join .frame-2 {
-    left: 198px;
-    background-color: #f68181;
     position: absolute;
     width: 100px;
     height: 35px;
-    top: 888px;
+    top: 889px;
+    left: 198px;
+    background-color: #f68181;
     border-radius: 7px;
     box-shadow: 0px 4px 4px #00000040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .join .text-wrapper-20 {
@@ -714,27 +722,42 @@
     height: 18px;
     top: 7px;
     left: 18px;
-    font-family: "Nunito", Helvetica;
+    font-family: "Nunito-SemiBold", Helvetica;
     font-weight: 600;
     color: #000000;
     font-size: 15px;
     text-align: center;
-    line-height: 25px;
     white-space: nowrap;
     position: absolute;
     letter-spacing: 0;
+    line-height: 25px;
+    text-decoration-line: none;
 }
 
 .join .frame-3 {
-    left: 464px;
-    background-color: #c0e8c4;
     position: absolute;
     width: 100px;
     height: 35px;
-    top: 888px;
+    top: 889px;
+    left: 464px;
+    background-color: #c0e8c4;
     border-radius: 7px;
     box-shadow: 0px 4px 4px #00000040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.join .frame button,
+.join .frame-3 button {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능한 것처럼 보이게 함 */
+}
+
+/* add */
 
 .join .footer {
     position: absolute;
@@ -1244,4 +1267,3 @@
     letter-spacing: 0;
 
 }
-
