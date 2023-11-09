@@ -5,6 +5,7 @@ import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import net.bytebuddy.asm.Advice;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotBlank;
@@ -43,10 +44,12 @@ public class NoticeFormDto{
     }
 
     @QueryProjection // querydsl로 결과 조회 시 NoticeFormDto 객체로 바로 받아옴
-    public NoticeFormDto(Long nno, String ntitle, String ncontent){
+    public NoticeFormDto(Long nno, String ntitle, String ncontent, LocalDateTime regTime, LocalDateTime updateTime){
         this.nno = nno;
         this.ntitle = ntitle;
         this.ncontent = ncontent;
+        this.regTime = regTime;
+        this.updateTime = updateTime;
     }
 
 

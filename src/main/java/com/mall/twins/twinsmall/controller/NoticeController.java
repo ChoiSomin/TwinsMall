@@ -1,6 +1,8 @@
 package com.mall.twins.twinsmall.controller;
 
+import com.mall.twins.twinsmall.dto.ItemSearchDto;
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
+import com.mall.twins.twinsmall.dto.NoticeSearchDto;
 import com.mall.twins.twinsmall.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,11 +26,13 @@ public class NoticeController {
 
 
     @GetMapping(value = "/list")
-    public String notice(Optional<Integer> page, Model model){
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
-        Page<NoticeFormDto> notices = noticeService.getNoticeList(pageable);
+    public String notice(NoticeSearchDto noticeSearchDto, Optional<Integer> page, Model model){
+
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
+        Page<NoticeFormDto> notices = noticeService.getNoticeList(noticeSearchDto, pageable);
 
         model.addAttribute("notice", notices);
+        model.addAttribute("noticeSearchDto", noticeSearchDto);
         model.addAttribute("maxPage", 5);
 
         return "notice/notice";
