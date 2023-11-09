@@ -41,6 +41,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.projectlombok:lombok:1.18.22'
 
+    /* Thymeleaf의 레이아웃 기능 */
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+
     //일단 제외 : 28행에 있는 것 사용 ->compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client'
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
     implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time', version: '3.0.4.RELEASE'
@@ -65,7 +68,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // Thymeleaf Extras Springsecurity5 : Thymeleaf에서 로그인 인증 정보 처리 https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.1.2.RELEASE'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
     // Lombok을 테스트 환경에서도 사용
     testCompileOnly 'org.projectlombok:lombok'

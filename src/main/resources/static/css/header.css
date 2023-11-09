@@ -110,6 +110,22 @@
     white-space: nowrap;
 }
 
+.header .nav-list-item-link-4 {
+    width: 69px;
+    left: 360px;
+    position: absolute;
+    height: 24px;
+    top: -1px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
 .header .icon-search {
     left: 1474px;
     position: absolute;

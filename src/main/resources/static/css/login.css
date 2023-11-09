@@ -381,7 +381,22 @@
     width: 147px;
     height: 24px;
     top: 49px;
-    left: 251px;
+    left: 240px;
+    font-weight: 400;
+    color: #000000;
+    font-size: 13px;
+    line-height: 25px;
+    white-space: nowrap;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    letter-spacing: 0;
+}
+
+.login .remember {
+    width: 147px;
+    height: 24px;
+    top: 49px;
+    left: 0;
     font-weight: 400;
     color: #000000;
     font-size: 13px;
@@ -404,8 +419,14 @@
     position: relative;
     width: 126px;
     height: 45px;
-    background-image: url(./img/rectangle-2.svg);
+    background-image: url(../img/rectangle-2.svg);
     background-size: 100% 100%;
+    font-weight: 700;
+    font-family: "Nunito Sans", Helvetica;
+
+    /* 테두리 속성을 없애는 CSS */
+    border: none;
+    outline: none; /* 포커스 테두리도 제거하려면 추가 */
 }
 
 .login .text-wrapper-8 {
@@ -435,7 +456,7 @@
     position: relative;
     width: 126px;
     height: 45px;
-    background-image: url(./img/rectangle-3.svg);
+    background-image: url(../img/rectangle-3.svg);
     background-size: 100% 100%;
 }
 

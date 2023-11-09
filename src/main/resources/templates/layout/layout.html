@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" th:href="@{/css/aboutus.css}"/>
+    <link rel="stylesheet" th:href="@{/css/checkout.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
+    <link rel="stylesheet" th:href="@{/css/header.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/itemRegister.css}"/>
+    <link rel="stylesheet" th:href="@{/css/join.css}"/>
+    <link rel="stylesheet" th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" th:href="@{/css/notice.css}"/>
+    <link rel="stylesheet" th:href="@{/css/product.css}"/>
+    <link rel="stylesheet" th:href="@{/css/cart.css}"/>
+
+</head>
+<body>
+
+<div th:replace="~{fragments/header::header}"></div>
+
+<div layout:fragment="content" class="content"></div>
+
+<div th:replace="~{fragments/footer::footer}"></div>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ package com.mall.twins.twinsmall.entity;
 
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
 import com.mall.twins.twinsmall.dto.ItemFormDto;
+import com.mall.twins.twinsmall.exception.OutOfStockException;
 import lombok.*;
 
 import javax.persistence.*;
@@ -51,5 +52,18 @@ public class Item extends BaseEntity {
         this.pstock = itemFormDto.getPstock();
         this.pdesc = itemFormDto.getPdesc();
         this.pstatus = itemFormDto.getPstatus();
+    }
+
+    public void removeStock(int pstock){
+        int restStock = this.pstock - pstock;
+        if(restStock<0){
+            throw new OutOfStockException("상품의 재고가 부족 합니다. (현재 재고 수량: " + this.pstock + ")");
+        }
+        this.pstock = restStock;
+    }
+
+    //상품의 재고를 증가시키는 메서드
+    public void addStock(int pstock){
+        this.pstock += pstock;
     }
 }
