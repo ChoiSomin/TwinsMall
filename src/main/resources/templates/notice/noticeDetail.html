@@ -3,6 +3,38 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<div layout:fragment="script">
+    <script type="text/javascript">
+        var actionForm = $("form");
+        var nid = $("noticeFormDto.nno");
+
+        $(".removeBtn").click(function () {
+
+            console.log(nid);
+
+            actionForm
+                .attr("action", "/notice/remove")
+                .attr("method", "post");
+
+            actionForm.submit();
+
+        });
+
+        // 수정하기 버튼 클릭 시 title과 content 편집 가능하도록 변경
+        $(".editBtn").click(function () {
+            var $button = $(this);
+            // title과 content의 contenteditable 속성을 true로 설정
+            $("div[name='notice_title']").attr("contenteditable", "true");
+            $("div[name='notice_content']").attr("contenteditable", "true");
+
+            if ($button.text() === "수정하기") {
+                $button.text("수정 완료");
+            } else {
+                $button.text("수정하기");
+            }
+        });
+    </script>
+</div>
 <div layout:fragment="content">
     <div class="notice-detail">
         <div class="top">
@@ -10,41 +42,48 @@
         </div>
         <div class="text-wrapper-3">공지사항</div>
         <form th:action="@{/notice/register}" th:method="post">
+            <input type="hidden" name="nid" th:field="${nid}" th:value="${noticeFormDto.nno}">
             <div class="frame">
                 <div class="table">
                     <div class="table-2">
                         <div class="row">
                             <div class="cell">
                                 <div class="content">
-                                    <div class="text" th:text="${noticeFormDto.ntitle}" readonly></div>
+                                    <div class="text" name="notice_title" th:text="${noticeFormDto.ntitle}" readonly></div>
                                 </div>
                             </div>
                         </div>
                         <div class="cell-wrapper">
                             <div class="content-wrapper">
                                 <div class="content">
-                                    <div class="text-2" th:text="${noticeFormDto.ncontent}" readonly></div>
+                                    <div class="text-2" name="notice_content" th:text="${noticeFormDto.ncontent}"
+                                         readonly>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="div-wrapper">
                             <div class="content-wrapper">
                                 <div class="content-2">
-                                    <div class="text-3" th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}" readonly></div>
-                                    <div class="text-4" th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}" readonly></div>
+                                    <div class="text-3" name="regTime"
+                                         th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}"
+                                         readonly></div>
+                                    <div class="text-4" name="modTime"
+                                         th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}"
+                                         readonly></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="frame-2">
-                    <div class="text-wrapper-4">목록보기</div>
+                    <a th:href="@{/notice/list}" class="text-wrapper-4">목록보기</a>
                 </div>
                 <div class="frame-3">
-                    <div class="text-wrapper-5">삭제하기</div>
+                    <button type="button" class="text-wrapper-5 removeBtn">삭제하기</button>
                 </div>
                 <div class="frame-4">
-                    <div class="text-wrapper-4">수정하기</div>
+                    <button type="button" class="text-wrapper-4 editBtn">수정하기</button>
                 </div>
             </div>
         </form>
