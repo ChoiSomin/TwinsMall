@@ -16,22 +16,22 @@
                         <div class="row">
                             <div class="cell">
                                 <div class="content">
-                                    <div class="text" name="notice_title" th:value="${noticeFormDto.ntitle}" readonly></div>
+                                    <div class="text" th:text="${noticeFormDto.ntitle}" readonly></div>
                                 </div>
                             </div>
                         </div>
                         <div class="cell-wrapper">
                             <div class="content-wrapper">
                                 <div class="content">
-                                    <div class="text-2" name="notice_content" th:value="${noticeFormDto.ncontent}" readonly></div>
+                                    <div class="text-2" th:text="${noticeFormDto.ncontent}" readonly></div>
                                 </div>
                             </div>
                         </div>
                         <div class="div-wrapper">
                             <div class="content-wrapper">
                                 <div class="content-2">
-                                    <div class="text-3" name="regTime" th:value="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd HH:mm:ss')}" readonly></div>
-                                    <div class="text-4" name="modTime" th:value="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd HH:mm:ss')}" readonly></div>
+                                    <div class="text-3" th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}" readonly></div>
+                                    <div class="text-4" th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}" readonly></div>
                                 </div>
                             </div>
                         </div>
