@@ -3,80 +3,143 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<div layout:fragment="script">
+  <script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function(){
+      $('select').formSelect();
+    });
+
+  </script>
+</div>
 <div layout:fragment="content">
   <div class="notice">
-      <div class="top"><div class="heading-our-blog">Notice</div></div>
-      <div class="text-wrapper-3">공지사항</div>
-      <div class="view">
-        <div class="group">
-          <button type="button" class="register-Btn"><a th:href="@{/notice/register}" type="button" class="text-wrapper-19">작성</a></button>
+    <div class="top"><div class="heading-our-blog">Notice</div></div>
+    <div class="frame">
+      <div class="text-wrapper-33">공지사항</div>
+      <!--<form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
+        <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="site-btn" type="submit">Search</button>
+      </form>-->
+      <select class="section-form-cate">
+        <option value="" disabled selected>cate</option>
+        <option value="1">제목</option>
+        <option value="2">제목+내용</option>
+      </select>
+      <div class="section-form-input">
+        <div class="overlap-group">
+          <div class="div-placeholder"><div class="text-wrapper-44">검색</div></div>
+          <img class="icon-search-outline" th:src="@{/img/icon-search-outline-icon.png}" />
         </div>
       </div>
-      <div class="div-2">
-        <div class="table">
-          <div class="table-2">
-            <div class="row">
-              <div class="cell">
-                <div class="content"><div class="text">번호</div></div>
+    </div>
+
+    <div class="div-2">
+      <div class="table">
+        <div class="table-2">
+          <div class="row">
+            <div class="cell">
+              <div class="content"><div class="text">번호</div></div>
+            </div>
+            <div class="content-wrapper">
+              <div class="div-wrapper"><div class="text">제목</div></div>
+            </div>
+            <div class="cell">
+              <div class="content"><div class="text">등록일</div></div>
+            </div>
+            <div class="cell">
+              <div class="content"><div class="text">조회수</div></div>
+            </div>
+          </div>
+          <th:block th:each="notice, status: ${notice.getContent()}">
+            <div class="row-2">
+              <div class="cell-2">
+                <div class="content-2"><div class="text-2">[[${notice.nno}]]</div></div>
               </div>
-              <div class="content-wrapper">
-                <div class="div-wrapper"><div class="text">제목</div></div>
+              <div class="cell-3">
+                <div class="div-wrapper">
+                  <a th:href="@{/notice/{nno}(nno=${notice.nno})}" class="text-2">
+                    <div >[[${notice.ntitle}]]</div></a>
+                </div>
               </div>
-              <div class="cell">
-                <div class="content"><div class="text">등록일</div></div>
+              <div class="cell-2">
+                <div class="content-2"><div class="text-2" th:text="${#temporals.format(notice.regTime, 'yyyy-MM-dd HH:mm:ss')}"></div></div>
               </div>
-              <div class="cell">
-                <div class="content"><div class="text">조회수</div></div>
+              <div class="cell-2">
+                <div class="div-wrapper"><div class="text-3">[[${notice.view}]]</div></div>
               </div>
             </div>
-            <th:block th:each="notice, status: ${notice.getContent()}">
-              <div class="row-2">
-                <div class="cell-2">
-                  <div class="content-2"><div class="text-2">[[${notice.nno}]]</div></div>
-                </div>
-                <div class="cell-3">
-                  <div class="div-wrapper">
-                    <a th:href="@{/notice/{nno}(nno=${notice.nno})}" class="text-2">
-                      <div >[[${notice.ntitle}]]</div></a>
-                  </div>
-                </div>
-                <div class="cell-2">
-                  <div class="content-2"><div class="text-2" th:text="${#temporals.format(notice.regTime, 'yyyy-MM-dd')}"></div></div>
-                </div>
-                <div class="cell-2">
-                  <div class="div-wrapper"><div class="text-3">[[${notice.view}]]</div></div>
-                </div>
-              </div>
-            </th:block>
-          </div>
+          </th:block>
         </div>
-        <!--<div class="link"><div class="text-wrapper-5">1</div></div>
-        <div class="link-2">2</div>
-        <div class="link-3">3</div>
-        <div class="text-wrapper-6">...</div>
-        <div class="link-4">21</div>-->
-        <div th:with="start=${(notice.number/maxPage)*maxPage + 1}, end=(${(notice.totalPages == 0) ? 1 : (start + (maxPage - 1) < notice.totalPages ? start + (maxPage - 1) : notice.totalPages)})" >
+      </div>
+      <!--<div class="link"><div class="text-wrapper-5">1</div></div>
+      <div class="link-2">2</div>
+      <div class="link-3">3</div>
+      <div class="text-wrapper-6">...</div>
+      <div class="link-4">21</div>-->
+
+      <!--<div class="frame-120">
+      <div th:with="start=${(notice.number/maxPage)*maxPage + 1}, end=(${(notice.totalPages == 0) ? 1 : (start + (maxPage - 1) < notice.totalPages ? start + (maxPage - 1) : notice.totalPages)})" >
+        <ul class="pagination justify-content-center">
+
+          <li class="link" th:classappend="${notice.number eq 0}?'disabled':''">
+            <a th:href="@{'?searchQuery=' + ${noticeSearchDto.searchQuery} + '&page=' + ${notice.number-1}}" aria-label='Previous' class="page-link">
+              <span aria-hidden='true'>이전페이지</span>
+            </a>
+          </li>
+
+          <li class="link-2" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${notice.number eq page-1}?'active':''">
+            <a th:href="@{'list/' +'?searchQuery=' + ${noticeSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+          </li>
+
+          <li class="link-3" th:classappend="${notice.number+1 ge notice.totalPages}?'disabled':''">
+            <a th:href="@{'?searchQuery=' + ${noticeSearchDto.searchQuery} + '&page=' + ${notice.number+1}}" aria-label='Next' class="page-link">
+              <span aria-hidden='true'>다음페이지</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      </div>-->
+
+      <div class="frame-120">
+        <div th:with="start=${(notice.number/maxPage)*maxPage + 1}, end=(${(notice.totalPages == 0) ? 1 : (start + (maxPage - 1) < notice.totalPages ? start + (maxPage - 1) : notice.totalPages)} )">
           <ul class="pagination justify-content-center">
 
             <li class="link" th:classappend="${notice.number eq 0}?'disabled':''">
-              <a th:href="@{'?searchQuery=' + ${noticeSearchDto.searchQuery} + '&page=' + ${notice.number-1}}" aria-label='Previous' class="page-link">
-                <span aria-hidden='true'>Previous</span>
+              <a th:href="@{'?searchQuery=' + ${noticeSearchDto.searchQuery} + '&page=' + ${notice.number > 0 ? notice.number-1 : 0}}" aria-label='Previous' class="page-link">
+                <span aria-hidden='true'>이전페이지</span>
               </a>
             </li>
 
+
             <li class="link-2" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${notice.number eq page-1}?'active':''">
-              <a th:href="@{'list/' +'?searchQuery=' + ${noticeSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+              <a th:href="@{'?searchQuery=' + ${noticeSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
             </li>
+
 
             <li class="link-3" th:classappend="${notice.number+1 ge notice.totalPages}?'disabled':''">
               <a th:href="@{'?searchQuery=' + ${noticeSearchDto.searchQuery} + '&page=' + ${notice.number+1}}" aria-label='Next' class="page-link">
-                <span aria-hidden='true'>Next</span>
+                <span aria-hidden='true'>다음페이지</span>
               </a>
             </li>
-
           </ul>
         </div>
       </div>
+
+      <div class="view11">
+        <div class="group11">
+          <button type="button" class="overlap-group-22"><a th:href="@{/notice/register}" type="button" class="text-wrapper-77">작성</a></button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 </html>

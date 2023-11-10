@@ -266,7 +266,7 @@
     font-family: "Inter", Helvetica;
     font-weight: 600;
     color: #000000;
-    font-size: 12px;
+    font-size: 35px;
     letter-spacing: 0;
     line-height: 15.6px;
 }
@@ -303,7 +303,7 @@
     font-family: "Inter", Helvetica;
     font-weight: 400;
     color: #000000;
-    font-size: 12px;
+    font-size: 25px;
     letter-spacing: 0;
     line-height: 15.6px;
 }
@@ -335,7 +335,7 @@
     font-family: "Inter", Helvetica;
     font-weight: 400;
     color: #000000;
-    font-size: 12px;
+    font-size: 15px;
     letter-spacing: 0;
     line-height: 15.6px;
 }
@@ -347,7 +347,7 @@
     font-family: "Inter", Helvetica;
     font-weight: 400;
     color: #000000;
-    font-size: 12px;
+    font-size: 15px;
     letter-spacing: 0;
     line-height: 15.6px;
 }
@@ -377,7 +377,6 @@
     letter-spacing: 0;
     line-height: 25px;
     white-space: nowrap;
-    text-decoration: none;
 }
 
 .notice-detail .frame-3 {
