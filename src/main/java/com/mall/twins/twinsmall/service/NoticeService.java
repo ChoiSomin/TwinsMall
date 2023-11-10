@@ -8,6 +8,7 @@ import com.mall.twins.twinsmall.entity.Notice;
 import com.mall.twins.twinsmall.repository.NoticeRepository;
 import com.mall.twins.twinsmall.repository.NoticeRepositoryCustom;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,10 @@ public class NoticeService {
     private final NoticeRepository noticeRepository;
 
     private final NoticeRepositoryCustom noticeRepositoryCustom;
+
+    private final ModelMapper modelMapper;
+
+    private final NoticeSearchDto noticeSearchDto;
 
     public Long saveNotice(NoticeFormDto noticeFormDto) throws Exception{
 
