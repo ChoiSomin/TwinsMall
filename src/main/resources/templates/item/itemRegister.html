@@ -1,255 +1,191 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <link rel="stylesheet" href="/css/globals.css"/>
-    <link rel="stylesheet" href="/css/itemRegister.css"/>
-</head>
-<body>
-<div class="admin-product">
-    <div class="div">
-        <header class="header">
-            <img class="link-logo-png" src="/img/image.png"/>
-            <div class="nav-list-item-link">Home</div>
-            <div class="text-wrapper">Shop</div>
-            <div class="nav-list-item-link-2">Notice</div>
-            <div class="nav-list-item-link-3">About us</div>
-            <img class="icon-search" src="/img/icon-search.png"/>
-            <img class="icon-favorite-border" src="/img/icon-favorite-border.png"/>
-            <img class="icon-shopping-bag" src="/img/icon-shopping-bag.png"/>
-            <img class="icon-person" src="/img/icon-person.png"/>
-            <div class="div-header-top">
-                <div class="text-wrapper-2">Welcome to Twin’s Mall</div>
-            </div>
-        </header>
-        <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}">
-            <input type="hidden" th:field="*{id}">
-            <div class="top">
-                <div class="heading-check-out">Register</div>
-                <div class="link-home">상품등록/수정</div>
-            </div>
-            <div class="details">
-                <div class="heading"></div>
-                <div class="text-wrapper-3">상품명</div>
-                <input type="text" th:field="*{pname}" class="input" placeholder="상품명을 입력해주세요">
-                <p th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}" class="fieldError">Incorrect
-                    data</p>
-                <div class="text-wrapper-4">판매상태</div>
-                <div class="frame">
-                    <div class="label-name">
-                        <select th:field="*{pstatus}" class="custom-select">
-                            <option value="SELL">판매중</option>
-                            <option value="SOLD_OUT">품절</option>
-                            <option value="PAUSE">판매 중지</option>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="script">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var errorMessage = [[${errorMessage}]];
+            if (errorMessage != null) {
+                alert(errorMessage);
+            }
+
+            bindDomEvent();
+
+        });
+
+        function bindDomEvent() {
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();  //이미지 파일명
+                var fileExt = fileName.substring(fileName.lastIndexOf(".") + 1); // 확장자 추출
+                fileExt = fileExt.toLowerCase(); //소문자 변환
+
+                if (fileExt != "jpg" && fileExt != "jpeg" && fileExt != "gif" && fileExt != "png" && fileExt != "bmp") {
+                    alert("이미지 파일만 등록이 가능합니다.");
+                    return;
+                }
+
+                $(this).siblings(".custom-file-label").html(fileName);
+            });
+        }
+
+        // 파일 업로드 버튼을 클릭할 때
+        document.getElementById("add-file-button").addEventListener("click", function () {
+            document.getElementById("file-input").click();
+        });
+
+        // 파일 선택 시
+        document.getElementById("file-input").addEventListener("change", function (event) {
+            const fileList = event.target.files;
+            const fileContainer = document.getElementById("file-list");
+
+            for (let i = 0; i < fileList.length; i++) {
+                const file = fileList[i];
+
+                if (fileContainer.childElementCount < 5) {
+// 최대 5개까지 파일 표시
+                    const fileItem = document.createElement("div");
+                    fileItem.classList.add("text-wrapper-13");
+                    fileItem.textContent = file.name;
+
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "삭제";
+                    deleteButton.addEventListener("click", function () {
+// 파일 삭제 버튼을 클릭했을 때
+                        fileItem.remove();
+                    });
+
+                    fileItem.appendChild(deleteButton);
+                    fileContainer.appendChild(fileItem);
+                } else {
+                    alert("최대 5개의 파일만 첨부할 수 있습니다.");
+                    break;
+                }
+            }
+        });
+    </script>
+</div>
+
+<div layout:fragment="content">
+    <div class="admin-product">
+        <div class="div">
+            <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}">
+                <input type="hidden" th:field="*{id}">
+                <div class="top">
+                    <div class="heading-check-out">Register</div>
+                    <div class="link-home">상품등록/수정</div>
+                </div>
+                <div class="details">
+                    <div class="heading"></div>
+                    <div class="text-wrapper-3">상품명</div>
+                    <input type="text" th:field="*{pname}" class="input" placeholder="상품명을 입력해주세요">
+                    <p th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}" class="fieldError">Incorrect
+                        data</p>
+                    <div class="text-wrapper-4">판매상태</div>
+                    <div class="frame">
+                        <div class="label-name">
+                            <select th:field="*{pstatus}" class="custom-select">
+                                <option value="SELL">판매중</option>
+                                <option value="SOLD_OUT">품절</option>
+                                <option value="PAUSE">판매 중지</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-wrapper-8">가격</div>
+                    <div>
+                        <input type="number" th:field="*{pprice}" class="input-2" placeholder="상품의 가격을 입력해주세요">
+                    </div>
+                    <p th:if="${#fields.hasErrors('pprice')}" th:errors="*{pprice}" class="fieldError2">Incorrect
+                        data</p>
+                    <div class="text-wrapper-9">재고</div>
+                    <div>
+                        <input type="number" th:field="*{pstock}" class="input-3" placeholder="상품의 재고를 입력해주세요">
+                    </div>
+                    <p th:if="${#fields.hasErrors('pstock')}" th:errors="*{pstock}" class="fieldError3">Incorrect
+                        data</p>
+                    <div class="text-wrapper-10">카테고리</div>
+                    <div>
+                        <select th:field="*{pcate}" class="input-4">
+                            <option value="">카테고리를 선택해주세요</option> <!--선택안한 비어있는값-->
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="TV">TV</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Washing Machine">Washing Machine</option>
+                            <option value="Air Purifier">Air Purifier</option>
+                            <option value="Air Conditioner">Air Conditioner</option>
+                            <option value="Cleaner">Cleaner</option>
                         </select>
                     </div>
-                </div>
-                <div class="text-wrapper-8">가격</div>
-                <div>
-                    <input type="number" th:field="*{pprice}" class="input-2" placeholder="상품의 가격을 입력해주세요">
-                </div>
-                <p th:if="${#fields.hasErrors('pprice')}" th:errors="*{pprice}" class="fieldError2">Incorrect
-                    data</p>
-                <div class="text-wrapper-9">재고</div>
-                <div>
-                    <input type="number" th:field="*{pstock}" class="input-3" placeholder="상품의 재고를 입력해주세요">
-                </div>
-                <p th:if="${#fields.hasErrors('pstock')}" th:errors="*{pstock}" class="fieldError3">Incorrect
-                    data</p>
-                <div class="text-wrapper-10">카테고리</div>
-                <div>
-                    <select th:field="*{pcate}" class="input-4">
-                        <option value="">카테고리를 선택해주세요</option> <!--선택안한 비어있는값-->
-                        <option value="Refrigerator">Refrigerator</option>
-                        <option value="TV">TV</option>
-                        <option value="Laptop">Laptop</option>
-                        <option value="Washing Machine">Washing Machine</option>
-                        <option value="Air Purifier">Air Purifier</option>
-                        <option value="Air Conditioner">Air Conditioner</option>
-                        <option value="Cleaner">Cleaner</option>
-                    </select>
-                </div>
-                <p th:if="${#fields.hasErrors('pcate')}" th:errors="*{pcate}" class="fieldError4">Incorrect
-                    data</p>
-                <div class="text-wrapper-11">상세설명</div>
-                <div>
-                    <textarea class="input-5" aria-label="With textarea" th:field="*{pdesc}" placeholder="상품의 내용를 입력해주세요"></textarea>
-                </div>
-                <p th:if="${#fields.hasErrors('pdesc')}" th:errors="*{pdesc}" class="fieldError5">Incorrect
-                    data</p>
-
-
-                <div class="text-wrapper-12">첨부파일(최대 5개 까지 가능합니다.)</div>
-                <div class="frame-2">
-                    <div class="list-item" id="file-list">
-                        <!-- 첨부파일이 여기에 나열될 것입니다. -->
+                    <p th:if="${#fields.hasErrors('pcate')}" th:errors="*{pcate}" class="fieldError4">Incorrect
+                        data</p>
+                    <div class="text-wrapper-11">상세설명</div>
+                    <div>
+                        <textarea class="input-5" aria-label="With textarea" th:field="*{pdesc}"
+                                  placeholder="상품의 내용를 입력해주세요"></textarea>
                     </div>
+                    <p th:if="${#fields.hasErrors('pdesc')}" th:errors="*{pdesc}" class="fieldError5">Incorrect
+                        data</p>
 
-                    <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
-                        <img class="icon-folder" src="/img/icon-folder.png" id="add-file-button"
-                             style="cursor: pointer;"/>
-                        <input type="file" id="file-input" name="itemImgFile" style="display: none;" multiple/>
 
-                    </div>
-                    <div th:if="${not #lists.isEmpty(itemFormDto.itemImgDtoList)}">
-                        <div class="form-group" th:each="itemImgDto, status: ${itemFormDto.itemImgDtoList}">
-                            <div class="label">
-                                <div class="pseudo">
-                                    <input type="file" class="text-wrapper-13" name="itemImgFile">
-                                    <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">
+                    <div class="text-wrapper-12">첨부파일(최대 5개 까지 가능합니다.)</div>
+                    <div class="frame-2">
+                        <div class="list-item" id="file-list">
+                            <!-- 첨부파일이 여기에 나열될 것입니다. -->
+                        </div>
+
+                        <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
+                            <img class="icon-folder" src="/img/icon-folder.png" id="add-file-button"
+                                 style="cursor: pointer;"/>
+                            <input type="file" id="file-input" name="itemImgFile" style="display: none;" multiple/>
+
+                        </div>
+                        <div th:if="${not #lists.isEmpty(itemFormDto.itemImgDtoList)}">
+                            <div class="form-group" th:each="itemImgDto, status: ${itemFormDto.itemImgDtoList}">
+                                <div class="label">
+                                    <div class="pseudo">
+                                        <input type="file" class="text-wrapper-13" name="itemImgFile">
+                                        <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">
+                                    </div>
+                                    <label class="custom-file-label"
+                                           th:text="${not #strings.isEmpty(itemImgDto.iimgori)} ? ${itemImgDto.iimgori} : '상품이미지' + ${status.index+1}"></label>
                                 </div>
-                                <label class="custom-file-label"
-                                       th:text="${not #strings.isEmpty(itemImgDto.iimgori)} ? ${itemImgDto.iimgori} : '상품이미지' + ${status.index+1}"></label>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!--<div class="frame-3">
-                    <a th:href="@{/index}" class="text-wrapper-15">취소하기</a>
-                </div>
-                <div class="frame-4">
-                    <button class="text-wrapper-16" type="reset">다시입력</button>
-                </div>
-                <div class="frame-5">
-                    <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
-                        <button th:formaction="@{/itemRegister}" type="submit" class="text-wrapper-16">저장</button>
+                    <!--<div class="frame-3">
+                        <a th:href="@{/index}" class="text-wrapper-15">취소하기</a>
                     </div>
-                    <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
-                        <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
-                                class="text-wrapper-16">수정
-                        </button>
+                    <div class="frame-4">
+                        <button class="text-wrapper-16" type="reset">다시입력</button>
                     </div>
-                    </div>-->
-                <div class="frame-3">취소하기
-                    <a th:href="@{/index}" class="text-wrapper-15"></a>
-                </div>
-                <div class="frame-4">다시하기
-                    <button class="text-wrapper-16" type="reset"></button>
-                </div>
-                <div class="frame-5">등록하기
-                    <button th:if="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{/itemRegister}" type="submit" class="text-wrapper-16"></button>
-                    <button th:unless="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit" class="text-wrapper-16"></button>
-                </div>
-
-
-
-
-
-            </div>
-        </form>
-    </div>
-    <footer class="footer">
-        <div class="overlap">
-            <div class="div-container">
-                <p class="based-on-the-life-s">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</p>
-                <p class="p">we always strives to provide First, Unique,</p>
-                <div class="overlap-2">
-                    <p class="text-wrapper-17">and New F·U·N experiences to provide</p>
-                    <p class="text-wrapper-18">customers with a better life.</p>
-                </div>
-                <div class="heading-shopping">SHOPPING</div>
-                <div class="list-item-link">Refrigerator</div>
-                <div class="list-item-link-2">TV</div>
-                <div class="list-item-link-3">Laptop</div>
-                <div class="list-item-link-sale">Washing Machine</div>
-                <div class="list-item-link-4">Air Purifier</div>
-                <div class="list-item-link-5">Air Conditioner</div>
-                <div class="list-item-link-6">Cleaner</div>
-                <div class="heading-newletter">OTHERS</div>
-                <div class="div-footer-copyright">
-                    <div class="overlap-group-2">
-                        <div class="text-wrapper-19">Copyright ©</div>
-                        <p class="text-wrapper-20">20232020 All rights reserved | This template is made with</p>
-                        <div class="symbol"></div>
-                        <div class="by">by</div>
-                        <div class="link-colorlib">Colorlib</div>
+                    <div class="frame-5">
+                        <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
+                            <button th:formaction="@{/itemRegister}" type="submit" class="text-wrapper-16">저장</button>
+                        </div>
+                        <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
+                            <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
+                                    class="text-wrapper-16">수정
+                            </button>
+                        </div>
+                        </div>-->
+                    <div class="frame-3">취소하기
+                        <a th:href="@{/index}" class="text-wrapper-15"></a>
+                    </div>
+                    <div class="frame-4">다시하기
+                        <button class="text-wrapper-16" type="reset"></button>
+                    </div>
+                    <div class="frame-5">등록하기
+                        <button th:if="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{/itemRegister}"
+                                type="submit" class="text-wrapper-16"></button>
+                        <button th:unless="${#strings.isEmpty(itemFormDto.id)}"
+                                th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
+                                class="text-wrapper-16"></button>
                     </div>
                 </div>
-                <div class="list-item-link-7">About us</div>
-                <div class="list-item-link-8">FAQ</div>
-                <div class="list-item-link-9">Contact</div>
-                <p class="element">
-                <span class="span"
-                >개인정보처리방침<br/>이벤트 개인정보처리방침<br/>영상정보처리기기운영관리방침<br/><br/>대표번호 :
-                </span>
-                    <a href="tel:02-3777-1114" target="_blank" rel="noopener noreferrer"
-                    ><span class="text-wrapper-21">02-</span></a
-                    >
-                    <span class="span"
-                    >1234-1234<br/>전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 :
-                  발신자부담)<br/>제품 및 서비스 문의는 긴급 문의 건에 한해 24시간 운영합니다.<br/>주소 : 경기도
-                  수원시 경기도 수원시 팔달구 덕영대로 899 (매산로 1가, 세진브론즈빌 304호)<br/><br/>본 사이트의 모든
-                  콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.</span
-                    >
-                </p>
-            </div>
-            <img class="img" src="/img/link-logo-png.png"/>
+            </form>
         </div>
-    </footer>
+    </div>
 </div>
-</div>
-</body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:inline="javascript">
-    $(document).ready(function () {
-        var errorMessage = [[${errorMessage}]];
-        if (errorMessage != null) {
-            alert(errorMessage);
-        }
-
-        bindDomEvent();
-
-    });
-
-    function bindDomEvent() {
-        $(".custom-file-input").on("change", function () {
-            var fileName = $(this).val().split("\\").pop();  //이미지 파일명
-            var fileExt = fileName.substring(fileName.lastIndexOf(".") + 1); // 확장자 추출
-            fileExt = fileExt.toLowerCase(); //소문자 변환
-
-            if (fileExt != "jpg" && fileExt != "jpeg" && fileExt != "gif" && fileExt != "png" && fileExt != "bmp") {
-                alert("이미지 파일만 등록이 가능합니다.");
-                return;
-            }
-
-            $(this).siblings(".custom-file-label").html(fileName);
-        });
-    }
-
-    // 파일 업로드 버튼을 클릭할 때
-    document.getElementById("add-file-button").addEventListener("click", function () {
-        document.getElementById("file-input").click();
-    });
-
-    // 파일 선택 시
-    document.getElementById("file-input").addEventListener("change", function (event) {
-        const fileList = event.target.files;
-        const fileContainer = document.getElementById("file-list");
-
-        for (let i = 0; i < fileList.length; i++) {
-            const file = fileList[i];
-
-            if (fileContainer.childElementCount < 5) {
-// 최대 5개까지 파일 표시
-                const fileItem = document.createElement("div");
-                fileItem.classList.add("text-wrapper-13");
-                fileItem.textContent = file.name;
-
-                const deleteButton = document.createElement("button");
-                deleteButton.textContent = "삭제";
-                deleteButton.addEventListener("click", function () {
-// 파일 삭제 버튼을 클릭했을 때
-                    fileItem.remove();
-                });
-
-                fileItem.appendChild(deleteButton);
-                fileContainer.appendChild(fileItem);
-            } else {
-                alert("최대 5개의 파일만 첨부할 수 있습니다.");
-                break;
-            }
-        }
-    });
-</script>
 </html>

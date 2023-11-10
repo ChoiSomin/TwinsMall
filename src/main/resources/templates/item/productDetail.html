@@ -41,16 +41,4 @@
         </div>
     </div>
 </div>
-
-<script th:inline="javascript">
-    var bigPic = document.querySelector("#mainImage");
-    var smallPic = document.querySelector(".tablist-item-tab");
-
-    smallPic.addEventListener('click', changepic);
-
-    function changepic() {
-        var smallPicAttribute = this.getAttribute("th:style");
-        bigPic.setAttribute("th:style", smallPicAttribute);
-    }
-</script>
 </html>

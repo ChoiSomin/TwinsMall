@@ -3,6 +3,7 @@ package com.mall.twins.twinsmall.service;
 import com.mall.twins.twinsmall.dto.ItemSearchDto;
 import com.mall.twins.twinsmall.dto.MainItemDto;
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
+import com.mall.twins.twinsmall.dto.NoticeSearchDto;
 import com.mall.twins.twinsmall.entity.Notice;
 import com.mall.twins.twinsmall.repository.NoticeRepository;
 import com.mall.twins.twinsmall.repository.NoticeRepositoryCustom;
@@ -58,8 +59,13 @@ public class NoticeService {
     }
 
     @Transactional(readOnly = true)
-    public Page<NoticeFormDto> getNoticeList(Pageable pageable){
+    public Page<NoticeFormDto> getNoticeList(NoticeSearchDto noticeSearchDto, Pageable pageable){
 
-        return noticeRepositoryCustom.getNoticeList(pageable);
+        return noticeRepositoryCustom.getNoticeList(noticeSearchDto, pageable);
+    }
+
+    @Transactional
+    public int updateView(Long nid) {
+        return noticeRepository.updateView(nid);
     }
 }

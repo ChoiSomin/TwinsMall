@@ -1,6 +1,8 @@
 package com.mall.twins.twinsmall.controller;
 
+import com.mall.twins.twinsmall.dto.ItemSearchDto;
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
+import com.mall.twins.twinsmall.dto.NoticeSearchDto;
 import com.mall.twins.twinsmall.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,11 +26,13 @@ public class NoticeController {
 
 
     @GetMapping(value = "/list")
-    public String notice(Optional<Integer> page, Model model){
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
-        Page<NoticeFormDto> notices = noticeService.getNoticeList(pageable);
+    public String notice(NoticeSearchDto noticeSearchDto, Optional<Integer> page, Model model){
+
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
+        Page<NoticeFormDto> notices = noticeService.getNoticeList(noticeSearchDto, pageable);
 
         model.addAttribute("notice", notices);
+        model.addAttribute("noticeSearchDto", noticeSearchDto);
         model.addAttribute("maxPage", 5);
 
         return "notice/notice";
@@ -58,21 +62,22 @@ public class NoticeController {
         return "redirect:/notice/list";
     }
 
-    @GetMapping(value = "/{NoticeNid}")
-    public String noticeDtl(@PathVariable("NoticeNid") Long NoticeNid, Model model){
+    @GetMapping(value = "/{nid}")
+    public String noticeDtl(@PathVariable("nid") Long nid, Model model){
         try{
-            NoticeFormDto noticeFormDto = noticeService.getNoticeDtl(NoticeNid); // 조회한 상품 데이터를 모델에 담아서 뷰로 전달
+            NoticeFormDto noticeFormDto = noticeService.getNoticeDtl(nid); // 조회한 공지사항 데이터를 모델에 담아서 뷰로 전달
+            noticeService.updateView(nid);
             model.addAttribute("noticeFormDto", noticeFormDto);
         } catch (EntityNotFoundException e) {
-            model.addAttribute("errormessage", "존재하지 않는 상품입니다.");
+            model.addAttribute("errormessage", "존재하지 않는 게시글입니다.");
             /*model.addAttribute("noticeFormDto", new NoticeFormDto());*/
 
-            return "notice/noticeRegister";
+            return "notice/notice";
         }
-        return "notice/noticeRegister";
+        return "notice/noticeDetail";
     }
 
-    @PostMapping(value = "/{NoticeNid}")
+    @PostMapping(value = "/{nid}")
     public String noticeUpdate(@Valid NoticeFormDto noticeFormDto, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             return "notice/noticeRegister";

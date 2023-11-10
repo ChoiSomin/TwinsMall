@@ -3,10 +3,7 @@ package com.mall.twins.twinsmall.repository;
 
 import com.mall.twins.twinsmall.constant.ItemSellStatus;
 import com.mall.twins.twinsmall.dto.*;
-import com.mall.twins.twinsmall.entity.Item;
-import com.mall.twins.twinsmall.entity.QItem;
-import com.mall.twins.twinsmall.entity.QItemImg;
-import com.mall.twins.twinsmall.entity.QNotice;
+import com.mall.twins.twinsmall.entity.*;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -32,7 +29,7 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
 
 
     @Override
-    public Page<NoticeFormDto> getNoticeList(Pageable pageable) {
+    public Page<NoticeFormDto> getNoticeList(NoticeSearchDto noticeSearchDto, Pageable pageable) {
 
         QNotice notice = QNotice.notice;
 
@@ -43,7 +40,10 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
                         new QNoticeFormDto(
                                 notice.nid,
                                 notice.ntitle,
-                                notice.ncontent
+                                notice.ncontent,
+                                notice.regTime,
+                                notice.updateTime,
+                                notice.view
                                 )
                 )
                 .from(notice)
@@ -60,6 +60,7 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
 
         return new PageImpl<>(content, pageable, total);
     }
+
 
 
 }

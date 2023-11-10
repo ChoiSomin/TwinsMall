@@ -27,6 +27,9 @@ public class Notice extends BaseEntity{
     @Column(nullable = false, length = 5000)
     private String ncontent;
 
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int view;
+
     /*@ManyToOne(fetch = FetchType.LAZY)
     private Member member; //작성자*/
 
