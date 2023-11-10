@@ -11,196 +11,18 @@
             <div class="symbol"></div>
             <div class="text-wrapper-3">Shop</div>
         </div>
-        <div class="view">
-            <p class="p">Showing 1–12 of 126 results</p>
-            <div class="text-wrapper-4">Sort by Price:</div>
-            <div class="div-nice-select">
-                <div class="text-wrapper-5">Low To High</div>
-                <div class="pseudo"></div>
-            </div>
-            <div class="div-product-item">
-                <th:block th:each="item, status: ${items.getContent()}">
-                    <a th:href="'/item/' +${item.id}"></a>
-                    <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}" height="400">
-                    <h4 class="heading-piqu-biker">[[${item.pname}]]</h4>
-                    <div class="overlap-group">
-                        <div class="symbol-2"></div>
-                        <div class="symbol-3"></div>
-                        <div class="symbol-4"></div>
-                        <div class="symbol-5"></div>
-                        <div class="symbol-6"></div>
-                    </div>
-                    <h3 class="heading">[[${item.pprice}]]원</h3>
-                </th:block>
-            </div>
-            <div class="div-product-item-2">
-                <div class="span-label-wrapper">
-                    <div class="span-label">
-                        <div class="sale">SALE</div>
-                    </div>
-                </div>
-                <div class="heading-multi">Multi-pocket Chest Bag</div>
-                <div class="overlap-group">
-                    <div class="symbol-7"></div>
-                    <div class="symbol-8"></div>
-                    <div class="symbol-9"></div>
-                    <div class="symbol-10"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$43.48</div>
-            </div>
-            <div class="div-product-item-3">
-                <div class="div-product-item-pic-2"></div>
-                <div class="heading-diagonal">Diagonal Textured Cap</div>
-                <div class="overlap-group">
-                    <div class="symbol-2"></div>
-                    <div class="symbol-3"></div>
-                    <div class="symbol-4"></div>
-                    <div class="symbol-5"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading-2">$60.9</div>
-            </div>
-            <div class="div-product-item-4">
-                <div class="div-wrapper">
-                    <div class="span-label">
-                        <div class="sale">SALE</div>
-                    </div>
-                </div>
-                <div class="heading-ankle">Ankle Boots</div>
-                <div class="overlap-group">
-                    <div class="symbol-7"></div>
-                    <div class="symbol-8"></div>
-                    <div class="symbol-9"></div>
-                    <div class="symbol-10"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$98.49</div>
-            </div>
-            <div class="div-product-item-5">
-                <div class="div-product-item-pic-3"></div>
-                <div class="heading-t-shirt">T-shirt Contrast Pocket</div>
-                <div class="overlap-group">
-                    <div class="symbol-2"></div>
-                    <div class="symbol-3"></div>
-                    <div class="symbol-4"></div>
-                    <div class="symbol-5"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$49.66</div>
-            </div>
-            <div class="div-product-item-6">
-                <div class="div-product-item-pic-4"></div>
-                <div class="heading-basic">Basic Flowing Scarf</div>
-                <div class="overlap-group">
-                    <div class="symbol-2"></div>
-                    <div class="symbol-3"></div>
-                    <div class="symbol-4"></div>
-                    <div class="symbol-5"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$26.28</div>
-            </div>
-            <div class="div-product-item-7">
-                <div class="div-product-item-pic-5"></div>
-                <div class="heading-piqu-biker">Piqué Biker Jacket</div>
-                <div class="overlap-group">
-                    <div class="symbol-2"></div>
-                    <div class="symbol-3"></div>
-                    <div class="symbol-4"></div>
-                    <div class="symbol-5"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$67.24</div>
-            </div>
-            <div class="div-product-item-8">
-                <div class="div-product-item-pic-6">
-                    <div class="span-label">
-                        <div class="sale">SALE</div>
-                    </div>
-                </div>
-                <div class="heading-multi">Multi-pocket Chest Bag</div>
-                <div class="overlap-group">
-                    <div class="symbol-7"></div>
-                    <div class="symbol-8"></div>
-                    <div class="symbol-9"></div>
-                    <div class="symbol-10"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$43.48</div>
-            </div>
-            <div class="div-product-item-9">
-                <div class="div-product-item-pic-7"></div>
-                <div class="heading-diagonal">Diagonal Textured Cap</div>
-                <div class="overlap-group">
-                    <div class="symbol-2"></div>
-                    <div class="symbol-3"></div>
-                    <div class="symbol-4"></div>
-                    <div class="symbol-5"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading-2">$60.9</div>
-            </div>
-            <div class="div-product-item-10">
-                <div class="div-product-item-pic-8">
-                    <div class="span-label">
-                        <div class="sale">SALE</div>
-                    </div>
-                </div>
-                <div class="heading-ankle">Ankle Boots</div>
-                <div class="overlap-group">
-                    <div class="symbol-7"></div>
-                    <div class="symbol-8"></div>
-                    <div class="symbol-9"></div>
-                    <div class="symbol-10"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$98.49</div>
-            </div>
-            <div class="div-product-item-11">
-                <div class="div-product-item-pic-9"></div>
-                <div class="heading-t-shirt">T-shirt Contrast Pocket</div>
-                <div class="overlap-group">
-                    <div class="symbol-2"></div>
-                    <div class="symbol-3"></div>
-                    <div class="symbol-4"></div>
-                    <div class="symbol-5"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$49.66</div>
-            </div>
-            <div class="div-product-item-12">
-                <div class="div-product-item-pic-10"></div>
-                <div class="heading-basic">Basic Flowing Scarf</div>
-                <div class="overlap-group">
-                    <div class="symbol-2"></div>
-                    <div class="symbol-3"></div>
-                    <div class="symbol-4"></div>
-                    <div class="symbol-5"></div>
-                    <div class="symbol-6"></div>
-                </div>
-                <div class="heading">$26.28</div>
-            </div>
-            <div class="link">
-                <div class="text-wrapper-6">1</div>
-            </div>
-            <div class="link-2">2</div>
-            <div class="link-3">3</div>
-            <div class="text-wrapper-7">...</div>
-            <div class="link-4">21</div>
-        </div>
         <div class="section-form-input">
             <div class="div-placeholder">
-                <div class="text-wrapper-8">Search...</div>
+                <div class="text-wrapper-4">Search...</div>
                 <div class="section-form-button">U</div>
             </div>
         </div>
-        <div class="view-2">
-            <div class="overlap">
-                <div class="categories-wrapper">
+        <div class="view">
+            <div class="overlap-group">
+                <div class="link">
                     <div class="categories">CATEGORIES</div>
                 </div>
-                <div class="symbol-11"></div>
+                <div class="symbol-2"></div>
             </div>
             <div class="div-card-body">
                 <div class="list">
@@ -211,13 +33,56 @@
                     <div class="item-link-shoes">Air Purifier</div>
                     <div class="item-link">Air Conditioner</div>
                     <div class="frame">
-                        <div class="overlap-group-2">
-                            <div class="item-link-kids">Cleaner</div>
-                            <img class="icon-keyboard-arrow" src="img/icon-keyboard-arrow-down.svg"/>
-                        </div>
+                        <div class="item-link-kids">Cleaner</div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="view-2">
+            <p class="p">Showing 1–12 of 126 results</p>
+            <div class="text-wrapper-5">Sort by Price:</div>
+            <div class="div-nice-select">
+                <div class="text-wrapper-6">Low To High</div>
+                <div class="pseudo"></div>
+            </div>
+
+            <th:block th:each="item, status: ${items.getContent()}">
+                <div class="div-product-item">
+                    <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}">
+                    <div class="heading-piqu-biker">[[${item.pname}]]</div>
+                    <div class="heading">[[${item.pprice}]]원</div>
+                </div>
+            </th:block>
+
+            <!--<div class="div-wrapper">
+                <div class="text-wrapper-7">1</div>
+            </div>
+            <div class="link-2">2</div>
+            <div class="link-3">3</div>
+            <div class="text-wrapper-8">...</div>
+            <div class="link-4">21</div>-->
+            <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+                <ul class="pagination justify-content-center">
+
+                    <li class="div-wrapper" th:classappend="${items.number eq 0}?'disabled':''">
+                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="text-wrapper-7">
+                            <span aria-hidden='true'>Previous</span>
+                        </a>
+                    </li>
+
+                    <li class="link-2" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
+                        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+                    </li>
+
+                    <li class="link-3" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
+                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+                            <span aria-hidden='true'>Next</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
         </div>
     </div>
 </div>

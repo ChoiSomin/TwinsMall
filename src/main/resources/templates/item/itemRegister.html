@@ -6,8 +6,8 @@
 <div layout:fragment="script">
     <script type="text/javascript">
         $(document).ready(function () {
-            var errorMessage = [[${errorMessage}]];
-            if (errorMessage != null) {
+            var errorMessage = "[[${errorMessage}]]";
+            if (errorMessage != null && errorMessage !== "") {
                 alert(errorMessage);
             }
 
@@ -69,123 +69,121 @@
 
 <div layout:fragment="content">
     <div class="admin-product">
-        <div class="div">
-            <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}">
-                <input type="hidden" th:field="*{id}">
-                <div class="top">
-                    <div class="heading-check-out">Register</div>
-                    <div class="link-home">상품등록/수정</div>
-                </div>
-                <div class="details">
-                    <div class="heading"></div>
-                    <div class="text-wrapper-3">상품명</div>
-                    <input type="text" th:field="*{pname}" class="input" placeholder="상품명을 입력해주세요">
-                    <p th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}" class="fieldError">Incorrect
-                        data</p>
-                    <div class="text-wrapper-4">판매상태</div>
-                    <div class="frame">
-                        <div class="label-name">
-                            <select th:field="*{pstatus}" class="custom-select">
-                                <option value="SELL">판매중</option>
-                                <option value="SOLD_OUT">품절</option>
-                                <option value="PAUSE">판매 중지</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="text-wrapper-8">가격</div>
-                    <div>
-                        <input type="number" th:field="*{pprice}" class="input-2" placeholder="상품의 가격을 입력해주세요">
-                    </div>
-                    <p th:if="${#fields.hasErrors('pprice')}" th:errors="*{pprice}" class="fieldError2">Incorrect
-                        data</p>
-                    <div class="text-wrapper-9">재고</div>
-                    <div>
-                        <input type="number" th:field="*{pstock}" class="input-3" placeholder="상품의 재고를 입력해주세요">
-                    </div>
-                    <p th:if="${#fields.hasErrors('pstock')}" th:errors="*{pstock}" class="fieldError3">Incorrect
-                        data</p>
-                    <div class="text-wrapper-10">카테고리</div>
-                    <div>
-                        <select th:field="*{pcate}" class="input-4">
-                            <option value="">카테고리를 선택해주세요</option> <!--선택안한 비어있는값-->
-                            <option value="Refrigerator">Refrigerator</option>
-                            <option value="TV">TV</option>
-                            <option value="Laptop">Laptop</option>
-                            <option value="Washing Machine">Washing Machine</option>
-                            <option value="Air Purifier">Air Purifier</option>
-                            <option value="Air Conditioner">Air Conditioner</option>
-                            <option value="Cleaner">Cleaner</option>
+        <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}">
+            <input type="hidden" th:field="*{id}">
+            <div class="top">
+                <div class="heading-check-out">Register</div>
+                <div class="link-home">상품등록/수정</div>
+            </div>
+            <div class="details">
+                <div class="heading"></div>
+                <div class="text-wrapper-3">상품명</div>
+                <input type="text" th:field="*{pname}" class="input" placeholder="상품명을 입력해주세요">
+                <p th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}" class="fieldError">Incorrect
+                    data</p>
+                <div class="text-wrapper-4">판매상태</div>
+                <div class="frame">
+                    <div class="label-name">
+                        <select th:field="*{pstatus}" class="custom-select">
+                            <option value="SELL">판매중</option>
+                            <option value="SOLD_OUT">품절</option>
+                            <option value="PAUSE">판매 중지</option>
                         </select>
                     </div>
-                    <p th:if="${#fields.hasErrors('pcate')}" th:errors="*{pcate}" class="fieldError4">Incorrect
-                        data</p>
-                    <div class="text-wrapper-11">상세설명</div>
-                    <div>
+                </div>
+                <div class="text-wrapper-8">가격</div>
+                <div>
+                    <input type="number" th:field="*{pprice}" class="input-2" placeholder="상품의 가격을 입력해주세요">
+                </div>
+                <p th:if="${#fields.hasErrors('pprice')}" th:errors="*{pprice}" class="fieldError2">Incorrect
+                    data</p>
+                <div class="text-wrapper-9">재고</div>
+                <div>
+                    <input type="number" th:field="*{pstock}" class="input-3" placeholder="상품의 재고를 입력해주세요">
+                </div>
+                <p th:if="${#fields.hasErrors('pstock')}" th:errors="*{pstock}" class="fieldError3">Incorrect
+                    data</p>
+                <div class="text-wrapper-10">카테고리</div>
+                <div>
+                    <select th:field="*{pcate}" class="input-4">
+                        <option value="">카테고리를 선택해주세요</option> <!--선택안한 비어있는값-->
+                        <option value="Refrigerator">Refrigerator</option>
+                        <option value="TV">TV</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Washing Machine">Washing Machine</option>
+                        <option value="Air Purifier">Air Purifier</option>
+                        <option value="Air Conditioner">Air Conditioner</option>
+                        <option value="Cleaner">Cleaner</option>
+                    </select>
+                </div>
+                <p th:if="${#fields.hasErrors('pcate')}" th:errors="*{pcate}" class="fieldError4">Incorrect
+                    data</p>
+                <div class="text-wrapper-11">상세설명</div>
+                <div>
                         <textarea class="input-5" aria-label="With textarea" th:field="*{pdesc}"
                                   placeholder="상품의 내용를 입력해주세요"></textarea>
+                </div>
+                <p th:if="${#fields.hasErrors('pdesc')}" th:errors="*{pdesc}" class="fieldError5">Incorrect
+                    data</p>
+
+
+                <div class="text-wrapper-12">첨부파일(최대 5개 까지 가능합니다.)</div>
+                <div class="frame-2">
+                    <div class="list-item" id="file-list">
+                        <!-- 첨부파일이 여기에 나열될 것입니다. -->
                     </div>
-                    <p th:if="${#fields.hasErrors('pdesc')}" th:errors="*{pdesc}" class="fieldError5">Incorrect
-                        data</p>
 
+                    <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
+                        <img class="icon-folder" src="/img/icon-folder.png" id="add-file-button"
+                             style="cursor: pointer;"/>
+                        <input type="file" id="file-input" name="itemImgFile" style="display: none;" multiple/>
 
-                    <div class="text-wrapper-12">첨부파일(최대 5개 까지 가능합니다.)</div>
-                    <div class="frame-2">
-                        <div class="list-item" id="file-list">
-                            <!-- 첨부파일이 여기에 나열될 것입니다. -->
-                        </div>
-
-                        <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
-                            <img class="icon-folder" src="/img/icon-folder.png" id="add-file-button"
-                                 style="cursor: pointer;"/>
-                            <input type="file" id="file-input" name="itemImgFile" style="display: none;" multiple/>
-
-                        </div>
-                        <div th:if="${not #lists.isEmpty(itemFormDto.itemImgDtoList)}">
-                            <div class="form-group" th:each="itemImgDto, status: ${itemFormDto.itemImgDtoList}">
-                                <div class="label">
-                                    <div class="pseudo">
-                                        <input type="file" class="text-wrapper-13" name="itemImgFile">
-                                        <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">
-                                    </div>
-                                    <label class="custom-file-label"
-                                           th:text="${not #strings.isEmpty(itemImgDto.iimgori)} ? ${itemImgDto.iimgori} : '상품이미지' + ${status.index+1}"></label>
+                    </div>
+                    <div th:if="${not #lists.isEmpty(itemFormDto.itemImgDtoList)}">
+                        <div class="form-group" th:each="itemImgDto, status: ${itemFormDto.itemImgDtoList}">
+                            <div class="label">
+                                <div class="pseudo">
+                                    <input type="file" class="text-wrapper-13" name="itemImgFile">
+                                    <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">
                                 </div>
+                                <label class="custom-file-label"
+                                       th:text="${not #strings.isEmpty(itemImgDto.iimgori)} ? ${itemImgDto.iimgori} : '상품이미지' + ${status.index+1}"></label>
                             </div>
                         </div>
                     </div>
-
-                    <!--<div class="frame-3">
-                        <a th:href="@{/index}" class="text-wrapper-15">취소하기</a>
-                    </div>
-                    <div class="frame-4">
-                        <button class="text-wrapper-16" type="reset">다시입력</button>
-                    </div>
-                    <div class="frame-5">
-                        <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
-                            <button th:formaction="@{/itemRegister}" type="submit" class="text-wrapper-16">저장</button>
-                        </div>
-                        <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
-                            <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
-                                    class="text-wrapper-16">수정
-                            </button>
-                        </div>
-                        </div>-->
-                    <div class="frame-3">취소하기
-                        <a th:href="@{/index}" class="text-wrapper-15"></a>
-                    </div>
-                    <div class="frame-4">다시하기
-                        <button class="text-wrapper-16" type="reset"></button>
-                    </div>
-                    <div class="frame-5">등록하기
-                        <button th:if="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{/itemRegister}"
-                                type="submit" class="text-wrapper-16"></button>
-                        <button th:unless="${#strings.isEmpty(itemFormDto.id)}"
-                                th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
-                                class="text-wrapper-16"></button>
-                    </div>
                 </div>
-            </form>
-        </div>
+
+                <!--<div class="frame-3">
+                    <a th:href="@{/index}" class="text-wrapper-15">취소하기</a>
+                </div>
+                <div class="frame-4">
+                    <button class="text-wrapper-16" type="reset">다시입력</button>
+                </div>
+                <div class="frame-5">
+                    <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
+                        <button th:formaction="@{/itemRegister}" type="submit" class="text-wrapper-16">저장</button>
+                    </div>
+                    <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
+                        <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
+                                class="text-wrapper-16">수정
+                        </button>
+                    </div>
+                    </div>-->
+                <div class="frame-3">취소하기
+                    <a th:href="@{/index}" class="text-wrapper-15"></a>
+                </div>
+                <div class="frame-4">다시하기
+                    <button class="text-wrapper-16" type="reset"></button>
+                </div>
+                <div class="frame-5">등록하기
+                    <button th:if="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{/itemRegister}"
+                            type="submit" class="text-wrapper-16"></button>
+                    <button th:unless="${#strings.isEmpty(itemFormDto.id)}"
+                            th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
+                            class="text-wrapper-16"></button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 </html>

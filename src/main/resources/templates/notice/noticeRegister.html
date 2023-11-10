@@ -47,7 +47,7 @@
                     <button th:if="${#strings.isEmpty(noticeFormDto.nno)}" th:formaction="@{/notice/register}"
                             type="submit" class="text-wrapper-8"></button>
                     <button th:unless="${#strings.isEmpty(noticeFormDto.nno)}"
-                            th:formaction="@{'/admin/item/' + ${noticeFormDto.nno} }" type="submit"
+                            th:formaction="@{'/notice/{nid}/' + ${noticeFormDto.nno} }" type="submit"
                             class="text-wrapper-8"></button>
                 </div>
                 <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->

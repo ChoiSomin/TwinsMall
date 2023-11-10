@@ -1,7 +1,5 @@
 package com.mall.twins.twinsmall.entity;
 
-import com.mall.twins.twinsmall.dto.ItemFormDto;
-import com.mall.twins.twinsmall.dto.NoticeFormDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -33,9 +31,13 @@ public class Notice extends BaseEntity{
     /*@ManyToOne(fetch = FetchType.LAZY)
     private Member member; //작성자*/
 
-    public void updateNotice(NoticeFormDto noticeFormDto){
-        this.ntitle = noticeFormDto.getNtitle();
-        this.ncontent = noticeFormDto.getNcontent();
+    public void updateNtitle(String ntitle){
+        this.ntitle = ntitle;
+        this.ncontent = ncontent;
+    }
+
+    public void updateNcontent(String ncontent){
+        this.ncontent = ncontent;
     }
 
 

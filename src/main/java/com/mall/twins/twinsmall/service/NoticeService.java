@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 @Service
@@ -49,14 +50,14 @@ public class NoticeService {
     }
 
 
-    public Long updateNotice(NoticeFormDto noticeFormDto) throws Exception{
+    /*public Long updateNotice(NoticeFormDto noticeFormDto) throws Exception{
         //상품 수정
         Notice notice = noticeRepository.findById(noticeFormDto.getNno())
                 .orElseThrow(EntityNotFoundException::new);
         notice.updateNotice(noticeFormDto);
 
         return notice.getNid();
-    }
+    }*/
 
     @Transactional(readOnly = true)
     public Page<NoticeFormDto> getNoticeList(NoticeSearchDto noticeSearchDto, Pageable pageable){
@@ -65,7 +66,19 @@ public class NoticeService {
     }
 
     @Transactional
-    public int updateView(Long nid) {
-        return noticeRepository.updateView(nid);
+    public void modify(NoticeFormDto noticeFormDto) {
+
+        Optional<Notice> result = noticeRepository.findById(noticeFormDto.getNno());
+
+        Notice notice = result.get();
+        notice.updateNtitle(noticeFormDto.getNtitle());
+        notice.updateNcontent(noticeFormDto.getNcontent());
+        noticeRepository.save(notice);
+
+    } // modify 구현
+
+    @Transactional
+    public void remove(Long nid) {
+        noticeRepository.deleteById(nid);
     }
 }

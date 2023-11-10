@@ -35,10 +35,13 @@
                   <div class="content-2"><div class="text-2">[[${notice.nno}]]</div></div>
                 </div>
                 <div class="cell-3">
-                  <div class="div-wrapper"><div class="text-2">[[${notice.ntitle}]]</div></div>
+                  <div class="div-wrapper">
+                    <a th:href="@{/notice/{nno}(nno=${notice.nno})}" class="text-2">
+                      <div >[[${notice.ntitle}]]</div></a>
+                  </div>
                 </div>
                 <div class="cell-2">
-                  <div class="content-2"><div class="text-2" th:text="${#temporals.format(notice.regTime, 'yyyy-MM-dd HH:mm:ss')}"></div></div>
+                  <div class="content-2"><div class="text-2" th:text="${#temporals.format(notice.regTime, 'yyyy-MM-dd')}"></div></div>
                 </div>
                 <div class="cell-2">
                   <div class="div-wrapper"><div class="text-3">[[${notice.view}]]</div></div>
