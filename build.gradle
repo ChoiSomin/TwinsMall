@@ -104,3 +104,4 @@ configurations {
     }
     querydsl.extendsFrom compileClasspath
 }
+
