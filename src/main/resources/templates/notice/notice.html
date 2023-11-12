@@ -6,31 +6,27 @@
 <div layout:fragment="script">
   <script type="text/javascript">
 
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('select');
-      var instances = M.FormSelect.init(elems, options);
+    <!--var msg = [[${msg}]];
+
+    console.log(msg);
+
+    if (msg) {
+          $(".modal").modal();
+    }
+
+    var searchForm = $("#searchForm");
+
+    $('#btn-search').click(function (e) {
+
+         searchForm.submit();
+
     });
 
-    // Or with jQuery
+    $('.btn-clear').click(function (e) {
 
-    $(document).ready(function(){
-      $('select').formSelect();
-    });
+            searchForm.empty().submit();
 
-    var msg = [[${msg}]];
-
-        console.log(msg);
-
-        if (msg) {
-            $(".modal").modal();
-        }
-        var searchForm = $("#searchForm");
-
-        $('.btn-search').click(function (e) {
-
-            searchForm.submit();
-
-        });
+        });-->
 
   </script>
 </div>
@@ -42,18 +38,17 @@
       <form action="/notice/list" method="get" id="searchForm">
         <input type="hidden" name="page" value="1">
         <select class="section-form-cate" name="type">
-          <option th:selected="${pageRequestDTO.type == null}"></option>
+          <option th:selected="${pageRequestDTO.type == null}">-----------</option>
           <option th:value="t" th:selected="${pageRequestDTO.type =='t'}">제목</option>
           <option th:value="c" th:selected="${pageRequestDTO.type =='c'}">내용</option>
           <option th:value="tc" th:selected="${pageRequestDTO.type =='tc'}">제목+내용</option>
         </select>
-        <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
         <div class="section-form-input">
           <div class="overlap-group">
             <div class="div-placeholder">
-              <div class="text-wrapper-44">검색</div>
+              <input type="text" name="keyword" th:value="${pageRequestDTO.keyword}" class="text-wrapper-44">검색</input>
             </div>
-            <img class="icon-search-outline btn-search" type="button" th:src="@{/img/icon-search-outline-icon.png}"/>
+            <img class="icon-search-outline btn-search" th:src="@{/img/icon-search-outline-icon.png}" style="cursor: pointer;">
           </div>
         </div>
       </form>
@@ -92,7 +87,7 @@
                 </div>
               </div>
               <div class="cell-2">
-                <div class="content-2"><div class="text-2" th:text="${#temporals.format(dto.regTime, 'yyyy-MM-dd HH:mm:ss')}"></div></div>
+                <div class="content-2"><div class="text-2" th:text="${#temporals.format(dto.regTime, 'yyyy-MM-dd')}"></div></div>
               </div>
               <div class="cell-2">
                 <div class="div-wrapper"><div class="text-3">[[${dto.view}]]</div></div>
@@ -129,6 +124,31 @@
               </a>
             </li>
           </ul>
+        <script th:inline="javascript">
+
+          var msg = [[${msg}]];
+
+          console.log(msg);
+
+          if (msg) {
+              $(".modal").modal();
+          }
+          var searchForm = $("#searchForm");
+
+          $('.btn-search').click(function (e) {
+
+              searchForm.submit();
+
+          });
+
+          $('.btn-clear').click(function (e) {
+
+              searchForm.empty().submit();
+
+          });
+
+
+        </script>
       </div>
       <div class="view11">
         <div class="group11">

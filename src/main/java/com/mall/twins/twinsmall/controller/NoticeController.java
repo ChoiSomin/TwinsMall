@@ -23,8 +23,6 @@ public class NoticeController{
 
     private final NoticeService noticeService;
 
-    private final NoticeServiceImpl noticeServiceImpl;
-
     @GetMapping(value = "/list")
     public String notice(PageRequestDTO pageRequestDTO, Model model){
 
@@ -57,20 +55,6 @@ public class NoticeController{
         return "redirect:/notice/list";
     }
 
-    /*@GetMapping(value = "/{nno}")
-    public String noticeDtl(@PathVariable("nno") Long nno, Model model){
-        try{
-            NoticeFormDto noticeFormDto = noticeServiceImpl.getNoticeDtl(nno); // 조회한 공지사항 데이터를 모델에 담아서 뷰로 전달
-            model.addAttribute("noticeFormDto", noticeFormDto);
-        } catch (EntityNotFoundException e) {
-            model.addAttribute("errormessage", "존재하지 않는 게시글입니다.");
-            *//*model.addAttribute("noticeFormDto", new NoticeFormDto());*//*
-
-            return "notice/notice";
-        }
-        return "notice/noticeDetail";
-    }*/
-
     @GetMapping({"/read", "/modify"})
     public void read(@ModelAttribute("requestDTO") PageRequestDTO pageRequestDTO, Long nno, Model model){
         log.info("notice id : " + nno);
@@ -81,22 +65,6 @@ public class NoticeController{
 
         model.addAttribute("noticeFormDto", noticeFormDto);
     }
-
-   /* @PostMapping(value = "/{nid}")
-    public String noticeUpdate(@Valid NoticeFormDto noticeFormDto, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
-            return "notice/noticeRegister";
-        }
-
-        try {
-            noticeServiceImpl.updateNotice(noticeFormDto);
-        } catch (Exception e){
-            model.addAttribute("errorMessage", "수정 중 에러가 발생하였습니다.");
-            return "notice/noticeRegister";
-        }
-
-        return "redirect:/";
-    }*/
 
     @PostMapping ("/remove")
     public String remove(Long nno, RedirectAttributes redirectAttributes){
