@@ -28,7 +28,7 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
     }
 
 
-    @Override
+    /*@Override
     public Page<NoticeFormDto> getNoticeList(NoticeSearchDto noticeSearchDto, Pageable pageable) {
 
         QNotice notice = QNotice.notice;
@@ -38,7 +38,7 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
         List<NoticeFormDto> content = queryFactory
                 .select(
                         new QNoticeFormDto(
-                                notice.nid,
+                                notice.nno,
                                 notice.ntitle,
                                 notice.ncontent,
                                 notice.regTime,
@@ -47,7 +47,7 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
                                 )
                 )
                 .from(notice)
-                .orderBy(notice.nid.desc())
+                .orderBy(notice.nno.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -59,7 +59,7 @@ public class NoticeRepositoryImpl implements NoticeRepositoryCustom {
                 ;
 
         return new PageImpl<>(content, pageable, total);
-    }
+    }*/
 
 
 

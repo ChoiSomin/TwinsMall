@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="script">
+    <script type="text/javascript">
+       var actionForm = $("form[role='form']"); //form 태그 객체
+
+            $(".removeBtn").click(function(){
+                console.log("Remove button clicked");
+
+                var nnoStr = $("input[name='nno']").val();
+                var nno = parseInt(nnoStr);
+
+                if(!confirm("삭제하시겠습니까?")){
+                    return ;
+                }
+
+                actionForm.append('<input type="hidden" name="nno" value="' + nno + '">');
+
+                actionForm
+                    .attr("action", "/notice/remove")
+                    .attr("method","post")
+                    .submit();
+
+            });
+
+            $(".modifyBtn").click(function() {
+                console.log("Modify button clicked");
+
+                if(!confirm("수정하시겠습니까?")){
+                    return ;
+                }
+
+                actionForm
+                    .attr("action", "/notice/modify")
+                    .attr("method","post")
+                    .submit();
+            });
+
+             $(".listBtn").click(function() {
+                console.log("List button clicked");
+
+                //var pageInfo = $("input[name='page']");
+                var page = $("input[name='page']");
+                var type = $("input[name='type']");
+                var keyword = $("input[name='keyword']");
+
+                actionForm.empty(); //form 태그의 모든 내용을 지우고
+
+           	<!--수정 : type 과 keyword 항목 추가-->
+                actionForm.append(page);
+                actionForm.append(type);
+                actionForm.append(keyword);
+
+
+                actionForm
+                    .attr("action", "/notice/list")
+                    .attr("method","get");
+
+               actionForm.submit();
+
+            })
+    </script>
+</div>
+<div layout:fragment="content">
+    <div class="notice-detail">
+        <div class="top">
+            <div class="heading-our-blog">Notice</div>
+        </div>
+        <div class="text-wrapper-3">공지 수정</div>
+        <form role="form" th:action="@{/notice/modify}" method="post">
+
+            <input type="hidden" name="nno" th:value="${noticeFormDto.nno}">
+            <!--페이지 번호  -->
+            <input type="hidden" name="page" th:value="${requestDTO.page}">
+            <input type="hidden" name="type" th:value="${requestDTO.type}">
+            <input type="hidden" name="keyword" th:value="${requestDTO.keyword}">
+
+            <div class="frame">
+                <div class="table">
+                    <div class="table-2">
+                        <div class="row">
+                            <div class="cell">
+                                <div class="content">
+                                    <input class="text" name="ntitle" th:value="${noticeFormDto.ntitle}">
+                                    <input class="text" name="view" th:value="${noticeFormDto.view}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-wrapper">
+                            <div class="content-wrapper">
+                                <div class="content">
+                                    <textarea class="text-2" name="ncontent"
+                                              th:text="${noticeFormDto.ncontent}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-wrapper">
+                            <div class="content-wrapper">
+                                <div class="content-2">
+                                    <div class="text-3" name="regTime"
+                                         th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}"
+                                         readonly></div>
+                                    <div class="text-4" name="updateTime"
+                                         th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}"
+                                         readonly></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-2">
+                    <a th:href="@{/notice/list}" class="text-wrapper-4">목록보기</a>
+                </div>
+                <div class="frame-3">
+                    <button type="button" class="text-wrapper-5 removeBtn">삭제하기</button>
+                    </a>
+                </div>
+                <div class="frame-4">
+                    <button type="button" class="text-wrapper-4 modifyBtn">수정하기</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

@@ -16,7 +16,7 @@ public class Notice extends BaseEntity{
     @Id
     @Column(name="nno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long nid;
+    private Long nno;
 
     @Column(nullable = false)
     private String ntitle;
@@ -31,14 +31,11 @@ public class Notice extends BaseEntity{
     /*@ManyToOne(fetch = FetchType.LAZY)
     private Member member; //작성자*/
 
-    public void updateNtitle(String ntitle){
+    public void updateNtitle(String ntitle) {
         this.ntitle = ntitle;
-        this.ncontent = ncontent;
     }
 
-    public void updateNcontent(String ncontent){
+    public void updateNcontent(String ncontent) {
         this.ncontent = ncontent;
     }
-
-
 }

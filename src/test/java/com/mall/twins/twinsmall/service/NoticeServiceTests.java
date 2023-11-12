@@ -1,18 +1,17 @@
 package com.mall.twins.twinsmall.service;
 
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
+import com.mall.twins.twinsmall.dto.PageRequestDTO;
+import com.mall.twins.twinsmall.dto.PageResultDTO;
 import com.mall.twins.twinsmall.entity.Notice;
-import com.mall.twins.twinsmall.entity.NoticeImage;
-import com.mall.twins.twinsmall.repository.NoticeImgRepository;
+
 import com.mall.twins.twinsmall.repository.NoticeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class NoticeServiceTests {
+
+    @Autowired
+    NoticeServiceImpl noticeServiceImpl;
 
     @Autowired
     NoticeService noticeService;
@@ -53,7 +55,7 @@ public class NoticeServiceTests {
         noticeFormDto.setNcontent("test tcontent");
 
         List<MultipartFile> multipartFileList = createMultipartFiles();
-        Long NoticeNid = noticeService.saveNotice(noticeFormDto, multipartFileList);
+        Long NoticeNid = noticeServiceImpl.saveNotice(noticeFormDto, multipartFileList);
 
         System.out.println(NoticeNid);
 
@@ -65,5 +67,15 @@ public class NoticeServiceTests {
         assertEquals(multipartFileList.get(0).getOriginalFilename(), noticeImgList.get(0).getNimgori());
     }*/
 
+    @Test
+    public void testList() {
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(1).size(10).build();
+
+        PageResultDTO<NoticeFormDto, Notice> resultDTO = noticeService.getNoticeList(pageRequestDTO);
+
+        for(NoticeFormDto noticeFormDto : resultDTO.getDtoList()){
+            System.out.println(noticeFormDto);
+        }
+    }
 
 }

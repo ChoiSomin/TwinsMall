@@ -17,5 +17,7 @@ public class NoticeSearchDto {
 
     private String keyword;
 
+    private String searchBy;
 
+    private String searchQuery = "";
 }

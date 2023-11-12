@@ -20,22 +20,17 @@
     <div class="notice-register">
         <div class="top">
             <div class="heading-check-out">Register & Modify</div>
-            <div class="link-home">등록 & 수정</div>
+            <div class="link-home">공지 등록</div>
         </div>
         <div class="details">
-            <form role="form" method="post" enctype="multipart/form-data" th:object="${noticeFormDto}">
-                <input type="hidden" th:field="*{nno}">
+            <form th:action="@{/notice/register}" role="form" th:method="post">
                 <div class="heading"></div>
                 <div class="text-wrapper-3">제목</div>
-                <input type="text" th:field="*{ntitle}" class="input" placeholder="제목을 입력해주세요">
-                <p th:if="${#fields.hasErrors('ntitle')}" th:errors="*{ntitle}" class="fieldError">Incorrect
-                    data</p>
+                <input type="text" name="ntitle" class="input" placeholder="제목을 입력해주세요">
                 <div class="text-wrapper-4">내용</div>
                 <div>
-                    <textarea class="input-2" aria-label="With textarea" th:field="*{ncontent}"
+                    <textarea class="input-2" aria-label="With textarea" name="ncontent"
                               placeholder="내용을 입력해주세요"></textarea>
-                    <p th:if="${#fields.hasErrors('ncontent')}" th:errors="*{ncontent}" class="fieldError2">Incorrect
-                        data</p>
                 </div>
                 <div class="frame">취소하기
                     <a th:href="@{/notice/list}" class="text-wrapper-7"></a>
@@ -44,11 +39,7 @@
                     <button class="text-wrapper-8" type="reset"></button>
                 </div>
                 <div class="frame-2">등록하기
-                    <button th:if="${#strings.isEmpty(noticeFormDto.nno)}" th:formaction="@{/notice/register}"
-                            type="submit" class="text-wrapper-8"></button>
-                    <button th:unless="${#strings.isEmpty(noticeFormDto.nno)}"
-                            th:formaction="@{'/notice/{nid}/' + ${noticeFormDto.nno} }" type="submit"
-                            class="text-wrapper-8"></button>
+                    <button type="submit" class="text-wrapper-8"></button>
                 </div>
                 <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
             </form>
