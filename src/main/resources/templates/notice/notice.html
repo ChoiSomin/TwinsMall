@@ -108,13 +108,11 @@
               </a>
             </li>
 
-
             <li class="link-2" th:class=" 'page-item ' + ${notice.page == page?'active':''} " th:each="page: ${notice.pageList}">
-              <a class="page-link"th:href="@{/review/list(page = ${page} ,
+              <a class="page-link" th:href="@{/notice/list(page = ${page} ,
                    type=${pageRequestDTO.type} ,
                    keyword = ${pageRequestDTO.keyword}  )}" th:inline="text">[[${page}]]</a>
             </li>
-
 
             <li class="link-3" th:if="${notice.next}">
               <a class="page-link" th:href="@{/notice/list(page= ${result.end + 1} ,
@@ -124,6 +122,7 @@
               </a>
             </li>
           </ul>
+
         <script th:inline="javascript">
 
           var msg = [[${msg}]];

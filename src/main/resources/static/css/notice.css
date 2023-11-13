@@ -566,6 +566,7 @@
     line-height: 30px;
     white-space: nowrap;
     margin: 0 5px;
+    float: left;
 }
 
 .link-2.active {
