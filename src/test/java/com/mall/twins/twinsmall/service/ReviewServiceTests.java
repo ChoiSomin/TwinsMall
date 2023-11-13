@@ -45,6 +45,7 @@ public class ReviewServiceTests {
     }
 
     @Test
+    /*@WithMockUser(username = "admin", roles = "ADMIN")*/
     void saveReview() throws Exception {
         ReviewFormDto reviewFormDto = new ReviewFormDto();
         reviewFormDto.setRcontent("리뷰내용입니당...");

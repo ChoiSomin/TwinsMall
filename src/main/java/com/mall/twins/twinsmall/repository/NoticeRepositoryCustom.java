@@ -12,6 +12,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface NoticeRepositoryCustom {
 
-    Page<NoticeFormDto> getNoticeList(NoticeSearchDto noticeSearchDto, Pageable pageable);
+    /*Page<NoticeFormDto> getNoticeList(NoticeSearchDto noticeSearchDto, Pageable pageable);*/
 
 }

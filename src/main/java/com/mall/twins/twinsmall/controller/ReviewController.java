@@ -1,8 +1,6 @@
 package com.mall.twins.twinsmall.controller;
 
-import com.mall.twins.twinsmall.dto.NoticeFormDto;
 import com.mall.twins.twinsmall.dto.ReviewFormDto;
-import com.mall.twins.twinsmall.service.NoticeService;
 import com.mall.twins.twinsmall.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

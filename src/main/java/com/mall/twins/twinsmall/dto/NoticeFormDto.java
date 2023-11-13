@@ -2,9 +2,7 @@ package com.mall.twins.twinsmall.dto;
 
 import com.mall.twins.twinsmall.entity.Notice;
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import net.bytebuddy.asm.Advice;
 import org.modelmapper.ModelMapper;
 
@@ -14,8 +12,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class NoticeFormDto{
 
     private Long nno;
@@ -31,7 +31,7 @@ public class NoticeFormDto{
 
     private int view;
 
-    private static ModelMapper modelMapper = new ModelMapper();
+    /*private static ModelMapper modelMapper = new ModelMapper();
 
     public NoticeFormDto() {
 
@@ -53,7 +53,7 @@ public class NoticeFormDto{
         this.regTime = regTime;
         this.updateTime = updateTime;
         this.view = view;
-    }
+    }*/
 
 
 

@@ -28,7 +28,7 @@ public class MemberRepositoryTests {
         IntStream.rangeClosed(1,100).forEach(i -> {
             Member member = Member.builder()
                     .mid("member" + i)
-                    .mpassword(passwordEncoder.encode("1111"))
+                    .mpw(passwordEncoder.encode("1111"))
                     .mname("테스트")
                     .memail("email" + i + "@aaa.bbb")
                     .mphone("010" + i + "0000")

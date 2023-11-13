@@ -5,6 +5,7 @@ import com.mall.twins.twinsmall.dto.ItemSearchDto;
 import com.mall.twins.twinsmall.dto.MainItemDto;
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
 import com.mall.twins.twinsmall.entity.Notice;
+import com.mall.twins.twinsmall.repository.search.SearchNoticeRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +17,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 
-public interface NoticeRepository extends JpaRepository<Notice, Long>, QuerydslPredicateExecutor<Notice> {
+public interface NoticeRepository extends JpaRepository<Notice, Long>, SearchNoticeRepository,
+QuerydslPredicateExecutor<Notice>{
 
     List<Notice> findByNtitle(String ntitle);
 
@@ -31,10 +33,13 @@ public interface NoticeRepository extends JpaRepository<Notice, Long>, QuerydslP
     List<Notice> findByNcontentByNative(@Param("ncontent") String ncontent);
 
     @Modifying
-    @Query(value = "update Notice n set n.view = n.view + 1 where n.nid = :nid")
-    int updateView(@Param("nid") Long id);
+    @Query(value = "update Notice n set n.view = n.view + 1 where n.nno = :nno")
+    int updateView(@Param("nno") Long id);
 
+    @Query(value = "SELECT n FROM Notice n WHERE n.nno = :nno")
+    Object getNoticeById(@Param("nno") Long nno);
 
-
+    @Query(value = "SELECT n FROM Notice n")
+    Page<Object[]> getNoticeWithAll(Pageable pageable);
 
 }
