@@ -109,7 +109,7 @@ public class NoticeController {
         model.addAttribute("maxPage", 5);
 
         //게시물삭제하고 게시물리스트로 넘어가야하므로
-        return "notice/notice";
+        return "redirect:notice/notice";
     }
 
     @PostMapping("/modify")
