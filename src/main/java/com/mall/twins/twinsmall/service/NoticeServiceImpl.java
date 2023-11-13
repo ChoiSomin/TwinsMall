@@ -28,20 +28,6 @@ import java.util.function.Function;
 public class NoticeServiceImpl implements NoticeService{
 
     private final NoticeRepository noticeRepository;
-
-    /*public Long saveNotice(NoticeFormDto noticeFormDto) {
-
-        // 등록
-        Notice notice = noticeFormDto.createNotice();
-        System.out.println("Notice Detail: " + notice.getNcontent()); // 로그 출력
-        System.out.println("Notice Detail: " + notice.getNtitle());
-        noticeRepository.save(notice);
-
-        return notice.getNno();
-
-    }*/
-
-
     @Override
     public Long register(NoticeFormDto dto) {
 
@@ -56,19 +42,8 @@ public class NoticeServiceImpl implements NoticeService{
 
         return notice.getNno();
     }
-
-    /*@Transactional(readOnly = true)
-    public NoticeFormDto getNoticeDtl(Long nno){
-
-        Notice notice = noticeRepository.findById(nno).orElseThrow(EntityNotFoundException::new); // 공지의 번호를 통해 공지 엔티티를 조회
-
-        NoticeFormDto noticeFormDto = NoticeFormDto.of(notice);
-
-        return noticeFormDto;
-    }*/
-
     @Transactional(readOnly = true)
-    public PageResultDTO<NoticeFormDto, Notice> getNoticeList(PageRequestDTO pageRequestDTO){
+    public PageResultDTO<NoticeFormDto, Notice> getNoticeList(PageRequestDTO pageRequestDTO) {
         log.info(pageRequestDTO);
 
         Pageable pageable = pageRequestDTO.getPageable(Sort.by("nno").descending());
@@ -80,18 +55,6 @@ public class NoticeServiceImpl implements NoticeService{
 
         return new PageResultDTO<>(result, fn);
     }
-
-    /*@Override
-    public NoticeFormDto get(Long nno) {
-        Object result = noticeRepository.getNoticeById(nno);
-
-        if (result instanceof Notice) {
-            // 반환된 객체가 Notice 엔티티일 경우에만 변환 진행
-            return NoticeFormDto.of((Notice) result);
-        }
-
-        return null;
-    } // read 구현*/
 
     @Override
     public NoticeFormDto read(Long nno) {

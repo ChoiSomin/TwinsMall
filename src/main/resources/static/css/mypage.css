@@ -658,6 +658,7 @@
     position: absolute;
     letter-spacing: 0;
     line-height: 25px;
+    text-decoration: none;
 }
 
 .mypage .frame-2 {

@@ -1,8 +1,6 @@
 package com.mall.twins.twinsmall.security.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -30,7 +28,7 @@ public class MemberSecurityDTO extends User implements OAuth2User {
     @NotEmpty
     private String memail;
 
-    private String mbirthday;
+    private String mbirth;
 
     private String mphone;
 
@@ -41,7 +39,7 @@ public class MemberSecurityDTO extends User implements OAuth2User {
     private Map<String, Object> props;  // 소셜 로그인 정보
 
     public MemberSecurityDTO(String mid, String mpassword, String mname, String memail,
-                             String mbirthday, String mphone, Boolean mdel, Boolean msocial,
+                             String mbirth, String mphone, Boolean mdel, Boolean msocial,
                              Collection<? extends GrantedAuthority> authorities) {
 
         super(mid, mpassword, authorities == null ? Collections.emptyList() : authorities);
@@ -50,7 +48,7 @@ public class MemberSecurityDTO extends User implements OAuth2User {
         this.mpassword = mpassword;
         this.mname = mname;
         this.memail = memail;
-        this.mbirthday = mbirthday;
+        this.mbirth = mbirth;
         this.mphone = mphone;
         this.mdel = mdel;
         this.msocial = msocial;

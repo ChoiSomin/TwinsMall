@@ -87,6 +87,8 @@ public class Member extends BaseEntity {
         this.mdel = mdel;
     }
 
+    public void changeBirth(String mbirth) { this.mbirth = mbirth; }
+
     public void addRole(MemberRole memberRole) {
         this.roleSet.add(memberRole);
     }

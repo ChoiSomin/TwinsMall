@@ -9,50 +9,50 @@
             <div class="heading-our-blog">Notice</div>
         </div>
         <div class="text-wrapper-3">공지사항</div>
-        <form th:action="@{/notice/register}" th:method="post">
-            <div class="frame">
-                <div class="table">
-                    <div class="table-2">
-                        <div class="row">
-                            <div class="cell">
-                                <div class="content">
-                                    <div class="text" name="notice_title" th:if="${noticeFormDto != null}" th:text="${noticeFormDto.ntitle}" readonly></div>
-                                </div>
+        <div class="frame">
+            <div class="table">
+                <div class="table-2">
+                    <div class="row">
+                        <div class="cell">
+                            <div class="content">
+                                <div class="text" name="notice_title" th:if="${noticeFormDto != null}"
+                                     th:text="${noticeFormDto.ntitle}" readonly></div>
                             </div>
                         </div>
-                        <div class="cell-wrapper">
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <div class="text-2" name="notice_content" th:if="${noticeFormDto != null}" th:text="${noticeFormDto.ncontent}"
-                                         readonly>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="div-wrapper">
-                            <div class="content-wrapper">
-                                <div class="content-2">
-                                    <div class="text-3" name="regTime" th:if="${noticeFormDto != null}"
-                                         th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}"
-                                         readonly></div>
-                                    <div class="text-4" name="modTime" th:if="${noticeFormDto != null}"
-                                         th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}"
-                                         readonly></div>
+                    </div>
+                    <div class="cell-wrapper">
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <div class="text-2" name="notice_content" th:if="${noticeFormDto != null}"
+                                     th:text="${noticeFormDto.ncontent}"
+                                     readonly>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="frame-2">
-                    <a th:href="@{/notice/list}" class="text-wrapper-4">목록보기</a>
-                </div>
-                <div class="frame-4">
-                    <a th:href="@{/notice/modify(nno = ${noticeFormDto.nno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
-                        <button type="button" class="text-wrapper-4 editBtn">수정하기</button>
-                    </a>
+                    <div class="div-wrapper">
+                        <div class="content-wrapper">
+                            <div class="content-2">
+                                <div class="text-3" name="regTime" th:if="${noticeFormDto != null}"
+                                     th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}"
+                                     readonly></div>
+                                <div class="text-4" name="modTime" th:if="${noticeFormDto != null}"
+                                     th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}"
+                                     readonly></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
+            <div class="frame-2">
+                <a th:href="@{/notice/list}" class="text-wrapper-4">목록보기</a>
+            </div>
+            <div class="frame-4">
+                <a th:href="@{/notice/modify(nno = ${noticeFormDto.nno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+                    <div class="text-wrapper-4">수정하기</div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 </html>

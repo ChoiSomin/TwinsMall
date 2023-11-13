@@ -2,14 +2,19 @@ package com.mall.twins.twinsmall.service;
 
 import com.mall.twins.twinsmall.constant.MemberRole;
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
+import com.mall.twins.twinsmall.dto.NoticeFormDto;
 import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.entity.Notice;
 import com.mall.twins.twinsmall.repository.MemberRepository;
+import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.sound.midi.MetaMessage;
 import java.util.Optional;
 
 @Log4j2
@@ -49,6 +54,26 @@ public class MemberServiceImpl implements MemberService {
         validateDuplicateMember(member);
         return memberRepository.save(member);
     }
+
+    @Transactional
+    @Override
+    public void modify(MemberJoinDTO memberJoinDTO) {
+
+        Optional<Member> result = memberRepository.findById(memberJoinDTO.getMid());
+
+        if(result.isPresent()){
+
+            Member member = result.get();
+
+            member.changeName(memberJoinDTO.getMname());
+            member.changeEmail(memberJoinDTO.getMemail());
+            member.changePhone(memberJoinDTO.getMphone());
+            member.changeBirth(memberJoinDTO.getMbirth());
+
+            memberRepository.save(member);
+        }
+
+    } // modify 구현
 
     private void validateDuplicateMember(Member member){
         Member findMember = memberRepository.findByMid(member.getMid());

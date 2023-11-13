@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="script">
+    <script type="text/javascript">
+
+        var actionForm = $("form[role='form']"); //form 태그 객체
+
+        $(".modifyBtn").click(function () {
+            console.log("Modify button clicked");
+
+            if (!confirm("수정하시겠습니까?")) {
+                return;
+            }
+
+            actionForm
+                .attr("action", "/mypage/modify")
+                .attr("method", "post")
+                .submit();
+        });
+
+    </script>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="mypage">
+        <div class="top">
+            <div class="heading-check-out">내 정보</div>
+            <div class="overlap-group">
+                <div class="link-home">내 정보 수정</div>
+            </div>
+        </div>
+        <div class="details">
+            <form role="form" th:action="@{/mypage/modify}" method="post">
+                <div class="heading">
+                    <p class="p">나의 정보가 변경되었다면 우리 수정해 볼까요?</p>
+                    <img class="family" src="/img/family.png"/>
+                </div>
+                <div class="overlap">
+                    <div class="text-wrapper-3">아이디 (수정 불가능)</div>
+                </div>
+                <input type="text" class="input" name="id" th:value="${member.mid}" readonly>
+                <div class="overlap-2">
+                    <div class="text-wrapper-5">이름</div>
+                </div>
+                <input type="text" class="input-2" name="name" th:value="${member.mname}">
+                <div class="overlap-3">
+                    <div class="text-wrapper-7">핸드폰번호</div>
+                </div>
+                <input type="text" class="input-3" name="phone" th:value="${member.mphone}">
+                <div class="overlap-4">
+                    <div class="text-wrapper-9">생년월일</div>
+                </div>
+                <input type="text" class="input-4" name="birth" th:value="${member.mbirth}">
+                <!--<div class="overlap-5">
+                  <div class="text-wrapper-11">비밀번호 확인</div>
+                  <div class="text-wrapper-12">*</div>
+                </div>
+                <div class="input-5"></div>-->
+                <div class="overlap-6">
+                    <div class="text-wrapper-13">Email</div>
+                </div>
+                <input type="text" class="input-6" name="email" th:value="${member.memail}">
+
+                <div class="div-wrapper">
+                    <a th:href="@{/index}" class="text-wrapper-18">비밀번호 변경</a>
+                </div>
+                <div class="frame">
+                    <button class="text-wrapper-17" type="reset">다시입력</button>
+                </div>
+                <div class="frame-2">
+                    <button type="button" class="text-wrapper-17 modifyBtn">수정하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</html>
