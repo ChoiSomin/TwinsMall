@@ -3,13 +3,18 @@ package com.mall.twins.twinsmall.config;
 import com.mall.twins.twinsmall.security.CustomUserDetailsService;
 import com.mall.twins.twinsmall.security.handler.Custom403Handler;
 import com.mall.twins.twinsmall.security.handler.CustomSocialLoginSuccessHandler;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,13 +42,24 @@ public class CustomSecurityConfig {
     }
 
     @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+
+        authenticationProvider.setUserDetailsService(this.userDetailsService);
+        authenticationProvider.setPasswordEncoder(this.passwordEncoder());
+        authenticationProvider.setHideUserNotFoundExceptions(false);
+        return authenticationProvider;
+    }
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         log.info("SecurityConfig.filterChain() 로그인 시 실행");
 
         // 커스텀 로그인 페이지
         http.formLogin()
-                .loginPage("/member/login")                                                // Form 로그인 기능 작동, 커스텀 로그인 페이지
+                .loginPage("/member/login")                                                 // Form 로그인 기능 작동, 커스텀 로그인 페이지
+                .loginProcessingUrl("/auth/loginProc")                                      // 시큐리티에서 해당 주소로 오는 요청을 낚아채 수행 //
                 .defaultSuccessUrl("/index")                                               // 로그인 성공시 index 페이지로 이동
                 .failureUrl("/member/login/error")                      // 로그인 실패 시 이동할 URL 설정
                 .and()

@@ -51,7 +51,7 @@
                 <h1>로그아웃</h1>
             </th:block>
 
-            <form id="loginForm" action="/member/login" method="post" th:if="${param.logout == null}">
+            <form id="loginForm" action="/auth/loginProc" method="post" th:if="${param.logout == null}">
                 <div class="heading">
                     <p class="p">아직 회원이 아니신가요? 가입하고 특별한 혜택을 누려보세요!</p>
                     <img class="family" th:src="@{/img/family.png}"/>

@@ -29,7 +29,7 @@ public class CustomSocialLoginSuccessHandler implements AuthenticationSuccessHan
 
         // 소셜 로그인이고 회원 비밀번호가 1111인 경우
         if(memberSecurityDTO.getMsocial() &&
-                (memberSecurityDTO.getMpassword().equals("1111") || passwordEncoder.matches("1111", memberSecurityDTO.getMpassword()))) {
+                (memberSecurityDTO.getMpw().equals("1111") || passwordEncoder.matches("1111", memberSecurityDTO.getMpw()))) {
 
             response.sendRedirect("/index");
 
