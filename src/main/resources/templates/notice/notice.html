@@ -11,22 +11,22 @@
     console.log(msg);
 
     if (msg) {
-          $(".modal").modal();
+      $(".modal").modal();
     }
 
     var searchForm = $("#searchForm");
 
     $('#btn-search').click(function (e) {
 
-         searchForm.submit();
+      searchForm.submit();
 
     });
 
     $('.btn-clear').click(function (e) {
 
-            searchForm.empty().submit();
+      searchForm.empty().submit();
 
-        });-->
+    });-->
 
   </script>
 </div>
@@ -98,57 +98,32 @@
       </div>
 
       <div class="frame-120">
-          <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center">
 
-            <li class="link" th:if="${notice.prev}">
-              <a class="page-link" th:href="@{/notice/list(page= ${notice.start -1},
+          <li class="link" th:if="${notice.prev}">
+            <a class="page-link" th:href="@{/notice/list(page= ${notice.start -1},
                     type=${pageRequestDTO.type} ,
-                    keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">
-                <span aria-hidden='true'>이전페이지</span>
-              </a>
-            </li>
+                    keyword = ${pageRequestDTO.keyword})}" tabindex="-1">
+              <span aria-hidden='true'>이전페이지</span>
+            </a>
+          </li>
 
 
-            <li class="link-2" th:class=" 'page-item ' + ${notice.page == page?'active':''} " th:each="page: ${notice.pageList}">
-              <a class="page-link"th:href="@{/review/list(page = ${page} ,
+          <li class="link-2" th:class=" 'page-item ' + ${notice.page == page?'active':''} " th:each="page: ${notice.pageList}">
+            <a class="page-link" th:href="@{/notice/list(page = ${page} ,
                    type=${pageRequestDTO.type} ,
-                   keyword = ${pageRequestDTO.keyword}  )}" th:inline="text">[[${page}]]</a>
-            </li>
+                   keyword = ${pageRequestDTO.keyword})}" th:inline="text">[[${page}]]</a>
+          </li>
 
 
-            <li class="link-3" th:if="${notice.next}">
-              <a class="page-link" th:href="@{/notice/list(page= ${result.end + 1} ,
+          <li class="link-3" th:if="${notice.next}">
+            <a class="page-link" th:href="@{/notice/list(page= ${result.end + 1} ,
                     type=${pageRequestDTO.type} ,
-                    keyword = ${pageRequestDTO.keyword} )}" aria-label='Next'>
-                <span aria-hidden='true'>다음페이지</span>
-              </a>
-            </li>
-          </ul>
-        <script th:inline="javascript">
-
-          var msg = [[${msg}]];
-
-          console.log(msg);
-
-          if (msg) {
-              $(".modal").modal();
-          }
-          var searchForm = $("#searchForm");
-
-          $('.btn-search').click(function (e) {
-
-              searchForm.submit();
-
-          });
-
-          $('.btn-clear').click(function (e) {
-
-              searchForm.empty().submit();
-
-          });
-
-
-        </script>
+                    keyword = ${pageRequestDTO.keyword})}" aria-label='Next'>
+              <span aria-hidden='true'>다음페이지</span>
+            </a>
+          </li>
+        </ul>
       </div>
       <div class="view11">
         <div class="group11">
@@ -158,5 +133,29 @@
     </div>
   </div>
 </div>
+<script th:inline="javascript">
 
+  var msg = [[${msg}]];
+
+  console.log(msg);
+
+  if (msg) {
+    $(".modal").modal();
+  }
+  var searchForm = $("#searchForm");
+
+  $('.btn-search').click(function (e) {
+
+    searchForm.submit();
+
+  });
+
+  $('.btn-clear').click(function (e) {
+
+    searchForm.empty().submit();
+
+  });
+
+
+</script>
 </html>
