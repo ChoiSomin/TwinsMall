@@ -2,7 +2,6 @@ package com.mall.twins.twinsmall.controller;
 
 import com.mall.twins.twinsmall.dto.ItemSearchDto;
 import com.mall.twins.twinsmall.dto.MainItemDto;
-import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -46,7 +45,6 @@ public class indexController {
 
     }
 
-
     @GetMapping(value = "/")
     public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
@@ -59,6 +57,8 @@ public class indexController {
 
         return "main";
     }
+
+
 
 
 

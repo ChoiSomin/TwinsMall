@@ -99,4 +99,5 @@ public class CustomSecurityConfig {
 
         return new CustomSocialLoginSuccessHandler(passwordEncoder());
     }
+
 }

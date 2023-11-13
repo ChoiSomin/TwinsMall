@@ -56,10 +56,13 @@
                         </a>
                     </div>
                 </div>
-                <a href="/oauth2/authorization/google">
-                    <img class="icon-google-icon" th:src="@{/img/icon-google-icon.png}"></a>
+                <!--<a href="/oauth2/authorization/naver">-->
+                <a href="naver-login">
+                    <img class="icon-google-icon" th:src="@{/img/icon-naver-icon.png}"></a>
                 <a href="/oauth2/authorization/kakao">
                     <img class="SNS-kakaotalk" th:src="@{/img/sns-kakaotalk.svg}"></a>
+
+
                 <div class="text-wrapper-10">
                     간편 로그인
                 </div>
@@ -85,4 +88,11 @@
     }, false)
 
 </script>
+
+<script type="text/javascript">
+    function naverLogin() {
+        location.href = "${naver_url}";
+    }
+</script>
+
 </html>

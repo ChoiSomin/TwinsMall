@@ -27,8 +27,8 @@
             </div>
             <div class="div-product-item">
                 <th:block th:each="item, status: ${items.getContent()}">
-                    <a th:href="'/item/' +${item.id}"></a>
-                    <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}" height="400">
+                    <a th:href="'/item/' +${item.id}" class="text-dark">
+                        <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}" height="400"></a>
                     <h4 class="heading-piqu-biker">[[${item.pname}]]</h4>
                     <div class="overlap-group">
                         <div class="symbol-2"></div>

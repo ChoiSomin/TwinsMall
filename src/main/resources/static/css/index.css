@@ -954,6 +954,17 @@
     top: 0;
 }
 
+.index .div-product-item-pic-1 {
+    width: 262px;
+    height: 260px;
+    left: 0;
+    background-image: url(../img/chocopie.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 0;
+}
+
 .index .heading-lether {
     position: absolute;
     width: 113px;
