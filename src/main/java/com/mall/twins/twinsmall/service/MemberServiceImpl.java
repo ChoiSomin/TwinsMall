@@ -10,6 +10,7 @@ import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -74,6 +75,8 @@ public class MemberServiceImpl implements MemberService {
         /* DB에 저장되어있는 암호화된 비밀번호 */
         String realPassword = member.getMpw();
 
+        log.info(realPassword);
+
         /* 입력한 비밀번호와 암호화되어 저장되어있는 비밀번호가 일치하는지 확인 */
         boolean matches = passwordEncoder.matches(checkPassword, realPassword);
 
@@ -88,60 +91,73 @@ public class MemberServiceImpl implements MemberService {
 
         Optional<Member> optionalMember = memberRepository.findByMemail(memail);
 
-        if (optionalMember.isPresent()) {
-            Member member = optionalMember.get();
-
-            if (memberRepository.existsByEmail(memail)) {
-
-                if (member.getMid() == mid) {
-                    // 입력 받은 이메일의 회원 id와 일치한다면 즉, 현재 이메일을 그대로 입력한 경우
-                    return false;
-                } else {
-                    // 다른 사람이 사용하고 있는 이메일이라면
-                    return true;
-                }
-            } else {
-                // 중복된 이메일이 아니라면
+        return optionalMember.map(member -> {
+            if (member.getMid().equals(mid)) {
+                // 입력 받은 이메일의 회원 id와 일치한다면 즉, 현재 이메일을 그대로 입력한 경우
                 return false;
+            } else {
+                // 다른 사람이 사용하고 있는 이메일이라면
+                return true;
             }
-        }
-        return false;
+        }).orElse(false); // 회원이 없는 경우 중복된 것이 아니므로 false 반환
     }
 
     /**
-     * 닉네임 중복 체크
+     * 전화번호 중복 체크
      **/
     @Override
     public boolean checkPhone(String mid, String mphone) {
+        Optional<Member> optionalMember = memberRepository.findByMphone(mphone);
 
-        if (memberRepository.existsByPhone(mphone)) {
-            /*if (memberRepository.existsByPhone(mphone).getId() == member_id) {
-                // 입력 받은 닉네임의 회원 id와 일치한다면 즉, 현재 닉네임을 그대로 입력한 경우
+        return optionalMember.map(member -> {
+            if (member.getMid().equals(mid)) {
+                // 입력 받은 이메일의 회원 id와 일치한다면 즉, 현재 이메일을 그대로 입력한 경우
                 return false;
             } else {
-                // 다른 사람이 사용하고 있는 닉네임이라면
+                // 다른 사람이 사용하고 있는 이메일이라면
                 return true;
-            }*/
-        } else {
-            // 중복된 닉네임이 아니라면
-            return false;
-        }
+            }
+        }).orElse(false); // 회원이 없는 경우 중복된 것이 아니므로 false 반환
     }
+
 
     /**
      * 회원 수정
      **/
+    @Transactional
     @Override
-    public void userInfoUpdate(MemberJoinDTO memberDto) {
+    public void userInfoUpdate(MemberJoinDTO dto) {
 
-        /* 회원 찾기 *//*
-        Member member = memberRepository.findById(memberDto.toEntity().getId()).orElseThrow(() ->
-                new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+        /* 회원 찾기 */
+        Member member = memberRepository.findById(dto.toEntity().getMid())
+                .orElse(null);
 
-        *//* 수정한 비밀번호 암호화 *//*
-        String encryptPassword = encoder.encode(memberDto.getPassword());
-        member.update(memberDto.getNickname(), encryptPassword); // 회원 수정
+        log.info("member : " + member);
+        if (member == null) {
+            throw new IllegalArgumentException("해당 회원이 존재하지 않습니다.");
+        }
 
-        log.info("회원 수정 성공");*/
+       /* 수정한 비밀번호 암호화 */
+        String encryptPassword = passwordEncoder.encode(dto.getMpw());
+
+        log.info(encryptPassword);
+
+        member.update(dto.getMname(), dto.getMemail(), dto.getMbirth(), dto.getMphone(), encryptPassword); // 회원 수정
+
+        log.info("회원 수정 성공");
+
+        log.info("Updated Member: " + member);
+    }
+
+    @Override
+    public boolean withdrawal(String mid) {
+        Member member = memberRepository.findByMid(mid);
+
+        if (member != null) {
+            memberRepository.delete(member);
+            return true;
+        } else {
+            throw new UsernameNotFoundException("아이디가 존재하지 않습니다.");
+        }
     }
 }

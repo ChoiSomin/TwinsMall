@@ -1,5 +1,7 @@
 package com.mall.twins.twinsmall.dto;
 
+import com.mall.twins.twinsmall.constant.MemberRole;
+import com.mall.twins.twinsmall.entity.Member;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
@@ -34,4 +36,22 @@ public class MemberJoinDTO {
     private boolean mdel;
 
     private boolean msocial;
+
+    /** 암호화된 password **/
+    public void encryptPassword(String BCryptpassword){
+        this.mpw = BCryptpassword;
+    }
+
+    public Member toEntity(){
+        Member member = Member.builder()
+                .mid(mid)
+                .mname(mname)
+                .memail(memail)
+                .mbirth(mbirth)
+                .mphone(mphone)
+                .role(MemberRole.USER)
+                .build();
+
+        return member;
+    }
 }

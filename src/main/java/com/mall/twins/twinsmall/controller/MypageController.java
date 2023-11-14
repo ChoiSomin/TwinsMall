@@ -14,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -68,8 +69,14 @@ public class MypageController {
     }
 
     @GetMapping("/check")
+    @ResponseBody
     public boolean checkPassword(@AuthenticationPrincipal UserAdapter user, @RequestParam String checkPassword, Model model) {
         log.info("checkPwd 진입");
+
+        if (user == null) {
+            log.info("user가 존재하지 않음");
+            return false;
+        }
 
         String mid = user.getMember().getMid();
 
@@ -80,6 +87,7 @@ public class MypageController {
      * 회원 정보 수정
      **/
     @PutMapping("/modify")
+    @ResponseBody
     public boolean update(@RequestBody MemberJoinDTO dto) {
 
         log.info("MemberRestController 진입");
@@ -92,6 +100,8 @@ public class MypageController {
         } else {
             log.info("사용 가능");
         }
+
+        log.info("dto : " + dto);
         // 회원 정보 수정
         memberService.userInfoUpdate(dto);
 
@@ -104,6 +114,21 @@ public class MypageController {
         /* 2. SecurityContextHolder 안에 있는 Context를 호출해 변경된 Authentication으로 설정 */
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return true;
+    }
+
+    /* 회원탈퇴 */
+    @PostMapping("/delete")
+    public String memberDelete(Model model, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        boolean result = memberService.withdrawal(userDetails.getUsername());
+
+        if (result) {
+            return "redirect:/logout";
+        } else {
+            model.addAttribute("wrongPassword", "비밀번호가 맞지 않습니다.");
+            return "/member/withdrawal";
+        }
     }
 }
 

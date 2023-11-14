@@ -63,6 +63,14 @@ public class Member extends BaseEntity {
         return member;
     }
 
+    public void update(String mname, String memail, String mbirth, String mphone, String mpw){
+        this.mname = mname;
+        this.memail = memail;
+        this.mbirth = mbirth;
+        this.mphone = mphone;
+        this.mpw = mpw;
+    }
+
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
     private Set<MemberRole> roleSet = new HashSet<>();

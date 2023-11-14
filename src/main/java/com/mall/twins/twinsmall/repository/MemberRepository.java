@@ -17,6 +17,10 @@ public interface MemberRepository extends JpaRepository<Member, String> {
     Optional<Member> findByMemail(String memail);
 
     @EntityGraph(attributePaths = "roleSet")
+    Optional<Member> findByMphone(String mphone);
+
+    /** Security - username이 DB에 존재하는지 확인 **/
+    @EntityGraph(attributePaths = "roleSet")
     Member findByMid(String mid);
 
     /**
@@ -24,6 +28,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
      * 중복 : true
      * 중복이 아닌 경우 : false
      */
-    boolean existsByPhone(String mphone);
-    boolean existsByEmail(String memail);
+    /*boolean existsByPhone(String mphone);
+    boolean existsByEmail(String memail);*/
 }

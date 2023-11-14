@@ -4,13 +4,14 @@ import com.mall.twins.twinsmall.entity.Member;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
 @Getter
-public class CustomUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails, OAuth2User {
 
     private Member member;
     private Map<String, Object> attribute;
@@ -52,24 +53,34 @@ public class CustomUserDetails implements UserDetails {
     /* 계정 만료 여부 : 만료 */
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     /* 계정 잠김 여부 : 잠기지 않음 */
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     /* 비밀번호 만료 여부 : 만료 */
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     /* 사용자 활성화 여부 : 활성화 됨 */
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return null;
     }
 }

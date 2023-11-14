@@ -19,11 +19,14 @@ public interface MemberService {
     void join(MemberJoinDTO memberJoinDTO) throws MidExistException;
 
     /** 회원 수정 **/
-    void userInfoUpdate(MemberJoinDTO memberDto);
+    void userInfoUpdate(MemberJoinDTO dto);
 
     /** 이메일 중복 체크 **/
     boolean checkEmail(String mid, String memail);
 
     /** 전화번호 중복 체크 **/
     boolean checkPhone(String mid, String mphone);
+
+    /** 회원탈퇴 **/
+    boolean withdrawal(String mid);
 }

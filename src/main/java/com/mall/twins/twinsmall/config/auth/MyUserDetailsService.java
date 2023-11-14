@@ -21,8 +21,9 @@ public class MyUserDetailsService implements UserDetailsService {
 
     /** username이 DB에 존재하는지 확인 **/
     @Override
-    public UserDetails loadUserByUsername(String mid) throws UsernameNotFoundException {
-        Member member = memberRepository.findByMid(mid);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Member member = memberRepository.findByMid(username);
 
         if (member != null) {
             /** 시큐리티 세션에 유저 정보 저장**/
