@@ -72,6 +72,11 @@ public class CustomSecurityConfig {
 
         http.csrf().disable();                                                             // CSRF 토큰 비활성화 (기본값은 GET 방식 제외 요구) -> USERNAME과 PASSWORD 만으로 로그인 가능
 
+
+        http.authorizeRequests() // URL 패턴에 따른 접근 권한을 설정
+                        .antMatchers("/itemRegister", "/notice/register", "notice/modify").hasAnyAuthority("ROLE_ADMIN")
+                        .antMatchers("/mypage/**").authenticated()
+                        .anyRequest().permitAll();
         // 쿠키를 이용해서 로그인 정보 유지, (persistent_logins) 테이블 이용
         http.rememberMe()
                 .key("12345678")

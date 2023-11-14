@@ -23,7 +23,7 @@
                     <a th:href="@{/notice/list}">
                         <div class="nav-list-item-link-3">Notice</div>
                     </a>
-                    <li sec:authorize="isAuthenticated() and !hasAuthority('ROLE_ADMIN')">
+                    <li sec:authorize="isAuthenticated() and !hasAuthority('ADMIN')">
                         <a th:href="@{/mypage/read}">
                             <div class="nav-list-item-link-4">Mypage</div>
                         </a>
