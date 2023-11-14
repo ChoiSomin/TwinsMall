@@ -5,66 +5,66 @@
 
 <div layout:fragment="script">
     <script type="text/javascript">
-       var actionForm = $("form[role='form']"); //form 태그 객체
+        var actionForm = $("form[role='form']"); //form 태그 객체
 
-            $(".removeBtn").click(function(){
-                console.log("Remove button clicked");
+        $(".removeBtn").click(function(){
+            console.log("Remove button clicked");
 
-                var nnoStr = $("input[name='nno']").val();
-                var nno = parseInt(nnoStr);
+            var nnoStr = $("input[name='nno']").val();
+            var nno = parseInt(nnoStr);
 
-                if(!confirm("삭제하시겠습니까?")){
-                    return ;
-                }
+            if(!confirm("삭제하시겠습니까?")){
+                return ;
+            }
 
-                actionForm.append('<input type="hidden" name="nno" value="' + nno + '">');
+            actionForm.append('<input type="hidden" name="nno" value="' + nno + '">');
 
-                actionForm
-                    .attr("action", "/notice/remove")
-                    .attr("method","post")
-                    .submit();
+            actionForm
+                .attr("action", "/notice/remove")
+                .attr("method","post")
+                .submit();
 
-            });
+        });
 
-            $(".modifyBtn").click(function() {
-                console.log("Modify button clicked");
+        $(".modifyBtn").click(function() {
+            console.log("Modify button clicked");
 
-                if(!confirm("수정하시겠습니까?")){
-                    return ;
-                }
+            if(!confirm("수정하시겠습니까?")){
+                return ;
+            }
 
-                actionForm
-                    .attr("action", "/notice/modify")
-                    .attr("method","post")
-                    .submit();
-            });
+            actionForm
+                .attr("action", "/notice/modify")
+                .attr("method","post")
+                .submit();
+        });
 
-             $(".listBtn").click(function() {
-                console.log("List button clicked");
+        $(".listBtn").click(function() {
+            console.log("List button clicked");
 
-                //var pageInfo = $("input[name='page']");
-                var page = $("input[name='page']");
-                var type = $("input[name='type']");
-                var keyword = $("input[name='keyword']");
+            //var pageInfo = $("input[name='page']");
+            var page = $("input[name='page']");
+            var type = $("input[name='type']");
+            var keyword = $("input[name='keyword']");
 
-                actionForm.empty(); //form 태그의 모든 내용을 지우고
+            actionForm.empty(); //form 태그의 모든 내용을 지우고
 
-           	<!--수정 : type 과 keyword 항목 추가-->
-                actionForm.append(page);
-                actionForm.append(type);
-                actionForm.append(keyword);
+            <!--수정 : type 과 keyword 항목 추가-->
+            actionForm.append(page);
+            actionForm.append(type);
+            actionForm.append(keyword);
 
 
-                actionForm
-                    .attr("action", "/notice/list")
-                    .attr("method","get");
+            actionForm
+                .attr("action", "/notice/list")
+                .attr("method","get");
 
-               actionForm.submit();
+            actionForm.submit();
 
-            })
+        })
 
         function history_back() {
-                history.back();
+            history.back();
         }
     </script>
 </div>

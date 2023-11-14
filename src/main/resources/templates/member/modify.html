@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="details">
-            <form role="form" th:action="@{/member/delete}" th:object="${member}">
+            <form role="form" method="post" th:action="@{/mypage/delete}" th:object="${member}">
                 <div class="heading">
                     <p class="p">나의 정보가 변경되었다면 우리 수정해 볼까요?</p>
                     <img class="family" src="/img/family.png"/>
