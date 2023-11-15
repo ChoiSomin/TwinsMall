@@ -9,13 +9,18 @@
         /* 회원 가입이 실패했다면 에러 메시지를 경고창으로 보여줌 */
         $(document).ready(function () {
             var errorMessage = "[[${errorMessage}]]";
+            var successMessage = "[[${successMessage}]]";
 
             console.log(errorMessage);
 
             if (errorMessage !== "null" && errorMessage !== "") {
                 alert(errorMessage);
+            } else if (successMessage !== "null" && successMessage !== "") {
+                alert(successMessage);
             }
         });
+
+
     </script>
 </div>
 <div layout:fragment="content">

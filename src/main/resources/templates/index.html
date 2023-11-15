@@ -3,6 +3,24 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<div layout:fragment="script">
+    <script type="text/javascript">
+
+        /* 회원 가입이 성공했다면 메시지를 경고창으로 보여줌 */
+        $(document).ready(function () {
+            var successMessage = "[[${successMessage}]]";
+
+            console.log(successMessage);
+
+            if (successMessage !== "null" && successMessage !== "") {
+                alert(successMessage);
+            }
+        });
+
+
+    </script>
+</div>
+
 <div layout:fragment="content">
 
     <div class="index">

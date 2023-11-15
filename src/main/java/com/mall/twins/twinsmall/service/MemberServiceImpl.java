@@ -58,16 +58,18 @@ public class MemberServiceImpl implements MemberService {
 
     private void validateDuplicateMember(Member member) {
         Member findMid = memberRepository.findByMid(member.getMid());
+        Optional<Member> findMemail = memberRepository.findByMemail(member.getMemail());
+        Optional<Member> findMphone = memberRepository.findByMphone(member.getMphone());
 
-        if (findMid != null) {
+        if (findMid != null) { // 이미 가입된 회원의 경우 IllegalStateException 예외를 발생
             throw new IllegalStateException("이미 가입된 회원입니다.");
-        } // 이미 가입된 회원의 경우 IllegalStateException 예외를 발생
+        } else if (findMemail.isPresent()) {
+            throw new IllegalArgumentException("이미 가입된 이메일입니다.");
+        } else if (findMphone.isPresent()) {
+            throw new IllegalArgumentException("이미 가입된 번호입니다.");
+        } else {
 
-        Member findMemail = memberRepository.findByMemail(member.getMemail()).orElseThrow(() ->
-                new IllegalArgumentException("이미 가입된 이메일입니다."));
-
-        Member findMphone = memberRepository.findByMphone(member.getMphone()).orElseThrow(() ->
-                new IllegalArgumentException("이미 가입된 번호입니다."));
+        }
 
 
     }
