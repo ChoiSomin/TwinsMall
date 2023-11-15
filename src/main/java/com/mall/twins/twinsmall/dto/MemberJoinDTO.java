@@ -28,8 +28,8 @@ public class MemberJoinDTO {
             message = "영문, 숫자, 특수기호가 1개 이상씩 포함된 8자 ~ 20자여야 합니다.")
     private String mpw;
 
-    /*@NotEmpty(message = "비밀번호를 입력해주세요.")
-    private String mpw_confirm;*/
+    @NotEmpty(message = "비밀번호를 입력해주세요.")
+    private String mpw_confirm;
 
     @NotEmpty (message = "이름은 필수 입력 값입니다.")
     private String mname;

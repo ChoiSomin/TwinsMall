@@ -8,6 +8,7 @@
 
         /* 회원 가입이 실패했다면 에러 메시지를 경고창으로 보여줌 */
         $(document).ready(function () {
+
             var errorMessage = "[[${errorMessage}]]";
 
             console.log(errorMessage);
@@ -85,8 +86,8 @@
                     <div class="text-wrapper-13">비밀번호 확인</div>
                     <div class="text-wrapper-14">*</div>
                 </div>
-                <!--<div class="input-5"></div>-->
-                <!--<input type="text" th:field="*{mpw}" class="input-5" placeholder="비밀번호를 한번 더 입력해주세요">-->
+                <input type="password" th:field="*{mpw_confirm}" class="input-5" placeholder="비밀번호를 한번 더 입력해주세요">
+                <p id="passwordMismatchError" class="fieldError7" th:if="${#fields.hasErrors('mpw_confirm')}" th:errors="*{mpw_confirm}"></p>
                 <div class="text-wrapper-17">생년월일</div>
                 <div class="text-wrapper-18">*</div>
                 <input type="text" th:field="*{mbirth}" class="input-7" placeholder="ex) 20021014">

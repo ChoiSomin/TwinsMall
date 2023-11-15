@@ -1267,3 +1267,37 @@
     letter-spacing: 0;
 
 }
+
+.join .fieldError6 {
+
+    width: 46px;
+    height: 25px;
+    top: 760px;
+    left: 15px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #e80000;
+    font-size: 13px;
+    line-height: 25px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+
+}
+
+.join .fieldError7 {
+
+    width: 46px;
+    height: 25px;
+    top: 315px;
+    left: 406px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #e80000;
+    font-size: 13px;
+    line-height: 25px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+
+}
