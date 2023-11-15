@@ -74,9 +74,10 @@ public class CustomSecurityConfig {
 
 
         http.authorizeRequests() // URL 패턴에 따른 접근 권한을 설정
-                        .antMatchers("/itemRegister", "/notice/register", "notice/modify").hasAnyAuthority("ROLE_ADMIN")
+                        .antMatchers("/itemRegister", "/notice/register", "notice/modify").hasAnyAuthority("ADMIN")
                         .antMatchers("/mypage/**").authenticated()
                         .anyRequest().permitAll();
+
         // 쿠키를 이용해서 로그인 정보 유지, (persistent_logins) 테이블 이용
         http.rememberMe()
                 .key("12345678")

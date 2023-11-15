@@ -33,12 +33,14 @@
                         <div class="div-wrapper">
                             <div class="content-wrapper">
                                 <div class="content-2">
+                                    <h3>등록일&nbsp : &nbsp</h3>
                                     <div class="text-3" name="regTime" th:if="${noticeFormDto != null}"
                                          th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}"
                                          readonly></div>
+                                    <h3>수정일&nbsp : &nbsp</h3>
                                     <div class="text-4" name="modTime" th:if="${noticeFormDto != null}"
                                          th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}"
-                                         readonly></div>
+                                         readonly>수정일</div>
                                 </div>
                             </div>
                         </div>

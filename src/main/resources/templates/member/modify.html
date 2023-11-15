@@ -48,6 +48,22 @@
                 }
             }
 
+        var actionForm = $("form[role='form']"); //form 태그 객체
+
+        $(".deleteBtn").click(function(){
+            console.log("Delete button clicked");
+
+            if(!confirm("탈퇴하시겠습니까?")){
+                return;
+            }
+
+            actionForm
+                .attr("action", "/mypage/delete")
+                .attr("method","post")
+                .submit();
+
+        });
+
     </script>
 </div>
 
@@ -92,7 +108,7 @@
                 <input type="text" class="input-6" name="memail" th:field="*{memail}" th:id="memail" th:value="${member.memail}">
 
                 <div class="div-wrapper">
-                    <button type="submit" class="text-wrapper-18">탈퇴하기</button>
+                    <button type="button" class="text-wrapper-18 deleteBtn">탈퇴하기</button>
                 </div>
                 <div class="frame">
                     <button class="text-wrapper-17" type="reset">다시입력</button>

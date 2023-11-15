@@ -57,10 +57,19 @@ public class MemberServiceImpl implements MemberService {
     }
 
     private void validateDuplicateMember(Member member) {
-        Member findMember = memberRepository.findByMid(member.getMid());
-        if (findMember != null) {
+        Member findMid = memberRepository.findByMid(member.getMid());
+
+        if (findMid != null) {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         } // 이미 가입된 회원의 경우 IllegalStateException 예외를 발생
+
+        Member findMemail = memberRepository.findByMemail(member.getMemail()).orElseThrow(() ->
+                new IllegalArgumentException("이미 가입된 이메일입니다."));
+
+        Member findMphone = memberRepository.findByMphone(member.getMphone()).orElseThrow(() ->
+                new IllegalArgumentException("이미 가입된 번호입니다."));
+
+
     }
 
     /**
@@ -137,7 +146,7 @@ public class MemberServiceImpl implements MemberService {
             throw new IllegalArgumentException("해당 회원이 존재하지 않습니다.");
         }
 
-       /* 수정한 비밀번호 암호화 */
+        /* 수정한 비밀번호 암호화 */
         String encryptPassword = passwordEncoder.encode(dto.getMpw());
 
         log.info(encryptPassword);

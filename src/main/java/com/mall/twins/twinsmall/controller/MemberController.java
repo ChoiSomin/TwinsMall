@@ -68,7 +68,7 @@ public class MemberController {
         try {
             Member member = Member.createMember(memberJoinDto, passwordEncoder);
             memberService.saveMember(member);
-        } catch (IllegalStateException e) {
+        } catch (IllegalArgumentException | IllegalStateException e) {
             String errorMessage = e.getMessage();
             log.error("Failed to save member: {}", errorMessage);
             model.addAttribute("errorMessage", e.getMessage());
