@@ -2,6 +2,7 @@ package com.mall.twins.twinsmall.service;
 
 import com.mall.twins.twinsmall.dto.OrderDto;
 import com.mall.twins.twinsmall.dto.OrderHistDto;
+import com.mall.twins.twinsmall.dto.OrderItemDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public interface OrderService {
     void cancelOrder(Long ono);
 
     Long orders(List<OrderDto> orderDtoList, String mid);
+
 
 
 }

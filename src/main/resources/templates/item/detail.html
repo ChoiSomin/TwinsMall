@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+
+    <!-- 사용자 스크립트 추가 -->
+    <script th:inline="javascript">
+        $(document).ready(function () {
+
+            calculateToalPrice();
+
+            $("#count").change(function () {
+                calculateToalPrice();
+            });
+        });
+
+        function calculateToalPrice() {
+            var count = $("#count").val();
+            var price = $("#price").val();
+            var totalPrice = price * count;
+            $("#totalPrice").html(totalPrice + '원');
+        }
+
+        function order() {
+            var username = [[${username}]];
+            var url = "/order";
+            var paramData = {
+                itemId: $("#itemId").val(),
+                count: $("#count").val()
+            };
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: param,
+                dataType: "json",
+                cache: false,
+                success: function (result, status) {
+                    alert("주문이 완료 되었습니다.");
+                    location.href = '/index';
+                },
+                error: function (jqXHR, status, error) {
+
+                    if (username == null) {
+                        alert('로그인 후 이용해주세요');
+                        location.href = '/member/login';
+                    } else {
+                        alert(jqXHR.responseText);
+                    }
+
+                }
+            });
+        }
+
+        function addCart() {
+
+            var username = [[${username}]];
+            var url = "/cart";
+            var paramData = {
+                itemId: $("#itemId").val(),
+                count: $("#count").val()
+            };
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: param,
+                dataType: "json",
+                cache: false,
+                success: function (result, status) {
+                    alert("상품을 장바구니에 담았습니다.");
+                    location.href = '/cart';
+                },
+                error: function (jqXHR, status, error) {
+
+                    if (username == null) {
+                        alert('로그인 후 이용해주세요');
+                        location.href = '/member/login';
+                    } else {
+                        alert(jqXHR.responseText);
+                    }
+
+                }
+            });
+        }
+
+    </script>
+
+    <div class="product-detail">
+        <div class="image">
+            <input type="hidden" id="itemId" th:value="${item.id}">
+            <div class="div-container">
+                <img class="tablist-item-tab"
+                     th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[1] != null}"
+                     th:style="'background-image: url(' + ${item.itemImgDtoList[1].iimgurl} + ')'">
+                <img class="img"
+                     th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[2] != null}"
+                     th:style="'background-image: url(' + ${item.itemImgDtoList[2]?.iimgurl ?: ''} + ')'">
+                <img class="tablist-item-tab-2"
+                     th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[3] != null}"
+                     th:style="'background-image: url(' + ${item.itemImgDtoList[3]?.iimgurl ?: ''} + ')'">
+                <img class="i-fa-play-wrapper"
+                     th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[4] != null}"
+                     th:style="'background-image: url(' + ${item.itemImgDtoList[4]?.iimgurl ?: ''} + ')'">
+                <img class="tabpanel-product-big"
+                     th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'">
+            </div>
+        </div>
+        <div class="heading" data-th-text="|￦ ${#numbers.formatInteger(item.pprice, 3, 'COMMA')}  |"></div>
+
+        <div class="input">
+            <input type="number" name="count" id="count" class="div-pro-qty" value="1" min="1"
+                   style="text-align : center">
+        </div>
+
+        <div th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="text-right">
+        <div class="link">
+            <button type="button" class="text-wrapper-4" onclick="addCart()">장바구니 담기
+            </button>
+            <!--<div >ADD TO CART</div>-->
+        </div>
+        <div class="heading-hooded">[[${item.pname}]]</div>
+        <div class="link-2">
+            <button type="button" class="text-wrapper-4" onclick="order()">주문하기</button>
+            <!--<div>BUY</div>-->
+        </div>
+        </div>
+        <div th:unless="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="text-right">
+            <button type="button" class="btn btn-danger btn-lg">품절</button>
+        </div>
+        <div class="frame">
+            <div class="tabpanel-heading">상품 정보</div>
+            <p class="tabpanel-a-pocket-PC">
+                [[${item.pdesc}]]
+            </p>
+            <div class="item-tab">
+                <div class="text-wrapper-5">상세 설명</div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

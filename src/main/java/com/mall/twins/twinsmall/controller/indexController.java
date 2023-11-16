@@ -23,26 +23,8 @@ public class indexController {
     private final ItemService itemService;
 
     @GetMapping("/index")
-    public void list(){
+    public void list() {
         log.info("list....");
-
-    }
-
-    @GetMapping("/aboutus")
-    public String aboutus(){
-        return "aboutus";
-
-    }
-
-    @GetMapping("/checkout")
-    public String checkout(){
-        return "checkout";
-
-    }
-
-    @GetMapping("/cart")
-    public String cart(){
-        return "cart";
 
     }
 

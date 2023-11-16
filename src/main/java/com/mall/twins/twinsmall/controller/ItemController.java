@@ -10,17 +10,16 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,65 +29,35 @@ import java.util.Optional;
 public class ItemController {
 
     private final ItemService itemService;
-/*
-    @GetMapping(value = "/admin/item/new")
-    public String itemForm(Model model) {
-        model.addAttribute("itemFormDto", new ItemFormDto());
-        return "item/itemForm";
-    }*/
 
-    @GetMapping(value = "/itemRegister")
+    @GetMapping(value = "item/register")
     public String itemRegister(Model model) {
         model.addAttribute("itemFormDto", new ItemFormDto());
-        return "item/itemRegister";
+        return "item/reigster";
     }
 
-    @PostMapping(value = "/itemRegister")
+    @PostMapping(value = "item/itemRegister")
     public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                           Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList){
 
         if(bindingResult.hasErrors()){
-            return "item/itemRegister";
+            return "item/reigster";
         }
 
         if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null){
             model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
-            return "item/itemRegister";
+            return "item/reigster";
         }
 
         try {
             itemService.saveItem(itemFormDto, itemImgFileList);
         } catch (Exception e){
             model.addAttribute("errorMessage", "상품 등록 중 에러가 발생하였습니다.");
-            return "item/itemRegister";
+            return "item/reigster";
         }
 
-        return "redirect:/";
+        return "redirect:/index";
     }
-
-
-    /*@PostMapping(value = "/admin/item/new")
-    public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
-                          Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList){
-
-        if(bindingResult.hasErrors()){
-            return "item/itemForm";
-        }
-
-        if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null){
-            model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
-            return "item/itemForm";
-        }
-
-        try {
-            itemService.saveItem(itemFormDto, itemImgFileList);
-        } catch (Exception e){
-            model.addAttribute("errorMessage", "상품 등록 중 에러가 발생하였습니다.");
-            return "item/itemForm";
-        }
-
-        return "redirect:/";
-    }*/
 
     @GetMapping(value = "/admin/item/{ItemId}")
     public String itemDtl(@PathVariable("ItemId") Long ItemId, Model model){
@@ -99,31 +68,31 @@ public class ItemController {
             model.addAttribute("errormessage", "존재하지 않는 상품입니다.");
             model.addAttribute("itemFormDto", new ItemFormDto());
 
-            return "item/itemRegister";
+            return "item/reigster";
         }
-        return "item/itemRegister";
+        return "item/reigster";
     }
 
     @PostMapping(value = "/admin/item/{ItemId}")
     public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                              @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, Model model){
         if(bindingResult.hasErrors()){
-            return "item/itemRegister";
+            return "item/reigster";
         }
 
         if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null){
             model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
-            return "item/itemRegister";
+            return "item/reigster";
         }
 
         try {
             itemService.updateItem(itemFormDto, itemImgFileList);
         } catch (Exception e){
             model.addAttribute("errorMessage", "상품 수정 중 에러가 발생하였습니다.");
-            return "item/itemRegister";
+            return "item/reigster";
         }
 
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
@@ -147,7 +116,7 @@ public class ItemController {
         return "item/itemDtl";
     }
 
-    @GetMapping(value = "/product")
+    @GetMapping(value = "/item/list")
     public String product(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
         log.info("ItemSearchDto: {}", itemSearchDto);
@@ -160,15 +129,22 @@ public class ItemController {
         model.addAttribute("maxPage", 5);
 
 
-        return "item/product";
+        return "item/list";
     }
 
-    @GetMapping(value = "/productDetail/{itemId}")
-    public String productDetail(Model model, @PathVariable("itemId") Long itemId){
+    @GetMapping(value = "/item/detail/{itemId}")
+    public String productDetail(Model model, @PathVariable("itemId") Long itemId, Principal principal){
+
+        if (principal != null){
+            String username = principal.getName();
+
+            model.addAttribute("username", username);
+            return "item/detail";
+        }
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         model.addAttribute("item", itemFormDto);
 
-        return "item/productDetail";
+        return "item/detail";
     }
 
 }

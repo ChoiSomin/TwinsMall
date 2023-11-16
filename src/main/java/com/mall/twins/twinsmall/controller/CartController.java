@@ -24,15 +24,20 @@ public class CartController {
 
     private final CartService cartService;
 
-  /* @PostMapping(value = "/cart")
+
+    @GetMapping("/cartlist")
+    public String cartList(){
+        return "cart";
+    }
+    @PostMapping(value = "/cart")
     public @ResponseBody ResponseEntity order(@RequestBody @Valid CartItemDto cartItemDto,
                                               BindingResult bindingResult, Principal principal){
         if(bindingResult.hasErrors()){  //장바구니에 담을 상품정보를 받는 cartitemdto 객체에 데이터 바인딩시 에러가 있는지 검사
             StringBuilder sb = new StringBuilder();
-            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-            for(FieldError fieldError : fieldErrors){
+           /*   List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+          for(FieldError fieldError : fieldErrors){
                 sb.append(fieldError.getDefaultMessage());
-            }
+            }*/
             return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
         }
         String mid = principal.getName(); //현재 로그인한 회원의 아이디에 정보를 변수에 저장
@@ -52,7 +57,7 @@ public class CartController {
         List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
         model.addAttribute("cartItems",cartDetailList);
         return "cart/cartList";
-    }*/
+    }
 
     @PatchMapping(value = "/cartItem/{cartItemId}")
     public @ResponseBody ResponseEntity updateCartItem(@PathVariable("cartItemId")

@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 @Service
 @Log4j2
 @RequiredArgsConstructor
@@ -47,7 +46,7 @@ public class OrderServiceImpl implements OrderService{
 
         List<OrderItem> orderItemList = new ArrayList<>();
         //주문할 상품 엔티티와 주문수량을 이용하여 주문 상품 엔티티 생성
-        OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getOquantity());
+        OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getCount());
         orderItemList.add(orderItem);
 
         //회원정보와 주문할 상품리스트 정보를 이용하여 주문 엔티티 생성
@@ -73,9 +72,9 @@ public class OrderServiceImpl implements OrderService{
             List<OrderItem> orderItems = order.getOrderItems();
             for(OrderItem orderItem : orderItems){
                 //주문한 상품의 대표 이미지를 조회합니다.
-                //ItemImg itemImg = itemImgRepository.findByPnoAndIimgrep(orderItem.getItem().getId(),"Y");
-                //OrderItemDto orderItemDto = new OrderItemDto(orderItem, itemImg.getIimgurl());
-                //orderHistDto.addOrderItemDto(orderItemDto);
+                ItemImg itemImg = itemImgRepository.findByIdAndIimgrep(orderItem.getItem().getId(),"Y");
+                OrderItemDto orderItemDto = new OrderItemDto(orderItem, itemImg.getIimgurl());
+                orderHistDto.addOrderItemDto(orderItemDto);
             }
             orderHistDtos.add(orderHistDto);
         }
@@ -114,7 +113,7 @@ public class OrderServiceImpl implements OrderService{
         for(OrderDto orderDto : orderDtoList){
             Item item = itemRepository.findById(orderDto.getItemId()).orElseThrow(EntityNotFoundException::new);
 
-            OrderItem orderItem = OrderItem.createOrderItem(item,orderDto.getOquantity());
+            OrderItem orderItem = OrderItem.createOrderItem(item,orderDto.getCount());
             orderItemList.add(orderItem);
         }
         Order order = Order.createOrder(member,orderItemList);

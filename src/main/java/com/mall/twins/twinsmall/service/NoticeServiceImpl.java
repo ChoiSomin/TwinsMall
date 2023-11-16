@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.bytebuddy.dynamic.ClassFileLocator;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -105,6 +106,13 @@ public class NoticeServiceImpl implements NoticeService{
         }
 
     } // modify 구현
+
+    /* 추가 LJM */
+    @Override
+    public Page<Notice> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 12);
+        return this.noticeRepository.findAll(pageable);
+    }
 
     @Transactional
     public void remove(Long nno) {

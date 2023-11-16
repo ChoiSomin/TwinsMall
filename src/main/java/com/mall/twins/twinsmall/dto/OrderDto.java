@@ -1,12 +1,9 @@
 package com.mall.twins.twinsmall.dto;
 
-import com.mall.twins.twinsmall.constant.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -25,7 +22,8 @@ public class OrderDto {
 
     @Min(value = 1, message = "최소 주문 수량은 1개 입니다.")
     @Max(value = 5, message = "최대 주문 수량은 5개 입니다.")
-    private int oquantity;
+    private int count;
+
 
     private LocalDateTime odate; //주문일
 
