@@ -68,7 +68,9 @@ public class CustomSecurityConfig {
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("member/logout"))   // 로그아웃 URL
-                .logoutSuccessUrl("/index");                                               // 로그아웃 성공시 이동할 URL
+                .logoutSuccessUrl("/index")                                                 // 로그아웃 성공시 이동할 URL
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID");                                               // 로그아웃 이후 세션 전체 삭제 여부
 
         http.csrf().disable();                                                             // CSRF 토큰 비활성화 (기본값은 GET 방식 제외 요구) -> USERNAME과 PASSWORD 만으로 로그인 가능
 

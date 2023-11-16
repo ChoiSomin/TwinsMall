@@ -124,6 +124,7 @@ public class MypageController {
         boolean result = memberService.withdrawal(userDetails.getUsername());
 
         if (result) {
+            SecurityContextHolder.clearContext(); // 탈퇴 후 시큐리티 clear
             return "redirect:/index";
         } else {
             model.addAttribute("wrongPassword", "비밀번호가 맞지 않습니다.");
