@@ -2,6 +2,8 @@ package com.mall.twins.twinsmall.controller;
 
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
 import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.service.MemberServiceImpl;
+import com.mall.twins.twinsmall.service.validator.CheckPasswordEqualValidator;
 import com.mall.twins.twinsmall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -9,13 +11,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/member")
@@ -24,7 +25,9 @@ import javax.validation.Valid;
 public class MemberController {
 
     private final MemberService memberService;
+    private final MemberServiceImpl memberServiceImpl;
     private final PasswordEncoder passwordEncoder;
+    private final CheckPasswordEqualValidator checkPasswordEqualValidator;
 
     @GetMapping("/login")
     public void loginGet(String errorCode, String logout) {
@@ -56,7 +59,6 @@ public class MemberController {
 
     @PostMapping("/join")
     public String joinPost(@Valid @ModelAttribute("memberJoinDto") MemberJoinDTO memberJoinDto, BindingResult bindingResult, Model model) {
-
         log.info("MemberController.joinPost() 회원가입 데이터 전송");
         log.info(memberJoinDto);
 
@@ -65,10 +67,22 @@ public class MemberController {
             return "member/join";
         }
 
+        if (bindingResult.hasErrors()) {
+            // 유효성 통과 못한 필드와 메시지를 핸들링
+            Map<String, String> validatorResult = memberServiceImpl.validateHandling(bindingResult);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+            // 회원가입 페이지로 다시 리턴
+            return "member/join";
+        }
+
         try {
             Member member = Member.createMember(memberJoinDto, passwordEncoder);
             memberService.saveMember(member);
-        } catch (IllegalStateException e) {
+            String successMessage = member.getMname() + "님, 가입을 축하드립니다!";
+            model.addAttribute("successMessage", successMessage);
+        } catch (IllegalArgumentException e) {
             String errorMessage = e.getMessage();
             log.error("Failed to save member: {}", errorMessage);
             model.addAttribute("errorMessage", e.getMessage());
@@ -77,6 +91,11 @@ public class MemberController {
         }
 
         return "index";
+    }
+
+    @InitBinder
+    public void validatorBinder(WebDataBinder binder){
+        binder.addValidators(checkPasswordEqualValidator);
     }
 
 }

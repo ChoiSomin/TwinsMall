@@ -697,7 +697,7 @@
     position: absolute;
     width: 22px;
     height: 11px;
-    top: 6px;
+    top: -2px;
     left: 24px;
     font-family: "Nunito Sans", Helvetica;
     font-weight: 700;
@@ -706,6 +706,7 @@
     letter-spacing: 0;
     line-height: 25px;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .notice .footer {

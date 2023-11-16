@@ -1,15 +1,23 @@
 package com.mall.twins.twinsmall.config;
 
+import com.mall.twins.twinsmall.config.auth.MyUserDetailsService;
 import com.mall.twins.twinsmall.security.CustomUserDetailsService;
 import com.mall.twins.twinsmall.security.handler.Custom403Handler;
 import com.mall.twins.twinsmall.security.handler.CustomSocialLoginSuccessHandler;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,11 +37,21 @@ import javax.sql.DataSource;
 public class CustomSecurityConfig {
 
     private final DataSource dataSource;
-    private final CustomUserDetailsService userDetailsService;
+    private final MyUserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+
+        authenticationProvider.setUserDetailsService(this.userDetailsService);
+        authenticationProvider.setPasswordEncoder(this.bCryptPasswordEncoder());
+        authenticationProvider.setHideUserNotFoundExceptions(false);
+        return authenticationProvider;
     }
 
     @Bean
@@ -43,7 +61,8 @@ public class CustomSecurityConfig {
 
         // 커스텀 로그인 페이지
         http.formLogin()
-                .loginPage("/member/login")                                                // Form 로그인 기능 작동, 커스텀 로그인 페이지
+                .loginPage("/member/login")                                                 // Form 로그인 기능 작동, 커스텀 로그인 페이지
+                .loginProcessingUrl("/auth/loginProc")                                      // 시큐리티에서 해당 주소로 오는 요청을 낚아채 수행
                 .defaultSuccessUrl("/index")                                               // 로그인 성공시 index 페이지로 이동
                 .failureUrl("/member/login/error")                      // 로그인 실패 시 이동할 URL 설정
                 .and()
@@ -52,6 +71,12 @@ public class CustomSecurityConfig {
                 .logoutSuccessUrl("/index");                                               // 로그아웃 성공시 이동할 URL
 
         http.csrf().disable();                                                             // CSRF 토큰 비활성화 (기본값은 GET 방식 제외 요구) -> USERNAME과 PASSWORD 만으로 로그인 가능
+
+
+        http.authorizeRequests() // URL 패턴에 따른 접근 권한을 설정
+                        .antMatchers("/itemRegister", "/notice/register", "notice/modify").hasAnyAuthority("ADMIN")
+                        .antMatchers("/mypage/**").authenticated()
+                        .anyRequest().permitAll();
 
         // 쿠키를 이용해서 로그인 정보 유지, (persistent_logins) 테이블 이용
         http.rememberMe()
@@ -98,6 +123,12 @@ public class CustomSecurityConfig {
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
 
-        return new CustomSocialLoginSuccessHandler(passwordEncoder());
+        return new CustomSocialLoginSuccessHandler(bCryptPasswordEncoder());
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 }

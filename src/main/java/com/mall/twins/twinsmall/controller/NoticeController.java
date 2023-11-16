@@ -3,7 +3,6 @@ package com.mall.twins.twinsmall.controller;
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
 import com.mall.twins.twinsmall.dto.PageRequestDTO;
 import com.mall.twins.twinsmall.service.NoticeService;
-import com.mall.twins.twinsmall.service.NoticeServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
 @Controller

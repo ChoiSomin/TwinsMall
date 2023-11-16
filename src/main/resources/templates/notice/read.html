@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout/layout}">
 
 <div layout:fragment="content">
@@ -32,25 +33,29 @@
                         <div class="div-wrapper">
                             <div class="content-wrapper">
                                 <div class="content-2">
+                                    <h3>등록일&nbsp : &nbsp</h3>
                                     <div class="text-3" name="regTime" th:if="${noticeFormDto != null}"
                                          th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}"
                                          readonly></div>
+                                    <h3>수정일&nbsp : &nbsp</h3>
                                     <div class="text-4" name="modTime" th:if="${noticeFormDto != null}"
                                          th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}"
-                                         readonly></div>
+                                         readonly>수정일</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="frame-22">
-                    <a th:href="@{/notice/list}" class="text-wrapper-4">목록보기</a>
+                    <a th:href="@{/notice/list}" class="text-wrapper-55">목록보기</a>
                 </div>
+                <li sec:authorize="hasAnyAuthority('ADMIN')">
                 <div class="frame-44">
                     <a th:href="@{/notice/modify(nno = ${noticeFormDto.nno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
                         <button type="button" class="text-wrapper-4 editBtn">수정하기</button>
                     </a>
                 </div>
+                </li>
             </div>
         </form>
     </div>

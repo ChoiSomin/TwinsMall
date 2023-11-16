@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="script">
+    <script type="text/javascript">
+    </script>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="mypage">
+        <div class="top">
+            <div class="heading-check-out">내 정보</div>
+            <div class="overlap-group">
+                <div class="link-home">mypage</div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="heading">
+                <p class="p">내 정보를 확인하고 수정할 수 있습니다.</p>
+                <img class="family" src="/img/family.png"/>
+            </div>
+            <div class="overlap">
+                <div class="text-wrapper-3">아이디</div>
+            </div>
+            <input type="text" class="input" name="id" th:value="${member.mid}" readonly>
+            <div class="overlap-2">
+                <div class="text-wrapper-5">이름</div>
+            </div>
+            <input type="text" class="input-2" name="name" th:value="${member.mname}" readonly>
+            <div class="overlap-3">
+                <div class="text-wrapper-7">핸드폰번호</div>
+            </div>
+            <input type="text" class="input-3" name="phone" th:value="${member.mphone}" readonly>
+            <div class="overlap-4">
+                <div class="text-wrapper-9">생년월일</div>
+            </div>
+            <input type="text" class="input-4" name="birth" th:value="${member.mbirth}" readonly>
+            <!--<div class="overlap-5">
+              <div class="text-wrapper-11">비밀번호 확인</div>
+              <div class="text-wrapper-12">*</div>
+            </div>
+            <div class="input-5"></div>-->
+            <div class="overlap-6">
+                <div class="text-wrapper-13">Email</div>
+            </div>
+            <input type="text" class="input-6" name="email" th:value="${member.memail}" readonly>
+
+            <div class="frame">
+                <a th:href="@{/index}" class="text-wrapper-18">메인화면</a>
+            </div>
+            <div class="frame-2">
+                <a th:href="@{/mypage/checkPwd}">
+                <div class="text-wrapper-17">수정하기</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</html>

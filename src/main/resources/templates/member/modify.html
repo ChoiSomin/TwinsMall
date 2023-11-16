@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="script">
+    <script type="text/javascript">
+        function memberUpdate(){
+            console.log("memberUpdate 실행");
+
+            const data = {
+                mid: $('#mid').val(),
+                mname: $('#mname').val(),
+                mphone: $('#mphone').val(),
+                mbirth: $('#mbirth').val(),
+                memail: $('#memail').val(),
+                mpw: $('#mpw').val()
+                };
+
+                // 공백 및 빈 문자열 체크
+                if(!data.mname || data.mname.trim() === "" || !data.mphone || data.mphone.trim() === ""
+                || !data.mbirth || data.mbirth.trim() === "" || !data.memail || data.memail.trim() === ""
+                || !data.mpw || data.mpw.trim() === ""){
+                    alert("공백 또는 입력하지 않은 부분이 있습니다.");
+                    return false;
+                }
+
+                const confirmCheck = confirm("수정하시겠습니까?");
+
+                if(confirmCheck == true){
+                    $.ajax({
+                        type: 'PUT',
+                        url: '/mypage/modify',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(data)
+                    }).done(function(result){
+                        if(result){
+                            alert("회원 수정이 완료되었습니다.");
+                            window.location.href="/mypage/read";
+                        } else {
+                            alert("이미 등록된 이메일/전화번호입니다. 다시 입력해주세요.");
+                            $('#mphone').focus();
+                            $('#memail').focus();
+                        }
+                    }).fail(function(error){
+                        alert(JSON.stringify(error));
+                    });
+                }
+            }
+
+        var actionForm = $("form[role='form']"); //form 태그 객체
+
+        $(".deleteBtn").click(function(){
+            console.log("Delete button clicked");
+
+            if(!confirm("탈퇴하시겠습니까?")){
+                return;
+            }
+
+            actionForm
+                .attr("action", "/mypage/delete")
+                .attr("method","post")
+                .submit();
+
+        });
+
+    </script>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="mypage">
+        <div class="top">
+            <div class="heading-check-out">내 정보</div>
+            <div class="overlap-group">
+                <div class="link-home">내 정보 수정</div>
+            </div>
+        </div>
+        <div class="details">
+            <form role="form" method="post" th:action="@{/mypage/delete}" th:object="${member}">
+                <div class="heading">
+                    <p class="p">나의 정보가 변경되었다면 우리 수정해 볼까요?</p>
+                    <img class="family" src="/img/family.png"/>
+                </div>
+                <div class="overlap">
+                    <div class="text-wrapper-3">아이디 (수정 불가능)</div>
+                </div>
+                <input type="text" class="input" name="mid" th:field="*{mid}" th:id="mid" th:value="${member.mid}" readonly>
+                <div class="overlap-2">
+                    <div class="text-wrapper-5">이름</div>
+                </div>
+                <input type="text" class="input-2" name="mname" th:field="*{mname}" th:id="mname" th:value="${member.mname}">
+                <div class="overlap-3">
+                    <div class="text-wrapper-7">핸드폰번호</div>
+                </div>
+                <input type="text" class="input-3" name="mphone" th:field="*{mphone}" th:id="mphone" th:value="${member.mphone}">
+                <div class="overlap-4">
+                    <div class="text-wrapper-9">생년월일</div>
+                </div>
+                <input type="text" class="input-4" name="mbirth" th:field="*{mbirth}" th:id="mbirth" th:value="${member.mbirth}">
+                <div class="overlap-5">
+                  <div class="text-wrapper-11">변경할 비밀번호</div>
+                </div>
+                <input type="text" class="input-5" name="mpw" th:id="mpw" placeholder="변경할 비밀번호를 입력하세요.">
+                <div class="overlap-6">
+                    <div class="text-wrapper-13">Email</div>
+                </div>
+                <input type="text" class="input-6" name="memail" th:field="*{memail}" th:id="memail" th:value="${member.memail}">
+
+                <div class="div-wrapper">
+                    <button type="button" class="text-wrapper-18 deleteBtn">탈퇴하기</button>
+                </div>
+                <div class="frame">
+                    <button class="text-wrapper-17" type="reset">다시입력</button>
+                </div>
+                <div class="frame-2">
+                    <button type="button" value="회원 정보 수정" th:onclick="memberUpdate()"
+                            class="text-wrapper-17">수정완료</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--else if(!/(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?=\S+$).{8,16}/.test(data.password)){
+                    alert("비밀번호는 8~16자리수여야 합니다. 영문 대소문자, 숫자, 특수문자를 1개 이상 포함해야 합니다.");
+                    $('#password').focus();
+                    return false;
+                }-->
+</html>

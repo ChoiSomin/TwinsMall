@@ -3,6 +3,24 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<div layout:fragment="script">
+    <script type="text/javascript">
+
+        /* 회원 가입이 성공했다면 메시지를 경고창으로 보여줌 */
+        $(document).ready(function () {
+            var successMessage = "[[${successMessage}]]";
+
+            console.log(successMessage);
+
+            if (successMessage !== "null" && successMessage !== "") {
+                alert(successMessage);
+            }
+        });
+
+
+    </script>
+</div>
+
 <div layout:fragment="content">
 
     <div class="index">
@@ -91,7 +109,6 @@
                 <div class="heading-4">$43.48</div>
             </div>
             <div class="div-product-item-4">
-                <div class="image-wrapper"><img class="image-3" src="/img/image-3.png"/></div>
                 <div class="heading-diagonal">Diagonal Textured Cap</div>
                 <div class="heading-5">$60.9</div>
             </div>

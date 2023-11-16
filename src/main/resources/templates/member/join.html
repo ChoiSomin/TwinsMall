@@ -8,6 +8,7 @@
 
         /* 회원 가입이 실패했다면 에러 메시지를 경고창으로 보여줌 */
         $(document).ready(function () {
+
             var errorMessage = "[[${errorMessage}]]";
 
             console.log(errorMessage);
@@ -16,6 +17,8 @@
                 alert(errorMessage);
             }
         });
+
+
     </script>
 </div>
 <div layout:fragment="content">
@@ -53,7 +56,13 @@
                     <div class="text-wrapper-7">*</div>
                 </div>
                 <input class="input-2" th:field="*{mpw}" type="password" placeholder="비밀번호를 입력해주세요">
-                <p th:if="${#fields.hasErrors('mpw')}" th:errors="*{mpw}" class="fieldError2">Incorrect data</p>
+                <div th:if="${#fields.hasErrors('mpw')}" th:errors="*{mpw}" class="fieldError2"></div>
+                <div class="overlap-6">
+                    <div class="text-wrapper-15">이름</div>
+                    <div class="text-wrapper-16">*</div>
+                </div>
+                <input type="text" th:field="*{mname}" class="input-6" placeholder="이름을 입력해주세요">
+                <p th:if="${#fields.hasErrors('mname')}" th:errors="*{mname}" class="fieldError5">Incorrect data</p>
                 <div class="overlap-3">
                     <div class="text-wrapper-8">핸드폰번호</div>
                     <div class="text-wrapper-9">*</div>
@@ -65,7 +74,7 @@
                     <div class="text-wrapper-10">Email</div>
                     <div class="text-wrapper-11">*</div>
                 </div>
-                <input type="email" th:field="*{memail}" class="input-4" placeholder="이메일을 입력해주세요">
+                <input type="email" th:field="*{memail}" class="input-4" placeholder="ex) email@naver.com">
                 <p th:if="${#fields.hasErrors('memail')}" th:errors="*{memail}" class="fieldError4">Incorrect
                     data</p>
                 <!--<div class="group">
@@ -73,20 +82,15 @@
                         <div class="text-wrapper-12">중복확인</div>
                     </div>
                 </div>-->
-                <!--<div class="overlap-5">
+                <div class="overlap-5">
                     <div class="text-wrapper-13">비밀번호 확인</div>
                     <div class="text-wrapper-14">*</div>
                 </div>
-                <div class="input-5"></div>-->
-                <div class="overlap-6">
-                    <div class="text-wrapper-15">이름</div>
-                    <div class="text-wrapper-16">*</div>
-                </div>
-                <input type="text" th:field="*{mname}" class="input-6" placeholder="이름을 입력해주세요">
-                <p th:if="${#fields.hasErrors('mname')}" th:errors="*{mname}" class="fieldError5">Incorrect data</p>
+                <input type="password" th:field="*{mpw_confirm}" class="input-5" placeholder="비밀번호를 한번 더 입력해주세요">
+                <p id="passwordMismatchError" class="fieldError7" th:if="${#fields.hasErrors('mpw_confirm')}" th:errors="*{mpw_confirm}"></p>
                 <div class="text-wrapper-17">생년월일</div>
                 <div class="text-wrapper-18">*</div>
-                <input type="text" th:field="*{mbirth}" class="input-7" placeholder="생일을 입력해주세요">
+                <input type="text" th:field="*{mbirth}" class="input-7" placeholder="ex) 20021014">
                 <p th:if="${#fields.hasErrors('mbirth')}" th:errors="*{mbirth}" class="fieldError6">Incorrect
                     data</p>
                 <div class="frame-2">

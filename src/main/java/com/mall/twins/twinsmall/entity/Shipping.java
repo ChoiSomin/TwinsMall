@@ -41,4 +41,15 @@ public class Shipping extends BaseEntity{
     @JoinColumn(name = "mno")
     private Member member;
 
+    // 배송지명 수정
+    public void change(String sname, String sperson, String zonecode, String address, String saddress, String sphone, String sdefault){
+        this.sname = sname;
+        this.sperson = sperson;
+        this.zonecode = zonecode;
+        this.address = address;
+        this.saddress = saddress;
+        this.sphone = sphone;
+        this.sdefault = sdefault;
+    }
+
 }

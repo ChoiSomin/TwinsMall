@@ -63,6 +63,14 @@ public class Member extends BaseEntity {
         return member;
     }
 
+    public void update(String mname, String memail, String mbirth, String mphone, String mpw){
+        this.mname = mname;
+        this.memail = memail;
+        this.mbirth = mbirth;
+        this.mphone = mphone;
+        this.mpw = mpw;
+    }
+
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
     private Set<MemberRole> roleSet = new HashSet<>();
@@ -86,6 +94,8 @@ public class Member extends BaseEntity {
     public void changeDel(boolean mdel) {
         this.mdel = mdel;
     }
+
+    public void changeBirth(String mbirth) { this.mbirth = mbirth; }
 
     public void addRole(MemberRole memberRole) {
         this.roleSet.add(memberRole);
