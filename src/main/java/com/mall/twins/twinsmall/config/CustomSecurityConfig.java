@@ -67,7 +67,7 @@ public class CustomSecurityConfig {
                 .failureUrl("/member/login/error")                      // 로그인 실패 시 이동할 URL 설정
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("member/logout"))   // 로그아웃 URL
+                .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))   // 로그아웃 URL
                 .logoutSuccessUrl("/index")                                                 // 로그아웃 성공시 이동할 URL
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");                                               // 로그아웃 이후 세션 전체 삭제 여부

@@ -29,14 +29,16 @@
                         </a>
                     </li>
                 </div>
+                <a th:href="@{/member/login}" sec:authorize="!isAuthenticated()">
+                    <img class="icon-person" th:src="@{/img/icon-person.png}"/></a>
+                <a th:href="@{/member/logout}" sec:authorize="isAuthenticated()" >
+                    <span class="logout">Logout</span></a>
                 <a href="#">
                     <img class="icon-search" th:src="@{/img/icon-search.png}"/></a>
                 <a href="#">
                     <img class="icon-favorite-border" th:src="@{/img/icon-favorite-border.png}"/></a>
                 <a href="#">
                     <img class="icon-shopping-bag" th:src="@{/img/icon-shopping-bag.png}"/></a>
-                <a th:href="@{/member/login}">
-                    <img class="icon-person" th:src="@{/img/icon-person.png}"/></a>
                 <div class="div-header-top">
                     <div class="text-wrapper-2">Welcome to Twin’s Mall</div>
                 </div>
