@@ -47,6 +47,12 @@ public class indexController {
     }
 
 
+    @GetMapping("/shipping")
+    public String shipping(){
+        return "shipping";
+
+    }
+
     @GetMapping(value = "/")
     public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 

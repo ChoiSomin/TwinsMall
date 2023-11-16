@@ -76,7 +76,7 @@ public class CustomSecurityConfig {
         return new Custom403Handler();
     }
 
-    // css나 js 파일 등 정적 자원에 시큐리티 필터 적용 해제
+    // css나 js일 등 정적 자원에 시큐리티 필터 적용 해제
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
 

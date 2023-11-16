@@ -1,11 +1,10 @@
 /* FOOTER */
 
 .footer .footer {
-    position: absolute;
+    position: relative;
     width: 1920px;
     height: 400px;
-    top: 5500px;
-    left: 0;
+    transform : translateY(-100%);
     background-color: #111111;
 }
 

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+
+    <div class="mypage-shipping">
+        <div class="shop">
+            <div class="heading-shop">Shipping</div>
+            <div class="link-home">배송지정보</div>
+        </div>
+        <div class="view">
+            <div class="nav-list-item-link-4">주문정보</div>
+            <div class="nav-list-item-link-5">주문목록</div>
+            <div class="nav-list-item-link-6">회원정보</div>
+            <div class="nav-list-item-link-7">내정보</div>
+            <div class="nav-list-item-link-8">서비스</div>
+            <div class="nav-list-item-link-9">1:1문의</div>
+            <div class="nav-list-item-link-10">나의 리뷰</div>
+            <div class="nav-list-item-link-11">배송지 정보</div>
+        </div>
+
+        <section class="fb__addressbook ptg__addressbook">
+
+            <div class="fb__comm__table ptg__addressbook__container">
+
+                <div class="ptg__addressbook__container-info" id="devAddressBooKContent">
+                    <script id="devAddressBooKLoading" type="text/x-handlebars-template">
+                        <tr>
+                            <td colspan="5">
+                                <div class="wrap-loading">
+                                    <div class="loading"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </script>
+
+                    <script id="devAddressBooKList" type="text/x-handlebars-template">
+                        <div class="addressbook__area">
+                            <div class="addressbook__area-default">
+                                <p>
+                                    안녕
+                                </p>
+                                <div class="addressbook__area-default_info">
+                                    11<span class="default">기본 배송지</span>22
+                                </div>
+                            </div>
+                            <div class="color666">33</div>
+                            <!-- 우편번호를 불러와야함 22.08.16 유지원 -->
+                            <div class="">44</div>
+                            <div class="left color666 address1">55</div>
+                            <div class="address2">66</div>
+                            <div class="color666 phone">77<br>88</div>
+                            <div class="fb__button ptg__addressbook__button">
+                                <button type="button"
+                                        class="bg--666 size--01 devAddressBookModify ptg__addressbook__button-modify"
+                                        data-ix="{[ix]}">수정
+                                </button>
+                                99
+                                99
+                                <button type="button"
+                                        class="border--ccc size--01 devAddressBookDelete btn btn-sm ptg__addressbook__button-delete"
+                                        data-ix="{[ix]}">삭제
+                                </button>
+                                00
+                            </div>
+                        </div>
+                    </script>
+
+                    <script id="devAddressBooKEmpty" type="text/x-handlebars-template">
+                        <div class="fb__mypage__empty-text" style="width: 100%;">
+                            <div class="fb__empty">
+                                <p class="fb__empty__text">등록된 배송지가 없습니다.</p>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+
+            <div class="addDelivery__btn ptg__addressbook__button-large">
+                <a href="#" id="devAddressBookAddBtn" class="btn btn-large btn__addressbook__large">배송지 추가</a>
+            </div>
+
+            <div class="fb__modal__mask js__modal__mask"></div>
+            <article class="fb__modal__layer js__modal__layer ptg__bbs-write__modal__layer addressbookSelect-pop"
+                     style="margin-top: -360.445px; margin-left: -375px;">
+                <div class="ptg__bbs-write__modal__layer-info" style="width: 800px;">
+                    <header class="popup-title fb__modal__header ptg__bbs-write__modal__header">
+                        <h3 id="devModalTitle" class="fb__modal__title">배송지 목록</h3>
+                        <span class="fb__modal__close js__modal__close">팝업닫기</span>
+                    </header>
+
+                    <main id="devModalContent"
+                          class="fb__modal__content js__modal__content ptg__bbs-write__modal__content" data-visible="">
+                        <form id="devAddressBookForm">
+                            <input type="hidden" name="page" value="1" id="devPage">
+                            <input type="hidden" name="max" value="3">
+                        </form>
+
+                        <div class="wrap-window-popup address-popup">
+                            <header class="fb__modal__header">
+                                <span class="fb__modal__title">배송지 변경</span>
+                                <!-- <span class="fb__modal__close js__modal__close close" onclick="window.close();"></span> -->
+                            </header>
+
+                            <script>
+                                var addressPopMode = 'member';
+                                var ix = '';
+                            </script>
+                            <div class="addressPop">
+
+                                <div class="addressPop__cont addressInput">
+                                    <form id="devAddressBookAddForm">
+                                        <div class="addressPop__header">
+                                            <div class="addressPop__header__close">
+                                                <img src="./파타고니아코리아_files/ico-mypage-modal-close.png">
+                                            </div>
+                                            <h3 class="addressPop__header-title">배송지 추가</h3>
+
+                                            <div class="addressPop__header-text">
+                                                <p>배송지를 입력해 주세요.</p>
+                                                <div class="default-choice">
+                                                    <label class="fb__comm__checkbox">
+                                                        <input type="checkbox" name="default_yn" value="Y" class="blind"
+                                                               id="devDefaultYn" title="기본 배송지로설정">
+                                                        <span>기본 배송지로 설정</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" name="ix" value="">
+                                        <input type="hidden" name="mode" value="insert" id="devMode">
+
+                                        <div class="addressPop__write">
+                                            <ul class="ptg__write">
+                                                <li class="write__list">
+                                                    <div class="form-info-wrap write__input">
+                                                        <input type="text" name="shipping_name" value=""
+                                                               class="input-full" id="devShippingName" title="배송지 별칭"
+                                                               placeholder=" ">
+                                                        <span class="write__title">배송지명</span>
+                                                    </div>
+                                                </li>
+                                                <li class="write__list">
+                                                    <div class="write__input">
+                                                        <input type="text" name="recipient" value="" class="input-full"
+                                                               id="devRecipient" title="받는 분" placeholder=" "
+                                                               devvalidation="{&quot;required&quot;:true}">
+                                                        <span class="write__title">받는 분</span>
+
+                                                    </div>
+                                                </li>
+                                                <li class="write__list">
+                                                    <div class="write__input write__input-address form-info-wrap">
+                                                        <div class="write__input-address__zipcode">
+                                                            <input type="text" class="input-zipCode dim" name="zipcode"
+                                                                   value="" id="devZip" readonly="" title="우편번호"
+                                                                   placeholder=" "
+                                                                   devvalidation="{&quot;required&quot;:true}">
+                                                            <span class="write__title">우편번호</span>
+                                                            <button type="button" class="zipCode__btn"
+                                                                    id="devZipPopupButton">우편번호 검색
+                                                            </button>
+                                                        </div>
+                                                        <div class="write__input-address__text">
+                                                            <input type="text" class="input-full  dim" name="address1"
+                                                                   id="devAddress1" value="" title="주소" placeholder=" "
+                                                                   readonly=""
+                                                                   devvalidation="{&quot;required&quot;:true}">
+                                                            <span class="write__title">주소</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="write__list">
+                                                    <div class="write__input">
+                                                        <input type="text" class="input-full " name="address2"
+                                                               id="devAddress2" value="" title="상세주소" placeholder=" ">
+                                                        <span class="write__title">상세주소</span>
+                                                    </div>
+                                                </li>
+                                                <li class="write__list">
+                                                    <div class="write__input phone">
+                                                        <select name="pcs1" class="input-phone" id="devPcs1"
+                                                                title="휴대폰번호" placeholder=" "
+                                                                devvalidation="{&quot;required&quot;:true}">
+                                                            <option value="">선택</option>
+                                                            <option value="010">010</option>
+                                                            <!--
+                                                            <option value="011">011</option>
+                                                            <option value="016">016</option>
+                                                            <option value="017">017</option>
+                                                            <option value="018">018</option>
+                                                            <option value="019">019</option>
+                                                            -->
+                                                        </select>
+                                                        <span class="hyphen write__var">-</span>
+                                                        <input type="text" name="pcs2" class="input-phone" id="devPcs2"
+                                                               value="" title="휴대폰번호"
+                                                               devvalidation="{&quot;required&quot;:true}"
+                                                               devmaxlength="4">
+                                                        <span class="hyphen write__var">-</span>
+                                                        <input type="text" name="pcs3" class="input-phone" id="devPcs3"
+                                                               value="" title="휴대폰번호"
+                                                               devvalidation="{&quot;required&quot;:true}"
+                                                               devmaxlength="4">
+                                                        <span class="write__title">휴대폰 번호</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </form>
+
+                                    <div class="addressPop__btn fb__button ptg__button center">
+                                        <button type="button" class="addressPop__btn-cancel btn-modal-footer"
+                                                id="devAddressBookAddCancelBtn">취소
+                                        </button>
+                                        <button type="button" class="addressPop__btn-select" id="devAddressBookSaveBtn"
+                                                data-ix="">저장
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </article>
+        </section>
+
+    </div>
+</div>
+</html>
