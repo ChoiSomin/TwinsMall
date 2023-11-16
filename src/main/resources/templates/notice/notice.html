@@ -5,162 +5,176 @@
       layout:decorate="~{layout/layout}">
 
 <div layout:fragment="script">
-  <script type="text/javascript">
+    <!--<script type="text/javascript">
 
-    <!--var msg = [[${msg}]];
+      var msg = [[${msg}]];
 
-    console.log(msg);
+      console.log(msg);
 
-    if (msg) {
-      $(".modal").modal();
-    }
+      if (msg) {
+        $(".modal").modal();
+      }
 
-    var searchForm = $("#searchForm");
+      var searchForm = $("#searchForm");
 
-    $('#btn-search').click(function (e) {
+      $('#btn-search').click(function (e) {
 
-      searchForm.submit();
+        searchForm.submit();
 
-    });
+      });
 
-    $('.btn-clear').click(function (e) {
+      $('.btn-clear').click(function (e) {
 
-      searchForm.empty().submit();
+        searchForm.empty().submit();
 
-    });-->
-
-  </script>
+      });
+  -->
+    </script>
 </div>
 <div layout:fragment="content">
-  <div class="notice">
-    <div class="top"><div class="heading-our-blog">Notice</div></div>
-    <div class="frame">
-      <div class="text-wrapper-33">공지사항</div>
-      <form action="/notice/list" method="get" id="searchForm">
-        <input type="hidden" name="page" value="1">
-        <select class="section-form-cate" name="type">
-          <option th:selected="${pageRequestDTO.type == null}">-----------</option>
-          <option th:value="t" th:selected="${pageRequestDTO.type =='t'}">제목</option>
-          <option th:value="c" th:selected="${pageRequestDTO.type =='c'}">내용</option>
-          <option th:value="tc" th:selected="${pageRequestDTO.type =='tc'}">제목+내용</option>
-        </select>
-        <div class="section-form-input">
-          <div class="overlap-group">
-            <div class="div-placeholder">
-              <input type="text" name="keyword" th:value="${pageRequestDTO.keyword}" class="text-wrapper-44">검색</input>
-            </div>
-            <img class="icon-search-outline btn-search" th:src="@{/img/icon-search-outline-icon.png}" style="cursor: pointer;">
-          </div>
+    <div class="notice">
+        <div class="top">
+            <div class="heading-our-blog">Notice</div>
         </div>
-      </form>
-    </div>
+        <div class="frame">
+            <div class="text-wrapper-33">공지사항</div>
+            <form action="/notice/list" method="get" id="searchForm">
+                <input type="hidden" name="page" value="1">
+                <select class="section-form-cate" name="type">
+                    <option th:selected="${pageRequestDTO.type == null}">-----------</option>
+                    <option th:value="t" th:selected="${pageRequestDTO.type =='t'}">제목</option>
+                    <option th:value="c" th:selected="${pageRequestDTO.type =='c'}">내용</option>
+                    <option th:value="tc" th:selected="${pageRequestDTO.type =='tc'}">제목+내용</option>
+                </select>
+                <div class="section-form-input">
+                    <div class="overlap-group">
+                        <div class="div-placeholder">
+                            <input type="text" name="keyword" th:value="${pageRequestDTO.keyword}"
+                                   class="text-wrapper-44">검색</input>
+                        </div>
+                        <img class="icon-search-outline btn-search" th:src="@{/img/icon-search-outline-icon.png}"
+                             style="cursor: pointer;">
+                    </div>
+                </div>
+            </form>
+        </div>
 
-    <div class="div-2">
-      <div class="table">
-        <div class="table-2">
-          <div class="row">
-            <div class="cell">
-              <div class="content"><div class="text">번호</div></div>
-            </div>
-            <div class="content-wrapper">
-              <div class="div-wrapper"><div class="text">제목</div></div>
-            </div>
-            <div class="cell">
-              <div class="content"><div class="text">등록일</div></div>
-            </div>
-            <div class="cell">
-              <div class="content"><div class="text">조회수</div></div>
-            </div>
-          </div>
-          <th:block th:each="dto : ${notice.dtoList}">
-            <div class="row-2">
+        <div class="div-2">
+            <div class="table">
+                <div class="table-2">
+                    <div class="row">
+                        <div class="cell">
+                            <div class="content">
+                                <div class="text">번호</div>
+                            </div>
+                        </div>
+                        <div class="content-wrapper">
+                            <div class="div-wrapper">
+                                <div class="text">제목</div>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="content">
+                                <div class="text">등록일</div>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="content">
+                                <div class="text">조회수</div>
+                            </div>
+                        </div>
+                    </div>
+                    <th:block th:each="dto : ${notice.dtoList}">
+                        <div class="row-2">
 
-              <div class="cell-2">
-                <div class="content-2"><div class="text-2">[[${dto.nno}]]</div></div>
-              </div>
-              <div class="cell-3">
-                <div class="div-wrapper">
-                  <a th:href="@{/notice/read(nno = ${dto.nno},
+                            <div class="cell-2">
+                                <div class="content-2">
+                                    <div class="text-2">[[${dto.nno}]]</div>
+                                </div>
+                            </div>
+                            <div class="cell-3">
+                                <div class="div-wrapper">
+                                    <a th:href="@{/notice/read(nno = ${dto.nno},
                     page= ${notice.page},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}">
-                    <div >[[${dto.ntitle}]]</div></a>
+                                        <div>[[${dto.ntitle}]]</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="cell-2">
+                                <div class="content-2">
+                                    <div class="text-2" th:text="${#temporals.format(dto.regTime, 'yyyy-MM-dd')}"></div>
+                                </div>
+                            </div>
+                            <div class="cell-2">
+                                <div class="div-wrapper">
+                                    <div class="text-3" th:text="${dto.view}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
                 </div>
-              </div>
-              <div class="cell-2">
-                <div class="content-2"><div class="text-2" th:text="${#temporals.format(dto.regTime, 'yyyy-MM-dd')}"></div></div>
-              </div>
-              <div class="cell-2">
-                <div class="div-wrapper"><div class="text-3">[[${dto.view}]]</div></div>
-              </div>
             </div>
-          </th:block>
-        </div>
-      </div>
 
-      <div class="frame-120">
-        <ul class="pagination justify-content-center">
+            <div class="frame-120">
+                <ul class="pagination justify-content-center">
 
-          <li class="link" th:if="${notice.prev}">
-            <a class="page-link" th:href="@{/notice/list(page= ${notice.start -1},
+                    <li class="link" th:if="${notice.prev}">
+                        <a class="page-link" th:href="@{/notice/list(page= ${notice.start -1},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}" tabindex="-1">
-              <span aria-hidden='true'>이전페이지</span>
-            </a>
-          </li>
+                            <span aria-hidden='true'>이전페이지</span>
+                        </a>
+                    </li>
 
 
-          <li class="link-2" th:class=" 'page-item ' + ${notice.page == page?'active':''} " th:each="page: ${notice.pageList}">
-            <a class="page-link" th:href="@{/notice/list(page = ${page} ,
+                    <li class="link-2" th:class=" 'page-item ' + ${notice.page == page?'active':''} "
+                        th:each="page: ${notice.pageList}">
+                        <a class="page-link" th:href="@{/notice/list(page = ${page} ,
                    type=${pageRequestDTO.type} ,
                    keyword = ${pageRequestDTO.keyword})}" th:inline="text">[[${page}]]</a>
-          </li>
+                    </li>
 
 
-          <li class="link-3" th:if="${notice.next}">
-            <a class="page-link" th:href="@{/notice/list(page= ${result.end + 1} ,
+                    <li class="link-3" th:if="${notice.next}">
+                        <a class="page-link" th:href="@{/notice/list(page= ${result.end + 1} ,
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}" aria-label='Next'>
-              <span aria-hidden='true'>다음페이지</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="view11">
-        <div class="group11">
-          <li sec:authorize="hasAnyAuthority('ADMIN')">
-            <button type="button" class="overlap-group-22">
-              <a th:href="@{/notice/register}" type="button" class="text-wrapper-77">작성</a>
-            </button>
-          </li>
+                            <span aria-hidden='true'>다음페이지</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="view11">
+                <div class="group11">
+                    <li sec:authorize="hasAnyAuthority('ADMIN')">
+                        <button type="button" class="overlap-group-22">
+                            <a th:href="@{/notice/register}" type="button" class="text-wrapper-77">작성</a>
+                        </button>
+                    </li>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+    <script th:inline="javascript">
+
+        var msg = [[${msg}]];
+
+        console.log(msg);
+
+        if (msg) {
+            $(".modal").modal();
+        }
+        var searchForm = $("#searchForm");
+
+        $('.btn-search').click(function (e) {
+
+            searchForm.submit();
+
+        });
+
+
+    </script>
 </div>
-<script th:inline="javascript">
-
-  var msg = [[${msg}]];
-
-  console.log(msg);
-
-  if (msg) {
-    $(".modal").modal();
-  }
-  var searchForm = $("#searchForm");
-
-  $('.btn-search').click(function (e) {
-
-    searchForm.submit();
-
-  });
-
-  $('.btn-clear').click(function (e) {
-
-    searchForm.empty().submit();
-
-  });
-
-
-</script>
 </html>

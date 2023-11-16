@@ -27,6 +27,9 @@ public class NoticeController{
         log.info("Notice list...." + pageRequestDTO);
 
         model.addAttribute("notice", noticeService.getNoticeList(pageRequestDTO));
+
+        log.info(noticeService.getNoticeList(pageRequestDTO));
+
         return "notice/notice";
     }
     @GetMapping(value = "/register")

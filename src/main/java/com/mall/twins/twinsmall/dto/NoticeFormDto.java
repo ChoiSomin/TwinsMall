@@ -29,7 +29,18 @@ public class NoticeFormDto{
     private LocalDateTime regTime;    // 등록일
     private LocalDateTime updateTime; // 수정일
 
-    private int view;
+    private int view; // 조회수
+
+    public static NoticeFormDto of(Notice notice) {
+        return NoticeFormDto.builder()
+                .nno(notice.getNno())
+                .ntitle(notice.getNtitle())
+                .ncontent(notice.getNcontent())
+                .regTime(notice.getRegTime())
+                .updateTime(notice.getUpdateTime())
+                .view(notice.getView())
+                .build();
+    }
 
     /*private static ModelMapper modelMapper = new ModelMapper();
 

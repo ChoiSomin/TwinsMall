@@ -38,6 +38,7 @@ public interface NoticeService {
                 .ncontent(notice.getNcontent())
                 .regTime(notice.getRegTime())
                 .updateTime(notice.getUpdateTime())
+                .view(notice.getView())
                 .build();
 
         return noticeFormDto;

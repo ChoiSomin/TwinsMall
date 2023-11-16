@@ -38,4 +38,8 @@ public class Notice extends BaseEntity{
     public void updateNcontent(String ncontent) {
         this.ncontent = ncontent;
     }
+
+    public void addView() {
+        this.view++;
+    }
 }
