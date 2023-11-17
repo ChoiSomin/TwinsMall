@@ -89,7 +89,7 @@
                             <div class="cell-2">
                                 <div class="content-2">
                                     <!--<div th:text="${notice.totalElements - (notice.number * notice.size) - loop.index}"></div>-->
-                                    <div th:text="${(notice.page - 1) * notice.size + loop.index + 1}"></div><!-- 최신게시물이 1 -->
+                                    <div class="text" th:text="${(notice.page - 1) * notice.size + loop.index + 1}"></div><!-- 최신게시물이 1 -->
                                 </div>
                             </div>
                             <div class="cell-3">
@@ -98,7 +98,7 @@
                     page= ${notice.page},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}">
-                                        <div>[[${dto.ntitle}]]</div>
+                                        <div class="text-5">[[${dto.ntitle}]]</div>
                                     </a>
                                 </div>
                             </div>

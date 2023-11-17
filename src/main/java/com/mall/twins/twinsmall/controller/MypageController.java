@@ -125,7 +125,7 @@ public class MypageController {
 
         if (result) {
             SecurityContextHolder.clearContext(); // 탈퇴 후 시큐리티 clear
-            return "redirect:/index";
+            return "redirect:/";
         } else {
             model.addAttribute("wrongPassword", "비밀번호가 맞지 않습니다.");
             return "/member/withdrawal";

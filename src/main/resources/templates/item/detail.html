@@ -42,7 +42,7 @@
                 cache: false,
                 success: function (result, status) {
                     alert("주문이 완료 되었습니다.");
-                    location.href = '/index';
+                    location.href = '/';
                 },
                 error: function (jqXHR, status, error) {
 
@@ -111,6 +111,7 @@
                      th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[4] != null}"
                      th:style="'background-image: url(' + ${item.itemImgDtoList[4]?.iimgurl ?: ''} + ')'">
                 <img class="tabpanel-product-big"
+                     th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[0] != null}"
                      th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'">
             </div>
         </div>
