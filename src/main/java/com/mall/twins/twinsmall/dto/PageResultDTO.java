@@ -53,6 +53,8 @@ public class PageResultDTO<DTO, EN> {
     }
     /* /추가 LJM */
 
+
+
     private void makePageList(Pageable pageable){
 
         this.page = pageable.getPageNumber() + 1; // 0부터 시작하므로 1을 추가

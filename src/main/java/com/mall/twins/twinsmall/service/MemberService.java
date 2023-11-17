@@ -29,4 +29,6 @@ public interface MemberService {
 
     /** 회원탈퇴 **/
     boolean withdrawal(String mid);
+
+    String get_searchId(String mname, String mphone);
 }

@@ -29,6 +29,8 @@ public class MemberController {
     private final PasswordEncoder passwordEncoder;
     private final CheckPasswordEqualValidator checkPasswordEqualValidator;
 
+
+
     @GetMapping("/login")
     public void loginGet(String errorCode, String logout) {
 
@@ -97,5 +99,23 @@ public class MemberController {
     public void validatorBinder(WebDataBinder binder){
         binder.addValidators(checkPasswordEqualValidator);
     }
+
+    /* ID/PW 찾기 */
+    @GetMapping("/find-IdPw")
+    public String find(){
+        return "member/find-IdPw";
+    }
+
+    // 아이디 찾기
+    @RequestMapping(value = "/member/IdSearch", method = RequestMethod.POST)
+    @ResponseBody
+    public String userIdSearch(@RequestParam("inputName_1") String mname,
+                               @RequestParam("inputPhone_1") String mphone) {
+
+        String result = memberService.get_searchId(mname, mphone);
+
+        return result;
+    }
+
 
 }

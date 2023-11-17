@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -24,11 +23,6 @@ public class CartController {
 
     private final CartService cartService;
 
-
-    @GetMapping("/cartlist")
-    public String cartList(){
-        return "cart";
-    }
     @PostMapping(value = "/cart")
     public @ResponseBody ResponseEntity order(@RequestBody @Valid CartItemDto cartItemDto,
                                               BindingResult bindingResult, Principal principal){
@@ -56,7 +50,7 @@ public class CartController {
     public String orderHist(Principal principal, Model model){
         List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
         model.addAttribute("cartItems",cartDetailList);
-        return "cart/cartList";
+        return "cart/cart";
     }
 
     @PatchMapping(value = "/cartItem/{cartItemId}")

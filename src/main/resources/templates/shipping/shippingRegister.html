@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+
+<div layout:fragment="content" id='wrapper'>
+
+    <style>
+        .wrong_text{font-size:1rem;color:#f44e38;letter-spacing:-.2px;font-weight:300;margin:8px 0 2px;line-height:1em;display:none}
+    </style>
+
+    <div class="shipping-register">
+        <div class="shop">
+            <div class="heading-shop">Shipping</div>
+            <div class="link-home">배송지정보</div>
+        </div>
+        <div class="view">
+            <div class="nav-list-item-link-4">주문정보</div>
+            <div class="nav-list-item-link-5">주문목록</div>
+            <div class="nav-list-item-link-6">회원정보</div>
+            <div class="nav-list-item-link-7">내정보</div>
+            <div class="nav-list-item-link-8">서비스</div>
+            <div class="nav-list-item-link-9">1:1문의</div>
+            <div class="nav-list-item-link-10">나의 리뷰</div>
+            <div class="nav-list-item-link-11">배송지 정보</div>
+        </div>
+        <div class="div-wrapper">
+            <div class="text-wrapper-3">나의 배송지 작성하기</div>
+        </div>
+        <form action="/shipping/register" role="form" method="post" th:object="${shippingDto}">
+            <div class="details">
+                <div class="frame">
+                    <div class="overlap-group">
+                        <div class="text-wrapper-4">배송지명</div>
+                        <div class="text-wrapper-5">*</div>
+                    </div>
+                    <input class="input" th:field="*{sname}" type="text" placeholder="배송지명을 입력해주세요">
+                </div>
+                <div class="frame-2">
+                    <div class="text-wrapper-6">기본배송지</div>
+                    <div class="frame-3">
+                        <div class="radio-button">
+                            <div class="frame-4">
+                                <div class="ellipse-wrapper">
+                                    <div class="ellipse"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-wrapper-7">예</div>
+                        <div class="frame-wrapper">
+                            <div class="frame-4">
+                                <div class="ellipse-2"></div>
+                            </div>
+                        </div>
+                        <div class="text-wrapper-8">아니오</div>
+                    </div>
+                </div>
+                <div class="frame-5">
+                    <div class="overlap">
+                        <div class="text-wrapper-9">받는분</div>
+                        <div class="text-wrapper-10">*</div>
+                    </div>
+                    <input class="input" th:field="*{sperson}" type="text" placeholder="받는 분을 입력해주세요">
+                </div>
+                <div class="frame-6">
+                    <div class="overlap-2">
+                        <div class="text-wrapper-11">받는분 H.P</div>
+                        <div class="text-wrapper-12">*</div>
+                    </div>
+                    <input class="input" th:field="*{sphone}" type="text" placeholder="받는 분을 입력해주세요">
+                </div>
+
+                <!--우편번호 입력하기-->
+
+
+
+                <div class="frame-7">
+                    <div class="overlap-3">
+                        <div class="text-wrapper-13">우편번호</div>
+                        <div class="text-wrapper-5">*</div>
+                    </div>
+                    <div class="input-2" id="sample6_postcode"></div>
+                    <div class="frame-8">
+                        <input type="button" class="text-wrapper-14" onclick="openDaumPostcode()" value="우편번호 찾기">
+                    </div>
+                </div>
+                <script>
+                    function openDaumPostcode() {
+                        new daum.Postcode({
+                            oncomplete: function(data) {
+                                var addr = '';
+                                var extraAddr = '';
+
+                                if (data.userSelectedType === 'R') {
+                                    addr = data.roadAddress;
+                                } else {
+                                    addr = data.jibunAddress;
+                                }
+
+                                if (data.userSelectedType === 'R') {
+                                    if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                                        extraAddr += data.bname;
+                                    }
+                                    if (data.buildingName !== '' && data.apartment === 'Y') {
+                                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                    }
+                                    if (extraAddr !== '') {
+                                        extraAddr = ' (' + extraAddr + ')';
+                                    }
+                                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                                } else {
+                                    document.getElementById("sample6_extraAddress").value = '';
+                                }
+
+                                document.getElementById('sample6_postcode').value = data.zonecode;
+                                document.getElementById("sample6_address").value = addr;
+                                document.getElementById("sample6_detailAddress").focus();
+                            }
+                        }).open();
+                    }
+                </script>
+                <div class="frame-9">
+                    <div class="overlap-4">
+                        <div class="text-wrapper-15">주소</div>
+                        <div class="text-wrapper-16">*</div>
+                    </div>
+                    <input type="text" class="input-3" id="sample6_address" placeholder="주소를 입력해주세요">
+                </div>
+                <div class="frame-10">
+                    <div class="overlap-5">
+                        <div class="text-wrapper-4" >상세주소</div>
+                        <div class="text-wrapper-17">*</div>
+                    </div>
+                    <div type="text" class="input-3" id="sample6_detailAddress" placeholder="상세주소를 입력해주세요"></div>
+                </div>
+                <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+                <div class="frame-11">
+                    <div class="frame-12">
+                        <div class="text-wrapper-18">다시입력</div>
+                    </div>
+                    <div class="frame-13">
+                        <div class="text-wrapper-19">취소하기</div>
+                    </div>
+                    <div class="frame-14">
+                        <div class="text-wrapper-18">작성하기</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

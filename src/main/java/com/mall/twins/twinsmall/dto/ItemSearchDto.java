@@ -8,6 +8,10 @@ import lombok.Setter;
 @Setter
 public class ItemSearchDto {
 
+    private String pname;
+
+    private String pcate;
+
     private String searchDateType; // 현재 시간과 상품 등록일을 비교해서 상품 데이터를 조회
 
     private ItemSellStatus searchSellStatus; // 상품을 판매상태를 기준으로 상품 데이터를 조회

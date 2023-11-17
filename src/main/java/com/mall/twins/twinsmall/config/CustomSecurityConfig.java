@@ -63,14 +63,14 @@ public class CustomSecurityConfig {
         http.formLogin()
                 .loginPage("/member/login")                                                 // Form 로그인 기능 작동, 커스텀 로그인 페이지
                 .loginProcessingUrl("/auth/loginProc")                                      // 시큐리티에서 해당 주소로 오는 요청을 낚아채 수행
-                .defaultSuccessUrl("/index")                                               // 로그인 성공시 index 페이지로 이동
+                .defaultSuccessUrl("/")                                               // 로그인 성공시 index 페이지로 이동
                 .failureUrl("/member/login/error")                      // 로그인 실패 시 이동할 URL 설정
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))   // 로그아웃 URL
-                .logoutSuccessUrl("/index")                                                 // 로그아웃 성공시 이동할 URL
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID");                                               // 로그아웃 이후 세션 전체 삭제 여부
+                .logoutSuccessUrl("/")                                                 // 로그아웃 성공시 이동할 URL
+                .invalidateHttpSession(true)                                                // 로그아웃 이후 세션 전체 삭제 여부
+                .deleteCookies("JSESSIONID");
 
         http.csrf().disable();                                                             // CSRF 토큰 비활성화 (기본값은 GET 방식 제외 요구) -> USERNAME과 PASSWORD 만으로 로그인 가능
 

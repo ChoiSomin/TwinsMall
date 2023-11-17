@@ -30,33 +30,33 @@ public class ItemController {
 
     private final ItemService itemService;
 
-    @GetMapping(value = "item/register")
+    @GetMapping(value = "/item/register")
     public String itemRegister(Model model) {
         model.addAttribute("itemFormDto", new ItemFormDto());
-        return "item/reigster";
+        return "item/register";
     }
 
-    @PostMapping(value = "item/itemRegister")
+    @PostMapping(value = "/item/register")
     public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                           Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList){
 
         if(bindingResult.hasErrors()){
-            return "item/reigster";
+            return "item/register";
         }
 
         if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null){
             model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
-            return "item/reigster";
+            return "item/register";
         }
 
         try {
             itemService.saveItem(itemFormDto, itemImgFileList);
         } catch (Exception e){
             model.addAttribute("errorMessage", "상품 등록 중 에러가 발생하였습니다.");
-            return "item/reigster";
+            return "item/register";
         }
 
-        return "redirect:/index";
+        return "redirect:/";
     }
 
     @GetMapping(value = "/admin/item/{ItemId}")
@@ -68,31 +68,31 @@ public class ItemController {
             model.addAttribute("errormessage", "존재하지 않는 상품입니다.");
             model.addAttribute("itemFormDto", new ItemFormDto());
 
-            return "item/reigster";
+            return "item/register";
         }
-        return "item/reigster";
+        return "item/register";
     }
 
     @PostMapping(value = "/admin/item/{ItemId}")
     public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                              @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, Model model){
         if(bindingResult.hasErrors()){
-            return "item/reigster";
+            return "item/register";
         }
 
         if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null){
             model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
-            return "item/reigster";
+            return "item/register";
         }
 
         try {
             itemService.updateItem(itemFormDto, itemImgFileList);
         } catch (Exception e){
             model.addAttribute("errorMessage", "상품 수정 중 에러가 발생하였습니다.");
-            return "item/reigster";
+            return "item/register";
         }
 
-        return "redirect:/index";
+        return "redirect:/";
     }
 
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
@@ -117,9 +117,21 @@ public class ItemController {
     }
 
     @GetMapping(value = "/item/list")
-    public String product(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
+    public String product(@RequestParam(name = "pname", required = false) String pname,
+                          @RequestParam(name = "pcate", required = false) String pcate,
+                          Optional<Integer> page, Model model) {
 
-        log.info("ItemSearchDto: {}", itemSearchDto);
+        ItemSearchDto itemSearchDto = new ItemSearchDto();
+
+        if (pcate != null && !pcate.isEmpty()) {
+            itemSearchDto.setPcate(pcate);
+        }
+
+        if (pname != null && !pname.isEmpty()) {
+            itemSearchDto.setPname(pname);
+        }
+
+        log.info("It emSearchDto: {}", itemSearchDto);
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 12);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
@@ -128,23 +140,29 @@ public class ItemController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
-
         return "item/list";
     }
 
     @GetMapping(value = "/item/detail/{itemId}")
     public String productDetail(Model model, @PathVariable("itemId") Long itemId, Principal principal){
 
-        if (principal != null){
-            String username = principal.getName();
-
-            model.addAttribute("username", username);
-            return "item/detail";
-        }
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+
+        if (itemFormDto == null) {
+            // Handle the case where item is not found (null)
+            // For example, you can redirect to an error page or homepage
+            return "redirect:/"; // Redirect to homepage
+        }
+
         model.addAttribute("item", itemFormDto);
 
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
+
         return "item/detail";
+
     }
 
 }

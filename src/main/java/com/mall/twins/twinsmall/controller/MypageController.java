@@ -34,6 +34,13 @@ public class MypageController {
 
     private final AuthenticationManager authenticationManager;
 
+    @GetMapping("/shipping/list")
+    public String list(){
+        log.info("list....");
+
+        return "shipping/shipping";
+    }
+
     // 회원 정보 조회
     @GetMapping("/read")
     public String read(Principal principal, Model model) {
@@ -125,7 +132,7 @@ public class MypageController {
 
         if (result) {
             SecurityContextHolder.clearContext(); // 탈퇴 후 시큐리티 clear
-            return "redirect:/index";
+            return "redirect:/";
         } else {
             model.addAttribute("wrongPassword", "비밀번호가 맞지 않습니다.");
             return "/member/withdrawal";

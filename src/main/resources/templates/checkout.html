@@ -1,30 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="globals.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-<div class="check-out">
-  <div class="div">
-    <header class="header">
-      <img class="link-logo-png" src="img/image.png" />
-      <div class="nav-list-item-link">Home</div>
-      <div class="text-wrapper">Shop</div>
-      <div class="nav-list-item-link-2">Notice</div>
-      <div class="nav-list-item-link-3">About us</div>
-      <img class="icon-search" src="img/icon-search.png" />
-      <img class="icon-favorite-border" src="img/icon-favorite-border.png" />
-      <img class="icon-shopping-bag" src="img/icon-shopping-bag.png" />
-      <img class="icon-person" src="img/icon-person.png" />
-      <div class="div-header-top"><div class="text-wrapper-2">Welcome to Twin’s Mall</div></div>
-    </header>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+
+  <style>
+    .footer .footer {
+        top: 1108px;
+    }
+  </style>
+
+  <div class="check-out">
     <div class="top">
       <div class="heading-check-out">Check Out</div>
       <div class="overlap-group">
         <div class="link-home">주문/결제하기</div>
-        <div class="symbol"></div>
-        <div class="symbol-2"></div>
       </div>
     </div>
     <div class="details">
@@ -32,17 +23,19 @@
         <div class="symbol-3"></div>
         <p class="have-a-coupon-click">Have a coupon? Click here to enter your code</p>
       </div>
-      <div class="div-wrapper"><div class="text-wrapper-3">주문자 정보</div></div>
+      <div class="div-wrapper">
+        <div class="text-wrapper-3">주문자 정보</div>
+      </div>
       <div class="text-wrapper-4">이름</div>
-      <div class="input"></div>
+      <input class="input" type="text" name="name">
       <div class="text-wrapper-5">핸드폰 번호</div>
       <div class="overlap">
         <div class="text-wrapper-6">주소</div>
         <div class="overlap-2">
           <div class="div-placeholder-wrapper">
-            <input class="div-placeholder" placeholder="Street Address" type="text" />
+            <input class="div-placeholder" placeholder="Street Address" type="text"/>
           </div>
-          <img class="group" src="img/group-318.png" />
+          <img class="group" src="/img/group-318.png"/>
         </div>
       </div>
       <div class="input-2">
@@ -56,94 +49,55 @@
       <div class="heading-2">
         <div class="text-wrapper-3">받는 분</div>
         <div class="group-2">
-          <div class="text-wrapper-9">주문자와 동일</div>
-          <div class="frame"><div class="rectangle"></div></div>
+          <input type="checkbox" id="keep" name="remember-me" class="input_keep" value="off">
+          <label for="keep" class="text-wrapper-9">주문자와 동일</label>
+
         </div>
       </div>
     </div>
+
     <div class="order">
-      <div class="heading-3"><div class="text-wrapper-10">결제상세</div></div>
-      <div class="div-checkout-order">
-        <div class="text-wrapper-11">상품명</div>
-        <div class="text-wrapper-12">가격</div>
-      </div>
-      <div class="list-item">
-        <div class="text-wrapper-13">01. Vanilla salted caramel</div>
-        <div class="text-wrapper-14">$ 300.0</div>
-      </div>
-      <div class="list-item-2">
-        <div class="text-wrapper-15">02. German chocolate</div>
-        <div class="text-wrapper-14">$ 170.0</div>
-      </div>
-      <div class="list-item-3">
-        <div class="text-wrapper-16">03. Sweet autumn</div>
-        <div class="text-wrapper-14">$ 170.0</div>
-      </div>
-      <div class="list-item-4">
-        <p class="text-wrapper-17">04. Cluten free mini dozen</p>
-        <div class="text-wrapper-14">$ 110.0</div>
-      </div>
-      <div class="list">
-        <div class="item">
-          <div class="text-wrapper-18">배송비</div>
-          <div class="text-wrapper-19">$750.99</div>
+      <th:block th:each="cartItem : ${cartItems}">
+        <div class="heading-3">
+          <div class="text-wrapper-10">결제상세</div>
         </div>
-        <div class="item-2">
-          <div class="text-wrapper-20">총 주문 금액</div>
-          <div class="text-wrapper-19">$750.99</div>
+        <div class="div-checkout-order">
+          <div class="text-wrapper-11">상품명</div>
+          <div class="text-wrapper-12">가격</div>
         </div>
-      </div>
-      <button class="button"><div class="text-wrapper-21">PLACE ORDER</div></button>
+        <div class="list-item">
+          <div class="text-wrapper-13" th:text="${cartItem.itemNm}"></div>
+          <div class="text-wrapper-14" th:text="${cartItem.price}"></div>
+        </div>
+        <div class="list">
+          <div class="item">
+            <div class="text-wrapper-18">배송비</div>
+            <div class="text-wrapper-19">3500원</div>
+          </div>
+          <div class="item-2">
+            <div class="text-wrapper-20">총 주문 금액</div>
+            <div class="text-wrapper-19">[[${cartItem.price}]]</div>
+          </div>
+        </div>
+        <button class="button">
+          <div class="text-wrapper-21">PLACE ORDER</div>
+        </button>
+      </th:block>
     </div>
-    <footer class="footer">
-      <div class="overlap-3">
-        <div class="div-container">
-          <p class="based-on-the-life-s">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</p>
-          <p class="text-wrapper-22">we always strives to provide First, Unique,</p>
-          <div class="overlap-4">
-            <p class="text-wrapper-23">and New F·U·N experiences to provide</p>
-            <p class="text-wrapper-24">customers with a better life.</p>
-          </div>
-          <div class="heading-shopping">SHOPPING</div>
-          <div class="list-item-link">Refrigerator</div>
-          <div class="list-item-link-2">TV</div>
-          <div class="list-item-link-3">Laptop</div>
-          <div class="list-item-link-sale">Washing Machine</div>
-          <div class="list-item-link-4">Air Purifier</div>
-          <div class="list-item-link-5">Air Conditioner</div>
-          <div class="list-item-link-6">Cleaner</div>
-          <div class="heading-newletter">OTHERS</div>
-          <div class="div-footer-copyright">
-            <div class="overlap-group-2">
-              <div class="text-wrapper-25">Copyright ©</div>
-              <p class="text-wrapper-26">20232020 All rights reserved | This template is made with</p>
-              <div class="symbol-4"></div>
-              <div class="by">by</div>
-              <div class="link-colorlib">Colorlib</div>
-            </div>
-          </div>
-          <div class="list-item-link-7">About us</div>
-          <div class="list-item-link-8">FAQ</div>
-          <div class="list-item-link-9">Contact</div>
-          <p class="element">
-                <span class="span"
-                >개인정보처리방침<br />이벤트 개인정보처리방침<br />영상정보처리기기운영관리방침<br /><br />대표번호 :
-                </span>
-            <a href="tel:02-3777-1114" target="_blank" rel="noopener noreferrer"
-            ><span class="text-wrapper-27">02-</span></a
-            >
-            <span class="span"
-            >1234-1234<br />전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 :
-                  발신자부담)<br />제품 및 서비스 문의는 긴급 문의 건에 한해 24시간 운영합니다.<br />주소 : 경기도
-                  수원시 경기도 수원시 팔달구 덕영대로 899 (매산로 1가, 세진브론즈빌 304호)<br /><br />본 사이트의 모든
-                  콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.</span
-            >
-          </p>
-        </div>
-        <img class="img" src="img/link-logo-png.png" />
-      </div>
-    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          var urlParams = new URLSearchParams(window.location.search);
+          var cartItemsJson = urlParams.get('cartItems');
+
+          if (cartItemsJson) {
+              var cartItems = JSON.parse(decodeURIComponent(cartItemsJson));
+
+              // 이제 cartItems 배열을 사용하여 Checkout 페이지에서 데이터를 표시하거나 처리할 수 있습니다.
+              console.log("카트 아이템 정보:");
+              console.log(cartItems);
+          }
+      });
+    </script>
   </div>
-</div>
-</body>
 </html>

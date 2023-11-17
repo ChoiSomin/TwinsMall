@@ -121,5 +121,25 @@ public class OrderServiceImpl implements OrderService{
         return order.getOno();
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Page<OrderHistDto> getOrderListByOrderId(String mid, Long ono, Pageable pageable) {
+        List<Order> orders = orderRepository.findOrdersByMember_MidAndOno(mid, ono, pageable);
+        List<OrderHistDto> orderHistDtos = new ArrayList<>();
+
+        for(Order order : orders){
+            OrderHistDto orderHistDto = new OrderHistDto(order);
+            List<OrderItem> orderItems = order.getOrderItems();
+            for(OrderItem orderItem : orderItems){
+                ItemImg itemImg = itemImgRepository.findByIdAndIimgrep(orderItem.getItem().getId(),"Y");
+                OrderItemDto orderItemDto = new OrderItemDto(orderItem, itemImg.getIimgurl());
+                orderHistDto.addOrderItemDto(orderItemDto);
+            }
+            orderHistDtos.add(orderHistDto);
+        }
+
+        return new PageImpl<>(orderHistDtos, pageable, orders.size());
+    }
+
 
 }

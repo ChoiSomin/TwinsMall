@@ -1,5 +1,5 @@
 
-.mypage-order {
+.shipping-register {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -7,14 +7,14 @@
     width: 100%;
 }
 
-.mypage-order .div {
+.shipping-register .div {
     background-color: #ffffff;
     width: 1920px;
     height: 1080px;
     position: relative;
 }
 
-.mypage-order .header {
+.shipping-register .header {
     position: absolute;
     width: 1920px;
     height: 131px;
@@ -23,7 +23,7 @@
     background-color: #ffffff;
 }
 
-.mypage-order .link-logo-png {
+.shipping-register .link-logo-png {
     position: absolute;
     width: 225px;
     height: 36px;
@@ -31,7 +31,7 @@
     left: 335px;
 }
 
-.mypage-order .nav-list-item-link {
+.shipping-register .nav-list-item-link {
     width: 52px;
     left: 786px;
     position: absolute;
@@ -47,7 +47,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .text-wrapper {
+.shipping-register .text-wrapper {
     width: 45px;
     left: 979px;
     position: absolute;
@@ -63,7 +63,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-2 {
+.shipping-register .nav-list-item-link-2 {
     width: 69px;
     left: 1051px;
     position: absolute;
@@ -79,7 +79,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-3 {
+.shipping-register .nav-list-item-link-3 {
     width: 88px;
     left: 864px;
     position: absolute;
@@ -95,7 +95,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .icon-search {
+.shipping-register .icon-search {
     left: 1474px;
     position: absolute;
     width: 16px;
@@ -103,7 +103,7 @@
     top: 81px;
 }
 
-.mypage-order .icon-favorite-border {
+.shipping-register .icon-favorite-border {
     position: absolute;
     width: 16px;
     height: 17px;
@@ -111,7 +111,7 @@
     left: 1516px;
 }
 
-.mypage-order .icon-shopping-bag {
+.shipping-register .icon-shopping-bag {
     position: absolute;
     width: 16px;
     height: 17px;
@@ -119,7 +119,7 @@
     left: 1560px;
 }
 
-.mypage-order .icon-person {
+.shipping-register .icon-person {
     left: 1431px;
     position: absolute;
     width: 16px;
@@ -127,7 +127,7 @@
     top: 81px;
 }
 
-.mypage-order .div-header-top {
+.shipping-register .div-header-top {
     position: absolute;
     width: 1920px;
     height: 46px;
@@ -136,7 +136,7 @@
     background-color: #111111;
 }
 
-.mypage-order .text-wrapper-2 {
+.shipping-register .text-wrapper-2 {
     position: absolute;
     width: 333px;
     height: 25px;
@@ -151,7 +151,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .shop {
+.shipping-register .shop {
     position: absolute;
     width: 1920px;
     height: 141px;
@@ -160,9 +160,9 @@
     background-color: #f3f2ee;
 }
 
-.mypage-order .heading-shop {
+.shipping-register .heading-shop {
     position: absolute;
-    width: 96px;
+    width: 116px;
     height: 28px;
     top: 39px;
     left: 390px;
@@ -175,20 +175,12 @@
     white-space: nowrap;
 }
 
-.mypage-order .overlap-group {
+.shipping-register .link-home {
     position: absolute;
     width: 75px;
     height: 23px;
     top: 76px;
     left: 390px;
-}
-
-.mypage-order .link-home {
-    position: absolute;
-    width: 75px;
-    height: 23px;
-    top: 0;
-    left: 0;
     font-family: "Nunito Sans-Regular", Helvetica;
     font-weight: 400;
     color: #acacac;
@@ -198,37 +190,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .symbol {
-    width: 6px;
-    height: 22px;
-    top: 0;
-    left: 49px;
-    color: #111111;
-    line-height: 22.5px;
-    position: absolute;
-    font-family: "Inter-Regular", Helvetica;
-    font-weight: 400;
-    font-size: 15px;
-    letter-spacing: 0;
-    white-space: nowrap;
-}
-
-.mypage-order .text-wrapper-3 {
-    position: absolute;
-    width: 317px;
-    height: 48px;
-    top: 292px;
-    left: 885px;
-    font-family: "Nunito Sans-Bold", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 32px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: 27px;
-}
-
-.mypage-order .view {
+.shipping-register .view {
     position: absolute;
     width: 178px;
     height: 441px;
@@ -237,7 +199,7 @@
     background-color: #ffffff;
 }
 
-.mypage-order .nav-list-item-link-4 {
+.shipping-register .nav-list-item-link-4 {
     width: 80px;
     height: 25px;
     top: 15px;
@@ -253,7 +215,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-5 {
+.shipping-register .nav-list-item-link-5 {
     width: 100px;
     height: 20px;
     top: 61px;
@@ -269,7 +231,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-6 {
+.shipping-register .nav-list-item-link-6 {
     width: 80px;
     height: 25px;
     top: 102px;
@@ -285,7 +247,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-7 {
+.shipping-register .nav-list-item-link-7 {
     width: 100px;
     height: 20px;
     top: 148px;
@@ -301,7 +263,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-8 {
+.shipping-register .nav-list-item-link-8 {
     width: 80px;
     height: 25px;
     top: 229px;
@@ -317,7 +279,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-9 {
+.shipping-register .nav-list-item-link-9 {
     width: 100px;
     height: 20px;
     top: 275px;
@@ -333,7 +295,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-10 {
+.shipping-register .nav-list-item-link-10 {
     width: 100px;
     height: 20px;
     top: 309px;
@@ -349,7 +311,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .nav-list-item-link-11 {
+.shipping-register .nav-list-item-link-11 {
     width: 100px;
     height: 20px;
     top: 182px;
@@ -365,289 +327,541 @@
     white-space: nowrap;
 }
 
-.mypage-order .frame {
+.shipping-register .div-wrapper {
     position: absolute;
-    width: 1450px;
-    height: 609px;
-    top: 381px;
-    left: 359px;
-}
-
-.mypage-order .table {
-    flex-direction: column;
-    width: 1450px;
-    height: 530px;
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-}
-
-.mypage-order .table-2 {
-    flex-direction: column;
-    height: 530px;
-    align-self: stretch;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 4px;
+    width: 383px;
+    height: 63px;
+    top: 294px;
+    left: 888px;
     overflow: hidden;
-    display: flex;
-    align-items: flex-start;
-    position: relative;
 }
 
-.mypage-order .row {
-    display: flex;
-    height: 50px;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    width: 100%;
-}
-
-.mypage-order .cell {
-    width: 270px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
-}
-
-.mypage-order .content {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: flex-start;
-    padding: 10px 12px;
-    position: relative;
-    align-self: stretch;
-    width: 100%;
-}
-
-.mypage-order .text {
+.shipping-register .text-wrapper-3 {
+    width: 381px;
+    height: 35px;
+    top: 15px;
+    left: 21px;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 28px;
+    line-height: 36.4px;
+    position: absolute;
+    font-weight: 700;
     color: #000000;
-    position: relative;
-    flex: 1;
-    margin-top: -1px;
-    font-family: "Inter-SemiBold", Helvetica;
-    font-weight: 600;
-    font-size: 20px;
     text-align: center;
     letter-spacing: 0;
-    line-height: 26px;
+    white-space: nowrap;
 }
 
-.mypage-order .content-wrapper {
-    width: 550px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
+.shipping-register .details {
+    position: absolute;
+    width: 780px;
+    height: 704px;
+    top: 357px;
+    left: 689px;
 }
 
-.mypage-order .div-wrapper {
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
+.shipping-register .frame {
+    position: absolute;
+    width: 366px;
+    height: 90px;
+    top: 105px;
+    left: 15px;
 }
 
-.mypage-order .cell-2 {
-    flex: 1;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
+.shipping-register .overlap-group {
+    position: absolute;
+    width: 64px;
+    height: 28px;
+    top: -1px;
+    left: 0;
 }
 
-.mypage-order .cell-3 {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
+.shipping-register .text-wrapper-4 {
+    width: 59px;
+    height: 25px;
+    top: 3px;
+    left: 0;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #111111;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
 }
 
-.mypage-order .row-2 {
-    height: 80px;
-    align-self: stretch;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    position: relative;
+.shipping-register .text-wrapper-5 {
+    width: 7px;
+    height: 20px;
+    top: 0;
+    left: 57px;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #e53637;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
 }
 
-.mypage-order .cell-4 {
-    width: 270px;
-    background-color: #ffffff01;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
+.shipping-register .input {
+    width: 366px;
+    top: 40px;
+    position: absolute;
+    height: 50px;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #e1e1e1;
 }
 
-.mypage-order .content-2 {
-    flex: 1;
-    flex-grow: 1;
-    display: flex;
-    align-items: flex-start;
-    padding: 10px 12px;
-    position: relative;
-    align-self: stretch;
-    width: 100%;
+.shipping-register .frame-2 {
+    position: absolute;
+    width: 297px;
+    height: 26px;
+    top: 149px;
+    left: 406px;
 }
 
-.mypage-order .text-2 {
-    align-self: stretch;
-    color: #003dff;
+.shipping-register .text-wrapper-6 {
+    width: 78px;
+    height: 25px;
+    top: -1px;
+    left: 0;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #111111;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .frame-3 {
+    position: absolute;
+    width: 188px;
+    height: 26px;
+    top: 0;
+    left: 109px;
+}
+
+.shipping-register .radio-button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    left: 0;
+}
+
+.shipping-register .frame-4 {
+    height: 20px;
+}
+
+.shipping-register .ellipse-wrapper {
     position: relative;
-    flex: 1;
-    margin-top: -1px;
-    font-family: "Inter-SemiBold", Helvetica;
-    font-weight: 600;
-    font-size: 20px;
+    width: 24px;
+    height: 24px;
+    top: -2px;
+    left: -2px;
+    border-radius: 12px;
+    border: 2px solid;
+    border-color: #24a0ed;
+}
+
+.shipping-register .ellipse {
+    position: relative;
+    width: 9px;
+    height: 9px;
+    top: 6px;
+    left: 6px;
+    background-color: #24a0ed;
+    border-radius: 4.5px;
+}
+
+.shipping-register .text-wrapper-7 {
+    width: 47px;
+    height: 26px;
+    top: -1px;
+    left: 29px;
+    font-family: "Roboto-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .frame-wrapper {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    left: 120px;
+}
+
+.shipping-register .ellipse-2 {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    top: -2px;
+    left: -2px;
+    border-radius: 12px;
+    border: 2px solid;
+    border-color: #808080;
+}
+
+.shipping-register .text-wrapper-8 {
+    width: 51px;
+    height: 26px;
+    top: -1px;
+    left: 149px;
+    font-family: "Roboto-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .frame-5 {
+    position: absolute;
+    width: 366px;
+    height: 90px;
+    top: 218px;
+    left: 15px;
+}
+
+.shipping-register .overlap {
+    position: absolute;
+    width: 61px;
+    height: 28px;
+    top: -1px;
+    left: 0;
+}
+
+.shipping-register .text-wrapper-9 {
+    width: 61px;
+    height: 25px;
+    top: 3px;
+    left: 0;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #111111;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .text-wrapper-10 {
+    width: 7px;
+    height: 20px;
+    top: 0;
+    left: 54px;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #e53637;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .frame-6 {
+    position: absolute;
+    width: 366px;
+    height: 90px;
+    top: 218px;
+    left: 406px;
+}
+
+.shipping-register .overlap-2 {
+    position: absolute;
+    width: 76px;
+    height: 28px;
+    top: -1px;
+    left: 0;
+}
+
+.shipping-register .text-wrapper-11 {
+    position: absolute;
+    width: 73px;
+    height: 25px;
+    top: 3px;
+    left: 0;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #111111;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.shipping-register .text-wrapper-12 {
+    width: 7px;
+    height: 20px;
+    top: 0;
+    left: 69px;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #e53637;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .frame-7 {
+    position: absolute;
+    width: 366px;
+    height: 92px;
+    top: 329px;
+    left: 15px;
+}
+
+.shipping-register .overlap-3 {
+    position: absolute;
+    width: 64px;
+    height: 30px;
+    top: -1px;
+    left: 0;
+}
+
+.shipping-register .text-wrapper-13 {
+    width: 63px;
+    height: 25px;
+    top: 5px;
+    left: 0;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #111111;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .input-2 {
+    width: 366px;
+    top: 42px;
+    position: absolute;
+    height: 50px;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #e1e1e1;
+}
+
+.shipping-register .frame-8 {
+    position: absolute;
+    width: 100px;
+    height: 35px;
+    top: -3px;
+    left: 94px;
+    background-color: #c2d4ef;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px #00000040;
+}
+
+.shipping-register .text-wrapper-14 {
+    width: 76px;
+    height: 18px;
+    top: 8px;
+    left: 12px;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .frame-9 {
+    position: absolute;
+    width: 360px;
+    height: 90px;
+    top: 444px;
+    left: 15px;
+}
+
+.shipping-register .overlap-4 {
+    position: absolute;
+    width: 35px;
+    height: 28px;
+    top: -1px;
+    left: 0;
+}
+
+.shipping-register .text-wrapper-15 {
+    width: 31px;
+    height: 25px;
+    top: 3px;
+    left: 0;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #111111;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .text-wrapper-16 {
+    width: 7px;
+    height: 20px;
+    top: 0;
+    left: 28px;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #e53637;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .input-3 {
+    width: 360px;
+    top: 40px;
+    position: absolute;
+    height: 50px;
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #e1e1e1;
+}
+
+.shipping-register .frame-10 {
+    position: absolute;
+    width: 360px;
+    height: 90px;
+    top: 444px;
+    left: 409px;
+}
+
+.shipping-register .overlap-5 {
+    position: absolute;
+    width: 65px;
+    height: 28px;
+    top: -1px;
+    left: 0;
+}
+
+.shipping-register .text-wrapper-17 {
+    width: 7px;
+    height: 20px;
+    top: 0;
+    left: 58px;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #e53637;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.shipping-register .frame-11 {
+    position: absolute;
+    width: 366px;
+    height: 35px;
+    top: 630px;
+    left: 198px;
+}
+
+.shipping-register .frame-12 {
+    position: absolute;
+    width: 100px;
+    height: 35px;
+    top: 0;
+    left: 133px;
+    background-color: #d9d9d9;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px #00000040;
+}
+
+.shipping-register .text-wrapper-18 {
+    width: 63px;
+    height: 18px;
+    top: 7px;
+    left: 18px;
+    font-family: "Nunito Sans-Bold", Helvetica;
+    font-size: 15px;
+    line-height: 25px;
+    position: absolute;
+    font-weight: 700;
+    color: #000000;
     text-align: center;
     letter-spacing: 0;
-    line-height: 26px;
-    top: 17px;
-    left: 34px;
+    white-space: nowrap;
 }
 
-.mypage-order .cell-5 {
-    width: 550px;
-    background-color: #ffffff01;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
+.shipping-register .frame-13 {
+    position: absolute;
+    width: 100px;
+    height: 35px;
+    top: 0;
+    left: 0;
+    background-color: #f68181;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px #00000040;
 }
 
-.mypage-order .cell-6 {
-    width: 430px;
-    background-color: #ffffff01;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
-}
-
-.mypage-order .cell-7 {
-    flex: 1;
-    flex-grow: 1;
-    background-color: #ffffff01;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
-}
-
-.mypage-order .text-3 {
-    align-self: stretch;
-    color: #ff0000;
-    position: relative;
-    flex: 1;
-    margin-top: -1px;
-    font-family: "Inter-SemiBold", Helvetica;
+.shipping-register .text-wrapper-19 {
+    width: 63px;
+    height: 18px;
+    top: 7px;
+    left: 18px;
+    font-family: "Nunito-SemiBold", Helvetica;
     font-weight: 600;
-    font-size: 20px;
+    color: #000000;
+    font-size: 15px;
     text-align: center;
+    white-space: nowrap;
+    position: absolute;
     letter-spacing: 0;
-    line-height: 26px;
-    left: 200px;
-    top: 17px;
+    line-height: 25px;
 }
 
-.mypage-order .text-4 {
-     align-self: stretch;
-     color: #000000;
-     position: relative;
-     flex: 1;
-     margin-top: -1px;
-     font-family: "Inter-SemiBold", Helvetica;
-     font-weight: 600;
-     font-size: 20px;
-     text-align: center;
-     letter-spacing: 0;
-     line-height: 26px;
-     left: 210px;
-     top: 17px;
- }
-
- .mypage-order .text-5 {
-     align-self: stretch;
-     color: #000000;
-     position: relative;
-     flex: 1;
-     margin-top: -1px;
-     font-family: "Inter-SemiBold", Helvetica;
-     font-weight: 600;
-     font-size: 20px;
-     text-align: center;
-     letter-spacing: 0;
-     line-height: 26px;
-     left: 27px;
-     top: 17px;
- }
-
-.mypage-order .cell-8 {
-    width: 200px;
-    background-color: #ffffff01;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    align-self: stretch;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #b9b9b9;
+.shipping-register .frame-14 {
+    position: absolute;
+    width: 100px;
+    height: 35px;
+    top: 0;
+    left: 266px;
+    background-color: #c0e8c4;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px #00000040;
 }
 
-.mypage-order .footer {
+.shipping-register .footer {
     position: absolute;
     width: 1920px;
     height: 390px;
-    top: 1102px;
+    top: 1090px;
     left: 0;
     background-color: #111111;
 }
 
-.mypage-order .overlap {
+.shipping-register .overlap-6 {
     position: relative;
     width: 1391px;
     height: 320px;
@@ -655,7 +869,7 @@
     left: 154px;
 }
 
-.mypage-order .div-container {
+.shipping-register .div-container {
     position: absolute;
     width: 1170px;
     height: 320px;
@@ -663,7 +877,7 @@
     left: 221px;
 }
 
-.mypage-order .based-on-the-life-s {
+.shipping-register .based-on-the-life-s {
     position: absolute;
     width: 325px;
     height: 22px;
@@ -678,7 +892,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .p {
+.shipping-register .p {
     position: absolute;
     width: 366px;
     height: 27px;
@@ -693,7 +907,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .overlap-2 {
+.shipping-register .overlap-7 {
     position: absolute;
     width: 325px;
     height: 41px;
@@ -701,7 +915,7 @@
     left: -192px;
 }
 
-.mypage-order .text-wrapper-4 {
+.shipping-register .text-wrapper-20 {
     position: absolute;
     width: 325px;
     height: 22px;
@@ -716,7 +930,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .text-wrapper-5 {
+.shipping-register .text-wrapper-21 {
     position: absolute;
     width: 299px;
     height: 23px;
@@ -731,7 +945,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .heading-shopping {
+.shipping-register .heading-shopping {
     position: absolute;
     width: 95px;
     height: 18px;
@@ -746,7 +960,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link {
+.shipping-register .list-item-link {
     position: absolute;
     width: 97px;
     height: 20px;
@@ -761,7 +975,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-2 {
+.shipping-register .list-item-link-2 {
     position: absolute;
     width: 105px;
     height: 20px;
@@ -776,7 +990,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-3 {
+.shipping-register .list-item-link-3 {
     width: 80px;
     top: 105px;
     left: 266px;
@@ -791,7 +1005,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-sale {
+.shipping-register .list-item-link-sale {
     width: 122px;
     top: 141px;
     left: 266px;
@@ -806,7 +1020,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-4 {
+.shipping-register .list-item-link-4 {
     position: absolute;
     width: 74px;
     height: 20px;
@@ -821,7 +1035,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-5 {
+.shipping-register .list-item-link-5 {
     position: absolute;
     width: 122px;
     height: 20px;
@@ -836,7 +1050,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-6 {
+.shipping-register .list-item-link-6 {
     width: 56px;
     top: 117px;
     left: 440px;
@@ -851,7 +1065,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .heading-newletter {
+.shipping-register .heading-newletter {
     position: absolute;
     width: 121px;
     height: 18px;
@@ -866,7 +1080,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .div-footer-copyright {
+.shipping-register .div-footer-copyright {
     position: absolute;
     width: 1140px;
     height: 66px;
@@ -877,7 +1091,7 @@
     border-color: #ffffff1a;
 }
 
-.mypage-order .overlap-group-2 {
+.shipping-register .overlap-group-2 {
     position: relative;
     width: 576px;
     height: 25px;
@@ -885,7 +1099,7 @@
     left: 282px;
 }
 
-.mypage-order .text-wrapper-6 {
+.shipping-register .text-wrapper-22 {
     position: absolute;
     width: 86px;
     height: 25px;
@@ -901,7 +1115,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .text-wrapper-7 {
+.shipping-register .text-wrapper-23 {
     position: absolute;
     width: 399px;
     height: 25px;
@@ -917,23 +1131,23 @@
     white-space: nowrap;
 }
 
-.mypage-order .symbol-2 {
+.shipping-register .symbol {
+    position: absolute;
     width: 15px;
     height: 15px;
     top: 4px;
     left: 484px;
-    color: #e53637;
-    text-align: center;
-    line-height: 15px;
-    position: absolute;
     font-family: "Inter-Regular", Helvetica;
     font-weight: 400;
+    color: #e53637;
     font-size: 15px;
+    text-align: center;
     letter-spacing: 0;
+    line-height: 15px;
     white-space: nowrap;
 }
 
-.mypage-order .by {
+.shipping-register .by {
     position: absolute;
     width: 24px;
     height: 25px;
@@ -949,7 +1163,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .link-colorlib {
+.shipping-register .link-colorlib {
     position: absolute;
     width: 53px;
     height: 20px;
@@ -965,7 +1179,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-7 {
+.shipping-register .list-item-link-7 {
     position: absolute;
     width: 97px;
     height: 20px;
@@ -980,7 +1194,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-8 {
+.shipping-register .list-item-link-8 {
     position: absolute;
     width: 105px;
     height: 20px;
@@ -995,7 +1209,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .list-item-link-9 {
+.shipping-register .list-item-link-9 {
     position: absolute;
     width: 80px;
     height: 20px;
@@ -1010,8 +1224,7 @@
     white-space: nowrap;
 }
 
-.mypage-order .element {
-    position: absolute;
+.shipping-register .element {
     width: 456px;
     height: 250px;
     top: 3px;
@@ -1020,11 +1233,12 @@
     font-weight: 400;
     color: #ffffff;
     font-size: 12px;
+    position: absolute;
     letter-spacing: 0;
     line-height: 25px;
 }
 
-.mypage-order .span {
+.shipping-register .span {
     font-family: "Nunito Sans-Regular", Helvetica;
     font-weight: 400;
     color: #ffffff;
@@ -1033,11 +1247,11 @@
     line-height: 25px;
 }
 
-.mypage-order .text-wrapper-8 {
+.shipping-register .text-wrapper-24 {
     text-decoration: underline;
 }
 
-.mypage-order .img {
+.shipping-register .img {
     position: absolute;
     width: 233px;
     height: 44px;

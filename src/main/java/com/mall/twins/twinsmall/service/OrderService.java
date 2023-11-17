@@ -25,6 +25,8 @@ public interface OrderService {
 
     Long orders(List<OrderDto> orderDtoList, String mid);
 
+    Page<OrderHistDto> getOrderListByOrderId(String mid, Long ono, Pageable pageable);
+
 
 
 }

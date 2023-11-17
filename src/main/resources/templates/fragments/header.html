@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
+<meta http-equiv="Cache-Control" content="no-store" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" /> <!--페이지 캐싱 방지-->
 
 <div th:fragment="header">
     <div class="header">
+        <input type="hidden" id="sessionStatus" th:data-session="${#httpSession != null ? #httpSession.getAttribute('loggedIn') : null}" sec:authorize="isAuthenticated()">
         <div class="div">
             <header class="header">
                 <div class="frame">
-                    <a th:href="@{/index}">
+                    <a th:href="@{/}">
                         <img class="link-logo-png" th:src="@{/img/link-logo-png.png}"/></a>
                 </div>
                 <div class="navbar">
-                    <a th:href="@{/index}">
+                    <a th:href="@{/}">
                         <div class="nav-list-item-link">Home</div>
                     </a>
                     <a th:href="@{/aboutus}">
                         <div class="text-wrapper">About us</div>
                     </a>
-                    <a th:href="@{/product}">
+                    <a th:href="@{/item/list}">
                         <div class="nav-list-item-link-2">Shop</div>
                     </a>
                     <a th:href="@{/notice/list}">
                         <div class="nav-list-item-link-3">Notice</div>
                     </a>
                     <li sec:authorize="isAuthenticated() and !hasAuthority('ADMIN')">
-                        <a th:href="@{/mypage/read}">
-                            <div class="nav-list-item-link-4">Mypage</div>
+                        <a th:href="@{/orders}">
+                            <div class="nav-list-item-link-4">MyPage</div>
                         </a>
                     </li>
                 </div>
@@ -37,7 +41,7 @@
                     <img class="icon-search" th:src="@{/img/icon-search.png}"/></a>
                 <a href="#">
                     <img class="icon-favorite-border" th:src="@{/img/icon-favorite-border.png}"/></a>
-                <a href="#">
+                <a th:href="@{/cart}" onclick="checkSession()">
                     <img class="icon-shopping-bag" th:src="@{/img/icon-shopping-bag.png}"/></a>
                 <div class="div-header-top">
                     <div class="text-wrapper-2">Welcome to Twin’s Mall</div>
@@ -45,5 +49,26 @@
             </header>
         </div>
     </div>
+    <script th:inline="javascript">
+        function checkSession() {
+        $.ajax({
+            type: "GET",
+            url: "/checkSession",
+            success: function(response) {
+                if (response === "true") {
+                    location.href = "/cart";
+                } else {
+                    // 세션이 만료된 경우 또는 로그인되지 않은 경우
+                    alert("로그인 후 이용해주세요.");
+                    location.href = "/member/login";
+                }
+            },
+            error: function() {
+                // 오류 처리
+                alert("세션 확인 중 오류가 발생했습니다.");
+            }
+        });
+    }
+    </script>
 </div>
 </html>

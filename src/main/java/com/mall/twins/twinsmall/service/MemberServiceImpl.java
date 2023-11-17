@@ -176,6 +176,19 @@ public class MemberServiceImpl implements MemberService {
         }
     }
 
+    @Override
+    public String get_searchId(String mname, String mphone) {
+        String result = "";
+
+        try{
+            result = memberRepository.searchId(mname, mphone);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     // 회원가입시 유효성 체크 및 중복 조회 처리
     public Map<String, String> validateHandling(Errors errors) {
         Map<String, String> validatorResult = new HashMap<>();

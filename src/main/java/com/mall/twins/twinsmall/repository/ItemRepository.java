@@ -1,6 +1,8 @@
 package com.mall.twins.twinsmall.repository;
 
 import com.mall.twins.twinsmall.entity.Item;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
@@ -28,4 +30,6 @@ public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredi
     @Query(value = "select * from item i where i.pdesc like %:pdesc% order by i.pprice desc", nativeQuery = true)
     List<Item> findByPdescByNative(@Param("pdesc") String pdesc);
 
+    /* 페이징 추가 */
+    Page<Item> findAll(Pageable pageable);
 }

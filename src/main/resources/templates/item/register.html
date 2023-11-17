@@ -153,30 +153,14 @@
                     </div>
                 </div>
 
-                <!--<div class="frame-3">
-                    <a th:href="@{/index}" class="text-wrapper-15">취소하기</a>
-                </div>
-                <div class="frame-4">
-                    <button class="text-wrapper-16" type="reset">다시입력</button>
-                </div>
-                <div class="frame-5">
-                    <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
-                        <button th:formaction="@{/itemRegister}" type="submit" class="text-wrapper-16">저장</button>
-                    </div>
-                    <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
-                        <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"
-                                class="text-wrapper-16">수정
-                        </button>
-                    </div>
-                    </div>-->
                 <div class="frame-3">취소하기
-                    <a th:href="@{/index}" class="text-wrapper-15"></a>
+                    <a th:href="@{/}" class="text-wrapper-15"></a>
                 </div>
                 <div class="frame-4">다시하기
                     <button class="text-wrapper-16" type="reset"></button>
                 </div>
                 <div class="frame-5">등록하기
-                    <button th:if="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{/itemRegister}"
+                    <button th:if="${#strings.isEmpty(itemFormDto.id)}" th:formaction="@{/item/register}"
                             type="submit" class="text-wrapper-16"></button>
                     <button th:unless="${#strings.isEmpty(itemFormDto.id)}"
                             th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit"

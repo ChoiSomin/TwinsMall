@@ -9,14 +9,14 @@
     <script th:inline="javascript">
         $(document).ready(function () {
 
-            calculateToalPrice();
+            calculateTotalPrice();
 
             $("#count").change(function () {
-                calculateToalPrice();
+                calculateTotalPrice();
             });
         });
 
-        function calculateToalPrice() {
+        function calculateTotalPrice() {
             var count = $("#count").val();
             var price = $("#price").val();
             var totalPrice = price * count;
@@ -25,6 +25,7 @@
 
         function order() {
             var username = [[${username}]];
+
             var url = "/order";
             var paramData = {
                 itemId: $("#itemId").val(),
@@ -42,7 +43,7 @@
                 cache: false,
                 success: function (result, status) {
                     alert("주문이 완료 되었습니다.");
-                    location.href = '/index';
+                    location.href = '/';
                 },
                 error: function (jqXHR, status, error) {
 
@@ -60,6 +61,7 @@
         function addCart() {
 
             var username = [[${username}]];
+
             var url = "/cart";
             var paramData = {
                 itemId: $("#itemId").val(),
