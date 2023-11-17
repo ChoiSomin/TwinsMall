@@ -1,4 +1,4 @@
-.check-pwd {
+.findIdPw {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-.check-pwd .div {
+.findIdPw .div {
     background-color: #ffffff;
     overflow-y: visible;
     width: 1920px;
@@ -14,7 +14,7 @@
     position: relative;
 }
 
-.check-pwd .header {
+.findIdPw .header {
     position: absolute;
     width: 1920px;
     height: 131px;
@@ -23,7 +23,7 @@
     background-color: #ffffff;
 }
 
-.check-pwd .link-logo-png {
+.findIdPw .link-logo-png {
     position: absolute;
     width: 225px;
     height: 36px;
@@ -31,7 +31,7 @@
     left: 335px;
 }
 
-.check-pwd .nav-list-item-link {
+.findIdPw .nav-list-item-link {
     width: 52px;
     left: 786px;
     position: absolute;
@@ -47,7 +47,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .text-wrapper {
+.findIdPw .text-wrapper {
     width: 45px;
     left: 979px;
     position: absolute;
@@ -63,7 +63,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .nav-list-item-link-2 {
+.findIdPw .nav-list-item-link-2 {
     width: 69px;
     left: 1051px;
     position: absolute;
@@ -79,7 +79,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .nav-list-item-link-3 {
+.findIdPw .nav-list-item-link-3 {
     width: 88px;
     left: 864px;
     position: absolute;
@@ -95,7 +95,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .icon-search {
+.findIdPw .icon-search {
     left: 1474px;
     position: absolute;
     width: 16px;
@@ -103,7 +103,7 @@
     top: 81px;
 }
 
-.check-pwd .icon-favorite-border {
+.findIdPw .icon-favorite-border {
     position: absolute;
     width: 16px;
     height: 17px;
@@ -111,7 +111,7 @@
     left: 1516px;
 }
 
-.check-pwd .icon-shopping-bag {
+.findIdPw .icon-shopping-bag {
     position: absolute;
     width: 16px;
     height: 17px;
@@ -119,7 +119,7 @@
     left: 1560px;
 }
 
-.check-pwd .icon-person {
+.findIdPw .icon-person {
     left: 1431px;
     position: absolute;
     width: 16px;
@@ -127,7 +127,7 @@
     top: 81px;
 }
 
-.check-pwd .div-header-top {
+.findIdPw .div-header-top {
     position: absolute;
     width: 1920px;
     height: 46px;
@@ -136,7 +136,7 @@
     background-color: #111111;
 }
 
-.check-pwd .text-wrapper-2 {
+.findIdPw .text-wrapper-2 {
     position: absolute;
     width: 333px;
     height: 25px;
@@ -151,7 +151,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .top {
+.findIdPw .top {
     position: absolute;
     width: 1920px;
     height: 141px;
@@ -160,7 +160,7 @@
     background-color: #f3f2ee;
 }
 
-.check-pwd .heading-check-out {
+.findIdPw .heading-check-out {
     position: absolute;
     width: 116px;
     height: 29px;
@@ -175,7 +175,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .overlap-group {
+.findIdPw .overlap-group {
     position: absolute;
     width: 64px;
     height: 23px;
@@ -183,7 +183,7 @@
     left: 390px;
 }
 
-.check-pwd .link-home {
+.findIdPw .link-home {
     position: absolute;
     width: 64px;
     height: 23px;
@@ -198,7 +198,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .symbol {
+.findIdPw .symbol {
     width: 6px;
     height: 22px;
     top: 0;
@@ -213,7 +213,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .symbol-2 {
+.findIdPw .symbol-2 {
     width: 6px;
     height: 22px;
     top: 77px;
@@ -228,7 +228,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .details {
+.findIdPw .details {
     position: absolute;
     width: 780px;
     height: 530px;
@@ -236,7 +236,7 @@
     left: 537px;
 }
 
-.check-pwd .heading {
+.findIdPw .heading {
     position: absolute;
     width: 750px;
     height: 61px;
@@ -248,7 +248,7 @@
     border-color: #77b527;
 }
 
-.check-pwd .p {
+.findIdPw .p {
     width: 379px;
     height: 19px;
     top: 22px;
@@ -263,7 +263,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .family {
+.findIdPw .family {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -271,7 +271,7 @@
     left: 17px;
 }
 
-.check-pwd .overlap {
+.findIdPw .overlap {
     position: absolute;
     width: 49px;
     height: 28px;
@@ -279,7 +279,7 @@
     left: 207px;
 }
 
-.check-pwd .text-wrapper-3 {
+.findIdPw .text-wrapper-3 {
     width: 46px;
     height: 25px;
     top: 45px;
@@ -294,7 +294,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .text-wrapper-4 {
+.findIdPw .text-wrapper-4 {
     width: 7px;
     height: 20px;
     top: 40px;
@@ -309,7 +309,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .input {
+.findIdPw .input {
     top: 170px;
     left: 207px;
     position: absolute;
@@ -320,7 +320,7 @@
     border-color: #e1e1e1;
 }
 
-.check-pwd .overlap-2 {
+.findIdPw .overlap-2 {
     position: absolute;
     width: 61px;
     height: 28px;
@@ -328,7 +328,7 @@
     left: 207px;
 }
 
-.check-pwd .text-wrapper-5 {
+.findIdPw .text-wrapper-5 {
     width: 61px;
     height: 25px;
     top: 50px;
@@ -343,7 +343,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .text-wrapper-6 {
+.findIdPw .text-wrapper-6 {
     width: 7px;
     height: 20px;
     top: 45px;
@@ -358,7 +358,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .overlap-3 {
+.findIdPw .overlap-3 {
     position: absolute;
     width: 398px;
     height: 73px;
@@ -366,7 +366,7 @@
     left: 207px;
 }
 
-.check-pwd .input-2 {
+.findIdPw .input-2 {
     top: 0;
     left: 0;
     position: absolute;
@@ -377,7 +377,7 @@
     border-color: #e1e1e1;
 }
 
-.check-pwd .text-wrapper-7 {
+.findIdPw .text-wrapper-7 {
     width: 147px;
     height: 24px;
     top: 49px;
@@ -392,7 +392,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .remember {
+.findIdPw .remember {
     width: 147px;
     height: 24px;
     top: 49px;
@@ -407,7 +407,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .group {
+.findIdPw .group {
     left: 238px;
     position: absolute;
     width: 128px;
@@ -415,7 +415,7 @@
     top: 319px;
 }
 
-.check-pwd .div-wrapper {
+.findIdPw .div-wrapper {
     position: relative;
     width: 126px;
     height: 45px;
@@ -432,7 +432,7 @@
 
 
 
-.check-pwd .text-wrapper-8 {
+.findIdPw .text-wrapper-8 {
     width: 100px;
     height: 30px;
     top: 12px;
@@ -447,7 +447,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .overlap-wrapper {
+.findIdPw .overlap-wrapper {
     left: 415px;
     position: absolute;
     width: 128px;
@@ -455,7 +455,7 @@
     top: 369px;
 }
 
-.check-pwd .overlap-4 {
+.findIdPw .overlap-4 {
     position: relative;
     width: 126px;
     height: 45px;
@@ -463,7 +463,7 @@
     background-size: 100% 100%;
 }
 
-.check-pwd .text-wrapper-9 {
+.findIdPw .text-wrapper-9 {
     width: 100px;
     height: 30px;
     top: 10px;
@@ -478,7 +478,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .icon-google-icon {
+.findIdPw .icon-google-icon {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -486,7 +486,7 @@
     left: 419px;
 }
 
-.check-pwd .SNS-kakaotalk {
+.findIdPw .SNS-kakaotalk {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -494,7 +494,7 @@
     left: 328px;
 }
 
-.check-pwd .footer {
+.findIdPw .footer {
     position: absolute;
     width: 1920px;
     height: 390px;
@@ -503,7 +503,7 @@
     background-color: #111111;
 }
 
-.check-pwd .overlap-5 {
+.findIdPw .overlap-5 {
     position: relative;
     width: 1391px;
     height: 320px;
@@ -511,7 +511,7 @@
     left: 154px;
 }
 
-.check-pwd .div-container {
+.findIdPw .div-container {
     position: absolute;
     width: 1170px;
     height: 320px;
@@ -519,7 +519,7 @@
     left: 221px;
 }
 
-.check-pwd .based-on-the-life-s {
+.findIdPw .based-on-the-life-s {
     position: absolute;
     width: 325px;
     height: 22px;
@@ -534,7 +534,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .overlap-6 {
+.findIdPw .overlap-6 {
     position: absolute;
     width: 325px;
     height: 41px;
@@ -542,7 +542,7 @@
     left: -192px;
 }
 
-.check-pwd .heading-shopping {
+.findIdPw .heading-shopping {
     position: absolute;
     width: 95px;
     height: 18px;
@@ -557,7 +557,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link {
+.findIdPw .list-item-link {
     position: absolute;
     width: 97px;
     height: 20px;
@@ -572,7 +572,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-2 {
+.findIdPw .list-item-link-2 {
     position: absolute;
     width: 105px;
     height: 20px;
@@ -587,7 +587,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-3 {
+.findIdPw .list-item-link-3 {
     width: 80px;
     top: 105px;
     left: 266px;
@@ -602,7 +602,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-sale {
+.findIdPw .list-item-link-sale {
     width: 122px;
     top: 141px;
     left: 266px;
@@ -617,7 +617,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-4 {
+.findIdPw .list-item-link-4 {
     position: absolute;
     width: 74px;
     height: 20px;
@@ -632,7 +632,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-5 {
+.findIdPw .list-item-link-5 {
     position: absolute;
     width: 122px;
     height: 20px;
@@ -647,7 +647,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-6 {
+.findIdPw .list-item-link-6 {
     width: 56px;
     top: 117px;
     left: 440px;
@@ -662,7 +662,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .heading-newletter {
+.findIdPw .heading-newletter {
     position: absolute;
     width: 121px;
     height: 18px;
@@ -677,7 +677,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .div-footer-copyright {
+.findIdPw .div-footer-copyright {
     position: absolute;
     width: 1140px;
     height: 66px;
@@ -688,7 +688,7 @@
     border-color: #ffffff1a;
 }
 
-.check-pwd .overlap-group-2 {
+.findIdPw .overlap-group-2 {
     position: relative;
     width: 576px;
     height: 25px;
@@ -696,7 +696,7 @@
     left: 282px;
 }
 
-.check-pwd .text-wrapper-14 {
+.findIdPw .text-wrapper-14 {
     position: absolute;
     width: 86px;
     height: 25px;
@@ -712,7 +712,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .text-wrapper-15 {
+.findIdPw .text-wrapper-15 {
     position: absolute;
     width: 399px;
     height: 25px;
@@ -728,7 +728,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .symbol-3 {
+.findIdPw .symbol-3 {
     width: 15px;
     height: 15px;
     top: 4px;
@@ -744,7 +744,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .by {
+.findIdPw .by {
     position: absolute;
     width: 24px;
     height: 25px;
@@ -760,7 +760,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .link-colorlib {
+.findIdPw .link-colorlib {
     position: absolute;
     width: 53px;
     height: 20px;
@@ -776,7 +776,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-7 {
+.findIdPw .list-item-link-7 {
     position: absolute;
     width: 97px;
     height: 20px;
@@ -791,7 +791,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-8 {
+.findIdPw .list-item-link-8 {
     position: absolute;
     width: 105px;
     height: 20px;
@@ -806,7 +806,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .list-item-link-9 {
+.findIdPw .list-item-link-9 {
     position: absolute;
     width: 80px;
     height: 20px;
@@ -821,7 +821,7 @@
     white-space: nowrap;
 }
 
-.check-pwd .element {
+.findIdPw .element {
     width: 456px;
     height: 250px;
     top: 3px;
@@ -835,7 +835,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .span {
+.findIdPw .span {
     font-family: "Nunito Sans", Helvetica;
     font-weight: 400;
     color: #ffffff;
@@ -844,11 +844,11 @@
     line-height: 25px;
 }
 
-.check-pwd .text-wrapper-16 {
+.findIdPw .text-wrapper-16 {
     text-decoration: underline;
 }
 
-.check-pwd .img {
+.findIdPw .img {
     position: absolute;
     width: 233px;
     height: 44px;
@@ -856,7 +856,7 @@
     left: 0;
 }
 
-.check-pwd .text-wrapper-10 {
+.findIdPw .text-wrapper-10 {
     width: 46px;
     height: 25px;
     top: 87px;
@@ -871,7 +871,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .text-wrapper-11 {
+.findIdPw .text-wrapper-11 {
     width: 46px;
     height: 25px;
     top: 88px;
@@ -886,7 +886,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .text-wrapper-12 {
+.findIdPw .text-wrapper-12 {
     width: 7px;
     height: 20px;
     top: 40px;
@@ -901,7 +901,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .text-wrapper-13 {
+.findIdPw .text-wrapper-13 {
     width: 7px;
     height: 20px;
     top: 45px;
@@ -916,7 +916,7 @@
     letter-spacing: 0;
 }
 
-.check-pwd .radio-group-box{
+.findIdPw .radio-group-box{
     display: flex;
     flex-direction: row; /* 라디오 버튼을 가로로 정렬 */
     justify-content: space-between; /* 라디오 버튼 간의 간격을 벌림 */
@@ -926,7 +926,7 @@
     left: 270px;
 }
 
-.check-pwd .radio-group-box-1{
+.findIdPw .radio-group-box-1{
     display: flex;
     flex-direction: row; /* 라디오 버튼을 가로로 정렬 */
     justify-content: space-between; /* 라디오 버튼 간의 간격을 벌림 */

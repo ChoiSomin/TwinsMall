@@ -7,7 +7,7 @@
 
   <style>
     .footer .footer {
-        top: 1108px;
+      top: 1108px;
     }
   </style>
 
@@ -57,7 +57,7 @@
     </div>
 
     <div class="order">
-      <th:block th:each="cartItem : ${cartItems}">
+      <div th:each="cartItem : ${cartItems}">
         <div class="heading-3">
           <div class="text-wrapper-10">결제상세</div>
         </div>
@@ -65,6 +65,7 @@
           <div class="text-wrapper-11">상품명</div>
           <div class="text-wrapper-12">가격</div>
         </div>
+
         <div class="list-item">
           <div class="text-wrapper-13" th:text="${cartItem.itemNm}"></div>
           <div class="text-wrapper-14" th:text="${cartItem.price}"></div>
@@ -76,28 +77,27 @@
           </div>
           <div class="item-2">
             <div class="text-wrapper-20">총 주문 금액</div>
-            <div class="text-wrapper-19">[[${cartItem.price}]]</div>
+            <div class="text-wrapper-19"></div>
           </div>
         </div>
         <button class="button">
           <div class="text-wrapper-21">PLACE ORDER</div>
         </button>
-      </th:block>
+      </div>
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          var urlParams = new URLSearchParams(window.location.search);
-          var cartItemsJson = urlParams.get('cartItems');
-
-          if (cartItemsJson) {
-              var cartItems = JSON.parse(decodeURIComponent(cartItemsJson));
-
-              // 이제 cartItems 배열을 사용하여 Checkout 페이지에서 데이터를 표시하거나 처리할 수 있습니다.
-              console.log("카트 아이템 정보:");
-              console.log(cartItems);
-          }
-      });
-    </script>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 페이지 로드 시, URL 매개변수에서 cartItemId를 읽어와서 처리
+      var urlParams = new URLSearchParams(window.location.search);
+      var cartItemId = urlParams.get('cartItemId');
+
+      if (cartItemId) {
+        // 이제 cartItemId를 사용하여 Checkout 페이지에서 필요한 처리를 수행
+        console.log("카트 아이템 ID:", cartItemId);
+      }
+    });
+  </script>
+</div>
 </html>

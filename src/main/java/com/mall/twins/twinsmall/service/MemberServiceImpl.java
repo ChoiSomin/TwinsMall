@@ -152,8 +152,14 @@ public class MemberServiceImpl implements MemberService {
             throw new IllegalArgumentException("해당 회원이 존재하지 않습니다.");
         }
 
-        /* 수정한 비밀번호 암호화 */
-        String encryptPassword = passwordEncoder.encode(dto.getMpw());
+        String encryptPassword;
+
+        if(dto.getMpw() != null){
+            /* 수정한 비밀번호 암호화 */
+            encryptPassword  = passwordEncoder.encode(dto.getMpw());
+        } else {
+            encryptPassword = member.getMpw();
+        }
 
         log.info(encryptPassword);
 

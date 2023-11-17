@@ -90,4 +90,10 @@ public class CartController {
         Long orderId = cartService.orderCartItem(cartOrderDtoList, principal.getName());
         return new ResponseEntity<Long>(orderId,HttpStatus.OK);
     }
+
+    @PostMapping("/checkout")
+    public ResponseEntity<List<CartDetailDto>> checkout(@RequestBody List<CartDetailDto> cartDetailDtoList) {
+        // 여기에서는 전달받은 카트 정보를 그대로 반환하도록 했습니다.
+        return new ResponseEntity<>(cartDetailDtoList, HttpStatus.OK);
+    }
 }

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -27,4 +29,6 @@ public class CartDetailDto {
         this.count = count;
         this.imgUrl = imgUrl;
     }
+
+    private List<CartDetailDto> cartDetailDtoList;
 }

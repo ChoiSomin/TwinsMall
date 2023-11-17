@@ -1,5 +1,6 @@
 package com.mall.twins.twinsmall.controller;
 
+import com.mall.twins.twinsmall.config.auth.CustomUserDetails;
 import com.mall.twins.twinsmall.config.auth.UserAdapter;
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
 import com.mall.twins.twinsmall.entity.Member;
@@ -93,7 +94,7 @@ public class MypageController {
     /**
      * 회원 정보 수정
      **/
-    @PutMapping("/modify")
+    @PostMapping("/modify")
     @ResponseBody
     public boolean update(@RequestBody MemberJoinDTO dto) {
 
@@ -113,13 +114,17 @@ public class MypageController {
         memberService.userInfoUpdate(dto);
 
         /** ========== 변경된 세션 등록 ========== **/
-        /* 1. 새로운 UsernamePasswordAuthenticationToken 생성하여 AuthenticationManager 을 이용해 등록 */
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(dto.getMid(), dto.getMpw())
-        );
+        Authentication currentAuthentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) currentAuthentication.getPrincipal();
 
-        /* 2. SecurityContextHolder 안에 있는 Context를 호출해 변경된 Authentication으로 설정 */
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        // 사용자 정보 업데이트
+        userDetails.setUsername(dto.getMid());
+        userDetails.setPassword(dto.getMpw());
+
+        // 변경된 Authentication으로 SecurityContextHolder 업데이트
+        Authentication updatedAuthentication = new UsernamePasswordAuthenticationToken(userDetails, dto.getMpw(), userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(updatedAuthentication);
+
         return true;
     }
 
