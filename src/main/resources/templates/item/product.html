@@ -11,33 +11,76 @@
             <div class="symbol"></div>
             <div class="text-wrapper-3">Shop</div>
         </div>
-        <div class="section-form-input">
-            <div class="div-placeholder">
-                <div class="text-wrapper-4">Search...</div>
-                <div class="section-form-button">U</div>
+        <!--검색기능-->
+        <form action="/product" method="get">
+            <div class="section-form-input">
+                <div class="div-placeholder">
+                    <input type="text" id="pnameInput" name="pname" placeholder="Search...">
+                    <button type="submit" class="section-form-button">검색</button>
+                </div>
             </div>
-        </div>
+        </form>
+
+        <!--카테고리-->
         <div class="view">
             <div class="overlap-group">
-                <div class="link">
+                <div class="link" onclick="toggleList()">
                     <div class="categories">CATEGORIES</div>
                 </div>
-                <div class="symbol-2"></div>
+                <div class="symbol-2" onclick="toggleList()"></div>
             </div>
-            <div class="div-card-body">
+            <div class="div-card-body" id="listContainer" style="display: none;">
                 <div class="list">
-                    <div class="item-link-men">Refrigerator</div>
-                    <div class="item-link-women">TV</div>
-                    <div class="item-link-bags">Laptop</div>
-                    <div class="item-link-clothing">Washing Machine</div>
-                    <div class="item-link-shoes">Air Purifier</div>
-                    <div class="item-link">Air Conditioner</div>
+                    <div class="item-link-men" onclick="searchByCategory('Refrigerator')">Refrigerator</div>
+                    <div class="item-link-women" onclick="searchByCategory('TV')">TV</div>
+                    <div class="item-link-bags" onclick="searchByCategory('Laptop')">Laptop</div>
+                    <div class="item-link-clothing" onclick="searchByCategory('Washing Machine')">Washing Machine</div>
+                    <div class="item-link-shoes" onclick="searchByCategory('Air Purifie')">Air Purifier</div>
+                    <div class="item-link" onclick="searchByCategory('Air Conditioner')">Air Conditioner</div>
                     <div class="frame">
                         <div class="item-link-kids">Cleaner</div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+
+            function toggleList() {
+                var listContainer = document.getElementById("listContainer");
+                if (listContainer.style.display === "none") {
+                    listContainer.style.display = "block";
+                } else {
+                    listContainer.style.display = "none";
+                }
+            }
+
+            function searchByCategory(pcate) {
+                console.log("Clicked category: " + pcate); // 함수 호출 여부 확인
+                var form = document.querySelector('form[action="/product"]');
+                console.log("Form element: ", form); // 양식 요소 확인
+                if (form) {
+                    var pnameInput = form.querySelector('#pnameInput');
+                    console.log("pnameInput: ", pnameInput); // ID가 pnameInput인 요소 찾기
+                    if (pnameInput) {
+                        pnameInput.value = ''; // Reset the search input
+                        console.log("Category to search: " + pcate);
+                        form.action = "/product?pcate=" + encodeURIComponent(pcate);
+                        console.log("Form action: ", form.action); // Form action 확인
+                        form.submit();
+                    } else {
+                        console.error("pnameInput not found");
+                    }
+                } else {
+                    console.error("Form not found");
+                }
+            }
+
+
+
+
+        </script>
+
+        <!--오름차순 정렬-->
         <div class="view-2">
             <p class="p">Showing 1–12 of 126 results</p>
             <div class="text-wrapper-5">Sort by Price:</div>
@@ -45,6 +88,26 @@
                 <div class="text-wrapper-6">Low To High</div>
                 <div class="pseudo"></div>
             </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const pseudoElement = document.querySelector('.pseudo');
+                    const sortTextElement = document.querySelector('.text-wrapper-6');
+                    let ascendingOrder = true;
+
+                    pseudoElement.addEventListener('click', function() {
+                        ascendingOrder = !ascendingOrder;
+                        if (ascendingOrder) {
+                            sortTextElement.textContent = 'Low To High';
+                            // Perform sorting low to high logic here
+                        } else {
+                            sortTextElement.textContent = 'High To Low';
+                            // Perform sorting high to low logic here
+                        }
+                    });
+                });
+            </script>
+
 
             <th:block th:each="item, status: ${items.getContent()}">
                 <div class="div-product-item">

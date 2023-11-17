@@ -8,6 +8,7 @@ import com.mall.twins.twinsmall.dto.QMainItemDto;
 import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.QItem;
 import com.mall.twins.twinsmall.entity.QItemImg;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -27,39 +28,39 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
     private JPAQueryFactory queryFactory; // 동적으로 쿼리를 생성하기 위해서 JPAQueryFactory 클래스를 사용
 
     // JPAQueryFactory의 생성자로 EntityManager 객체를 넣어줌
-    public ItemRepositoryCustomImpl(EntityManager em){
+    public ItemRepositoryCustomImpl(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
 
-    private BooleanExpression searchSellStatusEq(ItemSellStatus searchSellStatus){
+    private BooleanExpression searchSellStatusEq(ItemSellStatus searchSellStatus) {
         // 상품 판매 상태 조건이 전체일 경우에는 null을 리턴, 결과값이 null이면 where절에서 해당 조건을 무시됨
         return searchSellStatus == null ? null : QItem.item.pstatus.eq(searchSellStatus);
     }
 
-    private BooleanExpression regDtsAfter(String searchDateType){
+    private BooleanExpression regDtsAfter(String searchDateType) {
 
         LocalDateTime dateTime = LocalDateTime.now();
 
-        if(StringUtils.equals("all", searchDateType) || searchDateType == null){
+        if (StringUtils.equals("all", searchDateType) || searchDateType == null) {
             return null;
-        } else if(StringUtils.equals("1d", searchDateType)){
+        } else if (StringUtils.equals("1d", searchDateType)) {
             dateTime = dateTime.minusDays(1);
-        } else if(StringUtils.equals("1w", searchDateType)){
+        } else if (StringUtils.equals("1w", searchDateType)) {
             dateTime = dateTime.minusWeeks(1);
-        } else if(StringUtils.equals("1m", searchDateType)){
+        } else if (StringUtils.equals("1m", searchDateType)) {
             dateTime = dateTime.minusMonths(1);
-        } else if(StringUtils.equals("6m", searchDateType)){
+        } else if (StringUtils.equals("6m", searchDateType)) {
             dateTime = dateTime.minusMonths(6);
         }
 
         return QItem.item.regTime.after(dateTime);
     }
 
-    private BooleanExpression searchByLike(String searchBy, String searchQuery){
+    private BooleanExpression searchByLike(String searchBy, String searchQuery) {
 
-        if(StringUtils.equals("title", searchBy)){
+        if (StringUtils.equals("title", searchBy)) {
             return QItem.item.pname.like("%" + searchQuery + "%");
-        } else if(StringUtils.equals("createdBy", searchBy)){
+        } else if (StringUtils.equals("createdBy", searchBy)) {
             return QItem.item.createdBy.like("%" + searchQuery + "%");
         }
 
@@ -84,13 +85,12 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                 .where(regDtsAfter(itemSearchDto.getSearchDateType()),
                         searchSellStatusEq(itemSearchDto.getSearchSellStatus()),
                         searchByLike(itemSearchDto.getSearchBy(), itemSearchDto.getSearchQuery()))
-                .fetchOne()
-                ;
+                .fetchOne();
 
         return new PageImpl<>(content, pageable, total);
     }
 
-    private BooleanExpression pnameLike(String searchQuery){
+    private BooleanExpression pnameLike(String searchQuery) {
         return StringUtils.isEmpty(searchQuery) ? null : QItem.item.pname.like("%" + searchQuery + "%");
     }
 
@@ -102,6 +102,16 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
         QItemImg itemImg = QItemImg.itemImg;
 
         log.info("getMainItemPage query parameters: itemSearchDto = {}, pageable = {}", itemSearchDto, pageable);
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+        if (itemSearchDto.getPname() != null && !itemSearchDto.getPname().isEmpty()) {
+            booleanBuilder.and(item.pname.contains(itemSearchDto.getPname()));
+        }
+
+        if (itemSearchDto.getPcate() != null && !itemSearchDto.getPcate().isEmpty()) {
+            booleanBuilder.and(item.pcate.eq(itemSearchDto.getPcate()));
+        }
 
         List<MainItemDto> content = queryFactory
                 .select(
@@ -117,7 +127,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                 .from(itemImg)
                 .join(itemImg.item, item) // itemImg와 item을 내부 조인함
                 .where(itemImg.iimgrep.eq("Y")) // 상품 이미지의 경우 대표 이미지만 불러옴
-                .where(pnameLike(itemSearchDto.getSearchQuery()))
+                .where(booleanBuilder)
                 .orderBy(item.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -126,11 +136,10 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
         long total = queryFactory
                 .select(Wildcard.count)
                 .from(itemImg)
-                .join(itemImg.item, item) 
+                .join(itemImg.item, item)
                 .where(itemImg.iimgrep.eq("Y"))
                 .where(pnameLike(itemSearchDto.getSearchQuery()))
-                .fetchOne()
-                ;
+                .fetchOne();
 
         return new PageImpl<>(content, pageable, total);
     }

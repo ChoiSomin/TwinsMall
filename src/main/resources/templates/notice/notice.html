@@ -36,6 +36,7 @@
     <div class="top"><div class="heading-our-blog">Notice</div></div>
     <div class="frame">
       <div class="text-wrapper-33">공지사항</div>
+
       <form action="/notice/list" method="get" id="searchForm">
         <input type="hidden" name="page" value="1">
         <select class="section-form-cate" name="type">
@@ -137,30 +138,31 @@
       </div>
     </div>
   </div>
+  <script th:inline="javascript">
+
+    var msg = [[${msg}]];
+
+    console.log(msg);
+
+    if (msg) {
+      $(".modal").modal();
+    }
+    var searchForm = $("#searchForm");
+
+    $('.btn-search').click(function (e) {
+
+      searchForm.submit();
+
+    });
+
+    $('.btn-clear').click(function (e) {
+
+      searchForm.empty().submit();
+
+    });
+
+
+  </script>
 </div>
-<script th:inline="javascript">
 
-  var msg = [[${msg}]];
-
-  console.log(msg);
-
-  if (msg) {
-    $(".modal").modal();
-  }
-  var searchForm = $("#searchForm");
-
-  $('.btn-search').click(function (e) {
-
-    searchForm.submit();
-
-  });
-
-  $('.btn-clear').click(function (e) {
-
-    searchForm.empty().submit();
-
-  });
-
-
-</script>
 </html>
