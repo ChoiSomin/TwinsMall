@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+
+  <style>
+    .footer .footer {
+      top: 1108px;
+    }
+  </style>
+
+  <div class="check-out">
+    <div class="top">
+      <div class="heading-check-out">Check Out</div>
+      <div class="overlap-group">
+        <div class="link-home">주문/결제하기</div>
+      </div>
+    </div>
+    <div class="details">
+      <div class="heading">
+        <div class="symbol-3"></div>
+        <p class="have-a-coupon-click">Have a coupon? Click here to enter your code</p>
+      </div>
+      <div class="div-wrapper">
+        <div class="text-wrapper-3">주문자 정보</div>
+      </div>
+      <div class="text-wrapper-4">이름</div>
+      <input class="input" type="text" name="name">
+      <div class="text-wrapper-5">핸드폰 번호</div>
+      <div class="overlap">
+        <div class="text-wrapper-6">주소</div>
+        <div class="overlap-2">
+          <div class="div-placeholder-wrapper">
+            <input class="div-placeholder" placeholder="Street Address" type="text"/>
+          </div>
+          <img class="group" src="img/group-318.png"/>
+        </div>
+      </div>
+      <div class="input-2">
+        <div class="div-placeholder-2"><p class="p">Apartment, suite, unite ect (optinal)</p></div>
+      </div>
+      <div class="text-wrapper-7">핸드폰 번호</div>
+      <div class="input-3"></div>
+      <div class="text-wrapper-8">Email</div>
+      <div class="input-4"></div>
+      <div class="input-5"></div>
+      <div class="heading-2">
+        <div class="text-wrapper-3">받는 분</div>
+        <div class="group-2">
+          <input type="checkbox" id="keep" name="remember-me" class="input_keep" value="off">
+          <label for="keep" class="text-wrapper-9">주문자와 동일</label>
+
+        </div>
+      </div>
+    </div>
+    <div class="order">
+      <div class="heading-3">
+        <div class="text-wrapper-10">결제상세</div>
+      </div>
+      <div class="div-checkout-order">
+        <div class="text-wrapper-11">상품명</div>
+        <div class="text-wrapper-12">가격</div>
+      </div>
+      <div class="list-item">
+        <div class="text-wrapper-13">01. Vanilla salted caramel</div>
+        <div class="text-wrapper-14">$ 300.0</div>
+      </div>
+      <div class="list-item-2">
+        <div class="text-wrapper-15">02. German chocolate</div>
+        <div class="text-wrapper-14">$ 170.0</div>
+      </div>
+      <div class="list-item-3">
+        <div class="text-wrapper-16">03. Sweet autumn</div>
+        <div class="text-wrapper-14">$ 170.0</div>
+      </div>
+      <div class="list-item-4">
+        <p class="text-wrapper-17">04. Cluten free mini dozen</p>
+        <div class="text-wrapper-14">$ 110.0</div>
+      </div>
+      <div class="list">
+        <div class="item">
+          <div class="text-wrapper-18">배송비</div>
+          <div class="text-wrapper-19">$750.99</div>
+        </div>
+        <div class="item-2">
+          <div class="text-wrapper-20">총 주문 금액</div>
+          <div class="text-wrapper-19">$750.99</div>
+        </div>
+      </div>
+      <button class="button">
+        <div class="text-wrapper-21">PLACE ORDER</div>
+      </button>
+    </div>
+  </div>
+</div>
+</html>

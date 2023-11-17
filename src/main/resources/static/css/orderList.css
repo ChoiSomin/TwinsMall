@@ -1,0 +1,984 @@
+.mypage-order {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.mypage-order .div {
+    background-color: #ffffff;
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+}
+
+.mypage-order .header {
+    position: absolute;
+    width: 1920px;
+    height: 131px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+}
+
+.mypage-order .link-logo-png {
+    position: absolute;
+    width: 225px;
+    height: 36px;
+    top: 72px;
+    left: 335px;
+}
+
+.mypage-order .nav-list-item-link {
+    width: 52px;
+    left: 786px;
+    position: absolute;
+    height: 24px;
+    top: 77px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .text-wrapper {
+    width: 45px;
+    left: 979px;
+    position: absolute;
+    height: 24px;
+    top: 77px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-2 {
+    width: 69px;
+    left: 1051px;
+    position: absolute;
+    height: 24px;
+    top: 77px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-3 {
+    width: 88px;
+    left: 864px;
+    position: absolute;
+    height: 24px;
+    top: 77px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 600;
+    color: #111111;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .icon-search {
+    left: 1474px;
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 81px;
+}
+
+.mypage-order .icon-favorite-border {
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 81px;
+    left: 1516px;
+}
+
+.mypage-order .icon-shopping-bag {
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 80px;
+    left: 1560px;
+}
+
+.mypage-order .icon-person {
+    left: 1431px;
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 81px;
+}
+
+.mypage-order .div-header-top {
+    position: absolute;
+    width: 1920px;
+    height: 46px;
+    top: 0;
+    left: 0;
+    background-color: #111111;
+}
+
+.mypage-order .text-wrapper-2 {
+    position: absolute;
+    width: 333px;
+    height: 25px;
+    top: 9px;
+    left: 391px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .shop {
+    position: absolute;
+    width: 1920px;
+    height: 141px;
+    top: 131px;
+    left: 0;
+    background-color: #f3f2ee;
+}
+
+.mypage-order .heading-shop {
+    position: absolute;
+    width: 96px;
+    height: 28px;
+    top: 39px;
+    left: 390px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 700;
+    color: #111111;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: 28.8px;
+    white-space: nowrap;
+}
+
+.mypage-order .overlap-group {
+    position: absolute;
+    width: 75px;
+    height: 23px;
+    top: 76px;
+    left: 390px;
+}
+
+.mypage-order .link-home {
+    position: absolute;
+    width: 75px;
+    height: 23px;
+    top: 0;
+    left: 0;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #acacac;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 22.5px;
+    white-space: nowrap;
+}
+
+.mypage-order .symbol {
+    width: 6px;
+    height: 22px;
+    top: 0;
+    left: 49px;
+    color: #111111;
+    line-height: 22.5px;
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.mypage-order .text-wrapper-3 {
+    position: absolute;
+    width: 317px;
+    height: 48px;
+    top: 292px;
+    left: 885px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+}
+
+.mypage-order .view {
+    position: absolute;
+    width: 178px;
+    height: 441px;
+    top: 341px;
+    left: 99px;
+    background-color: #ffffff;
+}
+
+.mypage-order .nav-list-item-link-4 {
+    width: 80px;
+    height: 25px;
+    top: 15px;
+    left: 47px;
+    font-weight: 600;
+    font-size: 20px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    color: #111111;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-5 {
+    width: 100px;
+    height: 20px;
+    top: 61px;
+    left: 37px;
+    font-weight: 400;
+    font-size: 16px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    color: #111111;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-6 {
+    width: 80px;
+    height: 25px;
+    top: 102px;
+    left: 48px;
+    font-weight: 600;
+    font-size: 20px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    color: #111111;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-7 {
+    width: 100px;
+    height: 20px;
+    top: 148px;
+    left: 38px;
+    font-weight: 400;
+    font-size: 16px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    color: #111111;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-8 {
+    width: 80px;
+    height: 25px;
+    top: 229px;
+    left: 47px;
+    font-weight: 600;
+    font-size: 20px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    color: #111111;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-9 {
+    width: 100px;
+    height: 20px;
+    top: 275px;
+    left: 37px;
+    font-weight: 400;
+    font-size: 16px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    color: #111111;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-10 {
+    width: 100px;
+    height: 20px;
+    top: 309px;
+    left: 37px;
+    font-weight: 400;
+    font-size: 16px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    color: #111111;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .nav-list-item-link-11 {
+    width: 100px;
+    height: 20px;
+    top: 182px;
+    left: 40px;
+    font-weight: 400;
+    font-size: 16px;
+    position: absolute;
+    font-family: "Nunito Sans", Helvetica;
+    color: #111111;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 27px;
+    white-space: nowrap;
+}
+
+.mypage-order .frame {
+    position: absolute;
+    width: 1450px;
+    height: 609px;
+    top: 381px;
+    left: 359px;
+}
+
+.mypage-order .table {
+    flex-direction: column;
+    width: 1450px;
+    height: 530px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.mypage-order .table-2 {
+    flex-direction: column;
+    height: 530px;
+    align-self: stretch;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.mypage-order .row {
+    display: flex;
+    height: 50px;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+}
+
+.mypage-order .cell {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b9b9b9;
+}
+
+.mypage-order .content {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 12px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+}
+
+.mypage-order .text {
+    color: #000000;
+    position: relative;
+    flex: 1;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.mypage-order .content-wrapper {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b9b9b9;
+}
+
+.mypage-order .div-wrapper {
+    flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b9b9b9;
+}
+
+.mypage-order .cell-2 {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b9b9b9;
+}
+
+.mypage-order .row-2 {
+    height: 80px;
+    align-self: stretch;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.mypage-order .cell-3 {
+    width: 500px;
+    background-color: #ffffff01;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b9b9b9;
+}
+
+.mypage-order .content-2 {
+    flex: 1;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 12px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+}
+
+.mypage-order .text-2 {
+    align-self: stretch;
+    color: #000000;
+    position: relative;
+    flex: 1;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.mypage-order .cell-4 {
+    width: 400px;
+    background-color: #ffffff01;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b9b9b9;
+}
+
+.mypage-order .cell-5 {
+    flex: 1;
+    flex-grow: 1;
+    background-color: #ffffff01;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b9b9b9;
+}
+
+.mypage-order .text-3 {
+    align-self: stretch;
+    color: #ff0000;
+    position: relative;
+    flex: 1;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.mypage-order .cell-6 {
+    width: 300px;
+    background-color: #ffffff01;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #b9b9b9;
+}
+
+.mypage-order .footer {
+    position: absolute;
+    width: 1920px;
+    height: 390px;
+    top: 1102px;
+    left: 0;
+    background-color: #111111;
+}
+
+.mypage-order .overlap {
+    position: relative;
+    width: 1391px;
+    height: 320px;
+    top: 70px;
+    left: 154px;
+}
+
+.mypage-order .div-container {
+    position: absolute;
+    width: 1170px;
+    height: 320px;
+    top: 0;
+    left: 221px;
+}
+
+.mypage-order .based-on-the-life-s {
+    position: absolute;
+    width: 325px;
+    height: 22px;
+    top: 67px;
+    left: -192px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .p {
+    position: absolute;
+    width: 366px;
+    height: 27px;
+    top: 91px;
+    left: -192px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .overlap-2 {
+    position: absolute;
+    width: 325px;
+    height: 41px;
+    top: 120px;
+    left: -192px;
+}
+
+.mypage-order .text-wrapper-4 {
+    position: absolute;
+    width: 325px;
+    height: 22px;
+    top: 0;
+    left: 0;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .text-wrapper-5 {
+    position: absolute;
+    width: 299px;
+    height: 23px;
+    top: 18px;
+    left: 15px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .heading-shopping {
+    position: absolute;
+    width: 95px;
+    height: 18px;
+    top: -1px;
+    left: 266px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link {
+    position: absolute;
+    width: 97px;
+    height: 20px;
+    top: 33px;
+    left: 266px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-2 {
+    position: absolute;
+    width: 105px;
+    height: 20px;
+    top: 69px;
+    left: 266px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-3 {
+    width: 80px;
+    top: 105px;
+    left: 266px;
+    position: absolute;
+    height: 20px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-sale {
+    width: 122px;
+    top: 141px;
+    left: 266px;
+    position: absolute;
+    height: 20px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-4 {
+    position: absolute;
+    width: 74px;
+    height: 20px;
+    top: 33px;
+    left: 439px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-5 {
+    position: absolute;
+    width: 122px;
+    height: 20px;
+    top: 81px;
+    left: 440px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-6 {
+    width: 56px;
+    top: 117px;
+    left: 440px;
+    position: absolute;
+    height: 20px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .heading-newletter {
+    position: absolute;
+    width: 121px;
+    height: 18px;
+    top: -1px;
+    left: 657px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.mypage-order .div-footer-copyright {
+    position: absolute;
+    width: 1140px;
+    height: 66px;
+    top: 254px;
+    left: 15px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #ffffff1a;
+}
+
+.mypage-order .overlap-group-2 {
+    position: relative;
+    width: 576px;
+    height: 25px;
+    top: 20px;
+    left: 282px;
+}
+
+.mypage-order .text-wrapper-6 {
+    position: absolute;
+    width: 86px;
+    height: 25px;
+    top: 0;
+    left: 0;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .text-wrapper-7 {
+    position: absolute;
+    width: 399px;
+    height: 25px;
+    top: 0;
+    left: 86px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .symbol-2 {
+    width: 15px;
+    height: 15px;
+    top: 4px;
+    left: 484px;
+    color: #e53637;
+    text-align: center;
+    line-height: 15px;
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.mypage-order .by {
+    position: absolute;
+    width: 24px;
+    height: 25px;
+    top: 0;
+    left: 499px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .link-colorlib {
+    position: absolute;
+    width: 53px;
+    height: 20px;
+    top: 2px;
+    left: 523px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #e53637;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-7 {
+    position: absolute;
+    width: 97px;
+    height: 20px;
+    top: 45px;
+    left: 657px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-8 {
+    position: absolute;
+    width: 105px;
+    height: 20px;
+    top: 81px;
+    left: 657px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .list-item-link-9 {
+    position: absolute;
+    width: 80px;
+    height: 20px;
+    top: 117px;
+    left: 657px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.mypage-order .element {
+    position: absolute;
+    width: 456px;
+    height: 250px;
+    top: 3px;
+    left: 942px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.mypage-order .span {
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.mypage-order .text-wrapper-8 {
+    text-decoration: underline;
+}
+
+.mypage-order .img {
+    position: absolute;
+    width: 233px;
+    height: 44px;
+    top: 3px;
+    left: 0;
+}
