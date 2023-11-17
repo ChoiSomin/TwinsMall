@@ -3,35 +3,6 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
-<div layout:fragment="script">
-    <script type="text/javascript">
-
-        /* 로그인이 실패했다면 에러 메시지를 경고창으로 보여줌 */
-        $(document).ready(function () {
-            var loginErrorMsg = "[[${loginErrorMsg}]]";
-
-            console.log(loginErrorMsg);
-
-            if (loginErrorMsg != null && loginErrorMsg !== "") {
-                alert(loginErrorMsg);
-            }
-        });
-
-        const formObj = document.querySelector("#loginForm")
-
-        document.querySelector(".text-wrapper-9").addEventListener("click", function (e) {
-
-            e.preventDefault()
-            e.stopPropagation()
-
-            formObj.action = `/member/join`
-            formObj.method = 'get'
-            formObj.submit()
-
-        }, false)
-    </script>
-</div>
-
 <div layout:fragment="content">
     <style>
         .footer .footer {
@@ -51,7 +22,7 @@
                 <h1>로그아웃</h1>
             </th:block>
 
-            <form id="loginForm" action="/auth/loginProc" method="post" th:if="${param.logout == null}">
+            <form id="loginForm" action="/member/login" method="post" th:if="${param.logout == null}">
                 <div class="heading">
                     <p class="p">아직 회원이 아니신가요? 가입하고 특별한 혜택을 누려보세요!</p>
                     <img class="family" th:src="@{/img/family.png}"/>
@@ -68,13 +39,14 @@
                 <div class="overlap-3">
                     <input class="input-2" type="password" id="password" name="password" placeholder="비밀번호 입력">
                     <div class="remember">
-                        <input type="checkbox" id="rememberMe" name="remember-me" class="input_keep">
-                        <label for="rememberMe" class="keep_text">자동로그인</label>
+                        <input type="checkbox" id="keep" name="remember-me" class="input_keep" value="off">
+                        <label for="keep" class="keep_text">로그인 상태 유지</label>
                     </div>
                     <div class="text-wrapper-7">아이디/비밀번호 찾기</div>
                 </div>
+                <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
                 <div class="group">
-                    <!--<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>-->
+                    <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
                     <button type="submit" class="div-wrapper">로그인</button>
                 </div>
                 <div class="overlap-wrapper">
@@ -84,10 +56,13 @@
                         </a>
                     </div>
                 </div>
-                <a href="/oauth2/authorization/google">
-                    <img class="icon-google-icon" th:src="@{/img/icon-google-icon.png}"></a>
+                <!--<a href="/oauth2/authorization/naver">-->
+                <a href="naver-login">
+                    <img class="icon-google-icon" th:src="@{/img/icon-naver-icon.png}"></a>
                 <a href="/oauth2/authorization/kakao">
                     <img class="SNS-kakaotalk" th:src="@{/img/sns-kakaotalk.svg}"></a>
+
+
                 <div class="text-wrapper-10">
                     간편 로그인
                 </div>
@@ -96,5 +71,28 @@
 
     </div>
 </div>
+
+<script th:inline="javascript">
+
+    const formObj = document.querySelector("#loginForm")
+
+    document.querySelector(".text-wrapper-9").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = `/member/join`
+        formObj.method = 'get'
+        formObj.submit()
+
+    }, false)
+
+</script>
+
+<script type="text/javascript">
+    function naverLogin() {
+        location.href = "${naver_url}";
+    }
+</script>
 
 </html>

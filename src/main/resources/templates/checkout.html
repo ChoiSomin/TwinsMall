@@ -1,201 +1,98 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>CheckOut</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans%3A200%2C300%2C400%2C600%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A200%2C300%2C400%2C600%2C700"/>
-  <link rel="stylesheet" href="/css/checkout.css"/>
-</head>
-<body>
-<div class="checkout-VHT">
-  <div class="header-1mb">
-    <div class="divheadertop-M4m">Welcome to Twin’s Mall</div>
-    <div class="auto-group-q9bo-z7j">
-      <div class="link-logopng-sBX">
-      </div>
-      <div class="nav-list-item-link-home-jDj">Home</div>
-      <div class="nav-list-item-link-contacts-Deh">About us</div>
-      <div class="nav-list-item-link-shop-vJD">Shop</div>
-      <div class="nav-list-item-link-pages-pPb">Notice</div>
-      <img class="icon-person-8QH" src="/img/icon-person-2VP.png"/>
-      <img class="icon-search-2Vf" src="/img/icon-search-oLV.png"/>
-      <img class="icon-favorite-border-LFT" src="/img/icon-favorite-border-bh3.png"/>
-      <img class="icon-shopping-bag-F7X" src="/img/icon-shopping-bag-NTb.png"/>
-    </div>
-  </div>
-  <div class="top-Z8D">
-    <div class="heading-4-check-out-V1s">Check Out</div>
-    <div class="auto-group-234u-BfP">
-      <div class="auto-group-go45-uLV">
-        <div class="link-home-dnH">주문/결제하기</div>
-        <div class="symbol-Kf7"></div>
-      </div>
-      <div class="symbol-129"></div>
-    </div>
-  </div>
-  <div class="auto-group-kkms-KHj">
-    <div class="details-2T3">
-      <div class="heading-6-N17">
-        <div class="symbol-ezD"></div>
-        <div class="have-a-coupon-click-here-to-enter-your-code-xV7"> Have a coupon? Click here to enter your code</div>
-      </div>
-      <div class="heading-6-qoo">주문자 정보</div>
-      <div class="auto-group-fwnv-sVb">
-        <div class="auto-group-18dx-ZtD">
-          <div class="item--hDj">이름</div>
-          <div class="item--oGm">핸드폰 번호</div>
-        </div>
-        <div class="auto-group-iesm-JDX">
-          <div class="input-RZ3">
-          </div>
-          <div class="input-HLM">
-          </div>
-        </div>
-      </div>
-      <div class="auto-group-smxp-Nsb">
-        <div class="item--6ob">주소</div>
-        <div class="group-318-QJV">배송지 목록</div>
-      </div>
-      <div class="input-Fpu">
-        <div class="divplaceholder-ABB">Street Address</div>
-      </div>
-      <div class="input-ERw">
-        <div class="divplaceholder-wLM">Apartment, suite, unite ect (optinal)</div>
-      </div>
-      <div class="auto-group-v6jm-dU5">
-        <div class="item--MQ5">핸드폰 번호</div>
-        <div class="item--SwK">*</div>
-        <div class="email-kh7">Email</div>
-      </div>
-      <div class="auto-group-sd8v-GvM">
-        <div class="input-cDX">
-        </div>
-        <div class="input-wWh">
-        </div>
-      </div>
-      <div class="heading-7-fxV">
-        <div class="item--AeM">받는 분</div>
-        <div class="group-317-s2y">
-          <div class="item--1ey">주문자와 동일</div>
-          <div class="rectangle-4-iZP">
-            <div class="rectangle-4-q8D">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+
+    <style>
+        .footer .footer {
+            top: 1108px;
+        }
+    </style>
+
+    <div class="check-out">
+        <div class="top">
+            <div class="heading-check-out">Check Out</div>
+            <div class="overlap-group">
+                <div class="link-home">주문/결제하기</div>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="details">
+            <div class="heading">
+                <div class="symbol-3"></div>
+                <p class="have-a-coupon-click">Have a coupon? Click here to enter your code</p>
+            </div>
+            <div class="div-wrapper">
+                <div class="text-wrapper-3">주문자 정보</div>
+            </div>
+            <div class="text-wrapper-4">이름</div>
+            <input class="input" type="text" name="name">
+            <div class="text-wrapper-5">핸드폰 번호</div>
+            <div class="overlap">
+                <div class="text-wrapper-6">주소</div>
+                <div class="overlap-2">
+                    <div class="div-placeholder-wrapper">
+                        <input class="div-placeholder" placeholder="Street Address" type="text"/>
+                    </div>
+                    <img class="group" src="img/group-318.png"/>
+                </div>
+            </div>
+            <div class="input-2">
+                <div class="div-placeholder-2"><p class="p">Apartment, suite, unite ect (optinal)</p></div>
+            </div>
+            <div class="text-wrapper-7">핸드폰 번호</div>
+            <div class="input-3"></div>
+            <div class="text-wrapper-8">Email</div>
+            <div class="input-4"></div>
+            <div class="input-5"></div>
+            <div class="heading-2">
+                <div class="text-wrapper-3">받는 분</div>
+                <div class="group-2">
+                    <input type="checkbox" id="keep" name="remember-me" class="input_keep" value="off">
+                    <label for="keep" class="text-wrapper-9">주문자와 동일</label>
+
+                </div>
+            </div>
+        </div>
+        <div class="order">
+            <div class="heading-3">
+                <div class="text-wrapper-10">결제상세</div>
+            </div>
+            <div class="div-checkout-order">
+                <div class="text-wrapper-11">상품명</div>
+                <div class="text-wrapper-12">가격</div>
+            </div>
+            <div class="list-item">
+                <div class="text-wrapper-13">01. Vanilla salted caramel</div>
+                <div class="text-wrapper-14">$ 300.0</div>
+            </div>
+            <div class="list-item-2">
+                <div class="text-wrapper-15">02. German chocolate</div>
+                <div class="text-wrapper-14">$ 170.0</div>
+            </div>
+            <div class="list-item-3">
+                <div class="text-wrapper-16">03. Sweet autumn</div>
+                <div class="text-wrapper-14">$ 170.0</div>
+            </div>
+            <div class="list-item-4">
+                <p class="text-wrapper-17">04. Cluten free mini dozen</p>
+                <div class="text-wrapper-14">$ 110.0</div>
+            </div>
+            <div class="list">
+                <div class="item">
+                    <div class="text-wrapper-18">배송비</div>
+                    <div class="text-wrapper-19">$750.99</div>
+                </div>
+                <div class="item-2">
+                    <div class="text-wrapper-20">총 주문 금액</div>
+                    <div class="text-wrapper-19">$750.99</div>
+                </div>
+            </div>
+            <button class="button">
+                <div class="text-wrapper-21">PLACE ORDER</div>
+            </button>
+        </div>
     </div>
-    <div class="order-7bX">
-      <div class="heading-4-BLV">결제상세</div>
-      <div class="divcheckoutorderproducts-yXF">
-        <div class="item--5KP">상품명</div>
-        <div class="item--NZP">가격</div>
-      </div>
-      <div class="list-item-Ve1">
-        <div class="vanilla-salted-caramel-pwB">01. Vanilla salted caramel</div>
-        <div class="item-3000-LPj">$ 300.0</div>
-      </div>
-      <div class="list-item-4ad">
-        <div class="german-chocolate-c6M">02. German chocolate</div>
-        <div class="item-1700-737">$ 170.0</div>
-      </div>
-      <div class="list-item-2Qy">
-        <div class="sweet-autumn-My3">03. Sweet autumn</div>
-        <div class="item-1700-4sT">$ 170.0</div>
-      </div>
-      <div class="list-item-P93">
-        <div class="cluten-free-mini-dozen-K2h">04. Cluten free mini dozen</div>
-        <div class="item-1100-C6V">$ 110.0</div>
-      </div>
-      <div class="list-7DT">
-        <div class="item-QyF">
-          <div class="item--K4d">배송비</div>
-          <div class="item-75099-RNZ">$750.99</div>
-        </div>
-        <div class="item-XwP">
-          <div class="item--3eq">총 주문 금액</div>
-          <div class="item-75099-iky">$750.99</div>
-        </div>
-      </div>
-      <div class="button-bJy">PLACE ORDER</div>
-    </div>
-  </div>
-  <div class="footer-3wf">
-    <div class="divcontainer-biH">
-      <div class="auto-group-kp33-7Rj">
-        <div class="auto-group-hemf-EFT">
-          <div class="based-on-the-lifes-good-brand-philosophy-8Lq">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</div>
-          <div class="we-always-strives-to-provide-first-unique-3Cu">we always strives to provide First, Unique, </div>
-          <div class="auto-group-z9jx-YfT">
-            <div class="and-new-fun-experiences-to-provide-gFs">and New F·U·N experiences to provide</div>
-            <div class="customers-with-a-better-life-wSh">customers with a better life.</div>
-          </div>
-        </div>
-        <div class="auto-group-4fhs-1SZ">
-          <div class="heading-6-shopping-Ljj">Shopping</div>
-          <div class="list-item-link-clothing-store-Eq7">Refrigerator</div>
-          <div class="list-item-link-trending-shoes-9SH">TV</div>
-          <div class="list-item-link-accessories-s7P">Laptop</div>
-          <div class="list-item-link-sale-o13">Washing Machine</div>
-        </div>
-        <div class="auto-group-qw9b-83K">
-          <div class="list-item-link-contact-us-3g5">Air Purifier</div>
-          <div class="list-item-link-payment-methods-kaV">Air Conditioner</div>
-          <div class="list-item-link-delivary-Tjo">Cleaner</div>
-        </div>
-        <div class="auto-group-3frb-NLy">
-          <div class="heading-6-newletter-JVX">Others</div>
-          <div class="list-item-link-clothing-store-QHf">About us</div>
-          <div class="list-item-link-trending-shoes-vWu">FAQ</div>
-          <div class="list-item-link-accessories-3Ld">Contact </div>
-        </div>
-        <div class="item-02-1234-1234-09-00-18-00-24-899-1-304--mXX">
-          <span class="item-02-1234-1234-09-00-18-00-24-899-1-304--mXX-sub-0">
-          개인정보처리방침
-          <br/>
-          이벤트 개인정보처리방침
-          <br/>
-          영상정보처리기기운영관리방침
-          <br/>
-          
-          </span>
-          <span class="item-02-1234-1234-09-00-18-00-24-899-1-304--mXX-sub-1">
-          
-          <br/>
-          대표번호 : 
-          </span>
-          <span class="item-02-1234-1234-09-00-18-00-24-899-1-304--mXX-sub-2">02-</span>
-          <span class="item-02-1234-1234-09-00-18-00-24-899-1-304--mXX-sub-3">
-          1234-1234
-          <br/>
-          전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 : 발신자부담)
-          <br/>
-          제품 및 서비스 문의는 긴급 문의 건에 한해 24시간 운영합니다.
-          <br/>
-          주소 : 경기도 수원시 경기도 수원시 팔달구 덕영대로 899 (매산로 1가, 세진브론즈빌 304호)
-          <br/>
-          
-          <br/>
-          본 사이트의 모든 콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.
-          </span>
-        </div>
-      </div>
-      <div class="divfootercopyrighttext-NDo">
-        <div class="auto-group-zqw7-QgH">
-          <div class="copyright--WzD">Copyright © </div>
-          <div class="all-rights-reserved-this-template-is-made-with-D7w">20232020 All rights reserved | This template is made with </div>
-        </div>
-        <div class="symbol-TY5"></div>
-        <div class="by-YJd"> by </div>
-        <div class="link-colorlib-ESM">Colorlib</div>
-      </div>
-    </div>
-    <div class="link-logopng-JSD">
-    </div>
-  </div>
 </div>
-</body>
+</html>
