@@ -331,7 +331,7 @@
 .check-pwd .text-wrapper-5 {
     width: 61px;
     height: 25px;
-    top: 50px;
+    top: -30px;
     left: 0;
     font-weight: 400;
     color: #111111;
@@ -346,8 +346,8 @@
 .check-pwd .text-wrapper-6 {
     width: 7px;
     height: 20px;
-    top: 45px;
-    left: 80px;
+    top: -34px;
+    left: 97px;
     font-weight: 400;
     color: #e53637;
     font-size: 15px;
@@ -362,7 +362,7 @@
     position: absolute;
     width: 398px;
     height: 73px;
-    top: 280px;
+    top: 210px;
     left: 207px;
 }
 
@@ -419,7 +419,7 @@
     position: relative;
     width: 126px;
     height: 45px;
-    top: 50px;
+    top: 10px;
     background-image: url(../img/rectangle-2.svg);
     background-size: 100% 100%;
     font-weight: 700;
@@ -452,7 +452,7 @@
     position: absolute;
     width: 128px;
     height: 45px;
-    top: 369px;
+    top: 328px;
 }
 
 .check-pwd .overlap-4 {
