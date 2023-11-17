@@ -117,7 +117,19 @@ public class ItemController {
     }
 
     @GetMapping(value = "/item/list")
-    public String product(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
+    public String product(@RequestParam(name = "pname", required = false) String pname,
+                          @RequestParam(name = "pcate", required = false) String pcate,
+                          Optional<Integer> page, Model model) {
+
+        ItemSearchDto itemSearchDto = new ItemSearchDto();
+
+        if (pcate != null && !pcate.isEmpty()) {
+            itemSearchDto.setPcate(pcate);
+        }
+
+        if (pname != null && !pname.isEmpty()) {
+            itemSearchDto.setPname(pname);
+        }
 
         log.info("ItemSearchDto: {}", itemSearchDto);
 
@@ -128,9 +140,9 @@ public class ItemController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
-
         return "item/list";
     }
+
 
     @GetMapping(value = "/item/detail/{itemId}")
     public String productDetail(Model model, @PathVariable("itemId") Long itemId, Principal principal){

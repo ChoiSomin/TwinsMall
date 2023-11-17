@@ -1,11 +1,13 @@
 package com.mall.twins.twinsmall.repository;
 
 import com.mall.twins.twinsmall.entity.Item;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
@@ -19,6 +21,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredi
     List<Item> findByPpriceLessThan(Integer pprice);
 
     List<Item> findByPpriceLessThanOrderByPpriceDesc(Integer pprice);
+
 
     @Query("select i from Item i where i.pdesc like %:pdesc% order by i.pprice desc")
     List<Item> findByPdesc(@Param("pdesc") String pdesc);
