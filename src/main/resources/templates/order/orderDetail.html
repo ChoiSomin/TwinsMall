@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+
+    <div class="mypage-order-detail">
+        <div class="shop">
+            <div class="heading-shop">Order</div>
+            <div class="overlap-group">
+                <div class="link-home">주문내역</div>
+            </div>
+        </div>
+        <div class="view">
+            <div class="nav-list-item-link-4">주문정보</div>
+            <a th:href="@{/orders}">
+                <div class="nav-list-item-link-5">주문내역</div></a>
+            <div class="nav-list-item-link-6">회원정보</div>
+            <a th:href="@{/mypage/read}">
+            <div class="nav-list-item-link-7">내정보</div></a>
+            <div class="nav-list-item-link-11">배송지 정보</div>
+            <div class="nav-list-item-link-8">서비스</div>
+            <div class="nav-list-item-link-9">1:1문의</div>
+            <div class="nav-list-item-link-10">나의 리뷰</div>
+
+        </div>
+        <div class="overlap">
+            <div class="frame">
+                <div class="table-wrapper">
+                    <div class="table">
+                        <div class="row">
+                            <div class="cell">
+                                <div class="content">
+                                    <div class="text">주문번호</div>
+                                </div>
+                            </div>
+                            <div class="content-wrapper">
+                                <div class="content">
+                                    <div class="text-2"></div>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <div class="content">
+                                    <div class="text-3">주문일</div>
+                                </div>
+                            </div>
+                            <div class="content-wrapper">
+                                <div class="content">
+                                    <div class="text-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="div-wrapper">
+                                <div class="content">
+                                    <div class="text">주문자</div>
+                                </div>
+                            </div>
+                            <div class="cell-2">
+                                <div class="content">
+                                    <div class="text-4"></div>
+                                </div>
+                            </div>
+                            <div class="cell-3">
+                                <div class="content">
+                                    <div class="text-3">TEL</div>
+                                </div>
+                            </div>
+                            <div class="cell-2">
+                                <div class="content">
+                                    <div class="text-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-2">
+                    <div class="table-2">
+                        <div class="row">
+                            <div class="cell">
+                                <div class="content">
+                                    <div class="text">배송번호</div>
+                                </div>
+                            </div>
+                            <div class="content-wrapper">
+                                <div class="content">
+                                    <div class="text-2"></div>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <div class="content">
+                                    <div class="text-3">주문상태</div>
+                                </div>
+                            </div>
+                            <div class="content-wrapper">
+                                <div class="content">
+                                    <div class="text-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="div-wrapper">
+                                <div class="content">
+                                    <div class="text">받는분</div>
+                                </div>
+                            </div>
+                            <div class="cell-2">
+                                <div class="content">
+                                    <div class="text-4"></div>
+                                </div>
+                            </div>
+                            <div class="cell-3">
+                                <div class="content">
+                                    <div class="text">받는분 TEL</div>
+                                </div>
+                            </div>
+                            <div class="cell-2">
+                                <div class="content">
+                                    <div class="text-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="div-wrapper">
+                                <div class="content">
+                                    <div class="text">배송주소</div>
+                                </div>
+                            </div>
+                            <div class="cell-2">
+                                <div class="content">
+                                    <div class="text-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-3">
+                    <div class="table-header">
+                        <div class="row-cell-product">주문상품</div>
+                        <div class="row-cell-quantity">수량</div>
+                        <div class="row-cell-total">총가격</div>
+                    </div>
+                    <th:block th:each="order : ${orders.getContent()}">
+                        <th:block th:each="orderItem : ${order.orderItemDtoList}">
+                            <div class="table-body-row">
+                                <img class="data-cart-jpg" src="${orderItem.imgUrl" th:alt="${orderItem.itemNm}"/>
+                                <div class="data">
+                                    <div class="heading-t-shirt">
+                                        <span th:text="${orderItem.itemNm}"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="data-input">
+                                    <div class="div-2">
+                                        <div class="text-wrapper-3">
+                                            <span th:text="${orderItem.count}+ '개'"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="data-2">
+                                    <span class="totaltotal" th:text="${orderItem.orderPrice*orderItem.count}+'원'"></span>
+                                </div>
+                            </div>
+                        </th:block>
+                    </th:block>
+                </div>
+                <div class="row-wrapper">
+                    <div class="row">
+                        <div class="cell">
+                            <div class="content">
+                                <div class="text">총 결제금액 : <span id="orderTotalPrice">원</span></div>
+                            </div>
+                        </div>
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <div class="text-2"></div>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="content">
+                                <div class="text-3">결제방식</div>
+                            </div>
+                        </div>
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <div class="text-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-4">
+                <div class="frame-2">
+                    <div class="text-wrapper-4">문의하기</div>
+                </div>
+                <div class="frame-3">
+                    <div class="text-wrapper-5">주문취소</div>
+                </div>
+                <div class="frame-4">
+                    <div class="text-wrapper-4">리뷰쓰기</div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.onload = function() {
+                // 모든 주문 항목의 총 가격 계산
+                var totalOrderPrice = 0;
+                var totaltotaElements = document.querySelectorAll('.totaltotal');
+
+                totaltotaElements.forEach(function(element) {
+                    var priceText = element.textContent.replace('원', '');
+                    totalOrderPrice += parseInt(priceText);
+                });
+
+                // 총 결제 금액 업데이트
+                var orderTotalPriceElement = document.getElementById('orderTotalPrice');
+                orderTotalPriceElement.textContent = totalOrderPrice + '원';
+            };
+        </script>
+    </div>
+</div>
+
+</html>

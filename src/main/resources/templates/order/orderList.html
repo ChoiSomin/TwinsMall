@@ -10,19 +10,24 @@
             <div class="heading-shop">Order</div>
             <div class="overlap-group">
                 <div class="link-home">주문내역</div>
-                <div class="symbol"></div>
             </div>
         </div>
         <div class="text-wrapper-3">나의 주문내역</div>
         <div class="view">
             <div class="nav-list-item-link-4">주문정보</div>
-            <div class="nav-list-item-link-5">주문목록</div>
+            <a th:href="@{/orders}">
+            <div class="nav-list-item-link-5">주문내역</div></a>
             <div class="nav-list-item-link-6">회원정보</div>
-            <div class="nav-list-item-link-7">내정보</div>
+            <a th:href="@{/mypage/read}">
+                <div class="nav-list-item-link-7">내정보</div></a>
+            <a href="#">
+            <div class="nav-list-item-link-11">배송지 정보</div></a>
             <div class="nav-list-item-link-8">서비스</div>
-            <div class="nav-list-item-link-9">1:1문의</div>
-            <div class="nav-list-item-link-10">나의 리뷰</div>
-            <div class="nav-list-item-link-11">배송지 정보</div>
+            <a href="#">
+                <div class="nav-list-item-link-9">1:1문의</div></a>
+            <a href="#">
+                <div class="nav-list-item-link-10">나의 리뷰</div></a>
+
         </div>
 
         <div class="frame">
@@ -53,10 +58,14 @@
                     <th:block th:each="orders : ${orders.getContent()}">
                         <div class="row-2">
                             <div class="cell-3">
-                                <div class="content-2">[[${orders.orderId}]]</div>
+                                <div class="content-2">
+                                    <div class="text-2"> [[${orders.orderId}]]</div>
+                                </div>
                             </div>
                             <div class="cell-4">
-                                <div class="content-2">[[${orders.ordertotalPrice}]]</div>
+                                <div class="content-2">
+                                    <div class="text-4" data-th-text="| ${#numbers.formatInteger(orders.ordertotalPrice, 3, 'COMMA')} 원 |"></div>
+                                </div>
                             </div>
 
                             <div class="cell-5">
@@ -65,7 +74,9 @@
                                 </div>
                             </div>
                             <div class="cell-6">
-                                <div class="content-2">[[${orders.orderDate}]]</div>
+                                <div class="content-2">
+                                    <div class="text-5">[[${orders.orderDate}]]</div>
+                                </div>
                             </div>
                         </div>
                     </th:block>

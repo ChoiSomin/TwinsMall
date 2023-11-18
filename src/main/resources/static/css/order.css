@@ -533,6 +533,8 @@
     text-align: center;
     letter-spacing: 0;
     line-height: 26px;
+    top: 17px;
+    left: 34px;
 }
 
 .mypage-order .cell-5 {
@@ -549,7 +551,7 @@
 }
 
 .mypage-order .cell-6 {
-    width: 250px;
+    width: 430px;
     background-color: #ffffff01;
     display: flex;
     flex-direction: column;
@@ -587,7 +589,41 @@
     text-align: center;
     letter-spacing: 0;
     line-height: 26px;
+    left: 200px;
+    top: 17px;
 }
+
+.mypage-order .text-4 {
+     align-self: stretch;
+     color: #000000;
+     position: relative;
+     flex: 1;
+     margin-top: -1px;
+     font-family: "Inter-SemiBold", Helvetica;
+     font-weight: 600;
+     font-size: 20px;
+     text-align: center;
+     letter-spacing: 0;
+     line-height: 26px;
+     left: 210px;
+     top: 17px;
+ }
+
+ .mypage-order .text-5 {
+     align-self: stretch;
+     color: #000000;
+     position: relative;
+     flex: 1;
+     margin-top: -1px;
+     font-family: "Inter-SemiBold", Helvetica;
+     font-weight: 600;
+     font-size: 20px;
+     text-align: center;
+     letter-spacing: 0;
+     line-height: 26px;
+     left: 27px;
+     top: 17px;
+ }
 
 .mypage-order .cell-8 {
     width: 200px;

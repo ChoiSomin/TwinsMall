@@ -9,14 +9,14 @@
     <script th:inline="javascript">
         $(document).ready(function () {
 
-            calculateToalPrice();
+            calculateTotalPrice();
 
             $("#count").change(function () {
-                calculateToalPrice();
+                calculateTotalPrice();
             });
         });
 
-        function calculateToalPrice() {
+        function calculateTotalPrice() {
             var count = $("#count").val();
             var price = $("#price").val();
             var totalPrice = price * count;
@@ -25,6 +25,7 @@
 
         function order() {
             var username = [[${username}]];
+
             var url = "/order";
             var paramData = {
                 itemId: $("#itemId").val(),
@@ -60,6 +61,7 @@
         function addCart() {
 
             var username = [[${username}]];
+
             var url = "/cart";
             var paramData = {
                 itemId: $("#itemId").val(),
@@ -111,7 +113,6 @@
                      th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[4] != null}"
                      th:style="'background-image: url(' + ${item.itemImgDtoList[4]?.iimgurl ?: ''} + ')'">
                 <img class="tabpanel-product-big"
-                     th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[0] != null}"
                      th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'">
             </div>
         </div>

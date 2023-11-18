@@ -6,50 +6,30 @@
 <div layout:fragment="content">
 
     <div class="cart">
-        <section class="product-page spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__page__content">
-                            <div class="product__page__title">
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-8 col-sm-6">
-                                        <div class="section-title">
-                                            <h4>장바구니 목록</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <table class="table">
-                                    <thead>
-                                    <tr class="text-center" style="color: aliceblue">
-                                        <td>
-                                            <input type="checkbox" id="checkall" onclick="checkAll()"> 전체선택
-                                        </td>
-                                        <td>상품정보</td>
-                                        <td>상품금액</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="cartItem : ${cartItems}">
-                                        <td class="text-wrapper">
-                                            <input type="checkbox" name="cartChkBox" th:value="${cartItem.cartItemId}">
-                                        </td>
-                                        <td class="d-flex">
-                                            <div class="heading-shopping-2">
-                                                <img th:src="${cartItem.imgUrl}" class="rounded repImg"
-                                                     th:alt="${cartItem.itemNm}">
-                                            </div>
-                                            <div class="text-wrapper-2">
-                                                <span th:text="${cartItem.itemNm}" class="fs24 font-weight-bold"></span>
-                                                <div class="col-lg-6 col-md-6">
-                            <span class="overlap-group ">
-                                <span th:id="'price_' + ${cartItem.cartItemId}"
-                                      th:data-price="${cartItem.price}"
-                                      th:text="${cartItem.price} + '원'" class="overlap-group "
-                                      style="display: none;"> <!-- hidden css를 사용하여 화면에는 출력되지 않음 -->
-                                </span>
+        <div class="top">
+            <div class="heading-shopping">Shopping Cart</div>
+            <div class="overlap-group">
+                <div class="link-home">장바구니</div>
+            </div>
+        </div>
+        <div class="view">
+            <div class="table-header">
+                <div class="row-cell-product">상품명</div>
+                <div class="row-cell-quantity">수량</div>
+                <div class="row-cell-total">총가격</div>
+            </div>
+            <tr th:each="cartItem : ${cartItems}">
+                <div class="table-body-row">
+                    <img class="data-cart-jpg" src="${cartItem.imgUrl}"  th:alt="${cartItem.itemNm}"/>
+                    <div class="data">
+                        <div class="heading-t-shirt"><span th:text="${cartItem.itemNm}"></span></div>
+                        <div class="heading"><span th:id="'price_' + ${cartItem.cartItemId}"
+                                                   th:data-price="${cartItem.price}"
+                                                   th:text="${cartItem.price} + '원'"></span></div>
+                    </div>
+                    <div class="data-input">
+                        <div class="div-wrapper">
+                            <div class="text-wrapper-3">
                                 <input type="number" name="count" th:id="'count_' + ${cartItem.cartItemId}"
                                        th:value="${cartItem.count}"
                                        min="1" onchange="changeCount(this)" class="text-wrapper-3">
@@ -57,35 +37,45 @@
                                     <span aria-hidden="true" th:data-id="${cartItem.cartItemId}"
                                           onclick="deleteCartItem(this)">&times;</span>
                                 </button>
-                            </span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-wrapper-4" style="color: aliceblue">
-                    <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
-                          name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
-                    </span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
+                    <div class="data-2">
+                    <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
+                          name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
+                    </span>
+                    </div>
+                    <div class="symbol-wrapper">
+                    </div>
                 </div>
-                <br>
-                <br>
-                <h2 class="text-wrapper-5" style="color: aliceblue">
-                    총 주문 금액 : <span id="orderTotalPrice" class="text-wrapper-5">0원</span>
-                </h2>
-                <br>
-                <br>
-                <div class="text-wrapper-5" style="text-align: center;">
-                    <button type="button" class="text-wrapper-5" onclick="orders()">주문하기</button>
+            </tr>
+        </div>
+        <tr th:each="cartItem : ${cartItems}">
+            <div class="div-cart-total-wrapper">
+                <div class="div-cart-total">
+                    <div class="heading-cart-total">총 주문금액</div>
+                    <div class="list-item">
+                        <div class="text-wrapper-4">Subtotal</div>
+                        <div class="text-wrapper-5">
+                        <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
+                              name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
+                    </span>
+                        </div>
+                    </div>
+                    <div class="list-item-2">
+                        <div class="text-wrapper-6">Total</div>
+                        <div class="text-wrapper-5">
+                        <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
+                              name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
+                    </span>
+                        </div>
+                    </div>
+                    <div class="link">
+                        <button type="button" class="text-wrapper-7" onclick="orders()">총 주문하기</button>
+                    </div>
                 </div>
             </div>
-        </section>
-
+        </tr>
     </div>
 </div>
 <th:block layout:fragment="script">
@@ -181,6 +171,8 @@
                     alert("주문이 완료 되었습니다.");
                     location.href = '/orders';
                 },
+
+
                 error: function (jqXHR, status, error) {
 
                     if (jqXHR.status == '401') {
