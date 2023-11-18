@@ -59,7 +59,7 @@
                         <div class="row-2">
                             <div class="cell-3">
                                 <div class="content-2">
-                                    <div class="text-2"> [[${orders.orderId}]]</div>
+                                    <a th:href="@{/order/orderDetail/}+${orders.orderId}" class="text-2">[[${orders.orderId}]]</a>
                                 </div>
                             </div>
                             <div class="cell-4">

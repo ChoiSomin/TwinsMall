@@ -20,12 +20,14 @@
             </div>
             <tr th:each="cartItem : ${cartItems}">
                 <div class="table-body-row">
-                    <img class="data-cart-jpg" src="${cartItem.imgUrl}"  th:alt="${cartItem.itemNm}"/>
+                    <img class="data-cart-jpg" src="${cartItem.imgUrl}" th:alt="${cartItem.itemNm}"/>
                     <div class="data">
                         <div class="heading-t-shirt"><span th:text="${cartItem.itemNm}"></span></div>
-                        <div class="heading"><span th:id="'price_' + ${cartItem.cartItemId}"
-                                                   th:data-price="${cartItem.price}"
-                                                   th:text="${cartItem.price} + '원'"></span></div>
+                        <div class="heading">
+                            <span th:id="'price_' + ${cartItem.cartItemId}"
+                                  data-th-text="| ${#numbers.formatInteger(cartItem.price, 3, 'COMMA')} 원 |">
+                            </span>
+                        </div>
                     </div>
                     <div class="data-input">
                         <div class="div-wrapper">
@@ -33,19 +35,21 @@
                                 <input type="number" name="count" th:id="'count_' + ${cartItem.cartItemId}"
                                        th:value="${cartItem.count}"
                                        min="1" onchange="changeCount(this)" class="text-wrapper-3">
-                                <button type="button" class="close" aria-label="Close">
-                                    <span aria-hidden="true" th:data-id="${cartItem.cartItemId}"
-                                          onclick="deleteCartItem(this)">&times;</span>
-                                </button>
+
                             </div>
                         </div>
                     </div>
                     <div class="data-2">
-                    <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
-                          name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
+                    <span th:id="'totalPrice_' + ${cartItem.cartItemId}" class="totalPrice"
+                          name="totalPrice"
+                          data-th-text="| ${#numbers.formatInteger(cartItem.price * cartItem.count, 3, 'COMMA')} 원 |">
                     </span>
                     </div>
                     <div class="symbol-wrapper">
+                        <button type="button" aria-label="Close">
+                            <span aria-hidden="true" th:data-id="${cartItem.cartItemId}"
+                                          onclick="deleteCartItem(this)">X</span>
+                        </button>
                     </div>
                 </div>
             </tr>
@@ -58,7 +62,7 @@
                         <div class="text-wrapper-4">Subtotal</div>
                         <div class="text-wrapper-5">
                         <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
-                              name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
+                              name="totalPrice" data-th-text="| ${#numbers.formatInteger(cartItem.price * cartItem.count, 3, 'COMMA')} 원 |">
                     </span>
                         </div>
                     </div>
@@ -66,7 +70,7 @@
                         <div class="text-wrapper-6">Total</div>
                         <div class="text-wrapper-5">
                         <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
-                              name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
+                              name="totalPrice" data-th-text="| ${#numbers.formatInteger(cartItem.price * cartItem.count, 3, 'COMMA')} 원 |">
                     </span>
                         </div>
                     </div>
