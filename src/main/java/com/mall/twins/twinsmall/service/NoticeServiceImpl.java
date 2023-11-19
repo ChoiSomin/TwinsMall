@@ -119,6 +119,13 @@ public class NoticeServiceImpl implements NoticeService{
         noticeRepository.deleteById(nno);
     }
 
+    /* 추가 LJM */
+    @Override
+    public Page<Notice> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 12);
+        return this.noticeRepository.findAll(pageable);
+    }
+
     private BooleanBuilder getSearch(PageRequestDTO pageRequestDTO){ // Querydsl 처리
 
         String type = pageRequestDTO.getType();

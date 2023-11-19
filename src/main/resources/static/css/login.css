@@ -475,6 +475,7 @@
     letter-spacing: 0;
 }
 
+/* 아이콘 크기 수정 */
 .login .icon-google-icon {
     position: absolute;
     width: 40px;
