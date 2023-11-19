@@ -1,7 +1,9 @@
 package com.mall.twins.twinsmall.controller;
 
 import com.mall.twins.twinsmall.config.auth.UserAdapter;
+import com.mall.twins.twinsmall.dto.ItemFormDto;
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
+import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
@@ -33,6 +35,23 @@ public class MypageController {
     private final MemberRepository memberRepository;
 
     private final AuthenticationManager authenticationManager;
+
+
+    @GetMapping("/shipping/list")
+    public String list(){
+        log.info("list....");
+
+        return "/mypage/shipping";
+    }
+
+
+    @GetMapping(value = "/shipping/register")
+    public String shippingRegister(Model model) {
+        model.addAttribute("shippingDto", new ShippingDto());
+        return "mypage/shippingRegister";
+    }
+
+
 
     // 회원 정보 조회
     @GetMapping("/read")
