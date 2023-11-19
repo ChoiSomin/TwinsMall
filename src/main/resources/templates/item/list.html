@@ -180,27 +180,32 @@
             <div class="link-3">3</div>
             <div class="text-wrapper-8">...</div>
             <div class="link-4">21</div>-->
-            <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
-                <ul class="pagination justify-content-center">
 
+
+            <div th:with="start=${(items.number/maxPage)*maxPage + 1},
+             end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+                <ul class="pagination justify-content-center">
+                    <!-- 이전 페이지 링크 -->
                     <li class="div-wrapper" th:classappend="${items.number eq 0}?'disabled':''">
-                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="text-wrapper-7">
+                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1} + '&pname=' + ${#httpServletRequest.getParameter('pname') ?: ''} + '&pcate=' + ${#httpServletRequest.getParameter('pcate') ?: ''}}" aria-label='Previous' class="text-wrapper-7">
                             <span aria-hidden='true'>Previous</span>
                         </a>
                     </li>
 
+                    <!-- 페이지 링크 목록 -->
                     <li class="link-2" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
-                        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+                        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1} + '&pname=' + ${#httpServletRequest.getParameter('pname') ?: ''} + '&pcate=' + ${#httpServletRequest.getParameter('pcate') ?: ''}}" th:inline="text" class="page-link">[[${page}]]</a>
                     </li>
 
+                    <!-- 다음 페이지 링크 -->
                     <li class="link-3" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
-                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1} + '&pname=' + ${#httpServletRequest.getParameter('pname') ?: ''} + '&pcate=' + ${#httpServletRequest.getParameter('pcate') ?: ''}}" aria-label='Next' class="page-link">
                             <span aria-hidden='true'>Next</span>
                         </a>
                     </li>
-
                 </ul>
             </div>
+
         </div>
         </div>
     </div>
