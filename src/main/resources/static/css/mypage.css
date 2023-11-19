@@ -633,6 +633,39 @@
     line-height: 25px;
 }
 
+.mypage .text-wrapper-25 {
+    width: 63px;
+    height: 18px;
+    top: 7px;
+    left: 18px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 15px;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.mypage .text-wrapper-27 {
+    width: 63px;
+    height: 18px;
+    top: 7px;
+    left: 18px;
+    font-family: "Nunito Sans", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 15px;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+    text-decoration: none;
+}
+
 .mypage .div-wrapper {
     left: 198px;
     background-color: #f68181;
@@ -649,6 +682,23 @@
     height: 18px;
     top: 2px;
     left: 0px;
+    font-family: "Nunito", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+    text-decoration: none;
+}
+
+.mypage .text-wrapper-26 {
+    width: 63px;
+    height: 18px;
+    top: 7px;
+    left: 18px;
     font-family: "Nunito", Helvetica;
     font-weight: 600;
     color: #000000;

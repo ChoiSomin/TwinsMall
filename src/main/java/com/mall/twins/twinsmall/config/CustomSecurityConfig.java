@@ -63,27 +63,34 @@ public class CustomSecurityConfig {
         http.formLogin()
                 .loginPage("/member/login")                                                 // Form 로그인 기능 작동, 커스텀 로그인 페이지
                 .loginProcessingUrl("/auth/loginProc")                                      // 시큐리티에서 해당 주소로 오는 요청을 낚아채 수행
-                .defaultSuccessUrl("/index")                                               // 로그인 성공시 index 페이지로 이동
+                .defaultSuccessUrl("/")                                               // 로그인 성공시 index 페이지로 이동
                 .failureUrl("/member/login/error")                      // 로그인 실패 시 이동할 URL 설정
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("member/logout"))   // 로그아웃 URL
-                .logoutSuccessUrl("/index");                                               // 로그아웃 성공시 이동할 URL
+                .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))   // 로그아웃 URL
+                .logoutSuccessUrl("/")                                                 // 로그아웃 성공시 이동할 URL
+                .invalidateHttpSession(true)                                                // 로그아웃 이후 세션 전체 삭제 여부
+                .deleteCookies("JSESSIONID");
 
         http.csrf().disable();                                                             // CSRF 토큰 비활성화 (기본값은 GET 방식 제외 요구) -> USERNAME과 PASSWORD 만으로 로그인 가능
 
 
         http.authorizeRequests() // URL 패턴에 따른 접근 권한을 설정
                         .antMatchers("/itemRegister", "/notice/register", "notice/modify").hasAnyAuthority("ADMIN")
-                        .antMatchers("/mypage/**").authenticated()
+                        .antMatchers("/mypage/**", "/cart", "/orders/**").authenticated()
                         .anyRequest().permitAll();
 
-        // 쿠키를 이용해서 로그인 정보 유지, (persistent_logins) 테이블 이용
+        /*// 쿠키를 이용해서 로그인 정보 유지, (persistent_logins) 테이블 이용
         http.rememberMe()
                 .key("12345678")
                 .tokenRepository(persistentTokenRepository())
                 .userDetailsService(userDetailsService)
-                .tokenValiditySeconds(60*60*24*30);     // 유효 기간 30일
+                .tokenValiditySeconds(60*60*24*30);     // 유효 기간 30일*/
+
+        http.rememberMe() // rememberMe 기능 작동함
+                .tokenValiditySeconds(3600) // 쿠키의 만료시간 설정(초), default: 14일
+                .alwaysRemember(false) // 사용자가 체크박스를 활성화하지 않아도 항상 실행, default: false
+                .userDetailsService(userDetailsService); // 기능을 사용할 때 사용자 정보가 필요함. 반드시 이 설정 필요함.
 
         // 403 에러 발생시 예외 처리로 로그인 페이지로 이동하고 파라미터에 error=ACCESS_DENIED 값 전달
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());

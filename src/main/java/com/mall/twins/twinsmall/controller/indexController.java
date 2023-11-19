@@ -23,49 +23,9 @@ public class indexController {
     private final ItemService itemService;
 
     @GetMapping("/index")
-    public void list(){
+    public void list() {
         log.info("list....");
 
     }
-
-    @GetMapping("/aboutus")
-    public String aboutus(){
-        return "aboutus";
-
-    }
-
-    @GetMapping("/checkout")
-    public String checkout(){
-        return "checkout";
-
-    }
-
-    @GetMapping("/cart")
-    public String cart(){
-        return "cart";
-
-    }
-
-
-    @GetMapping("/shipping")
-    public String shipping(){
-        return "shipping";
-
-    }
-
-    @GetMapping(value = "/")
-    public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
-
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
-        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
-
-        model.addAttribute("items", items);
-        model.addAttribute("itemSearchDto", itemSearchDto);
-        model.addAttribute("maxPage", 5);
-
-        return "main";
-    }
-
-
 
 }

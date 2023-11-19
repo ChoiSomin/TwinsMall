@@ -113,7 +113,7 @@
                 <div class="div-product-item">
                     <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}">
                     <div class="heading-piqu-biker">[[${item.pname}]]</div>
-                    <div class="heading">[[${item.pprice}]]원</div>
+                    <div class="heading" data-th-text="| ${#numbers.formatInteger(item.pprice, 3, 'COMMA')} 원 |"></div>
                 </div>
             </th:block>
 

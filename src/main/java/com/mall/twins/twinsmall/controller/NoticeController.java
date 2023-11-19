@@ -2,9 +2,12 @@ package com.mall.twins.twinsmall.controller;
 
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
 import com.mall.twins.twinsmall.dto.PageRequestDTO;
+import com.mall.twins.twinsmall.entity.Notice;
+import com.mall.twins.twinsmall.repository.NoticeRepository;
 import com.mall.twins.twinsmall.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/notice")
@@ -20,13 +24,24 @@ import javax.validation.Valid;
 public class NoticeController{
 
     private final NoticeService noticeService;
+    private final NoticeRepository noticeRepository;
 
+    /* 추가 LJM */
     @GetMapping(value = "/list")
-    public String notice(PageRequestDTO pageRequestDTO, Model model){
+    public String notice(PageRequestDTO pageRequestDTO, Model model, @RequestParam(value="page", defaultValue="0") int page){
 
         log.info("Notice list...." + pageRequestDTO);
 
+
+        Page<Notice> paging = this.noticeService.getList(page);
+        List<Notice> noticeList = this.noticeRepository.findAll();
+
         model.addAttribute("notice", noticeService.getNoticeList(pageRequestDTO));
+        model.addAttribute("paging", paging);
+        model.addAttribute("noticeList", noticeList);
+
+        log.info(noticeService.getNoticeList(pageRequestDTO));
+
         return "notice/notice";
     }
     @GetMapping(value = "/register")

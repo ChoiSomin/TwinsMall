@@ -423,7 +423,7 @@
     background-size: 100% 100%;
     font-weight: 700;
     font-family: "Nunito Sans", Helvetica;
-
+    background-color: white;
     /* 테두리 속성을 없애는 CSS */
     border: none;
     outline: none; /* 포커스 테두리도 제거하려면 추가 */
@@ -477,9 +477,9 @@
 
 .login .icon-google-icon {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 434px;
+    width: 40px;
+    height: 40px;
+    top: 429px;
     left: 419px;
 }
 

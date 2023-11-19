@@ -68,8 +68,8 @@
                 <div class="overlap-3">
                     <input class="input-2" type="password" id="password" name="password" placeholder="비밀번호 입력">
                     <div class="remember">
-                        <input type="checkbox" id="keep" name="remember-me" class="input_keep" value="off">
-                        <label for="keep" class="keep_text">로그인 상태 유지</label>
+                        <input type="checkbox" id="rememberMe" name="remember-me" class="input_keep">
+                        <label for="rememberMe" class="keep_text">자동로그인</label>
                     </div>
                     <div class="text-wrapper-7">아이디/비밀번호 찾기</div>
                 </div>
@@ -84,9 +84,9 @@
                         </a>
                     </div>
                 </div>
-                <a href="/oauth2/authorization/google">
-                    <img class="icon-google-icon" th:src="@{/img/icon-google-icon.png}"></a>
-                <a href="/oauth2/authorization/kakao">
+                <a href="#">
+                    <img class="icon-google-icon" th:src="@{/img/icon-naver-icon.png}"></a>
+                <a href="#">
                     <img class="SNS-kakaotalk" th:src="@{/img/sns-kakaotalk.svg}"></a>
                 <div class="text-wrapper-10">
                     간편 로그인

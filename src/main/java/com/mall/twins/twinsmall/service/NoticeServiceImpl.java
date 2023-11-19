@@ -11,11 +11,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.bytebuddy.dynamic.ClassFileLocator;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.swing.text.html.Option;
 import java.util.Optional;
@@ -28,6 +30,8 @@ import java.util.function.Function;
 public class NoticeServiceImpl implements NoticeService{
 
     private final NoticeRepository noticeRepository;
+    private final EntityManager entityManager;
+
     @Override
     public Long register(NoticeFormDto dto) {
 
@@ -51,17 +55,38 @@ public class NoticeServiceImpl implements NoticeService{
         BooleanBuilder booleanBuilder = getSearch(pageRequestDTO);
 
         Page<Notice> result = noticeRepository.findAll(booleanBuilder, pageable);
+
+        log.info(result);
+
         Function<Notice, NoticeFormDto> fn = (notice -> entityToDTO(notice));
+
+        log.info(fn);
 
         return new PageResultDTO<>(result, fn);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public NoticeFormDto read(Long nno) {
 
-        Optional<Notice> notice = noticeRepository.findById(nno);
+        Notice notice = noticeRepository.findById(nno)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid notice ID: " + nno));
 
-        return notice.isPresent() ? entityToDTO(notice.get()) : null;
+        // 여기에서 view 값을 확인
+        log.info("View value before increment: " + notice.getView());
+
+        // 조회수 증가
+        notice.addView();
+
+        // 여기에서 view 값을 다시 확인
+        log.info("View value after increment: " + notice.getView());
+
+        // 저장
+        noticeRepository.save(notice);
+
+        entityManager.flush(); // 수동으로 flush 호출
+
+        return NoticeFormDto.of(notice);
     }
 
     @Transactional
@@ -81,6 +106,13 @@ public class NoticeServiceImpl implements NoticeService{
         }
 
     } // modify 구현
+
+    /* 추가 LJM */
+    @Override
+    public Page<Notice> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 12);
+        return this.noticeRepository.findAll(pageable);
+    }
 
     @Transactional
     public void remove(Long nno) {

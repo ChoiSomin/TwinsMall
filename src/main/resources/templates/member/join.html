@@ -67,14 +67,14 @@
                     <div class="text-wrapper-8">핸드폰번호</div>
                     <div class="text-wrapper-9">*</div>
                 </div>
-                <input type="text" th:field="*{mphone}" class="input-3" placeholder="핸드폰번호를 입력해주세요">
+                <input type="text" th:field="*{mphone}" class="input-3" placeholder=" ex) 01012345678">
                 <p th:if="${#fields.hasErrors('mphone')}" th:errors="*{mphone}" class="fieldError3">Incorrect
                     data</p>
                 <div class="overlap-4">
                     <div class="text-wrapper-10">Email</div>
                     <div class="text-wrapper-11">*</div>
                 </div>
-                <input type="email" th:field="*{memail}" class="input-4" placeholder="ex) email@naver.com">
+                <input type="email" th:field="*{memail}" class="input-4" placeholder=" ex) email@naver.com">
                 <p th:if="${#fields.hasErrors('memail')}" th:errors="*{memail}" class="fieldError4">Incorrect
                     data</p>
                 <!--<div class="group">
@@ -90,11 +90,11 @@
                 <p id="passwordMismatchError" class="fieldError7" th:if="${#fields.hasErrors('mpw_confirm')}" th:errors="*{mpw_confirm}"></p>
                 <div class="text-wrapper-17">생년월일</div>
                 <div class="text-wrapper-18">*</div>
-                <input type="text" th:field="*{mbirth}" class="input-7" placeholder="ex) 20021014">
+                <input type="text" th:field="*{mbirth}" class="input-7" placeholder=" ex) 20021014">
                 <p th:if="${#fields.hasErrors('mbirth')}" th:errors="*{mbirth}" class="fieldError6">Incorrect
                     data</p>
                 <div class="frame-2">
-                    <a th:href="@{/index}" class="text-wrapper-20">취소하기</a>
+                    <a th:href="@{/}" class="text-wrapper-20">취소하기</a>
                 </div>
                 <div class="frame">
                     <button class="text-wrapper-19" type="reset">다시 입력</button>

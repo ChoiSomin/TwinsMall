@@ -4,6 +4,7 @@ import com.mall.twins.twinsmall.dto.NoticeFormDto;
 import com.mall.twins.twinsmall.dto.PageRequestDTO;
 import com.mall.twins.twinsmall.dto.PageResultDTO;
 import com.mall.twins.twinsmall.entity.Notice;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ public interface NoticeService {
     void modify(NoticeFormDto noticeFormDto);
 
     void remove(Long nno);
+
+    /* 추가 LJM */
+    Page<Notice> getList(int page);
 
     default Notice dtoToEntity(NoticeFormDto dto) {
 
@@ -38,6 +42,7 @@ public interface NoticeService {
                 .ncontent(notice.getNcontent())
                 .regTime(notice.getRegTime())
                 .updateTime(notice.getUpdateTime())
+                .view(notice.getView())
                 .build();
 
         return noticeFormDto;

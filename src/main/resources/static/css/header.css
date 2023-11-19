@@ -158,6 +158,19 @@
     top: 81px;
 }
 
+.header .logout {
+    left: 1415px;
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    top: 82px;
+    font-family: "Nunito Sans-Bold", Helvetica;
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+    line-height: normal;
+}
+
 .header .div-header-top {
     position: absolute;
     width: 1920px;
