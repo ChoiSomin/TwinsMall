@@ -53,19 +53,6 @@ public class PageResultDTO<DTO, EN> {
 
         makePageList(result.getPageable());
     }
-
-    /* 추가 LJM */
-    private long totalElements;
-
-    public long getTotalElements(){
-        return totalElements;
-    }
-
-    public void setTotalElements(long totalElements){
-        this.totalElements = totalElements;
-    }
-    /* /추가 LJM */
-
     private void makePageList(Pageable pageable){
 
         this.page = pageable.getPageNumber() + 1; // 0부터 시작하므로 1을 추가

@@ -4,7 +4,6 @@ import com.mall.twins.twinsmall.dto.*;
 import com.mall.twins.twinsmall.entity.Notice;
 import com.mall.twins.twinsmall.entity.QNotice;
 import com.mall.twins.twinsmall.repository.NoticeRepository;
-import com.mall.twins.twinsmall.repository.NoticeRepositoryCustom;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
-import javax.swing.text.html.Option;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -119,12 +116,6 @@ public class NoticeServiceImpl implements NoticeService{
         noticeRepository.deleteById(nno);
     }
 
-    /* 추가 LJM */
-    @Override
-    public Page<Notice> getList(int page) {
-        Pageable pageable = PageRequest.of(page, 12);
-        return this.noticeRepository.findAll(pageable);
-    }
 
     private BooleanBuilder getSearch(PageRequestDTO pageRequestDTO){ // Querydsl 처리
 
