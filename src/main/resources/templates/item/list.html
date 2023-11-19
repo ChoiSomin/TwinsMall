@@ -12,7 +12,7 @@
             <div class="text-wrapper-3">Shop</div>
         </div>
         <!--검색기능-->
-        <form action="/product" method="get">
+        <form action="/item/list" method="get">
             <div class="section-form-input">
                 <div class="div-placeholder">
                     <input type="text" id="pnameInput" name="pname" placeholder="Search...">
@@ -20,6 +20,40 @@
                 </div>
             </div>
         </form>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var form = document.querySelector('form[action="/item/list"]');
+                if (form) {
+                    // 이전에 검색한 내용이 URL에 있다면 검색창에 설정
+                    var url = new URL(window.location.href);
+                    var pname = url.searchParams.get('pname');
+                    var pnameInput = form.querySelector('#pnameInput');
+                    if (pname && pnameInput) {
+                        pnameInput.value = pname;
+                    }
+
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault(); // 기본 제출 동작 방지
+
+                        var pnameInput = form.querySelector('#pnameInput');
+                        if (pnameInput) {
+                            var pnameValue = pnameInput.value;
+                            var url = new URL('/item/list', window.location.href);
+
+                            // pname 파라미터 값 설정
+                            url.searchParams.set('pname', pnameValue);
+
+                            // 새 URL을 사용하여 페이지 이동 (또는 필요한 작업 수행)
+                            window.location.href = url.toString();
+                        }
+                    });
+                } else {
+                    console.error("Form not found");
+                }
+            });
+
+        </script>
 
         <!--카테고리-->
         <div class="view">
@@ -44,7 +78,6 @@
             </div>
         </div>
         <script>
-
             function toggleList() {
                 var listContainer = document.getElementById("listContainer");
                 if (listContainer.style.display === "none") {
@@ -55,20 +88,26 @@
             }
 
             function searchByCategory(pcate) {
-                console.log("Clicked category: " + pcate); // 함수 호출 여부 확인
-                var form = document.querySelector('form[action="/product"]');
-                console.log("Form element: ", form); // 양식 요소 확인
+                var form = document.querySelector('form[action="/item/list"]');
                 if (form) {
                     var pnameInput = form.querySelector('#pnameInput');
-                    console.log("pnameInput: ", pnameInput); // ID가 pnameInput인 요소 찾기
                     if (pnameInput) {
-                        pnameInput.value = ''; // Reset the search input
-                        console.log("Category to search: " + pcate);
-                        form.action = "/product?pcate=" + encodeURIComponent(pcate);
-                        console.log("Form action: ", form.action); // Form action 확인
-                        form.submit();
-                    } else {
-                        console.error("pnameInput not found");
+                        var pnameValue = pnameInput.value;
+                        var url = new URL('/item/list', window.location.href);
+
+                        // 기존 pname 값이 있는 경우 해당 값을 유지하도록 설정
+                        var existingPname = url.searchParams.get('pname');
+                        if (existingPname !== null) {
+                            pnameValue = existingPname;
+                        }
+
+                        // pname 파라미터 값 설정
+                        url.searchParams.set('pname', pnameValue);
+
+                        // pcate 파라미터 값 설정
+                        url.searchParams.set('pcate', pcate);
+
+                        window.location.href = url.toString();
                     }
                 } else {
                     console.error("Form not found");
@@ -77,12 +116,12 @@
 
 
 
-
         </script>
+
+
 
         <!--오름차순 정렬-->
         <div class="view-2">
-            <p class="p">Showing 1–12 of 126 results</p>
             <div class="text-wrapper-5">Sort by Price:</div>
             <div class="div-nice-select">
                 <div class="text-wrapper-6">Low To High</div>
@@ -95,17 +134,34 @@
                     const sortTextElement = document.querySelector('.text-wrapper-6');
                     let ascendingOrder = true;
 
+                    // 페이지 로드 시 'sort' 값 확인하여 정렬 방식 설정
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const currentSortOrder = urlParams.get('sort');
+                    if (currentSortOrder === 'desc') {
+                        ascendingOrder = false;
+                        sortTextElement.textContent = 'High To Low';
+                    }
+
                     pseudoElement.addEventListener('click', function() {
                         ascendingOrder = !ascendingOrder;
                         if (ascendingOrder) {
                             sortTextElement.textContent = 'Low To High';
-                            // Perform sorting low to high logic here
+                            updateURL('asc'); // 정렬 값을 'asc'로 지정하여 URL 업데이트
                         } else {
                             sortTextElement.textContent = 'High To Low';
-                            // Perform sorting high to low logic here
+                            updateURL('desc'); // 정렬 값을 'desc'로 지정하여 URL 업데이트
                         }
                     });
+
+                    // URL 업데이트 함수 정의
+                    function updateURL(sortOrder) {
+                        urlParams.set('sort', sortOrder); // 'sort' 파라미터에 정렬 값을 설정
+                        const currentUrl = window.location.pathname + '?' + urlParams.toString();
+                        window.location.href = currentUrl; // 새로운 URL로 이동
+                    }
                 });
+
+
             </script>
 
 
