@@ -256,10 +256,10 @@
 
 .product .section-form-button {
     position: absolute;
-    width: 15px;
-    height: 15px;
+/*    width: 15px;
+    height: 15px;*/
     top: 0;
-    left: 192px;
+    left: 182px;
     font-family: "Inter", Helvetica;
     font-weight: 400;
     color: #b7b7b7;
@@ -526,6 +526,20 @@
     height: 8px;
     top: 9px;
     left: 97px;
+    border-right-width: 1.5px;
+    border-right-style: solid;
+    border-bottom-width: 1.5px;
+    border-bottom-style: solid;
+    border-color: #111111;
+    transform: rotate(45deg);
+}
+
+.product .pseudo-1 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    /*top: 9px;*/
+    left: 220px;
     border-right-width: 1.5px;
     border-right-style: solid;
     border-bottom-width: 1.5px;

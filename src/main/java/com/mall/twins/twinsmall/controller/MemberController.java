@@ -19,7 +19,6 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/member")
 @Log4j2
 @RequiredArgsConstructor
 public class MemberController {
@@ -29,7 +28,7 @@ public class MemberController {
     private final PasswordEncoder passwordEncoder;
     private final CheckPasswordEqualValidator checkPasswordEqualValidator;
 
-    @GetMapping("/login")
+    @GetMapping("/member/login")
     public void loginGet(String errorCode, String logout) {
 
         log.info("MemberController.loginGet() 로그인 처리");
@@ -40,7 +39,7 @@ public class MemberController {
         }
     }
 
-    @GetMapping("/join")
+    @GetMapping("/member/join")
     public String joinGet(Model model) {
         model.addAttribute("memberJoinDto", new MemberJoinDTO());
 
@@ -49,7 +48,7 @@ public class MemberController {
         return "member/join";
     }
 
-    @GetMapping(value = "/login/error")
+    @GetMapping(value = "/member/login/error")
     public String loginError(Model model) {
 
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
@@ -57,7 +56,7 @@ public class MemberController {
         return "member/login";
     }
 
-    @PostMapping("/join")
+    @PostMapping("/member/join")
     public String joinPost(@Valid @ModelAttribute("memberJoinDto") MemberJoinDTO memberJoinDto, BindingResult bindingResult, Model model) {
         log.info("MemberController.joinPost() 회원가입 데이터 전송");
         log.info(memberJoinDto);

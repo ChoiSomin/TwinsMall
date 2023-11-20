@@ -56,7 +56,7 @@ public class ItemController {
             return "item/register";
         }
 
-        return "redirect:item/list";
+        return "redirect:/item/list";
     }
 
     @GetMapping(value = "/admin/item/{ItemId}")
@@ -140,6 +140,14 @@ public class ItemController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
+        return "item/list";
+    }
+
+    /* 페이징 추가 */
+    @GetMapping("/list")
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page){
+        Page<Item> paging = this.itemService.getList(page);
+        model.addAttribute("paging", paging);
         return "item/list";
     }
 
