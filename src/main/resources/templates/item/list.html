@@ -3,6 +3,32 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+
+        $(document).ready(function () {
+            $("#searchBtn").on("click", function (e) {
+                e.preventDefault();
+                page(0);
+            });
+        });
+
+        function page(page){
+            var searchDateType = $("#searchDateType").val();
+            var searchSellStatus = $("#searchSellStatus").val();
+            var searchBy = $("#searchBy").val();
+            var searchQuery = $("#searchQuery").val();
+
+            location.href="/item/list?page=" + page +
+                "&searchDateType=" + searchDateType +
+                "&searchSellStatus=" + searchSellStatus +
+                "&searchBy=" + searchBy +
+                "&searchQuery=" + searchQuery;
+        }
+
+    </script>
+
+</th:block>
 
 <div layout:fragment="content" id='wrapper'>
 
@@ -174,7 +200,7 @@
 
             </script>
 
-            <th:block th:each="item, status: ${items.getContent()}" th:with="paging=${paging}">
+            <th:block th:each="item, status: ${items.getContent()}">
                 <!--<th:block th:each="item, status: ${items.getContent()}">-->
                 <div class="div-product-item">
                     <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}">
@@ -182,13 +208,40 @@
                     <div class="heading" data-th-text="| ${#numbers.formatInteger(item.pprice, 3, 'COMMA')} 원 |"></div>
                 </div>
             </th:block>
+
             <div class="div-wrapper">
+                <div th:with="start=${(items.number/maxPage)*maxPage +1},
+                        end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})">
+                    <ul class="pagination justify - content - center">
+
+                        <li class="page-item" th:classappend="${items.first}?'disabled'">
+                            <a th:onclick="'javascript:page(' + ${items.number - 1} + ')'" aria-label='Previous' class="page-link">
+                                <span aria-hidden='true'><</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}"
+                            th:classappend="${items.number eq page - 1}?'active':''">
+                            <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>
+                        </li>
+
+                        <li class="page-item" th:classappend="${items.last}?'disabled'">
+                            <a th:onclick="'javascpript:page(' + ${items.number + 1 } + ')'" aria-label='Next'
+                               class="page-link">
+                                <span aria-hidden='true'>></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--<div class="div-wrapper">
                 <div class="text-wrapper-7">1</div>
             </div>
             <div class="link-2">2</div>
             <div class="link-3">3</div>
             <div class="text-wrapper-8">...</div>
-            <div class="link-4">21</div>
+            <div class="link-4">21</div>-->
 
         </div>
     </div>
