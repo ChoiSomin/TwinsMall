@@ -98,4 +98,9 @@ public class MemberController {
         binder.addValidators(checkPasswordEqualValidator);
     }
 
+    /* ID/PW 찾기 */
+    @GetMapping("/find-IdPw")
+    public String find(){
+        return "member/find-IdPw";
+    }
 }
