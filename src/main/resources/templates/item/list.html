@@ -95,13 +95,11 @@
                         var pnameValue = pnameInput.value;
                         var url = new URL('/item/list', window.location.href);
 
-                        // 기존 pname 값이 있는 경우 해당 값을 유지하도록 설정
-                        var existingPname = url.searchParams.get('pname');
-                        if (existingPname !== null) {
-                            pnameValue = existingPname;
-                        }
-
                         // pname 파라미터 값 설정
+                        var searchParams = new URLSearchParams(url.search);
+                        if (searchParams.has('pname')) {
+                            pnameValue = searchParams.get('pname');
+                        }
                         url.searchParams.set('pname', pnameValue);
 
                         // pcate 파라미터 값 설정
@@ -129,29 +127,36 @@
             </div>
 
             <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const pseudoElement = document.querySelector('.pseudo');
-                    const sortTextElement = document.querySelector('.text-wrapper-6');
-                    let ascendingOrder = true;
-
-                    // 페이지 로드 시 'sort' 값 확인하여 정렬 방식 설정
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const currentSortOrder = urlParams.get('sort');
-                    if (currentSortOrder === 'desc') {
-                        ascendingOrder = false;
-                        sortTextElement.textContent = 'High To Low';
-                    }
-
-                    pseudoElement.addEventListener('click', function() {
-                        ascendingOrder = !ascendingOrder;
-                        if (ascendingOrder) {
-                            sortTextElement.textContent = 'Low To High';
-                            updateURL('asc'); // 정렬 값을 'asc'로 지정하여 URL 업데이트
-                        } else {
-                            sortTextElement.textContent = 'High To Low';
-                            updateURL('desc'); // 정렬 값을 'desc'로 지정하여 URL 업데이트
+                document.addEventListener('DOMContentLoaded', function() {
+                    var form = document.querySelector('form[action="/item/list"]');
+                    if (form) {
+                        // 이전에 검색한 내용이 URL에 있다면 검색창에 설정
+                        var url = new URL(window.location.href);
+                        var pname = url.searchParams.get('pname');
+                        var pnameInput = form.querySelector('#pnameInput');
+                        if (pname && pnameInput) {
+                            pnameInput.value = pname;
                         }
-                    });
+
+                        form.addEventListener('submit', function(event) {
+                            event.preventDefault(); // 기본 제출 동작 방지
+
+                            var pnameInput = form.querySelector('#pnameInput');
+                            if (pnameInput) {
+                                var pnameValue = pnameInput.value;
+                                var url = new URL('/item/list', window.location.href);
+
+                                // pname 파라미터 값 설정
+                                url.searchParams.set('pname', pnameValue);
+
+                                // 새 URL을 사용하여 페이지 이동 (또는 필요한 작업 수행)
+                                window.location.href = url.toString();
+                            }
+                        });
+                    } else {
+                        console.error("Form not found");
+                    }
+                });
 
                     // URL 업데이트 함수 정의
                     function updateURL(sortOrder) {
@@ -182,24 +187,21 @@
             <div class="link-4">21</div>-->
 
 
-            <div th:with="start=${(items.number/maxPage)*maxPage + 1},
-             end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+            <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
                 <ul class="pagination justify-content-center">
-                    <!-- 이전 페이지 링크 -->
+
                     <li class="div-wrapper" th:classappend="${items.number eq 0}?'disabled':''">
-                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1} + '&pname=' + ${#httpServletRequest.getParameter('pname') ?: ''} + '&pcate=' + ${#httpServletRequest.getParameter('pcate') ?: ''}}" aria-label='Previous' class="text-wrapper-7">
+                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="text-wrapper-7">
                             <span aria-hidden='true'>Previous</span>
                         </a>
                     </li>
 
-                    <!-- 페이지 링크 목록 -->
                     <li class="link-2" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
-                        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1} + '&pname=' + ${#httpServletRequest.getParameter('pname') ?: ''} + '&pcate=' + ${#httpServletRequest.getParameter('pcate') ?: ''}}" th:inline="text" class="page-link">[[${page}]]</a>
+                        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
                     </li>
 
-                    <!-- 다음 페이지 링크 -->
                     <li class="link-3" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
-                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1} + '&pname=' + ${#httpServletRequest.getParameter('pname') ?: ''} + '&pcate=' + ${#httpServletRequest.getParameter('pcate') ?: ''}}" aria-label='Next' class="page-link">
+                        <a th:href="@{'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
                             <span aria-hidden='true'>Next</span>
                         </a>
                     </li>
