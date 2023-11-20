@@ -15,10 +15,12 @@
         <div class="view">
             <div class="nav-list-item-link-4">주문정보</div>
             <a th:href="@{/orders}">
-                <div class="nav-list-item-link-5">주문내역</div></a>
+                <div class="nav-list-item-link-5">주문내역</div>
+            </a>
             <div class="nav-list-item-link-6">회원정보</div>
             <a th:href="@{/mypage/read}">
-            <div class="nav-list-item-link-7">내정보</div></a>
+                <div class="nav-list-item-link-7">내정보</div>
+            </a>
             <div class="nav-list-item-link-11">배송지 정보</div>
             <div class="nav-list-item-link-8">서비스</div>
             <div class="nav-list-item-link-9">1:1문의</div>
@@ -28,52 +30,55 @@
         <div class="overlap">
             <div class="frame">
                 <div class="table-wrapper">
-                    <div class="table">
-                        <div class="row">
-                            <div class="cell">
-                                <div class="content">
-                                    <div class="text">주문번호</div>
+                    <th:block th:each="order : ${orders.getContent()}">
+                        <th:block th:each="member : ${order.memberJoinDTO}">
+                            <div class="table">
+                                <div class="row">
+                                    <div class="cell">
+                                        <div class="content">
+                                            <div class="text">주문번호</div>
+                                        </div>
+                                    </div>
+                                    <div class="content-wrapper">
+                                        <div class="content">
+                                            <div class="text-2" th:text="${order.orderId}"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="cell">
+                                        <div class="content">
+                                            <div class="text-3">주문일</div>
+                                        </div>
+                                    </div>
+                                    <div class="content-wrapper">
+                                        <div class="content">
+                                            <div class="text-2" th:text="${order.orderDate}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="div-wrapper">
+                                        <div class="content">
+                                            <div class="text">주문자</div>
+                                        </div>
+                                    </div>
+                                    <div class="cell-2">
+                                        <div class="content">
+                                            <div class="text-4" th:text="${member.mname}"></div>
+                                        </div>
+                                    </div>
+                                    <div class="cell-3">
+                                        <div class="content">
+                                            <div class="text-3">TEL</div>
+                                        </div>
+                                    </div>
+                                    <div class="cell-2">
+                                        <div class="content">
+                                            <div class="text-4" th:text="${member.mphone}"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <div class="text-2"></div>
-                                </div>
-                            </div>
-                            <div class="cell">
-                                <div class="content">
-                                    <div class="text-3">주문일</div>
-                                </div>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <div class="text-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="div-wrapper">
-                                <div class="content">
-                                    <div class="text">주문자</div>
-                                </div>
-                            </div>
-                            <div class="cell-2">
-                                <div class="content">
-                                    <div class="text-4"></div>
-                                </div>
-                            </div>
-                            <div class="cell-3">
-                                <div class="content">
-                                    <div class="text-3">TEL</div>
-                                </div>
-                            </div>
-                            <div class="cell-2">
-                                <div class="content">
-                                    <div class="text-4"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </th:block>
                 </div>
                 <div class="view-2">
                     <div class="table-2">
@@ -141,17 +146,17 @@
                         <div class="row-cell-quantity">수량</div>
                         <div class="row-cell-total">총가격</div>
                     </div>
+                    <!-- orderId를 출력 -->
                     <th:block th:each="order : ${orders.getContent()}">
                         <th:block th:each="orderItem : ${order.orderItemDtoList}">
                             <div class="table-body-row">
-                                <img class="data-cart-jpg" src="${orderItem.imgUrl" th:alt="${orderItem.itemNm}"/>
+                                <img class="data-cart-jpg" th:src="${orderItem.imgUrl}"
+                                     th:alt="${orderItem.itemNm}"/>
                                 <div class="data">
                                     <div class="heading-t-shirt">
                                         <span th:text="${orderItem.itemNm}"></span>
                                     </div>
                                 </div>
-
-
                                 <div class="data-input">
                                     <div class="div-2">
                                         <div class="text-wrapper-3">
@@ -160,7 +165,8 @@
                                     </div>
                                 </div>
                                 <div class="data-2">
-                                    <span class="totaltotal" th:text="${orderItem.orderPrice*orderItem.count}+'원'"></span>
+                                            <span class="totaltotal"
+                                                  th:text="${orderItem.orderPrice*orderItem.count}+'원'"></span>
                                 </div>
                             </div>
                         </th:block>
@@ -205,12 +211,12 @@
         </div>
 
         <script>
-            window.onload = function() {
+            window.onload = function () {
                 // 모든 주문 항목의 총 가격 계산
                 var totalOrderPrice = 0;
                 var totaltotaElements = document.querySelectorAll('.totaltotal');
 
-                totaltotaElements.forEach(function(element) {
+                totaltotaElements.forEach(function (element) {
                     var priceText = element.textContent.replace('원', '');
                     totalOrderPrice += parseInt(priceText);
                 });
