@@ -8,6 +8,7 @@ import com.mall.twins.twinsmall.dto.QMainItemDto;
 import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.QItem;
 import com.mall.twins.twinsmall.entity.QItemImg;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -102,6 +103,16 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
         QItemImg itemImg = QItemImg.itemImg;
 
         log.info("getMainItemPage query parameters: itemSearchDto = {}, pageable = {}", itemSearchDto, pageable);
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+        if (itemSearchDto.getPname() != null && !itemSearchDto.getPname().isEmpty()) {
+            booleanBuilder.and(item.pname.contains(itemSearchDto.getPname()));
+        }
+
+        if (itemSearchDto.getPcate() != null && !itemSearchDto.getPcate().isEmpty()) {
+            booleanBuilder.and(item.pcate.eq(itemSearchDto.getPcate()));
+        }
 
         List<MainItemDto> content = queryFactory
                 .select(

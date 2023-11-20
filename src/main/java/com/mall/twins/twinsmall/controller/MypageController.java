@@ -34,6 +34,13 @@ public class MypageController {
 
     private final AuthenticationManager authenticationManager;
 
+    @GetMapping("/shipping/list")
+    public String list(){
+        log.info("list....");
+
+        return "shipping/shipping";
+    }
+
     // 회원 정보 조회
     @GetMapping("/read")
     public String read(Principal principal, Model model) {

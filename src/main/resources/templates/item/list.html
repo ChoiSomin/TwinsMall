@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
-<div layout:fragment="content">
+<div layout:fragment="content" id='wrapper'>
     <div class="product">
         <div class="shop">
             <div class="heading-shop">Shop</div>
@@ -11,40 +11,164 @@
             <div class="symbol"></div>
             <div class="text-wrapper-3">Shop</div>
         </div>
-        <div class="section-form-input">
-            <div class="div-placeholder">
-                <div class="text-wrapper-4">Search...</div>
-                <div class="section-form-button">U</div>
+        <!--검색기능-->
+        <form action="/item/list" method="get">
+            <div class="section-form-input">
+                <div class="div-placeholder">
+                    <input type="text" id="pnameInput" name="pname" placeholder="Search...">
+                    <button type="submit" class="section-form-button">검색</button>
+                </div>
             </div>
-        </div>
+        </form>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var form = document.querySelector('form[action="/item/list"]');
+                if (form) {
+                    // 이전에 검색한 내용이 URL에 있다면 검색창에 설정
+                    var url = new URL(window.location.href);
+                    var pname = url.searchParams.get('pname');
+                    var pnameInput = form.querySelector('#pnameInput');
+                    if (pname && pnameInput) {
+                        pnameInput.value = pname;
+                    }
+
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault(); // 기본 제출 동작 방지
+
+                        var pnameInput = form.querySelector('#pnameInput');
+                        if (pnameInput) {
+                            var pnameValue = pnameInput.value;
+                            var url = new URL('/item/list', window.location.href);
+
+                            // pname 파라미터 값 설정
+                            url.searchParams.set('pname', pnameValue);
+
+                            // 새 URL을 사용하여 페이지 이동 (또는 필요한 작업 수행)
+                            window.location.href = url.toString();
+                        }
+                    });
+                } else {
+                    console.error("Form not found");
+                }
+            });
+
+        </script>
+
+        <!--카테고리-->
         <div class="view">
             <div class="overlap-group">
-                <div class="link">
+                <div class="link" onclick="toggleList()">
                     <div class="categories">CATEGORIES</div>
                 </div>
-                <div class="symbol-2"></div>
+                <div class="symbol-2" onclick="toggleList()"></div>
             </div>
-            <div class="div-card-body">
+            <div class="div-card-body" id="listContainer" style="display: none;">
                 <div class="list">
-                    <div class="item-link-men">Refrigerator</div>
-                    <div class="item-link-women">TV</div>
-                    <div class="item-link-bags">Laptop</div>
-                    <div class="item-link-clothing">Washing Machine</div>
-                    <div class="item-link-shoes">Air Purifier</div>
-                    <div class="item-link">Air Conditioner</div>
+                    <div class="item-link-men" onclick="searchByCategory('Refrigerator')">Refrigerator</div>
+                    <div class="item-link-women" onclick="searchByCategory('TV')">TV</div>
+                    <div class="item-link-bags" onclick="searchByCategory('Laptop')">Laptop</div>
+                    <div class="item-link-clothing" onclick="searchByCategory('Washing Machine')">Washing Machine</div>
+                    <div class="item-link-shoes" onclick="searchByCategory('Air Purifie')">Air Purifier</div>
+                    <div class="item-link" onclick="searchByCategory('Air Conditioner')">Air Conditioner</div>
                     <div class="frame">
                         <div class="item-link-kids">Cleaner</div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            function toggleList() {
+                var listContainer = document.getElementById("listContainer");
+                if (listContainer.style.display === "none") {
+                    listContainer.style.display = "block";
+                } else {
+                    listContainer.style.display = "none";
+                }
+            }
+
+            function searchByCategory(pcate) {
+                var form = document.querySelector('form[action="/item/list"]');
+                if (form) {
+                    var pnameInput = form.querySelector('#pnameInput');
+                    if (pnameInput) {
+                        var pnameValue = pnameInput.value;
+                        var url = new URL('/item/list', window.location.href);
+
+                        // pname 파라미터 값 설정
+                        var searchParams = new URLSearchParams(url.search);
+                        if (searchParams.has('pname')) {
+                            pnameValue = searchParams.get('pname');
+                        }
+                        url.searchParams.set('pname', pnameValue);
+
+                        // pcate 파라미터 값 설정
+                        url.searchParams.set('pcate', pcate);
+
+                        window.location.href = url.toString();
+                    }
+                } else {
+                    console.error("Form not found");
+                }
+            }
+
+
+
+        </script>
+
+
+
+        <!--오름차순 정렬-->
         <div class="view-2">
-            <p class="p">Showing 1–12 of 126 results</p>
             <div class="text-wrapper-5">Sort by Price:</div>
             <div class="div-nice-select">
                 <div class="text-wrapper-6">Low To High</div>
                 <div class="pseudo"></div>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var form = document.querySelector('form[action="/item/list"]');
+                    if (form) {
+                        // 이전에 검색한 내용이 URL에 있다면 검색창에 설정
+                        var url = new URL(window.location.href);
+                        var pname = url.searchParams.get('pname');
+                        var pnameInput = form.querySelector('#pnameInput');
+                        if (pname && pnameInput) {
+                            pnameInput.value = pname;
+                        }
+
+                        form.addEventListener('submit', function(event) {
+                            event.preventDefault(); // 기본 제출 동작 방지
+
+                            var pnameInput = form.querySelector('#pnameInput');
+                            if (pnameInput) {
+                                var pnameValue = pnameInput.value;
+                                var url = new URL('/item/list', window.location.href);
+
+                                // pname 파라미터 값 설정
+                                url.searchParams.set('pname', pnameValue);
+
+                                // 새 URL을 사용하여 페이지 이동 (또는 필요한 작업 수행)
+                                window.location.href = url.toString();
+                            }
+                        });
+                    } else {
+                        console.error("Form not found");
+                    }
+                });
+
+                    // URL 업데이트 함수 정의
+                    function updateURL(sortOrder) {
+                        urlParams.set('sort', sortOrder); // 'sort' 파라미터에 정렬 값을 설정
+                        const currentUrl = window.location.pathname + '?' + urlParams.toString();
+                        window.location.href = currentUrl; // 새로운 URL로 이동
+                    }
+                });
+
+
+            </script>
+
 
             <th:block th:each="item, status: ${items.getContent()}">
                 <div class="div-product-item">
@@ -61,6 +185,8 @@
             <div class="link-3">3</div>
             <div class="text-wrapper-8">...</div>
             <div class="link-4">21</div>-->
+
+
             <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
                 <ul class="pagination justify-content-center">
 
@@ -79,11 +205,11 @@
                             <span aria-hidden='true'>Next</span>
                         </a>
                     </li>
-
                 </ul>
             </div>
-        </div>
+
         </div>
     </div>
+</div>
 </div>
 </html>
