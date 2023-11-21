@@ -1,4 +1,4 @@
-.findIdPw {
+.findId {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-.findIdPw .div {
+.findId .div {
     background-color: #ffffff;
     overflow-y: visible;
     width: 1920px;
@@ -14,7 +14,7 @@
     position: relative;
 }
 
-.findIdPw .header {
+.findId .header {
     position: absolute;
     width: 1920px;
     height: 131px;
@@ -23,7 +23,7 @@
     background-color: #ffffff;
 }
 
-.findIdPw .link-logo-png {
+.findId .link-logo-png {
     position: absolute;
     width: 225px;
     height: 36px;
@@ -31,7 +31,7 @@
     left: 335px;
 }
 
-.findIdPw .nav-list-item-link {
+.findId .nav-list-item-link {
     width: 52px;
     left: 786px;
     position: absolute;
@@ -47,7 +47,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .text-wrapper {
+.findId .text-wrapper {
     width: 45px;
     left: 979px;
     position: absolute;
@@ -63,7 +63,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .nav-list-item-link-2 {
+.findId .nav-list-item-link-2 {
     width: 69px;
     left: 1051px;
     position: absolute;
@@ -79,7 +79,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .nav-list-item-link-3 {
+.findId .nav-list-item-link-3 {
     width: 88px;
     left: 864px;
     position: absolute;
@@ -95,7 +95,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .icon-search {
+.findId .icon-search {
     left: 1474px;
     position: absolute;
     width: 16px;
@@ -103,7 +103,7 @@
     top: 81px;
 }
 
-.findIdPw .icon-favorite-border {
+.findId .icon-favorite-border {
     position: absolute;
     width: 16px;
     height: 17px;
@@ -111,7 +111,7 @@
     left: 1516px;
 }
 
-.findIdPw .icon-shopping-bag {
+.findId .icon-shopping-bag {
     position: absolute;
     width: 16px;
     height: 17px;
@@ -119,7 +119,7 @@
     left: 1560px;
 }
 
-.findIdPw .icon-person {
+.findId .icon-person {
     left: 1431px;
     position: absolute;
     width: 16px;
@@ -127,7 +127,7 @@
     top: 81px;
 }
 
-.findIdPw .div-header-top {
+.findId .div-header-top {
     position: absolute;
     width: 1920px;
     height: 46px;
@@ -136,7 +136,7 @@
     background-color: #111111;
 }
 
-.findIdPw .text-wrapper-2 {
+.findId .text-wrapper-2 {
     position: absolute;
     width: 333px;
     height: 25px;
@@ -151,7 +151,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .top {
+.findId .top {
     position: absolute;
     width: 1920px;
     height: 141px;
@@ -160,7 +160,7 @@
     background-color: #f3f2ee;
 }
 
-.findIdPw .heading-check-out {
+.findId .heading-check-out {
     position: absolute;
     width: 116px;
     height: 29px;
@@ -175,7 +175,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .overlap-group {
+.findId .overlap-group {
     position: absolute;
     width: 64px;
     height: 23px;
@@ -183,7 +183,7 @@
     left: 390px;
 }
 
-.findIdPw .link-home {
+.findId .link-home {
     position: absolute;
     width: 64px;
     height: 23px;
@@ -198,7 +198,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .symbol {
+.findId .symbol {
     width: 6px;
     height: 22px;
     top: 0;
@@ -213,7 +213,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .symbol-2 {
+.findId .symbol-2 {
     width: 6px;
     height: 22px;
     top: 77px;
@@ -228,7 +228,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .details {
+.findId .details {
     position: absolute;
     width: 780px;
     height: 530px;
@@ -236,7 +236,7 @@
     left: 537px;
 }
 
-.findIdPw .heading {
+.findId .heading {
     position: absolute;
     width: 750px;
     height: 61px;
@@ -248,7 +248,7 @@
     border-color: #77b527;
 }
 
-.findIdPw .p {
+.findId .p {
     width: 379px;
     height: 19px;
     top: 22px;
@@ -263,7 +263,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .family {
+.findId .family {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -271,7 +271,7 @@
     left: 17px;
 }
 
-.findIdPw .overlap {
+.findId .overlap {
     position: absolute;
     width: 49px;
     height: 28px;
@@ -279,7 +279,7 @@
     left: 207px;
 }
 
-.findIdPw .text-wrapper-3 {
+.findId .text-wrapper-3 {
     width: 46px;
     height: 25px;
     top: 45px;
@@ -294,7 +294,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .text-wrapper-4 {
+.findId .text-wrapper-4 {
     width: 7px;
     height: 20px;
     top: 40px;
@@ -309,7 +309,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .input {
+.findId .input {
     top: 170px;
     left: 207px;
     position: absolute;
@@ -320,7 +320,7 @@
     border-color: #e1e1e1;
 }
 
-.findIdPw .overlap-2 {
+.findId .overlap-2 {
     position: absolute;
     width: 61px;
     height: 28px;
@@ -328,7 +328,7 @@
     left: 207px;
 }
 
-.findIdPw .text-wrapper-5 {
+.findId .text-wrapper-5 {
     width: 61px;
     height: 25px;
     top: 50px;
@@ -343,7 +343,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .text-wrapper-6 {
+.findId .text-wrapper-6 {
     width: 7px;
     height: 20px;
     top: 45px;
@@ -358,7 +358,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .overlap-3 {
+.findId .overlap-3 {
     position: absolute;
     width: 398px;
     height: 73px;
@@ -366,7 +366,7 @@
     left: 207px;
 }
 
-.findIdPw .input-2 {
+.findId .input-2 {
     top: 0;
     left: 0;
     position: absolute;
@@ -377,7 +377,7 @@
     border-color: #e1e1e1;
 }
 
-.findIdPw .text-wrapper-7 {
+.findId .text-wrapper-7 {
     width: 147px;
     height: 24px;
     top: 49px;
@@ -392,7 +392,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .remember {
+.findId .remember {
     width: 147px;
     height: 24px;
     top: 49px;
@@ -407,7 +407,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .group {
+.findId .group {
     left: 238px;
     position: absolute;
     width: 128px;
@@ -415,11 +415,11 @@
     top: 319px;
 }
 
-.findIdPw .div-wrapper {
+.findId .div-wrapper {
     position: relative;
     width: 126px;
     height: 45px;
-    top: 50px;
+    top: 7px;
     background-image: url(../img/rectangle-2.svg);
     background-size: 100% 100%;
     font-weight: 700;
@@ -432,7 +432,7 @@
 
 
 
-.findIdPw .text-wrapper-8 {
+.findId .text-wrapper-8 {
     width: 100px;
     height: 30px;
     top: 12px;
@@ -447,7 +447,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .overlap-wrapper {
+.findId .overlap-wrapper {
     left: 415px;
     position: absolute;
     width: 128px;
@@ -455,17 +455,17 @@
     top: 369px;
 }
 
-.findIdPw .overlap-4 {
+.findId .overlap-4 {
     position: relative;
     width: 126px;
     height: 45px;
     background-image: url(../img/rectangle-3.svg);
     background-size: 100% 100%;
-    left: 400px;
-    top: 325px;
+    top: 323px;
+    left: 416px;
 }
 
-.findIdPw .text-wrapper-9 {
+.findId .text-wrapper-9 {
     width: 100px;
     height: 30px;
     top: 10px;
@@ -480,7 +480,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .icon-google-icon {
+.findId .icon-google-icon {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -488,7 +488,7 @@
     left: 419px;
 }
 
-.findIdPw .SNS-kakaotalk {
+.findId .SNS-kakaotalk {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -496,7 +496,7 @@
     left: 328px;
 }
 
-.findIdPw .footer {
+.findId .footer {
     position: absolute;
     width: 1920px;
     height: 390px;
@@ -505,7 +505,7 @@
     background-color: #111111;
 }
 
-.findIdPw .overlap-5 {
+.findId .overlap-5 {
     position: relative;
     width: 1391px;
     height: 320px;
@@ -513,7 +513,7 @@
     left: 154px;
 }
 
-.findIdPw .div-container {
+.findId .div-container {
     position: absolute;
     width: 1170px;
     height: 320px;
@@ -521,7 +521,7 @@
     left: 221px;
 }
 
-.findIdPw .based-on-the-life-s {
+.findId .based-on-the-life-s {
     position: absolute;
     width: 325px;
     height: 22px;
@@ -536,7 +536,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .overlap-6 {
+.findId .overlap-6 {
     position: absolute;
     width: 325px;
     height: 41px;
@@ -544,7 +544,7 @@
     left: -192px;
 }
 
-.findIdPw .heading-shopping {
+.findId .heading-shopping {
     position: absolute;
     width: 95px;
     height: 18px;
@@ -559,7 +559,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link {
+.findId .list-item-link {
     position: absolute;
     width: 97px;
     height: 20px;
@@ -574,7 +574,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-2 {
+.findId .list-item-link-2 {
     position: absolute;
     width: 105px;
     height: 20px;
@@ -589,7 +589,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-3 {
+.findId .list-item-link-3 {
     width: 80px;
     top: 105px;
     left: 266px;
@@ -604,7 +604,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-sale {
+.findId .list-item-link-sale {
     width: 122px;
     top: 141px;
     left: 266px;
@@ -619,7 +619,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-4 {
+.findId .list-item-link-4 {
     position: absolute;
     width: 74px;
     height: 20px;
@@ -634,7 +634,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-5 {
+.findId .list-item-link-5 {
     position: absolute;
     width: 122px;
     height: 20px;
@@ -649,7 +649,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-6 {
+.findId .list-item-link-6 {
     width: 56px;
     top: 117px;
     left: 440px;
@@ -664,7 +664,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .heading-newletter {
+.findId .heading-newletter {
     position: absolute;
     width: 121px;
     height: 18px;
@@ -679,7 +679,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .div-footer-copyright {
+.findId .div-footer-copyright {
     position: absolute;
     width: 1140px;
     height: 66px;
@@ -690,7 +690,7 @@
     border-color: #ffffff1a;
 }
 
-.findIdPw .overlap-group-2 {
+.findId .overlap-group-2 {
     position: relative;
     width: 576px;
     height: 25px;
@@ -698,7 +698,7 @@
     left: 282px;
 }
 
-.findIdPw .text-wrapper-14 {
+.findId .text-wrapper-14 {
     position: absolute;
     width: 86px;
     height: 25px;
@@ -714,7 +714,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .text-wrapper-15 {
+.findId .text-wrapper-15 {
     position: absolute;
     width: 399px;
     height: 25px;
@@ -730,7 +730,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .symbol-3 {
+.findId .symbol-3 {
     width: 15px;
     height: 15px;
     top: 4px;
@@ -746,7 +746,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .by {
+.findId .by {
     position: absolute;
     width: 24px;
     height: 25px;
@@ -762,7 +762,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .link-colorlib {
+.findId .link-colorlib {
     position: absolute;
     width: 53px;
     height: 20px;
@@ -778,7 +778,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-7 {
+.findId .list-item-link-7 {
     position: absolute;
     width: 97px;
     height: 20px;
@@ -793,7 +793,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-8 {
+.findId .list-item-link-8 {
     position: absolute;
     width: 105px;
     height: 20px;
@@ -808,7 +808,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .list-item-link-9 {
+.findId .list-item-link-9 {
     position: absolute;
     width: 80px;
     height: 20px;
@@ -823,7 +823,7 @@
     white-space: nowrap;
 }
 
-.findIdPw .element {
+.findId .element {
     width: 456px;
     height: 250px;
     top: 3px;
@@ -837,7 +837,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .span {
+.findId .span {
     font-family: "Nunito Sans", Helvetica;
     font-weight: 400;
     color: #ffffff;
@@ -846,11 +846,11 @@
     line-height: 25px;
 }
 
-.findIdPw .text-wrapper-16 {
+.findId .text-wrapper-16 {
     text-decoration: underline;
 }
 
-.findIdPw .img {
+.findId .img {
     position: absolute;
     width: 233px;
     height: 44px;
@@ -858,7 +858,7 @@
     left: 0;
 }
 
-.findIdPw .text-wrapper-10 {
+.findId .text-wrapper-10 {
     width: 46px;
     height: 25px;
     top: 87px;
@@ -873,11 +873,11 @@
     letter-spacing: 0;
 }
 
-.findIdPw .text-wrapper-11 {
+.findId .text-wrapper-11 {
     width: 46px;
     height: 25px;
-    top: 88px;
-    left: 450px;
+    top: 170px;
+    left: 310px;
     font-weight: 400;
     color: #111111;
     font-size: 14px;
@@ -888,7 +888,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .text-wrapper-12 {
+.findId .text-wrapper-12 {
     width: 7px;
     height: 20px;
     top: 40px;
@@ -903,7 +903,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .text-wrapper-13 {
+.findId .text-wrapper-13 {
     width: 7px;
     height: 20px;
     top: 45px;
@@ -918,7 +918,7 @@
     letter-spacing: 0;
 }
 
-.findIdPw .radio-group-box{
+.findId .radio-group-box{
     display: flex;
     flex-direction: row; /* 라디오 버튼을 가로로 정렬 */
     justify-content: space-between; /* 라디오 버튼 간의 간격을 벌림 */
@@ -928,7 +928,7 @@
     left: 270px;
 }
 
-.findIdPw .radio-group-box-1{
+.findId .radio-group-box-1{
     display: flex;
     flex-direction: row; /* 라디오 버튼을 가로로 정렬 */
     justify-content: space-between; /* 라디오 버튼 간의 간격을 벌림 */
