@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layout/layout}">
 
 <div layout:fragment="content" id='wrapper'>
@@ -45,263 +45,40 @@
                         <div class="text">우편번호</div>
                     </div>
                 </div>
-                <div class="content-wrapper">
-                    <div class="content">
-                        <div class="text">기본배송지</div>
-                    </div>
-                </div>
             </div>
+
+            <!--배송지 출력-->
+            <th:block th:each="ShippingDto : ${shippingDTO}">
+
+                <input type="hidden" name="sno" th:value="${ShippingDto.sno}">
+
             <div class="row">
                 <div class="cell-4">
                     <div class="content">
-                        <div class="text-2">집</div>
+                        <a class="text-2" th:href="@{/mypage/shipping/read(sno=${ShippingDto.sno})}">[[${ShippingDto.sname}]]</a>
                     </div>
                 </div>
                 <div class="cell-5">
                     <div class="content">
-                        <div class="text-2">고은해</div>
+                        <div class="text-2">[[${ShippingDto.sperson}]]</div>
                     </div>
                 </div>
                 <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
+                    <div class="content-2">
+                        <a class="text-2" th:href="@{/mypage/shipping/read(sno=${ShippingDto.sno})}">[[${ShippingDto.address}]]
+                        </a>
+                    </div>
                 </div>
                 <div class="cell-7">
                     <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
+                        <div class="text-2">[[${ShippingDto.zonecode}]]</div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell-4">
-                    <div class="content">
-                        <div class="text-2">집</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">고은해</div>
-                    </div>
-                </div>
-                <div class="cell-6">
-                    <div class="content-2"><p class="text-2">경기 수원시 권선구 세화로 168번길 15</p></div>
-                </div>
-                <div class="cell-7">
-                    <div class="content">
-                        <div class="text-2">16620</div>
-                    </div>
-                </div>
-                <div class="cell-5">
-                    <div class="content">
-                        <div class="text-2">Y</div>
-                    </div>
-                </div>
-            </div>
+            </th:block>
         </div>
     </div>
+</div>
+</div>
 </div>
 </html>

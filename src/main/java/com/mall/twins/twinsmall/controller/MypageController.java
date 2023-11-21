@@ -6,8 +6,9 @@ import com.mall.twins.twinsmall.dto.MemberJoinDTO;
 import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.repository.MemberRepository;
-import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
+import com.mall.twins.twinsmall.repository.ShippingRepository;
 import com.mall.twins.twinsmall.service.MemberService;
+import com.mall.twins.twinsmall.service.ShippingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,12 +20,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
-@RequestMapping("/mypage")
 @Log4j2
 @RequiredArgsConstructor
 @PreAuthorize("isAuthenticated()") // 로그인한 사용자만 조회 가능 -> 비로그인 상태일 경우 로그인 화면으로 이동
@@ -36,20 +39,69 @@ public class MypageController {
 
     private final AuthenticationManager authenticationManager;
 
+    private final ShippingService shippingService;
 
-    @GetMapping("/shipping/list")
-    public String list(){
-        log.info("list....");
+    private final ShippingRepository shippingRepository;
 
-        return "/mypage/shipping";
+
+    @GetMapping("mypage/shipping/list")
+    public String list(Model model){
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails)principal;
+        String mid = userDetails.getUsername();
+
+        model.addAttribute("shippingDTO", shippingService.readAll(mid));
+
+
+        return "mypage/shipping";
     }
 
+    @GetMapping("mypage/shipping/register")
+    public String shippingRegister(Model model){
 
-    @GetMapping(value = "/shipping/register")
-    public String shippingRegister(Model model) {
         model.addAttribute("shippingDto", new ShippingDto());
+        log.info("register ");
         return "mypage/shippingRegister";
     }
+
+
+
+
+    @PostMapping(value = "mypage/shipping/register")
+    public String shippingRegister(@Valid ShippingDto shippingDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) {
+
+        log.info("배송지 등록");
+
+        String loggedId = principal.getName();
+
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+
+            return "redirect:/mypage/shippingRegister";
+        }
+
+        shippingDto.setMid(loggedId);
+
+        Long sno = shippingService.register(shippingDto);
+        redirectAttributes.addFlashAttribute("result", sno);
+
+        log.info(sno);
+
+        return "redirect:mypage/shipping/list";
+    }
+
+
+
+    @GetMapping("mypage/shipping/{sno}")
+    public String read(Model model){
+
+        model.addAttribute("shippingDTO", new ShippingDto());
+
+
+        return "mypage/shipping";
+    }
+
 
 
 
