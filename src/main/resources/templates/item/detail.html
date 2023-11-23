@@ -112,8 +112,8 @@
                 <img class="i-fa-play-wrapper"
                      th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[4] != null}"
                      th:style="'background-image: url(' + ${item.itemImgDtoList[4]?.iimgurl ?: ''} + ')'">
-                <img class="tabpanel-product-big"
-                     th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'">
+                <!--<img class="tabpanel-product-big"
+                     th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'">-->
             </div>
         </div>
         <div class="heading" data-th-text="|￦ ${#numbers.formatInteger(item.pprice, 3, 'COMMA')}  |"></div>

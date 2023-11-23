@@ -28,10 +28,10 @@ public class indexController {
         return "index";
     }
 
-    @GetMapping("/checkout")
+    /*@GetMapping("/checkout")
     public void checkout() {
         log.info("checkout....");
 
-    }
+    }*/
 
 }
