@@ -3,13 +3,19 @@ package com.mall.twins.twinsmall.service;
 import com.mall.twins.twinsmall.constant.MemberRole;
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
 import com.mall.twins.twinsmall.dto.NoticeFormDto;
+import com.mall.twins.twinsmall.dto.PageRequestDTO;
+import com.mall.twins.twinsmall.dto.PageResultDTO;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.entity.Notice;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
+import com.querydsl.core.BooleanBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +27,7 @@ import javax.sound.midi.MetaMessage;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Log4j2
 @Service
@@ -193,6 +200,25 @@ public class MemberServiceImpl implements MemberService {
         }
 
         return result;
+    }
+
+    @Override
+    public PageResultDTO<MemberJoinDTO, Member> getMemberList(PageRequestDTO pageRequestDTO) {
+        log.info(pageRequestDTO);
+
+        Pageable pageable = pageRequestDTO.getPageable(Sort.by("mno").descending());
+
+        /*BooleanBuilder booleanBuilder = getSearch(pageRequestDTO);*/
+
+        Page<Member> result = memberRepository.findAll(pageable);
+
+        log.info(result);
+
+        Function<Member, MemberJoinDTO> fn = (member -> entityToDTO(member));
+
+        log.info(fn);
+
+        return new PageResultDTO<>(result, fn);
     }
 
     // 회원가입시 유효성 체크 및 중복 조회 처리

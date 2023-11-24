@@ -1,12 +1,20 @@
 package com.mall.twins.twinsmall.controller;
 
+import com.mall.twins.twinsmall.dto.ItemSearchDto;
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
+import com.mall.twins.twinsmall.dto.PageRequestDTO;
+import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.entity.Notice;
+import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.MemberServiceImpl;
 import com.mall.twins.twinsmall.service.validator.CheckPasswordEqualValidator;
 import com.mall.twins.twinsmall.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +24,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/member")
@@ -26,6 +36,7 @@ public class MemberController {
 
     private final MemberService memberService;
     private final MemberServiceImpl memberServiceImpl;
+    private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final CheckPasswordEqualValidator checkPasswordEqualValidator;
 
@@ -105,6 +116,5 @@ public class MemberController {
     public String find(){
         return "member/find-IdPw";
     }
-
 
 }

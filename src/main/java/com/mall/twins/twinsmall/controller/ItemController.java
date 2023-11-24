@@ -3,8 +3,13 @@ package com.mall.twins.twinsmall.controller;
 import com.mall.twins.twinsmall.dto.ItemFormDto;
 import com.mall.twins.twinsmall.dto.ItemSearchDto;
 import com.mall.twins.twinsmall.dto.MainItemDto;
+import com.mall.twins.twinsmall.dto.PageRequestDTO;
 import com.mall.twins.twinsmall.entity.Item;
+import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.ItemService;
+import com.mall.twins.twinsmall.service.MemberService;
+import com.mall.twins.twinsmall.service.MemberServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -29,6 +34,8 @@ import java.util.Optional;
 public class ItemController {
 
     private final ItemService itemService;
+    private final MemberService memberService;
+    private final MemberRepository memberRepository;
 
     @GetMapping(value = "/item/register")
     public String itemRegister(Model model) {
@@ -37,7 +44,7 @@ public class ItemController {
     }
 
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
-    public String adminPage(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
+    public String adminMember(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
 
         Page<Item> items =
@@ -46,7 +53,22 @@ public class ItemController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
-        return "adminPage";
+        return "admin/itemMng";
+    }
+
+    @GetMapping(value = "/admin/memberList")
+    public String adminPage(PageRequestDTO pageRequestDTO, @PathVariable("page") Optional<Integer> page, Model model){
+
+        log.info("Member list...." + pageRequestDTO);
+
+        List<Member> memberList = this.memberRepository.findAll();
+
+        model.addAttribute("members", memberService.getMemberList(pageRequestDTO));
+        model.addAttribute("memberList", memberList);
+
+        log.info(memberService.getMemberList(pageRequestDTO));
+
+        return "admin/memberList";
     }
 
     @PostMapping(value = "/item/register")
