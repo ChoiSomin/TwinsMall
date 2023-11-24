@@ -611,12 +611,12 @@
 }
 
 .admin-product .text-wrapper-16 {
-    /* width: 63px;
-     height: 18px;
-     top: 7px;
-     left: 18px;*/
-    font-family: "Nunito Sans-Bold", Helvetica;
-    font-weight: 700;
+    width: 63px;
+    height: 18px;
+    top: 7px;
+    left: 18px;
+    font-family: "Nunito-SemiBold", Helvetica;
+    font-weight: 600;
     color: #000000;
     font-size: 15px;
     text-align: center;
@@ -624,6 +624,7 @@
     position: absolute;
     letter-spacing: 0;
     line-height: 25px;
+    text-decoration-line: none;
 }
 
 .admin-product .frame-5 {

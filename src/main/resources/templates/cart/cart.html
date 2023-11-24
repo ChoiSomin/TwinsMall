@@ -164,35 +164,35 @@
 
 
         function orders() {
-    var selectedItems = [];
+            var selectedItems = [];
 
-    $("input[name='cartChkBox']:checked").each(function () {
-        var cartItemId = $(this).val();
-        var itemNm = $("#itemNm_" + cartItemId).text();
-        var quantity = $("#count_" + cartItemId).val();
-        var price = $("#totalPrice_" + cartItemId).text();
+            $("input[name='cartChkBox']:checked").each(function () {
+            var cartItemId = $(this).val();
+            var itemNm = $("#itemNm_" + cartItemId).text();
+            var quantity = $("#count_" + cartItemId).val();
+            var price = $("#totalPrice_" + cartItemId).text();
 
-        var cartItemDto = {
-            cartItemId: cartItemId,
-            itemNm: itemNm,
-            count: quantity,
-            price: price,
-            imgUrl: ''
+            var cartItemDto = {
+                cartItemId: cartItemId,
+                itemNm: itemNm,
+                count: quantity,
+                price: price,
+                imgUrl: ''
+            };
+
+            selectedItems.push(cartItemDto);
+        });
+
+        var orderTotalPrice = $("#orderTotalPrice").text();
+
+        var cartDetailDto = {
+            cartDetailDto: selectedItems,
+            orderTotalPrice: orderTotalPrice
         };
 
-        selectedItems.push(cartItemDto);
-    });
-
-    var orderTotalPrice = $("#orderTotalPrice").text();
-
-    var cartDetailDto = {
-        cartDetailDto: selectedItems,
-        orderTotalPrice: orderTotalPrice
-    };
-
-    // 페이지 이동 시 데이터를 함께 전달
-    window.location.href = "/checkout?orderData=" + encodeURIComponent(JSON.stringify(cartDetailDto));
-}
+        // 페이지 이동 시 데이터를 함께 전달
+        window.location.href = "/checkout?orderData=" + encodeURIComponent(JSON.stringify(cartDetailDto));
+    }
     </script>
 </th:block>
 </html>

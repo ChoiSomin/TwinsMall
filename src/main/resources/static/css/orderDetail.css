@@ -1,4 +1,4 @@
-.mypage-order-detail {
+.admin-detail {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -6,14 +6,14 @@
   width: 100%;
 }
 
-.mypage-order-detail .div {
+.admin-detail .div {
   background-color: #ffffff;
   width: 1920px;
   height: 1080px;
   position: relative;
 }
 
-.mypage-order-detail .header {
+.admin-detail .header {
   position: absolute;
   width: 1920px;
   height: 131px;
@@ -22,7 +22,7 @@
   background-color: #ffffff;
 }
 
-.mypage-order-detail .link-logo-png {
+.admin-detail .link-logo-png {
   position: absolute;
   width: 225px;
   height: 36px;
@@ -30,7 +30,7 @@
   left: 335px;
 }
 
-.mypage-order-detail .nav-list-item-link {
+.admin-detail .nav-list-item-link {
   width: 52px;
   left: 786px;
   position: absolute;
@@ -46,7 +46,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .text-wrapper {
+.admin-detail .text-wrapper {
   width: 45px;
   left: 979px;
   position: absolute;
@@ -62,7 +62,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-2 {
+.admin-detail .nav-list-item-link-2 {
   width: 69px;
   left: 1051px;
   position: absolute;
@@ -78,7 +78,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-3 {
+.admin-detail .nav-list-item-link-3 {
   width: 88px;
   left: 864px;
   position: absolute;
@@ -94,7 +94,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .icon-search {
+.admin-detail .icon-search {
   left: 1474px;
   position: absolute;
   width: 16px;
@@ -102,7 +102,7 @@
   top: 81px;
 }
 
-.mypage-order-detail .icon-favorite-border {
+.admin-detail .icon-favorite-border {
   position: absolute;
   width: 16px;
   height: 17px;
@@ -110,7 +110,7 @@
   left: 1516px;
 }
 
-.mypage-order-detail .icon-shopping-bag {
+.admin-detail .icon-shopping-bag {
   position: absolute;
   width: 16px;
   height: 17px;
@@ -118,7 +118,7 @@
   left: 1560px;
 }
 
-.mypage-order-detail .icon-person {
+.admin-detail .icon-person {
   left: 1431px;
   position: absolute;
   width: 16px;
@@ -126,7 +126,7 @@
   top: 81px;
 }
 
-.mypage-order-detail .div-header-top {
+.admin-detail .div-header-top {
   position: absolute;
   width: 1920px;
   height: 46px;
@@ -135,7 +135,7 @@
   background-color: #111111;
 }
 
-.mypage-order-detail .text-wrapper-2 {
+.admin-detail .text-wrapper-2 {
   position: absolute;
   width: 333px;
   height: 25px;
@@ -150,7 +150,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .shop {
+.admin-detail .shop {
   position: absolute;
   width: 1920px;
   height: 141px;
@@ -159,7 +159,7 @@
   background-color: #f3f2ee;
 }
 
-.mypage-order-detail .heading-shop {
+.admin-detail .heading-shop {
   position: absolute;
   width: 96px;
   height: 28px;
@@ -174,7 +174,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .overlap-group {
+.admin-detail .overlap-group {
   position: absolute;
   width: 75px;
   height: 23px;
@@ -182,7 +182,7 @@
   left: 390px;
 }
 
-.mypage-order-detail .link-home {
+.admin-detail .link-home {
   position: absolute;
   width: 75px;
   height: 23px;
@@ -197,7 +197,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .symbol {
+.admin-detail .symbol {
   width: 6px;
   height: 22px;
   top: 0;
@@ -212,7 +212,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .view {
+.admin-detail .view {
   position: absolute;
   width: 178px;
   height: 441px;
@@ -221,7 +221,7 @@
   background-color: #ffffff;
 }
 
-.mypage-order-detail .nav-list-item-link-4 {
+.admin-detail .nav-list-item-link-4 {
   width: 80px;
   height: 25px;
   top: 15px;
@@ -237,7 +237,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-5 {
+.admin-detail .nav-list-item-link-5 {
   width: 100px;
   height: 20px;
   top: 61px;
@@ -253,7 +253,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-6 {
+.admin-detail .nav-list-item-link-6 {
   width: 80px;
   height: 25px;
   top: 102px;
@@ -269,7 +269,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-7 {
+.admin-detail .nav-list-item-link-7 {
   width: 100px;
   height: 20px;
   top: 148px;
@@ -285,7 +285,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-8 {
+.admin-detail .nav-list-item-link-8 {
   width: 80px;
   height: 25px;
   top: 229px;
@@ -301,7 +301,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-9 {
+.admin-detail .nav-list-item-link-9 {
   width: 100px;
   height: 20px;
   top: 275px;
@@ -317,7 +317,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-10 {
+.admin-detail .nav-list-item-link-10 {
   width: 100px;
   height: 20px;
   top: 309px;
@@ -333,7 +333,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .nav-list-item-link-11 {
+.admin-detail .nav-list-item-link-11 {
   width: 100px;
   height: 20px;
   top: 182px;
@@ -349,7 +349,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .overlap {
+.admin-detail .overlap {
   position: absolute;
   width: 1124px;
   height: 1405px;
@@ -357,7 +357,7 @@
   left: 578px;
 }
 
-.mypage-order-detail .frame {
+.admin-detail .frame {
   width: 1124px;
   height: 1405px;
   left: 0;
@@ -365,7 +365,7 @@
   top: 0;
 }
 
-.mypage-order-detail .table-wrapper {
+.admin-detail .table-wrapper {
   display: flex;
   flex-direction: column;
   width: 1100px;
@@ -376,7 +376,7 @@
   left: 0;
 }
 
-.mypage-order-detail .table {
+.admin-detail .table {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -389,7 +389,7 @@
   overflow: hidden;
 }
 
-.mypage-order-detail .row {
+.admin-detail .row {
   display: flex;
   height: 50px;
   align-items: flex-start;
@@ -399,7 +399,7 @@
   background-color: #ffffff00;
 }
 
-.mypage-order-detail .cell {
+.admin-detail .cell {
   width: 200px;
   align-self: stretch;
   display: flex;
@@ -411,7 +411,7 @@
   border-color: #b9b9b9;
 }
 
-.mypage-order-detail .content {
+.admin-detail .content {
   display: flex;
   align-items: flex-start;
   padding: 10px 12px;
@@ -422,7 +422,7 @@
   flex-grow: 1;
 }
 
-.mypage-order-detail .text {
+.admin-detail .text {
   position: relative;
   flex: 1;
   align-self: stretch;
@@ -436,7 +436,7 @@
   letter-spacing: 0;
 }
 
-.mypage-order-detail .content-wrapper {
+.admin-detail .content-wrapper {
   flex: 1;
   align-self: stretch;
   flex-grow: 1;
@@ -449,7 +449,7 @@
   border-color: #b9b9b9;
 }
 
-.mypage-order-detail .text-2 {
+.admin-detail .text-2 {
   position: relative;
   flex: 1;
   align-self: stretch;
@@ -463,7 +463,7 @@
   letter-spacing: 0;
 }
 
-.mypage-order-detail .text-3 {
+.admin-detail .text-3 {
   position: relative;
   flex: 1;
   margin-top: -1px;
@@ -476,7 +476,7 @@
   letter-spacing: 0;
 }
 
-.mypage-order-detail .div-wrapper {
+.admin-detail .div-wrapper {
   width: 200px;
   height: 50px;
   background-color: #ffffff01;
@@ -489,7 +489,7 @@
   border-color: #b9b9b9;
 }
 
-.mypage-order-detail .cell-2 {
+.admin-detail .cell-2 {
   flex: 1;
   align-self: stretch;
   flex-grow: 1;
@@ -503,7 +503,7 @@
   border-color: #b9b9b9;
 }
 
-.mypage-order-detail .text-4 {
+.admin-detail .text-4 {
   position: relative;
   flex: 1;
   align-self: stretch;
@@ -517,7 +517,7 @@
   letter-spacing: 0;
 }
 
-.mypage-order-detail .cell-3 {
+.admin-detail .cell-3 {
   width: 200px;
   align-self: stretch;
   background-color: #ffffff01;
@@ -530,7 +530,7 @@
   border-color: #b9b9b9;
 }
 
-.mypage-order-detail .view-2 {
+.admin-detail .view-2 {
   display: flex;
   flex-direction: column;
   width: 1100px;
@@ -541,7 +541,7 @@
   left: 4px;
 }
 
-.mypage-order-detail .table-2 {
+.admin-detail .table-2 {
   display: flex;
   flex-direction: column;
   width: 1100px;
@@ -553,7 +553,7 @@
   overflow: hidden;
 }
 
-.mypage-order-detail .view-3 {
+.admin-detail .view-3 {
   position: absolute;
   width: 1100px;
   height: 800px;
@@ -561,7 +561,7 @@
   left: 17px;
 }
 
-.mypage-order-detail .table-header {
+.admin-detail .table-header {
   position: absolute;
   width: 1033px;
   height: 44px;
@@ -572,7 +572,7 @@
   border-color: #f2f2f2;
 }
 
-.mypage-order-detail .row-cell-product {
+.admin-detail .row-cell-product {
   width: 79px;
   left: 0;
   position: absolute;
@@ -587,7 +587,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .row-cell-quantity {
+.admin-detail .row-cell-quantity {
   width: 83px;
   left: 709px;
   position: absolute;
@@ -602,7 +602,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .row-cell-total {
+.admin-detail .row-cell-total {
   width: 51px;
   left: 943px;
   position: absolute;
@@ -617,7 +617,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .table-body-row {
+.admin-detail .table-body-row {
   position: absolute;
   width: 1033px;
   height: 151px;
@@ -628,7 +628,7 @@
   border-color: #f2f2f2;
 }
 
-.mypage-order-detail .data-cart-jpg {
+.admin-detail .data-cart-jpg {
   position: absolute;
   width: 90px;
   height: 90px;
@@ -636,7 +636,7 @@
   left: 1px;
 }
 
-.mypage-order-detail .data {
+.admin-detail .data {
   position: absolute;
   width: 450px;
   height: 71px;
@@ -644,7 +644,7 @@
   left: 121px;
 }
 
-.mypage-order-detail .heading-t-shirt {
+.admin-detail .heading-t-shirt {
   position: absolute;
   width: 159px;
   height: 18px;
@@ -660,7 +660,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .data-input {
+.admin-detail .data-input {
   position: absolute;
   width: 50px;
   height: 26px;
@@ -669,7 +669,7 @@
   background-color: #ffffff;
 }
 
-.mypage-order-detail .div-2 {
+.admin-detail .div-2 {
   position: relative;
   width: 46px;
   height: 24px;
@@ -677,7 +677,7 @@
   left: 2px;
 }
 
-.mypage-order-detail .text-wrapper-3 {
+.admin-detail .text-wrapper-3 {
   position: absolute;
   width: 10px;
   height: 22px;
@@ -693,7 +693,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .data-2 {
+.admin-detail .data-2 {
   position: absolute;
   width: 64px;
   height: 24px;
@@ -708,7 +708,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .table-body-row-2 {
+.admin-detail .table-body-row-2 {
   top: 234px;
   position: absolute;
   width: 1033px;
@@ -719,7 +719,7 @@
   border-color: #f2f2f2;
 }
 
-.mypage-order-detail .heading-diagonal {
+.admin-detail .heading-diagonal {
   position: absolute;
   width: 157px;
   height: 18px;
@@ -734,7 +734,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .symbol-2 {
+.admin-detail .symbol-2 {
   width: 6px;
   height: 16px;
   top: 66px;
@@ -749,7 +749,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .symbol-3 {
+.admin-detail .symbol-3 {
   width: 6px;
   height: 16px;
   top: 66px;
@@ -764,7 +764,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .data-3 {
+.admin-detail .data-3 {
   position: absolute;
   width: 64px;
   height: 24px;
@@ -779,7 +779,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .table-body-row-3 {
+.admin-detail .table-body-row-3 {
   top: 385px;
   position: absolute;
   width: 1033px;
@@ -790,7 +790,7 @@
   border-color: #f2f2f2;
 }
 
-.mypage-order-detail .heading-basic {
+.admin-detail .heading-basic {
   position: absolute;
   width: 135px;
   height: 18px;
@@ -805,7 +805,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .table-body-row-4 {
+.admin-detail .table-body-row-4 {
   top: 536px;
   position: absolute;
   width: 1033px;
@@ -816,7 +816,7 @@
   border-color: #f2f2f2;
 }
 
-.mypage-order-detail .heading-basic-wrapper {
+.admin-detail .heading-basic-wrapper {
   position: absolute;
   width: 150px;
   height: 71px;
@@ -824,7 +824,7 @@
   left: 121px;
 }
 
-.mypage-order-detail .row-wrapper {
+.admin-detail .row-wrapper {
   display: flex;
   flex-direction: column;
   width: 1100px;
@@ -837,7 +837,7 @@
   overflow: hidden;
 }
 
-.mypage-order-detail .view-4 {
+.admin-detail .view-4 {
   position: absolute;
   width: 364px;
   height: 35px;
@@ -845,7 +845,7 @@
   left: 410px;
 }
 
-.mypage-order-detail .frame-2 {
+.admin-detail .frame-2 {
   width: 100px;
   height: 35px;
   left: 133px;
@@ -856,7 +856,7 @@
   top: 0;
 }
 
-.mypage-order-detail .text-wrapper-4 {
+.admin-detail .text-wrapper-4 {
   position: absolute;
   width: 63px;
   height: 18px;
@@ -872,7 +872,7 @@
   letter-spacing: 0;
 }
 
-.mypage-order-detail .frame-3 {
+.admin-detail .frame-3 {
   width: 100px;
   height: 35px;
   left: 0;
@@ -883,7 +883,7 @@
   top: 0;
 }
 
-.mypage-order-detail .text-wrapper-5 {
+.admin-detail .text-wrapper-5 {
   position: absolute;
   width: 63px;
   height: 18px;
@@ -899,7 +899,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .frame-4 {
+.admin-detail .frame-4 {
   width: 100px;
   height: 35px;
   left: 266px;
@@ -910,7 +910,7 @@
   top: 0;
 }
 
-.mypage-order-detail .footer {
+.admin-detail .footer {
   position: absolute;
   width: 1920px;
   height: 390px;
@@ -919,7 +919,7 @@
   background-color: #111111;
 }
 
-.mypage-order-detail .overlap-2 {
+.admin-detail .overlap-2 {
   position: relative;
   width: 1391px;
   height: 320px;
@@ -927,7 +927,7 @@
   left: 154px;
 }
 
-.mypage-order-detail .div-container {
+.admin-detail .div-container {
   position: absolute;
   width: 1170px;
   height: 320px;
@@ -935,7 +935,7 @@
   left: 221px;
 }
 
-.mypage-order-detail .based-on-the-life-s {
+.admin-detail .based-on-the-life-s {
   position: absolute;
   width: 325px;
   height: 22px;
@@ -950,7 +950,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .p {
+.admin-detail .p {
   position: absolute;
   width: 366px;
   height: 27px;
@@ -965,7 +965,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .overlap-3 {
+.admin-detail .overlap-3 {
   position: absolute;
   width: 325px;
   height: 41px;
@@ -973,7 +973,7 @@
   left: -192px;
 }
 
-.mypage-order-detail .text-wrapper-6 {
+.admin-detail .text-wrapper-6 {
   position: absolute;
   width: 325px;
   height: 22px;
@@ -988,7 +988,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .text-wrapper-7 {
+.admin-detail .text-wrapper-7 {
   position: absolute;
   width: 299px;
   height: 23px;
@@ -1003,7 +1003,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .heading-shopping {
+.admin-detail .heading-shopping {
   position: absolute;
   width: 95px;
   height: 18px;
@@ -1018,7 +1018,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link {
+.admin-detail .list-item-link {
   position: absolute;
   width: 97px;
   height: 20px;
@@ -1033,7 +1033,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-2 {
+.admin-detail .list-item-link-2 {
   position: absolute;
   width: 105px;
   height: 20px;
@@ -1048,7 +1048,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-3 {
+.admin-detail .list-item-link-3 {
   width: 80px;
   top: 105px;
   left: 266px;
@@ -1063,7 +1063,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-sale {
+.admin-detail .list-item-link-sale {
   width: 122px;
   top: 141px;
   left: 266px;
@@ -1078,7 +1078,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-4 {
+.admin-detail .list-item-link-4 {
   position: absolute;
   width: 74px;
   height: 20px;
@@ -1093,7 +1093,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-5 {
+.admin-detail .list-item-link-5 {
   position: absolute;
   width: 122px;
   height: 20px;
@@ -1108,7 +1108,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-6 {
+.admin-detail .list-item-link-6 {
   width: 56px;
   top: 117px;
   left: 440px;
@@ -1123,7 +1123,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .heading-newletter {
+.admin-detail .heading-newletter {
   position: absolute;
   width: 121px;
   height: 18px;
@@ -1138,7 +1138,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .div-footer-copyright {
+.admin-detail .div-footer-copyright {
   position: absolute;
   width: 1140px;
   height: 66px;
@@ -1149,7 +1149,7 @@
   border-color: #ffffff1a;
 }
 
-.mypage-order-detail .overlap-group-2 {
+.admin-detail .overlap-group-2 {
   position: relative;
   width: 576px;
   height: 25px;
@@ -1157,7 +1157,7 @@
   left: 282px;
 }
 
-.mypage-order-detail .text-wrapper-8 {
+.admin-detail .text-wrapper-8 {
   position: absolute;
   width: 86px;
   height: 25px;
@@ -1173,7 +1173,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .text-wrapper-9 {
+.admin-detail .text-wrapper-9 {
   position: absolute;
   width: 399px;
   height: 25px;
@@ -1189,7 +1189,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .symbol-4 {
+.admin-detail .symbol-4 {
   width: 15px;
   height: 15px;
   top: 4px;
@@ -1205,7 +1205,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .by {
+.admin-detail .by {
   position: absolute;
   width: 24px;
   height: 25px;
@@ -1221,7 +1221,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .link-colorlib {
+.admin-detail .link-colorlib {
   position: absolute;
   width: 53px;
   height: 20px;
@@ -1237,7 +1237,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-7 {
+.admin-detail .list-item-link-7 {
   position: absolute;
   width: 97px;
   height: 20px;
@@ -1252,7 +1252,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-8 {
+.admin-detail .list-item-link-8 {
   position: absolute;
   width: 105px;
   height: 20px;
@@ -1267,7 +1267,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .list-item-link-9 {
+.admin-detail .list-item-link-9 {
   position: absolute;
   width: 80px;
   height: 20px;
@@ -1282,7 +1282,7 @@
   white-space: nowrap;
 }
 
-.mypage-order-detail .element {
+.admin-detail .element {
   position: absolute;
   width: 456px;
   height: 250px;
@@ -1296,7 +1296,7 @@
   line-height: 25px;
 }
 
-.mypage-order-detail .span {
+.admin-detail .span {
   font-family: "Nunito Sans", Helvetica;
   font-weight: 400;
   color: #ffffff;
@@ -1305,11 +1305,11 @@
   line-height: 25px;
 }
 
-.mypage-order-detail .text-wrapper-10 {
+.admin-detail .text-wrapper-10 {
   text-decoration: underline;
 }
 
-.mypage-order-detail .img {
+.admin-detail .img {
   position: absolute;
   width: 233px;
   height: 44px;

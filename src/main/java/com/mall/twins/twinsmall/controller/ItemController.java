@@ -36,6 +36,19 @@ public class ItemController {
         return "item/register";
     }
 
+    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+    public String adminPage(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+
+        Page<Item> items =
+                itemService.getAdminItemPage(itemSearchDto, pageable);
+        model.addAttribute("items", items);
+        model.addAttribute("itemSearchDto", itemSearchDto);
+        model.addAttribute("maxPage", 5);
+
+        return "adminPage";
+    }
+
     @PostMapping(value = "/item/register")
     public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                           Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList){
@@ -95,7 +108,7 @@ public class ItemController {
         return "redirect:/";
     }
 
-    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+    /*@GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
 
@@ -107,7 +120,7 @@ public class ItemController {
 
                 return "item/itemMng";
 
-    }
+    }*/
 
     @GetMapping(value = "/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){

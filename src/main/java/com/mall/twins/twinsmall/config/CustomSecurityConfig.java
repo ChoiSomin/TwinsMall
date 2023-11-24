@@ -77,7 +77,7 @@ public class CustomSecurityConfig {
 
 
         http.authorizeRequests() // URL 패턴에 따른 접근 권한을 설정
-                        .antMatchers("/itemRegister", "/notice/register", "notice/modify").hasAnyAuthority("ADMIN")
+                        .antMatchers("/itemRegister", "/notice/register", "/notice/modify", "/admin/**").hasAnyAuthority("ADMIN")
                         .antMatchers("/mypage/**", "/cart", "/orders/**").authenticated()
                         .anyRequest().permitAll();
 
