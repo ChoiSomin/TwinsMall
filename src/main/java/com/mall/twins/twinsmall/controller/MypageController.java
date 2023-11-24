@@ -3,10 +3,13 @@ package com.mall.twins.twinsmall.controller;
 import com.mall.twins.twinsmall.config.auth.CustomUserDetails;
 import com.mall.twins.twinsmall.config.auth.UserAdapter;
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
+import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.repository.MemberRepository;
+import com.mall.twins.twinsmall.repository.ShippingRepository;
 import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
 import com.mall.twins.twinsmall.service.MemberService;
+import com.mall.twins.twinsmall.service.ShippingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,8 +21,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
@@ -33,13 +39,63 @@ public class MypageController {
 
     private final MemberRepository memberRepository;
 
-    private final AuthenticationManager authenticationManager;
+    private final ShippingService shippingService;
 
-    @GetMapping("/shipping/list")
-    public String list(){
-        log.info("list....");
+    private final ShippingRepository shippingRepository;
 
-        return "shipping/shipping";
+    @GetMapping("mypage/shipping/list")
+    public String list(Model model) {
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails) principal;
+        String mid = userDetails.getUsername();
+
+        model.addAttribute("shippingDTO", shippingService.readAll(mid));
+
+
+        return "mypage/shipping";
+    }
+
+    @GetMapping("mypage/shipping/register")
+    public String shippingRegister(Model model) {
+
+        model.addAttribute("shippingDto", new ShippingDto());
+        log.info("register ");
+        return "mypage/shippingRegister";
+    }
+
+
+    @PostMapping(value = "mypage/shipping/register")
+    public String shippingRegister(@Valid ShippingDto shippingDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) {
+
+        log.info("배송지 등록");
+
+        String loggedId = principal.getName();
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+
+            return "redirect:/mypage/shippingRegister";
+        }
+
+        shippingDto.setMid(loggedId);
+
+        Long sno = shippingService.register(shippingDto);
+        redirectAttributes.addFlashAttribute("result", sno);
+
+        log.info(sno);
+
+        return "redirect:mypage/shipping/list";
+    }
+
+
+    @GetMapping("mypage/shipping/{sno}")
+    public String read(Model model) {
+
+        model.addAttribute("shippingDTO", new ShippingDto());
+
+
+        return "mypage/shipping";
     }
 
     // 회원 정보 조회

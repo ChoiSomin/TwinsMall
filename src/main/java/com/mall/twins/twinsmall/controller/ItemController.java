@@ -108,27 +108,6 @@ public class ItemController {
         return "redirect:/";
     }
 
-    /*@GetMapping(value = {"/admin/items", "/admin/items/{page}"})
-    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
-
-        Page<Item> items =
-                itemService.getAdminItemPage(itemSearchDto, pageable);
-                model.addAttribute("items", items);
-                model.addAttribute("itemSearchDto", itemSearchDto);
-                model.addAttribute("maxPage", 5);
-
-                return "item/itemMng";
-
-    }*/
-
-    @GetMapping(value = "/item/{itemId}")
-    public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
-        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
-        model.addAttribute("item", itemFormDto);
-        return "item/itemDtl";
-    }
-
     @GetMapping(value = "/item/list")
     public String product(@RequestParam(name = "pname", required = false) String pname,
                           @RequestParam(name = "pcate", required = false) String pcate,

@@ -7,11 +7,12 @@ import javax.persistence.*;
 @Entity
 @Table(name="shipping")
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "member")
-public class Shipping extends BaseEntity{
+public class Shipping{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,21 +36,25 @@ public class Shipping extends BaseEntity{
     @Column(nullable = false)
     private String sphone; // 휴대폰 번호
 
-    private String sdefault; // 기본 배송지 여부
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mno")
+    @JoinColumn(name = "mid")
     private Member member;
 
     // 배송지명 수정
-    public void change(String sname, String sperson, String zonecode, String address, String saddress, String sphone, String sdefault){
+    public void change(String sname, String sperson, String zonecode, String address, String saddress, String sphone ){
         this.sname = sname;
         this.sperson = sperson;
         this.zonecode = zonecode;
         this.address = address;
         this.saddress = saddress;
         this.sphone = sphone;
-        this.sdefault = sdefault;
+    }
+
+    public static Shipping createShipping(Member member){
+        Shipping shipping = new Shipping();
+        shipping.setMember(member);
+        return shipping;
     }
 
 }
