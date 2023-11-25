@@ -88,19 +88,62 @@ public class MypageController {
 
         log.info(sno);
 
-        return "redirect:mypage/shipping/list";
+        return "redirect:/mypage/shipping/list";
     }
 
 
 
-    @GetMapping("mypage/shipping/{sno}")
-    public String read(Model model){
+    @GetMapping("mypage/shipping/read{sno}")
+    public String read(long sno, Model model){
 
-        model.addAttribute("shippingDTO", new ShippingDto());
+        ShippingDto shippingDto = shippingService.readOne(sno);
+
+        model.addAttribute("shippingDto", shippingDto);
 
 
-        return "mypage/shipping";
+        return "mypage/shippingRead";
     }
+
+    @GetMapping("mypage/shipping/modify")
+    public String Modifyread(long sno, Model model){
+
+        ShippingDto shippingDto = shippingService.readOne(sno);
+
+        model.addAttribute("shippingDto", shippingDto);
+
+
+        return "mypage/shippingModify";
+    }
+
+
+    @PostMapping("/mypage/shipping/modify")
+    public String shippingModify(ShippingDto shippingDto, RedirectAttributes redirectAttributes) {
+        log.info("shippingmodify");
+        log.info("shippingDTO: " + shippingDto);
+
+        shippingService.modify(shippingDto);
+
+        // 'sno' 값을 RedirectAttributes에 추가하여 URL에 해당 값을 전달
+        redirectAttributes.addAttribute("sno", shippingDto.getSno());
+
+        // Redirect 시, URL에 'sno' 값을 포함하여 리다이렉트합니다.
+        return "redirect:/mypage/shipping/read";
+    }
+
+
+
+    @PostMapping("mypage/shipping/remove")
+    public String remove(@RequestParam("sno") long sno, RedirectAttributes redirectAttributes){
+
+        log.info("sno" + sno);
+
+        shippingService.remove(sno);
+
+        redirectAttributes.addFlashAttribute("msg", sno);
+
+        return "redirect:/mypage/shipping/list";
+    }
+
 
 
 
