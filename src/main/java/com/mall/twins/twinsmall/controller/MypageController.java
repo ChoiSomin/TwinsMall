@@ -43,7 +43,7 @@ public class MypageController {
 
     private final ShippingRepository shippingRepository;
 
-    @GetMapping("mypage/shipping/list")
+    @GetMapping("/shipping/list")
     public String list(Model model) {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -53,19 +53,19 @@ public class MypageController {
         model.addAttribute("shippingDTO", shippingService.readAll(mid));
 
 
-        return "mypage/shipping";
+        return "shipping/shipping";
     }
 
-    @GetMapping("mypage/shipping/register")
+    @GetMapping("/shipping/register")
     public String shippingRegister(Model model) {
 
         model.addAttribute("shippingDto", new ShippingDto());
         log.info("register ");
-        return "mypage/shippingRegister";
+        return "shipping/shippingRegister";
     }
 
 
-    @PostMapping(value = "mypage/shipping/register")
+    @PostMapping(value = "/shipping/register")
     public String shippingRegister(@Valid ShippingDto shippingDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) {
 
         log.info("배송지 등록");
@@ -75,7 +75,7 @@ public class MypageController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
-            return "redirect:/mypage/shippingRegister";
+            return "redirect:/shipping/shippingRegister";
         }
 
         shippingDto.setMid(loggedId);
@@ -85,20 +85,20 @@ public class MypageController {
 
         log.info(sno);
 
-        return "redirect:mypage/shipping/list";
+        return "redirect:/shipping/shipping/list";
     }
 
 
-    @GetMapping("mypage/shipping/{sno}")
+    @GetMapping("/shipping/{sno}")
     public String read(Model model) {
 
         model.addAttribute("shippingDTO", new ShippingDto());
 
 
-        return "mypage/shipping";
+        return "shipping/shipping";
     }
 
-    @GetMapping("mypage/shipping/modify")
+    @GetMapping("/shipping/modify")
     public String Modifyread(long sno, Model model){
 
         ShippingDto shippingDto = shippingService.readOne(sno);
@@ -106,12 +106,12 @@ public class MypageController {
         model.addAttribute("shippingDto", shippingDto);
 
 
-        return "mypage/shippingModify";
+        return "shipping/shippingModify";
     }
 
-    @PostMapping("/mypage/shipping/modify")
+    @PostMapping("/shipping/modify")
     public String shippingModify(ShippingDto shippingDto, RedirectAttributes redirectAttributes) {
-        log.info("shippingmodify");
+        log.info("shipping modify");
         log.info("shippingDTO: " + shippingDto);
 
         shippingService.modify(shippingDto);
@@ -120,10 +120,10 @@ public class MypageController {
         redirectAttributes.addAttribute("sno", shippingDto.getSno());
 
         // Redirect 시, URL에 'sno' 값을 포함하여 리다이렉트합니다.
-        return "redirect:/mypage/shipping/read";
+        return "redirect:/shipping/read";
     }
 
-    @PostMapping("mypage/shipping/remove")
+    @PostMapping("/shipping/remove")
     public String remove(@RequestParam("sno") long sno, RedirectAttributes redirectAttributes){
 
         log.info("sno" + sno);
@@ -132,7 +132,7 @@ public class MypageController {
 
         redirectAttributes.addFlashAttribute("msg", sno);
 
-        return "redirect:/mypage/shipping/list";
+        return "redirect:/shipping/shipping/list";
     }
 
     // 회원 정보 조회
