@@ -98,6 +98,43 @@ public class MypageController {
         return "mypage/shipping";
     }
 
+    @GetMapping("mypage/shipping/modify")
+    public String Modifyread(long sno, Model model){
+
+        ShippingDto shippingDto = shippingService.readOne(sno);
+
+        model.addAttribute("shippingDto", shippingDto);
+
+
+        return "mypage/shippingModify";
+    }
+
+    @PostMapping("/mypage/shipping/modify")
+    public String shippingModify(ShippingDto shippingDto, RedirectAttributes redirectAttributes) {
+        log.info("shippingmodify");
+        log.info("shippingDTO: " + shippingDto);
+
+        shippingService.modify(shippingDto);
+
+        // 'sno' 값을 RedirectAttributes에 추가하여 URL에 해당 값을 전달
+        redirectAttributes.addAttribute("sno", shippingDto.getSno());
+
+        // Redirect 시, URL에 'sno' 값을 포함하여 리다이렉트합니다.
+        return "redirect:/mypage/shipping/read";
+    }
+
+    @PostMapping("mypage/shipping/remove")
+    public String remove(@RequestParam("sno") long sno, RedirectAttributes redirectAttributes){
+
+        log.info("sno" + sno);
+
+        shippingService.remove(sno);
+
+        redirectAttributes.addFlashAttribute("msg", sno);
+
+        return "redirect:/mypage/shipping/list";
+    }
+
     // 회원 정보 조회
     @GetMapping("/read")
     public String read(Principal principal, Model model) {

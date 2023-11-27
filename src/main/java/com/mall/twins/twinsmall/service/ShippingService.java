@@ -26,8 +26,8 @@ public interface ShippingService {
     PageResultDTO<ShippingDto, Shipping> getList(PageRequestDTO requestDTO);
 
 
-    // 조회 (해당 주소 1개) -> 사용 안 함
-    ShippingDto readOne(Long mid);
+    // 조회 (해당 주소 1개)
+    ShippingDto readOne(Long sno);
 
     // 수정
     void modify(ShippingDto shippingDTO);

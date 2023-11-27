@@ -71,8 +71,15 @@
 
                             <div class="cell-5">
                                 <div class="content-2">
-                                    <div class="text-3"
-                                         th:text="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL} ? '판매중' : '품절'"></div>
+                                    <div class="text-3" th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}">
+                                        판매중
+                                    </div>
+                                    <div class="text-3" th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SOLD_OUT}">
+                                        품절
+                                    </div>
+                                    <div class="text-3" th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).PAUSE}">
+                                        판매 중지
+                                    </div>
                                 </div>
                             </div>
                             <div class="cell-6">
