@@ -113,7 +113,7 @@
                 <ul class="pagination justify-content-center">
 
                     <li class="link" th:if="${member.prev}">
-                        <a class="page-link" th:href="@{/member/list(page= ${notice.start -1},
+                        <a class="page-link" th:href="@{/admin/memberList(page= ${notice.start -1},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}" tabindex="-1">
                             <span aria-hidden='true'>이전페이지</span>
@@ -123,14 +123,14 @@
 
                     <li class="link-2" th:class=" 'page-item ' + ${member.page == page?'active':''} "
                         th:each="page: ${member.pageList}">
-                        <a class="page-link" th:href="@{/member/list(page = ${page} ,
+                        <a class="page-link" th:href="@{/admin/memberList(page = ${page} ,
                    type=${pageRequestDTO.type} ,
                    keyword = ${pageRequestDTO.keyword})}" th:inline="text">[[${page}]]</a>
                     </li>
 
 
                     <li class="link-3" th:if="${member.next}">
-                        <a class="page-link" th:href="@{/notice/list(page= ${result.end + 1} ,
+                        <a class="page-link" th:href="@{/admin/memberList(page= ${result.end + 1} ,
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}" aria-label='Next'>
                             <span aria-hidden='true'>다음페이지</span>
