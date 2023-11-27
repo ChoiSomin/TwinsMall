@@ -22,7 +22,7 @@
             <a th:href="@{/admin/memberList}">
                 <div class="nav-list-item-link-7">회원목록</div>
             </a>
-            <a th:href="@{/mypage/shipping/list}">
+            <a href="#">
                 <div class="nav-list-item-link-11">주문목록</div>
             </a>
             <div class="nav-list-item-link-8">서비스</div>
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                    <th:block th:each="member, loop : ${members.dtoList}">
+                    <th:block th:each="member, loop : ${member.dtoList}">
                         <div class="row-2">
                             <div class="cell-3">
                                 <div class="content-2">
@@ -105,9 +105,41 @@
                             </div>
                         </div>
                     </th:block>
+
                 </div>
+
+            </div>
+            <div class="frame-120">
+                <ul class="pagination justify-content-center">
+
+                    <li class="link" th:if="${member.prev}">
+                        <a class="page-link" th:href="@{/member/list(page= ${notice.start -1},
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword})}" tabindex="-1">
+                            <span aria-hidden='true'>이전페이지</span>
+                        </a>
+                    </li>
+
+
+                    <li class="link-2" th:class=" 'page-item ' + ${member.page == page?'active':''} "
+                        th:each="page: ${member.pageList}">
+                        <a class="page-link" th:href="@{/member/list(page = ${page} ,
+                   type=${pageRequestDTO.type} ,
+                   keyword = ${pageRequestDTO.keyword})}" th:inline="text">[[${page}]]</a>
+                    </li>
+
+
+                    <li class="link-3" th:if="${member.next}">
+                        <a class="page-link" th:href="@{/notice/list(page= ${result.end + 1} ,
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword})}" aria-label='Next'>
+                            <span aria-hidden='true'>다음페이지</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
+
     </div>
 </div>
 </html>

@@ -1117,3 +1117,30 @@
     top: 3px;
     left: 0;
 }
+
+.frame-120 {
+    text-align: center;
+    position: absolute;
+    width: 100%; /* 변경된 부분 */
+    height: 56px;
+    top: 600px;
+    left: 0; /* 변경된 부분 */
+}
+
+.pagination {
+    display: flex; /* 수정된 부분 */
+    justify-content: center; /* 추가된 부분 */
+    list-style: none; /* 수정된 부분 */
+    padding: 0; /* 수정된 부분 */
+}
+
+/* 추가된 부분 */
+.pagination li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* 추가된 부분 */
+.pagination a {
+    text-decoration: none;
+}

@@ -7,6 +7,7 @@ import com.mall.twins.twinsmall.dto.PageResultDTO;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.entity.Notice;
 import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
+import org.springframework.data.domain.Page;
 
 public interface MemberService {
 
@@ -36,6 +37,8 @@ public interface MemberService {
     String get_searchId(String mname, String mphone);
 
     PageResultDTO<MemberJoinDTO, Member> getMemberList(PageRequestDTO pageRequestDTO);
+
+    Page<Member> getList(int page);
 
     default MemberJoinDTO entityToDTO(Member member) {
 

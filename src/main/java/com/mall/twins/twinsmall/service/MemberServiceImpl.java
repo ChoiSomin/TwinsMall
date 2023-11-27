@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -219,6 +220,12 @@ public class MemberServiceImpl implements MemberService {
         log.info(fn);
 
         return new PageResultDTO<>(result, fn);
+    }
+
+    @Override
+    public Page<Member> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 12);
+        return this.memberRepository.findAll(pageable);
     }
 
     // 회원가입시 유효성 체크 및 중복 조회 처리

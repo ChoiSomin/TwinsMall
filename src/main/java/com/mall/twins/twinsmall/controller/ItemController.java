@@ -6,6 +6,7 @@ import com.mall.twins.twinsmall.dto.MainItemDto;
 import com.mall.twins.twinsmall.dto.PageRequestDTO;
 import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.entity.Notice;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.ItemService;
 import com.mall.twins.twinsmall.service.MemberService;
@@ -57,13 +58,15 @@ public class ItemController {
     }
 
     @GetMapping(value = "/admin/memberList")
-    public String adminPage(PageRequestDTO pageRequestDTO, @PathVariable("page") Optional<Integer> page, Model model){
+    public String adminPage(PageRequestDTO pageRequestDTO, @RequestParam(value="page", defaultValue="0") int page, Model model){
 
         log.info("Member list...." + pageRequestDTO);
 
+        Page<Member> paging = this.memberService.getList(page);
         List<Member> memberList = this.memberRepository.findAll();
 
-        model.addAttribute("members", memberService.getMemberList(pageRequestDTO));
+        model.addAttribute("member", memberService.getMemberList(pageRequestDTO));
+        model.addAttribute("paging", paging);
         model.addAttribute("memberList", memberList);
 
         log.info(memberService.getMemberList(pageRequestDTO));
