@@ -152,13 +152,12 @@ body {
   flex-shrink: 0;
 }
 .aboutus-GvM .section-M21 {
-  box-sizing: border-box;
-  padding: 3.99rem 39rem 4.025rem 39rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  width: 1920px;
+  height: 141px;
+  top: 131px;
+  left: 0;
   background-color: #f3f2ee;
-  flex-shrink: 0;
 }
 .aboutus-GvM .section-M21 .heading-4-about-us-V8D {
   margin-bottom: 0.865rem;

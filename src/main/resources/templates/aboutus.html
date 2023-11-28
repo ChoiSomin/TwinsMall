@@ -1,194 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <title>AboutUs</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans%3A400%2C600%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400"/>
-  <link rel="stylesheet" href="/css/aboutus.css"/>
+    <meta charset="utf-8"/>
+    <title>AboutUs</title>
 </head>
-<body>
-<div class="aboutus-GvM">
-  <div class="header-bSq">
-    <div class="divheadertop-Js3">Welcome to Twin’s Mall</div>
-    <div class="auto-group-wd5t-ZY5">
-      <div class="link-logopng-rXB">
-      </div>
-      <div class="nav-list-item-link-home-5uj">Home</div>
-      <div class="nav-list-item-link-contacts-bNH">About us</div>
-      <div class="nav-list-item-link-shop-6pq">Shop</div>
-      <div class="nav-list-item-link-pages-nSm">Notice</div>
-      <img class="icon-person-tVo" src="/img/icon-person-8UR.png"/>
-      <img class="icon-search-p8Z" src="/img/icon-search-ZkV.png"/>
-      <img class="icon-favorite-border-Kb7" src="/img/icon-favorite-border.png"/>
-      <img class="icon-shopping-bag-2VX" src="/img/icon-shopping-bag-YBK.png"/>
+
+<div layout:fragment="content">
+    <div class="aboutus-GvM">
+
+        <div class="section-M21">
+            <div class="heading-4-about-us-V8D">About Us</div>
+            <div class="auto-group-ygxq-mrR">
+                <div class="link-home-WJD">Home</div>
+                <div class="symbol"> ></div>
+                <div class="about-us-aos">About Us</div>
+            </div>
+        </div>
+        <div class="auto-group-6lyx-XDK">
+            <div class="section-Dbw">
+                <div class="about-usjpg-kbs">
+                </div>
+                <div class="auto-group-bkgm-qtD">
+                    <div class="auto-group-bhcm-Peq">
+                        <div class="heading-4-who-we-are--jyb">Who We Are ?</div>
+                        <div class="heading-4-who-we-do--nws">Who We Do ?</div>
+                        <div class="heading-4-why-choose-us-fkm">Why Choose Us</div>
+                    </div>
+                    <div class="auto-group-vcp1-zo3">
+                        <div class="contextual-advertising-programs-sometimes-have-Xny">Contextual advertising programs
+                            sometimes have
+                        </div>
+                        <div class="in-this-digital-generation-where-information-can-be-cpR">In this digital generation
+                            where information can be
+                        </div>
+                        <div class="a-two-or-three-storey-house-is-the-ideal-way-to-Wuo">A two or three storey house is
+                            the ideal way to
+                        </div>
+                    </div>
+                    <div class="auto-group-97rb-SYZ">
+                        <div class="strict-policies-that-need-to-be-adhered-too-lets-take-Cnd">strict policies that need
+                            to be adhered too. Let’s take
+                        </div>
+                        <div class="easily-obtained-within-seconds-business-cards-still-8AV">easily obtained within
+                            seconds, business cards still
+                        </div>
+                        <div class="maximise-the-piece-of-earth-on-which-our-home-sits-TCm">maximise the piece of earth
+                            on which our home sits,
+                        </div>
+                    </div>
+                    <div class="auto-group-9qv5-ZWh">
+                        <div class="google-as-an-example-JDP">Google as an example.</div>
+                        <div class="have-retained-their-importance-1tV">have retained their importance.</div>
+                        <div class="but-for-older-or-infirm-people-xHw">but for older or infirm people.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item--U1P">
+                <div class="auto-group-nkmf-BRb">
+                    <div class="our-team-7q3">Our Team</div>
+                    <div class="heading-2-meet-our-team-pzM">Meet Our Team</div>
+                </div>
+                <div class="auto-group-zfpm-gFs">
+                    <div class="auto-group-mfih-Rz9">
+                        <img class="stuck-at-home-celebrating-YJ5" th:src="@{/img/stuck-at-home-celebrating.png}"/>
+                        <img class="fresh-folk-walking-t73" th:src="@{/img/fresh-folk-walking.png}"/>
+                        <img class="croods-standing-q2H" th:src="@{/img/croods-standing.png}"/>
+                    </div>
+                    <div class="auto-group-cz9t-nCR">
+                        <img class="allura-standing-colors-7Vb" th:src="@{/img/allura-standing-colors.png}"/>
+                        <img class="people-of-brooklyn-standing-f1K" th:src="@{/img/people-of-brooklyn-standing.png}"/>
+                    </div>
+                </div>
+                <div class="auto-group-dvjf-jG5">
+                    <div class="auto-group-nhey-e89">
+                        <div class="heading-4-john-smith-Zku">Eunhai Koh</div>
+                        <div class="heading-4-christine-wise-rzu"> JungMin Lee</div>
+                        <div class="heading-4-sean-robbins-9DK">SoMin Choi</div>
+                        <div class="auto-group-xpnh-Goj">
+                            <div class="heading-4-sean-robbins-CxH">MiRae Park</div>
+                        </div>
+                        <div class="heading-4-sean-robbins-3T7">HyunJeong Kim</div>
+                    </div>
+                    <div class="auto-group-mhnh-NkH">
+                        <div class="full-stack-5ub">Full Stack</div>
+                        <div class="backend-L4q">BackEnd</div>
+                        <div class="manager-Evu">Manager</div>
+                        <div class="manager-Sn5">Manager</div>
+                        <div class="manager-PBX">Manager</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item--KL5">
+                <div class="auto-group-azyh-QcR">
+                    <img class="link-client-1png-N3T" th:src="@{/img/link-client-1png.png}"/>
+                    <img class="link-client-5png-DLu" th:src="@{/img/link-client-5png.png}"/>
+                </div>
+                <div class="auto-group-ybhb-9EZ">
+                    <img class="link-client-2png-UGq" th:src="@{/img/link-client-2png.png}"/>
+                    <img class="link-client-6png-Cid" th:src="@{/img/link-client-6png.png}"/>
+                </div>
+                <div class="heading-2-happy-clients-9Ny">Partners</div>
+                <div class="auto-group-lich-nRw">
+                    <img class="link-client-3png-jry" th:src="@{/img/link-client-3png.png}"/>
+                    <img class="link-client-7png-siH" th:src="@{/img/link-client-7png.png}"/>
+                </div>
+                <div class="auto-group-hqxd-RE1">
+                    <img class="link-client-4png-aMo" th:src="@{/img/link-client-4png.png}"/>
+                    <img class="link-client-8png-sbo" th:src="@{/img/link-client-8png.png}"/>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="section-M21">
-    <div class="heading-4-about-us-V8D">About Us</div>
-    <div class="auto-group-ygxq-mrR">
-      <div class="link-home-WJD">Home</div>
-      <div class="about-us-aos">About Us</div>
-    </div>
-  </div>
-  <div class="auto-group-6lyx-XDK">
-    <div class="section-Dbw">
-      <div class="about-usjpg-kbs">
-      </div>
-      <div class="auto-group-bkgm-qtD">
-        <div class="auto-group-bhcm-Peq">
-          <div class="heading-4-who-we-are--jyb">Who We Are ?</div>
-          <div class="heading-4-who-we-do--nws">Who We Do ?</div>
-          <div class="heading-4-why-choose-us-fkm">Why Choose Us</div>
-        </div>
-        <div class="auto-group-vcp1-zo3">
-          <div class="contextual-advertising-programs-sometimes-have-Xny">Contextual advertising programs sometimes have</div>
-          <div class="in-this-digital-generation-where-information-can-be-cpR">In this digital generation where information can be</div>
-          <div class="a-two-or-three-storey-house-is-the-ideal-way-to-Wuo">A two or three storey house is the ideal way to</div>
-        </div>
-        <div class="auto-group-97rb-SYZ">
-          <div class="strict-policies-that-need-to-be-adhered-too-lets-take-Cnd">strict policies that need to be adhered too. Let’s take</div>
-          <div class="easily-obtained-within-seconds-business-cards-still-8AV">easily obtained within seconds, business cards still</div>
-          <div class="maximise-the-piece-of-earth-on-which-our-home-sits-TCm">maximise the piece of earth on which our home sits,</div>
-        </div>
-        <div class="auto-group-9qv5-ZWh">
-          <div class="google-as-an-example-JDP">Google as an example.</div>
-          <div class="have-retained-their-importance-1tV">have retained their importance.</div>
-          <div class="but-for-older-or-infirm-people-xHw">but for older or infirm people.</div>
-        </div>
-      </div>
-    </div>
-    <div class="item--U1P">
-      <div class="auto-group-nkmf-BRb">
-        <div class="our-team-7q3">Our Team</div>
-        <div class="heading-2-meet-our-team-pzM">Meet Our Team</div>
-      </div>
-      <div class="auto-group-zfpm-gFs">
-        <div class="auto-group-mfih-Rz9">
-          <img class="stuck-at-home-celebrating-YJ5" src="/img/stuck-at-home-celebrating.png"/>
-          <img class="fresh-folk-walking-t73" src="/img/fresh-folk-walking.png"/>
-          <img class="croods-standing-q2H" src="/img/croods-standing.png"/>
-        </div>
-        <div class="auto-group-cz9t-nCR">
-          <img class="allura-standing-colors-7Vb" src="/img/allura-standing-colors.png"/>
-          <img class="people-of-brooklyn-standing-f1K" src="/img/people-of-brooklyn-standing.png"/>
-        </div>
-      </div>
-      <div class="auto-group-dvjf-jG5">
-        <div class="auto-group-nhey-e89">
-          <div class="heading-4-john-smith-Zku">Eunhai Koh</div>
-          <div class="heading-4-christine-wise-rzu"> JungMin Lee</div>
-          <div class="heading-4-sean-robbins-9DK">SoMin Choi</div>
-          <div class="auto-group-xpnh-Goj">
-            <div class="heading-4-sean-robbins-CxH">MiRae Park</div>
-          </div>
-          <div class="heading-4-sean-robbins-3T7">HyunJeong Kim</div>
-        </div>
-        <div class="auto-group-mhnh-NkH">
-          <div class="full-stack-5ub">Full Stack</div>
-          <div class="backend-L4q">BackEnd</div>
-          <div class="manager-Evu">Manager</div>
-          <div class="manager-Sn5">Manager</div>
-          <div class="manager-PBX">Manager</div>
-        </div>
-      </div>
-    </div>
-    <div class="item--KL5">
-      <div class="auto-group-azyh-QcR">
-        <img class="link-client-1png-N3T" src="/img/link-client-1png.png"/>
-        <img class="link-client-5png-DLu" src="/img//link-client-5png.png"/>
-      </div>
-      <div class="auto-group-ybhb-9EZ">
-        <img class="link-client-2png-UGq" src="/img//link-client-2png.png"/>
-        <img class="link-client-6png-Cid" src="/img//link-client-6png.png"/>
-      </div>
-      <div class="heading-2-happy-clients-9Ny">Partners</div>
-      <div class="auto-group-lich-nRw">
-        <img class="link-client-3png-jry" src="/img//link-client-3png.png"/>
-        <img class="link-client-7png-siH" src="/img//link-client-7png.png"/>
-      </div>
-      <div class="auto-group-hqxd-RE1">
-        <img class="link-client-4png-aMo" src="/img//link-client-4png.png"/>
-        <img class="link-client-8png-sbo" src="/img//link-client-8png.png"/>
-      </div>
-    </div>
-  </div>
-  <div class="footer-Mms">
-    <div class="divcontainer-Wuf">
-      <div class="auto-group-eadx-T4D">
-        <div class="auto-group-mzvt-auX">
-          <div class="based-on-the-lifes-good-brand-philosophy-JqX">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</div>
-          <div class="we-always-strives-to-provide-first-unique-DBo">we always strives to provide First, Unique, </div>
-          <div class="auto-group-f4bk-vM7">
-            <div class="and-new-fun-experiences-to-provide-4y7">and New F·U·N experiences to provide</div>
-            <div class="customers-with-a-better-life-Nyo">customers with a better life.</div>
-          </div>
-        </div>
-        <div class="auto-group-aaem-G3b">
-          <div class="heading-6-shopping-1G5">Shopping</div>
-          <div class="list-item-link-clothing-store-JW5">Refrigerator</div>
-          <div class="list-item-link-trending-shoes-bk5">TV</div>
-          <div class="list-item-link-accessories-shb">Laptop</div>
-          <div class="list-item-link-sale-bNh">Washing Machine</div>
-        </div>
-        <div class="auto-group-6qbp-XGM">
-          <div class="list-item-link-contact-us-EgZ">Air Purifier</div>
-          <div class="list-item-link-payment-methods-jtD">Air Conditioner</div>
-          <div class="list-item-link-delivary-fWy">Cleaner</div>
-        </div>
-        <div class="auto-group-1w8d-Aid">
-          <div class="heading-6-newletter-Jpq">Others</div>
-          <div class="list-item-link-clothing-store-ReZ">About us</div>
-          <div class="list-item-link-trending-shoes-xuP">FAQ</div>
-          <div class="list-item-link-accessories-hc5">Contact </div>
-        </div>
-        <div class="item-02-1234-1234-09-00-18-00-24-899-1-304--Coj">
-          <span class="item-02-1234-1234-09-00-18-00-24-899-1-304--Coj-sub-0">
-          개인정보처리방침
-          <br/>
-          이벤트 개인정보처리방침
-          <br/>
-          영상정보처리기기운영관리방침
-          <br/>
-          
-          </span>
-          <span class="item-02-1234-1234-09-00-18-00-24-899-1-304--Coj-sub-1">
-          
-          <br/>
-          대표번호 : 
-          </span>
-          <span class="item-02-1234-1234-09-00-18-00-24-899-1-304--Coj-sub-2">02-</span>
-          <span class="item-02-1234-1234-09-00-18-00-24-899-1-304--Coj-sub-3">
-          1234-1234
-          <br/>
-          전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 : 발신자부담)
-          <br/>
-          제품 및 서비스 문의는 긴급 문의 건에 한해 24시간 운영합니다.
-          <br/>
-          주소 : 경기도 수원시 경기도 수원시 팔달구 덕영대로 899 (매산로 1가, 세진브론즈빌 304호)
-          <br/>
-          
-          <br/>
-          본 사이트의 모든 콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.
-          </span>
-        </div>
-      </div>
-      <div class="divfootercopyrighttext-AUy">
-        <div class="auto-group-dj9x-e9F">
-          <div class="copyright--mDs">Copyright © </div>
-          <div class="all-rights-reserved-this-template-is-made-with-cVP">20232020 All rights reserved | This template is made with </div>
-        </div>
-        <div class="symbol-46V"></div>
-        <div class="by-igq"> by </div>
-        <div class="link-colorlib-r2M">Colorlib</div>
-      </div>
-    </div>
-    <div class="link-logopng-91T">
-    </div>
-  </div>
 </div>
-</body>

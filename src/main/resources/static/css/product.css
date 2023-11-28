@@ -648,7 +648,7 @@
 }
 
 .product .div-product-item-pic-3 {
-    background-image: url(./img/div-product-item-pic-3.png);
+    background-image: url(../img/div-product-item-pic-3.png);
     position: absolute;
     width: 262px;
     height: 260px;
@@ -697,7 +697,7 @@
 }
 
 .product .span-label-wrapper {
-    background-image: url(./img/div-product-item-pic-2.png);
+    background-image: url(../img/div-product-item-pic-2.png);
     position: absolute;
     width: 262px;
     height: 260px;
@@ -754,7 +754,7 @@
 }
 
 .product .div-product-item-pic-4 {
-    background-image: url(./img/div-product-item-pic-1.png);
+    background-image: url(../img/div-product-item-pic-1.png);
     position: absolute;
     width: 262px;
     height: 260px;
@@ -788,7 +788,7 @@
 }
 
 .product .div-product-item-pic-5 {
-    background-image: url(./img/div-product-item-pic.png);
+    background-image: url(../img/div-product-item-pic.png);
     position: absolute;
     width: 262px;
     height: 260px;
