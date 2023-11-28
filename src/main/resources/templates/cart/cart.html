@@ -3,6 +3,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<div layout:fragment="script">
+    <script type="text/javascript">
+
+    </script>
+</div>
+
 <div layout:fragment="content">
 
     <div class="cart">
@@ -95,6 +101,11 @@
     <script th:inline="javascript">
 
         $(document).ready(function () {
+
+            if ($("tr").length === 0) {
+                alert('장바구니가 비어있습니다!');
+                window.location.href = '/';
+            }
             $("input[name=cartChkBox]").change(function () {
                 getOrderTotalPrice();
             });
