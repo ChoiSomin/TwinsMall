@@ -156,6 +156,8 @@ public class ItemController {
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 12);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
 
+        log.info(items);
+
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);

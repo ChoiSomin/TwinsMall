@@ -17,13 +17,16 @@
         });
 
         function calculateTotalPrice() {
+
             var count = $("#count").val();
             var price = $("#price").val();
             var totalPrice = price * count;
             $("#totalPrice").html(totalPrice + '원');
+
         }
 
         function order() {
+
             var username = [[${username}]];
             var userRole = [[${userRole}]];
 
@@ -145,9 +148,9 @@
             <button type="button" class="text-wrapper-4" onclick="order()">주문하기</button>
         </div>
         </div>
-        <div th:unless="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="text-right">
+        <!--<div th:unless="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="text-right">
             <button type="button" class="btn btn-danger btn-lg">품절</button>
-        </div>
+        </div>-->
         <div class="frame">
             <div class="tabpanel-heading">상품 정보</div>
             <p class="tabpanel-a-pocket-PC">
