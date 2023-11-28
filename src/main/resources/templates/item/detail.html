@@ -29,10 +29,16 @@
 
             var username = [[${username}]];
             var userRole = [[${userRole}]];
+            var itemStatus = document.getElementById('itemStatus').value;
+
+            if (itemStatus === 'SOLD_OUT') {
+                alert('품절 상품입니다!');
+                return;
+            }
 
             if (userRole === 'ADMIN') {
-            alert('권한이 없습니다!');
-            return;
+                alert('권한이 없습니다!');
+                return;
             }
 
             var url = "/order";
@@ -71,6 +77,14 @@
 
             var username = [[${username}]];
             var userRole = [[${userRole}]];
+            var itemStatus = document.getElementById('itemStatus').value;
+
+            console.log(itemStatus);
+
+            if (itemStatus === 'SOLD_OUT') {
+                alert('품절 상품입니다!');
+                return;
+            }
 
             if (userRole === 'ADMIN') {
                 alert('권한이 없습니다!');
@@ -138,7 +152,7 @@
                    style="text-align : center">
         </div>
 
-        <div th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="text-right">
+        <div class="text-right">
         <div class="link">
             <button type="button" class="text-wrapper-4" onclick="addCart()">장바구니 담기
             </button>
@@ -148,9 +162,7 @@
             <button type="button" class="text-wrapper-4" onclick="order()">주문하기</button>
         </div>
         </div>
-        <!--<div th:unless="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="text-right">
-            <button type="button" class="btn btn-danger btn-lg">품절</button>
-        </div>-->
+        <input type="text" id="itemStatus" th:value="${item.pstatus}" class="text-right">품절
         <div class="frame">
             <div class="tabpanel-heading">상품 정보</div>
             <p class="tabpanel-a-pocket-PC">
