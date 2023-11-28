@@ -542,6 +542,7 @@
     letter-spacing: 0;
     left: 259px;
     text-decoration: none;
+    white-space: nowrap; /* 자동 줄바꿈 방지 */
 }
 
 .notice .row-4 {
@@ -724,7 +725,7 @@
     text-decoration: none;
 }
 
-.notice .footer {
+.notice-footer .footer {
     position: absolute;
     width: 1920px;
     height: 390px;
