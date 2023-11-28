@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <style>
+        .footer .footer {
+            top: 1100px;
+        }
+    </style>
+
+    <div class="findId">
+        <div class="top">
+            <div class="heading-check-out">Find ID/PW</div>
+            <div class="overlap-group">
+                <div class="link-home">아이디 찾기 결과</div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="heading">
+                <p class="p">아이디 찾기</p>
+                <img class="family" th:src="@{/img/family.png}"/>
+            </div>
+
+            <div class="text-wrapper-11" th:if="${#strings.isEmpty(findId)}">
+                <p class="inquiry">조회결과가 없습니다.</p>
+            </div>
+            <div class="result-box" th:unless="${#strings.isEmpty(findId)}">
+                <p th:text="${findId.id}"></p>
+            </div>
+
+            <div class="group">
+                <a th:href="@{/member/find-IdPw}">
+                    <button class="div-wrapper" th:href="@{/member/find-IdPw}">비밀번호 찾기</button>
+                </a>
+            </div>
+            <div class="overlap-4">
+                <a th:href="@{/member/login}">
+                    <div class="text-wrapper-9">로그인</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

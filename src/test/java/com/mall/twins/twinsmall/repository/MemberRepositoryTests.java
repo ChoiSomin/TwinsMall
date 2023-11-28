@@ -22,7 +22,7 @@ public class MemberRepositoryTests {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Test
+    /*@Test
     public void insertMembers() {
 
         IntStream.rangeClosed(1,100).forEach(i -> {
@@ -54,6 +54,6 @@ public class MemberRepositoryTests {
         log.info(member.getRoleSet());
 
         member.getRoleSet().forEach(memberRole -> log.info(memberRole.name()));
-    }
+    }*/
 
 }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="script">
+    <script type="text/javascript">
+
+        //체크 버튼에 따라 아이디/비밀번호 기능이 달라짐
+        function search_check(num) {
+            if (num == 1) {
+                document.getElementById("searchP").style.display = "none";
+                document.getElementById("searchI").style.display = "";
+            } else {
+                document.getElementById("searchI").style.display = "none";
+                document.getElementById("searchP").style.display = "";
+            }
+        }
+
+    </script>
+</div>
+
+<div layout:fragment="content">
+
+    <style>
+        .footer .footer {
+            top: 1100px;
+        }
+    </style>
+
+    <div class="findIdPw">
+        <div class="top">
+            <div class="heading-check-out">Find ID/PW</div>
+            <div class="overlap-group">
+                <div class="link-home">아이디/비밀번호 찾기</div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="heading">
+                <p class="p">아이디 및 비밀번호 찾기</p>
+                <img class="family" th:src="@{/img/family.png}"/>
+            </div>
+            <form id="findForm" th:action="@{/member/find-Id}" method="post">
+                <div class="radio-group-box">
+                    <input type="radio" id="search_1" name="search_total" onclick="search_check(1)" checked="checked">
+                </div>
+                <label class="text-wrapper-10" for="search_1">아이디 찾기</label>
+
+                <div class="radio-group-box-1">
+                    <input type="radio" class="custom-control-input-1" id="search_2" name="search_total"
+                           onclick="search_check(2)">
+                </div>
+                <label class="text-wrapper-11" for="search_2">비밀번호 찾기</label>
+
+                <div id="searchI">
+                    <div class="overlap">
+                        <label class="text-wrapper-3" for="name">이름</label>
+                        <div class="text-wrapper-4">*</div>
+                    </div>
+
+                    <input class="input" type="text" id="name" name="name" placeholder="이름 입력">
+
+                    <div class="overlap-2">
+                        <label class="text-wrapper-5" for="phone">휴대폰번호</label>
+                        <div class="text-wrapper-6">*</div>
+                    </div>
+                    <div class="overlap-3">
+                        <input class="input-2" type="text" id="phone" name="phone"
+                               placeholder="휴대폰 입력(-없이)">
+                    </div>
+                    <div class="group">
+                        <button id="id-find" type="submit" class="div-wrapper">확인
+                        </button>
+                    </div>
+                    <div class="overlap-4">
+                        <a th:href="@{/member/login}">
+                            <div class="text-wrapper-9">취소</div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div id="searchP" style="display: none;">
+                    <div class="overlap">
+                        <label class="text-wrapper-3" for="inputId">아이디</label>
+                        <div class="text-wrapper-12">*</div>
+                    </div>
+
+                    <input class="input" type="text" id="inputId" name="inputId_2" placeholder="아이디 입력">
+
+                    <div class="overlap-2">
+                        <label class="text-wrapper-5" for="inputEmail_2">이메일</label>
+                        <div class="text-wrapper-13">*</div>
+                    </div>
+                    <div class="overlap-3">
+                        <input class="input-2" type="text" id="inputEmail_2" name="inputEmail_2"
+                               placeholder="이메일 입력(example@eamil.com)">
+                    </div>
+                    <div class="group">
+                        <div>
+                            <button id="searchBtn2" type="sumit" class="div-wrapper">확인</button>
+                        </div>
+                    </div>
+
+                    <div class="overlap-4">
+                        <a th:href="@{/member/loin}">
+                            <div class="text-wrapper-9">취소</div>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</html>

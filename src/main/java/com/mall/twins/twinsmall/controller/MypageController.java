@@ -2,6 +2,7 @@ package com.mall.twins.twinsmall.controller;
 
 import com.mall.twins.twinsmall.config.auth.CustomUserDetails;
 import com.mall.twins.twinsmall.config.auth.UserAdapter;
+import com.mall.twins.twinsmall.dto.ItemFormDto;
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
 import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Member;
@@ -134,6 +135,23 @@ public class MypageController {
 
         return "redirect:/mypage/shipping/list";
     }
+
+
+    @GetMapping("/shipping/list")
+    public String list(){
+        log.info("list....");
+
+        return "/mypage/shipping";
+    }
+
+
+    @GetMapping(value = "/shipping/register")
+    public String shippingRegister(Model model) {
+        model.addAttribute("shippingDto", new ShippingDto());
+        return "mypage/shippingRegister";
+    }
+
+
 
     // 회원 정보 조회
     @GetMapping("/read")
