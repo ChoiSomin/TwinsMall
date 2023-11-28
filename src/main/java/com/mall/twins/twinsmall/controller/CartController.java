@@ -118,8 +118,6 @@ public class CartController {
             // 숫자로 변환
             List<CartItemDto> cartItems = cartDetailDto.getCartDetailDto();
 
-
-
             // 총 주문 금액 초기화
             int orderTotalPrice = 0;
 

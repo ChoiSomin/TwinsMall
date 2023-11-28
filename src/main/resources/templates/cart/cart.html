@@ -29,7 +29,8 @@
                     <img class="data-cart-jpg" th:src="${cartItem.imgUrl}" th:alt="${cartItem.itemNm}"
                          th:attr="data-itemnm=${cartItem.itemNm}"/>
                     <div class="data">
-                        <div class="heading-t-shirt"><span th:id="'itemNm_' + ${cartItem.cartItemId}" th:data-name="${cartItem.itemNm}"></span></div>
+                        <div class="heading-t-shirt"><span th:id="'itemNm_' + ${cartItem.cartItemId}"
+                                                           th:data-name="${cartItem.itemNm}"></span></div>
                         <div class="heading">
                             <span th:id="'price_' + ${cartItem.cartItemId}" th:data-price="${cartItem.price}"
                                   data-th-text="| ${#numbers.formatInteger(cartItem.price, 3, 'COMMA')} 원 |">
@@ -61,42 +62,38 @@
                 </div>
             </th:block>
         </div>
-        <tr th:each="cartItem : ${cartItems}">
-            <div class="div-cart-total-wrapper">
-                <div class="div-cart-total">
-                    <div class="heading-cart-total">총 주문금액</div>
-                    <div class="list-item">
-                        <div class="text-wrapper-4">Subtotal</div>
-                        <div class="text-wrapper-5">
-                        <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
-                              name="totalPrice"
-                              data-th-text="| ${#numbers.formatInteger(cartItem.price * cartItem.count, 3, 'COMMA')} 원 |">
-                    </span>
-                        </div>
-                    </div>
-                    <div class="list-item-2">
-                        <div class="text-wrapper-6">Total</div>
-                        <div class="text-wrapper-5">
-                            <span th:id="orderTotalPrice"
-                                  > 0원</span>
-                        </div>
-                    </div>
-                    <div class="link">
-                        <!-- 주문하기 버튼 클릭 시, JavaScript 함수 실행 -->
-
-                        <button type="button" class="text-wrapper-7" onclick="orders()">총 주문하기</button>
-
+        <div class="div-cart-total-wrapper">
+            <div class="div-cart-total">
+                <div class="heading-cart-total">총 주문금액</div>
+                <div class="list-item">
+                    <div class="text-wrapper-4">Subtotal</div>
+                    <div class="text-wrapper-5">
+                        0원
                     </div>
                 </div>
+                <div class="list-item-2">
+                    <div class="text-wrapper-6">Total</div>
+                    <div class="text-wrapper-5">
+                            <span th:id="orderTotalPrice"
+                                  data-order-total="0">0원</span>
+                    </div>
+                </div>
+                <div class="link">
+                    <!-- 주문하기 버튼 클릭 시, JavaScript 함수 실행 -->
+
+                    <button type="button" class="text-wrapper-7" onclick="orders()">총 주문하기</button>
+
+                </div>
             </div>
-        </tr>
+        </div>
+
 
         <th:block layout:fragment="script">
             <script th:inline="javascript">
-
                 $(document).ready(function () {
                     $("input[name=cartChkBox]").change(function () {
-                        getOrderTotalPrice();
+                        var orderTotalPrice = getOrderTotalPrice();
+                        $("#orderTotalPrice").html(orderTotalPrice + '원');
                     });
                 });
 
@@ -106,13 +103,10 @@
                         var cartItemId = $(this).val();
                         var price = $("#price_" + cartItemId).attr("data-price");
                         var count = $("#count_" + cartItemId).val();
-
-                        orderTotalPrice += price * count;
-
-                        // 디버깅용 로그
-                        console.log("cartItemId:", cartItemId, "price:", price, "count:", count, "orderTotalPrice:", orderTotalPrice);
+                        var subTotalPrice = price * count;
+                        orderTotalPrice += subTotalPrice;
                     });
-                    $("#orderTotalPrice").html(orderTotalPrice + '원');
+                    return orderTotalPrice;
                 }
 
                 function changeCount(obj) {
@@ -121,7 +115,8 @@
                     var price = $("#price_" + cartItemId).data("price");
                     var totalPrice = price * count;
                     $("#totalPrice_" + cartItemId).html(totalPrice + "원");
-                    getOrderTotalPrice();
+                    var orderTotalPrice = getOrderTotalPrice();
+                    $("#orderTotalPrice").html(orderTotalPrice + '원');
                 }
 
                 function checkAll() {
@@ -130,8 +125,10 @@
                     } else {
                         $("input[name=cartChkBox]").prop("checked", false);
                     }
-                    getOrderTotalPrice();
+                    var orderTotalPrice = getOrderTotalPrice();
+                    $("#orderTotalPrice").html(orderTotalPrice + '원');
                 }
+
 
                 function deleteCartItem(obj) {
                     var cartItemId = obj.dataset.id;
@@ -161,13 +158,6 @@
                 function orders() {
                     var selectedItems = [];
                     var cartItemIds = []; // 추가: 선택된 아이템들의 cartItemId를 저장하는 배열
-
-                    // 체크된 체크박스가 하나 이상 있는지 확인
-                    var checkedCheckboxes = $("input[name='cartChkBox']:checked");
-                    if (checkedCheckboxes.length === 0) {
-                        alert('상품을 선택해주세요.');
-                        return;
-                    }
 
                     $("input[name='cartChkBox']:checked").each(function () {
                         var cartItemId = $(this).val();
