@@ -49,7 +49,7 @@ public class ItemController {
 
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String adminMember(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
 
         Page<Item> items =
                 itemService.getAdminItemPage(itemSearchDto, pageable);
@@ -97,7 +97,7 @@ public class ItemController {
             return "item/register";
         }
 
-        return "redirect:/";
+        return "redirect:/admin/items";
     }
 
     @GetMapping(value = "/admin/item/{ItemId}")
@@ -133,7 +133,7 @@ public class ItemController {
             return "item/register";
         }
 
-        return "redirect:/";
+        return "redirect:/admin/items";
     }
 
     @GetMapping(value = "/item/list")

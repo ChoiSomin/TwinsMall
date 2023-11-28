@@ -337,7 +337,7 @@
 }
 
 .cart .table-body-row {
-  position: absolute;
+  position: relative;
   width: 750px;
   height: 151px;
   top: 50px;
