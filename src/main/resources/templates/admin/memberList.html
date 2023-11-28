@@ -3,130 +3,142 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
-<div layout:fragment="script">
-    <script type="text/javascript">
-        var actionForm = $("form[role='form']"); //form 태그 객체
-
-        $(".removeBtn").click(function(){
-            console.log("Remove button clicked");
-
-            var nnoStr = $("input[name='nno']").val();
-            var nno = parseInt(nnoStr);
-
-            if(!confirm("삭제하시겠습니까?")){
-                return ;
-            }
-
-            actionForm.append('<input type="hidden" name="nno" value="' + nno + '">');
-
-            actionForm
-                .attr("action", "/notice/remove")
-                .attr("method","post")
-                .submit();
-
-        });
-
-        $(".modifyBtn").click(function() {
-            console.log("Modify button clicked");
-
-            if(!confirm("수정하시겠습니까?")){
-                return ;
-            }
-
-            actionForm
-                .attr("action", "/notice/modify")
-                .attr("method","post")
-                .submit();
-        });
-
-        $(".listBtn").click(function() {
-            console.log("List button clicked");
-
-            //var pageInfo = $("input[name='page']");
-            var page = $("input[name='page']");
-            var type = $("input[name='type']");
-            var keyword = $("input[name='keyword']");
-
-            actionForm.empty(); //form 태그의 모든 내용을 지우고
-
-            <!--수정 : type 과 keyword 항목 추가-->
-            actionForm.append(page);
-            actionForm.append(type);
-            actionForm.append(keyword);
-
-
-            actionForm
-                .attr("action", "/notice/list")
-                .attr("method","get");
-
-            actionForm.submit();
-
-        })
-
-        function history_back() {
-            history.back();
-        }
-    </script>
-</div>
 <div layout:fragment="content">
-    <div class="notice-detail">
-        <div class="top">
-            <div class="heading-our-blog">Notice</div>
+
+    <div class="admin-member">
+        <div class="shop">
+            <div class="heading-shop">Admin Page</div>
+            <div class="overlap-group">
+                <div class="link-home">관리자 페이지</div>
+            </div>
         </div>
-        <div class="text-wrapper-3">공지 수정</div>
-        <form role="form" th:action="@{/notice/modify}" method="post">
+        <div class="text-wrapper-3">회원 목록</div>
+        <div class="view">
+            <div class="nav-list-item-link-4">상품정보</div>
+            <a th:href="@{/item/register}">
+                <div class="nav-list-item-link-5">상품등록</div>
+            </a>
+            <div class="nav-list-item-link-6">회원정보</div>
+            <a th:href="@{/admin/memberList}">
+                <div class="nav-list-item-link-7">회원목록</div>
+            </a>
+            <a href="#">
+                <div class="nav-list-item-link-11">주문목록</div>
+            </a>
+            <div class="nav-list-item-link-8">서비스</div>
+            <div class="nav-list-item-link-9">1:1문의</div>
+            <div class="nav-list-item-link-10">리뷰</div>
 
-            <input type="hidden" name="nno" th:value="${noticeFormDto.nno}">
-            <!--페이지 번호  -->
-            <input type="hidden" name="page" th:value="${requestDTO.page}">
-            <input type="hidden" name="type" th:value="${requestDTO.type}">
-            <input type="hidden" name="keyword" th:value="${requestDTO.keyword}">
+        </div>
 
-            <div class="frame">
-                <div class="table">
-                    <div class="table-2">
-                        <div class="row">
-                            <div class="cell">
-                                <div class="content">
-                                    <input class="text" name="ntitle" th:value="${noticeFormDto.ntitle}">
-                                    <input type="hidden" class="text" name="view" th:value="${noticeFormDto.view}" readonly>
-                                </div>
+        <div class="frame">
+            <div class="table">
+                <div class="table-2">
+                    <div class="row">
+                        <div class="cell">
+                            <div class="content">
+                                <div class="text">번호</div>
                             </div>
                         </div>
-                        <div class="cell-wrapper">
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <textarea class="text-2" name="ncontent"
-                                              th:text="${noticeFormDto.ncontent}"></textarea>
-                                </div>
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <div class="text">아이디</div>
                             </div>
                         </div>
                         <div class="div-wrapper">
-                            <div class="content-wrapper">
-                                <div class="content-2">
-                                    <div class="text-3" name="regTime"
-                                         th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}"
-                                         readonly>등록일</div>
-                                    <div class="text-4" name="updateTime"
-                                         th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}"
-                                         readonly></div>
-                                </div>
+                            <div class="content">
+                                <div class="text">이름</div>
+                            </div>
+                        </div>
+                        <div class="cell-2">
+                            <div class="content">
+                                <div class="text">이메일</div>
+                            </div>
+                        </div>
+                        <div class="cell-7">
+                            <div class="content">
+                                <div class="text">생년월일</div>
+                            </div>
+                        </div>
+                        <div class="cell-8">
+                            <div class="content">
+                                <div class="text">전화번호</div>
                             </div>
                         </div>
                     </div>
+                    <th:block th:each="member, loop : ${member.dtoList}">
+                        <div class="row-2">
+                            <div class="cell-3">
+                                <div class="content-2">
+                                    <div th:text="${member.mno}" class="text-2"></div>
+                                </div>
+                            </div>
+                            <div class="cell-4">
+                                <div class="content-2">
+                                    <div class="text-4">[[${member.mid}]]</div>
+                                </div>
+                            </div>
+
+                            <div class="cell-5">
+                                <div class="content-2">
+                                    <div class="text-3"
+                                         th:text="${member.mname}"></div>
+                                </div>
+                            </div>
+                            <div class="cell-6">
+                                <div class="content-2">
+                                    <div class="text-5"
+                                         th:text="${member.memail}"></div>
+                                </div>
+                            </div>
+                            <div class="cell-9">
+                                <div class="content-2">
+                                    <div class="text-6"
+                                         th:text="${member.mbirth}"></div>
+                                </div>
+                            </div>
+                            <div class="cell-10">
+                                <div class="content-2">
+                                    <div class="text-7"
+                                         th:text="${member.mphone}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+
                 </div>
-                <div class="frame-2">
-                    <button type="button" class="text-wrapper-4" value="history.back()" onclick="history_back()">취소하기</button>
-                </div>
-                <div class="frame-3">
-                    <button type="button" class="text-wrapper-5 removeBtn">삭제하기</button>
-                    </a>
-                </div>
-                <div class="frame-4">
-                    <button type="button" class="text-wrapper-4 modifyBtn">수정하기</button>
-                </div>
+
             </div>
-        </form>
+            <div class="frame-120">
+                <ul class="pagination justify-content-center">
+
+                    <li class="link" th:if="${member.prev}">
+                        <a class="page-link" th:href="@{/admin/memberList(page= ${notice.start -1},
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword})}" tabindex="-1">
+                            <span aria-hidden='true'>이전페이지</span>
+                        </a>
+                    </li>
+
+
+                    <li class="link-2" th:class=" 'page-item ' + ${member.page == page?'active':''} "
+                        th:each="page: ${member.pageList}">
+                        <a class="page-link" th:href="@{/admin/memberList(page = ${page} ,
+                   type=${pageRequestDTO.type} ,
+                   keyword = ${pageRequestDTO.keyword})}" th:inline="text">[[${page}]]</a>
+                    </li>
+
+
+                    <li class="link-3" th:if="${member.next}">
+                        <a class="page-link" th:href="@{/admin/memberList(page= ${result.end + 1} ,
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword})}" aria-label='Next'>
+                            <span aria-hidden='true'>다음페이지</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="footer">
         <footer class="footer">
@@ -180,7 +192,7 @@
             </div>
         </footer>
     </div>
-    <div class="notice-detail-footer">
+    <div class="memberList-footer">
         <footer class="footer">
             <div class="overlap-5">
                 <div class="div-container">

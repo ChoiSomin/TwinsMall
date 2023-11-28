@@ -1,66 +1,88 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layout/layout}">
 
-<div layout:fragment="content">
-    <div class="notice-detail">
-        <div class="top">
-            <div class="heading-our-blog">Notice</div>
+<div layout:fragment="content" id='wrapper'>
+
+    <div class="mypage-shipping">
+        <div class="shop">
+            <div class="heading-shop">Shipping</div>
+            <div class="link-home">배송지정보</div>
         </div>
-        <div class="text-wrapper-3">공지사항</div>
-        <form th:action="@{/notice/register}" th:method="post">
-            <div class="frame">
-                <div class="table">
-                    <div class="table-2">
-                        <div class="row">
-                            <div class="cell">
-                                <div class="content">
-                                    <div class="text" name="notice_title" th:if="${noticeFormDto != null}" th:text="${noticeFormDto.ntitle}" readonly></div>
-                                    <input class="text" th:type="hidden" name="notice_view" th:if="${noticeFormDto != null}" th:text="${noticeFormDto.view}" readonly>
-                                </div>
-                            </div>
+        <div class="view">
+            <div class="nav-list-item-link-4">주문정보</div>
+            <div class="nav-list-item-link-5">주문목록</div>
+            <div class="nav-list-item-link-6">회원정보</div>
+            <div class="nav-list-item-link-7">내정보</div>
+            <div class="nav-list-item-link-8">서비스</div>
+            <div class="nav-list-item-link-9">1:1문의</div>
+            <div class="nav-list-item-link-10">나의 리뷰</div>
+            <div class="nav-list-item-link-11">배송지 정보</div>
+        </div>
+        <div class="div-wrapper">
+            <div class="text-wrapper-3">나의 배송지 정보</div>
+        </div>
+        <div class="frame-12">
+            <a th:href="@{/mypage/shipping/register}" class="text-wrapper-18">등록하기</a>
+            <!--<button type="button" class="text-wrapper-18 removeLink"></button>-->
+        </div>
+        <div class="view-2">
+            <div class="row">
+                <div class="cell">
+                    <div class="content">
+                        <div class="text">배송지명</div>
+                    </div>
+                </div>
+                <div class="content-wrapper">
+                    <div class="content">
+                        <div class="text">받는 분</div>
+                    </div>
+                </div>
+                <div class="cell-2">
+                    <div class="content">
+                        <div class="text">주소</div>
+                    </div>
+                </div>
+                <div class="cell-3">
+                    <div class="content">
+                        <div class="text">우편번호</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--배송지 출력-->
+            <th:block th:each="ShippingDto : ${shippingDTO}">
+
+                <input type="hidden" name="sno" th:value="${ShippingDto.sno}">
+
+                <div class="row">
+                    <div class="cell-4">
+                        <div class="content">
+                            <a class="text-2" th:href="@{/mypage/shipping/read(sno=${ShippingDto.sno})}">[[${ShippingDto.sname}]]</a>
                         </div>
-                        <div class="cell-wrapper">
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <div class="text-2" name="notice_content" th:if="${noticeFormDto != null}" th:text="${noticeFormDto.ncontent}"
-                                         readonly>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="cell-5">
+                        <div class="content">
+                            <div class="text-2">[[${ShippingDto.sperson}]]</div>
                         </div>
-                        <div class="div-wrapper">
-                            <div class="content-wrapper">
-                                <div class="content-2">
-                                    <h3>등록일&nbsp : &nbsp</h3>
-                                    <div class="text-3" name="regTime" th:if="${noticeFormDto != null}"
-                                         th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy/MM/dd')}"
-                                         readonly></div>
-                                    <h3>수정일&nbsp : &nbsp</h3>
-                                    <div class="text-4" name="modTime" th:if="${noticeFormDto != null}"
-                                         th:text="${#temporals.format(noticeFormDto.updateTime, 'yyyy/MM/dd')}"
-                                         readonly>수정일</div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="cell-6">
+                        <div class="content-2">
+                            <a class="text-2" th:href="@{/mypage/shipping/read(sno=${ShippingDto.sno})}">[[${ShippingDto.address}]]
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cell-7">
+                        <div class="content">
+                            <div class="text-2">[[${ShippingDto.zonecode}]]</div>
                         </div>
                     </div>
                 </div>
-                <div class="frame-22">
-                    <a th:href="@{/notice/list}" class="text-wrapper-55">목록보기</a>
-                </div>
-                <li sec:authorize="hasAnyAuthority('ADMIN')">
-                <div class="frame-44">
-                    <a th:href="@{/notice/modify(nno = ${noticeFormDto.nno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
-                        <button type="button" class="text-wrapper-4 editBtn">수정하기</button>
-                    </a>
-                </div>
-                </li>
-            </div>
-        </form>
+            </th:block>
+        </div>
     </div>
-    <div class="notice-detail-footer">
+    <div class="shipping-footer">
         <footer class="footer">
             <div class="overlap-5">
                 <div class="div-container">
@@ -113,4 +135,5 @@
         </footer>
     </div>
 </div>
+
 </html>

@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -76,16 +77,9 @@ public class CustomSecurityConfig {
 
 
         http.authorizeRequests() // URL 패턴에 따른 접근 권한을 설정
-                        .antMatchers("/itemRegister", "/notice/register", "notice/modify").hasAnyAuthority("ADMIN")
+                        .antMatchers("/itemRegister", "/notice/register", "/notice/modify", "/admin/**").hasAnyAuthority("ADMIN")
                         .antMatchers("/mypage/**", "/cart", "/orders/**").authenticated()
                         .anyRequest().permitAll();
-
-        /*// 쿠키를 이용해서 로그인 정보 유지, (persistent_logins) 테이블 이용
-        http.rememberMe()
-                .key("12345678")
-                .tokenRepository(persistentTokenRepository())
-                .userDetailsService(userDetailsService)
-                .tokenValiditySeconds(60*60*24*30);     // 유효 기간 30일*/
 
         http.rememberMe() // rememberMe 기능 작동함
                 .tokenValiditySeconds(3600) // 쿠키의 만료시간 설정(초), default: 14일

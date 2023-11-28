@@ -4,6 +4,7 @@ import com.mall.twins.twinsmall.entity.Member;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
@@ -22,6 +23,9 @@ public interface MemberRepository extends JpaRepository<Member, String> {
     /** Security - username이 DB에 존재하는지 확인 **/
     @EntityGraph(attributePaths = "roleSet")
     Member findByMid(String mid);
+
+    @Query("SELECT COALESCE(m.mid, 0) FROM Member m WHERE m.mname = :mname AND m.mphone = :mphone")
+    String searchId(@Param("mname")String mname, @Param("mphone") String mphone);
 
     /**
      * 유효성 검사 - 중복 체크

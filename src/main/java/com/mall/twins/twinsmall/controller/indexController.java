@@ -22,10 +22,16 @@ public class indexController {
 
     private final ItemService itemService;
 
-    @GetMapping("/index")
-    public void list() {
+    @GetMapping("/")
+    public String list() {
         log.info("list....");
-
+        return "index";
     }
+
+    /*@GetMapping("/checkout")
+    public void checkout() {
+        log.info("checkout....");
+
+    }*/
 
 }

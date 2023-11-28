@@ -3,12 +3,14 @@ package com.mall.twins.twinsmall.dto;
 import com.mall.twins.twinsmall.constant.MemberRole;
 import com.mall.twins.twinsmall.entity.Member;
 import lombok.*;
+import org.modelmapper.ModelMapper;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Builder
 @NoArgsConstructor
@@ -47,6 +49,8 @@ public class MemberJoinDTO {
     private boolean mdel;
 
     private boolean msocial;
+
+    private LocalDateTime regTime;    // 가입일
 
     /** 암호화된 password **/
     public void encryptPassword(String BCryptpassword){

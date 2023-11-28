@@ -1,12 +1,13 @@
 package com.mall.twins.twinsmall.controller;
 
+import com.mall.twins.twinsmall.config.auth.CustomUserDetails;
 import com.mall.twins.twinsmall.config.auth.UserAdapter;
-import com.mall.twins.twinsmall.dto.ItemFormDto;
 import com.mall.twins.twinsmall.dto.MemberJoinDTO;
 import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.repository.ShippingRepository;
+import com.mall.twins.twinsmall.security.dto.MemberSecurityDTO;
 import com.mall.twins.twinsmall.service.MemberService;
 import com.mall.twins.twinsmall.service.ShippingService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
+@RequestMapping("/mypage")
 @Log4j2
 @RequiredArgsConstructor
 @PreAuthorize("isAuthenticated()") // 로그인한 사용자만 조회 가능 -> 비로그인 상태일 경우 로그인 화면으로 이동
@@ -37,48 +39,43 @@ public class MypageController {
 
     private final MemberRepository memberRepository;
 
-    private final AuthenticationManager authenticationManager;
-
     private final ShippingService shippingService;
 
     private final ShippingRepository shippingRepository;
 
-
-    @GetMapping("mypage/shipping/list")
-    public String list(Model model){
+    @GetMapping("/shipping/list")
+    public String list(Model model) {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDetails userDetails = (UserDetails)principal;
+        UserDetails userDetails = (UserDetails) principal;
         String mid = userDetails.getUsername();
 
         model.addAttribute("shippingDTO", shippingService.readAll(mid));
 
 
-        return "mypage/shipping";
+        return "shipping/shipping";
     }
 
-    @GetMapping("mypage/shipping/register")
-    public String shippingRegister(Model model){
+    @GetMapping("/shipping/register")
+    public String shippingRegister(Model model) {
 
         model.addAttribute("shippingDto", new ShippingDto());
         log.info("register ");
-        return "mypage/shippingRegister";
+        return "shipping/shippingRegister";
     }
 
 
-
-
-    @PostMapping(value = "mypage/shipping/register")
+    @PostMapping(value = "/shipping/register")
     public String shippingRegister(@Valid ShippingDto shippingDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) {
 
         log.info("배송지 등록");
 
         String loggedId = principal.getName();
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
-            return "redirect:/mypage/shippingRegister";
+            return "redirect:/shipping/shippingRegister";
         }
 
         shippingDto.setMid(loggedId);
@@ -88,23 +85,20 @@ public class MypageController {
 
         log.info(sno);
 
-        return "redirect:/mypage/shipping/list";
+        return "redirect:/shipping/shipping/list";
     }
 
 
+    @GetMapping("/shipping/{sno}")
+    public String read(Model model) {
 
-    @GetMapping("mypage/shipping/read{sno}")
-    public String read(long sno, Model model){
-
-        ShippingDto shippingDto = shippingService.readOne(sno);
-
-        model.addAttribute("shippingDto", shippingDto);
+        model.addAttribute("shippingDTO", new ShippingDto());
 
 
-        return "mypage/shippingRead";
+        return "shipping/shipping";
     }
 
-    @GetMapping("mypage/shipping/modify")
+    @GetMapping("/shipping/modify")
     public String Modifyread(long sno, Model model){
 
         ShippingDto shippingDto = shippingService.readOne(sno);
@@ -112,13 +106,12 @@ public class MypageController {
         model.addAttribute("shippingDto", shippingDto);
 
 
-        return "mypage/shippingModify";
+        return "shipping/shippingModify";
     }
 
-
-    @PostMapping("/mypage/shipping/modify")
+    @PostMapping("/shipping/modify")
     public String shippingModify(ShippingDto shippingDto, RedirectAttributes redirectAttributes) {
-        log.info("shippingmodify");
+        log.info("shipping modify");
         log.info("shippingDTO: " + shippingDto);
 
         shippingService.modify(shippingDto);
@@ -127,12 +120,10 @@ public class MypageController {
         redirectAttributes.addAttribute("sno", shippingDto.getSno());
 
         // Redirect 시, URL에 'sno' 값을 포함하여 리다이렉트합니다.
-        return "redirect:/mypage/shipping/read";
+        return "redirect:/shipping/read";
     }
 
-
-
-    @PostMapping("mypage/shipping/remove")
+    @PostMapping("/shipping/remove")
     public String remove(@RequestParam("sno") long sno, RedirectAttributes redirectAttributes){
 
         log.info("sno" + sno);
@@ -141,12 +132,8 @@ public class MypageController {
 
         redirectAttributes.addFlashAttribute("msg", sno);
 
-        return "redirect:/mypage/shipping/list";
+        return "redirect:/shipping/shipping/list";
     }
-
-
-
-
 
     // 회원 정보 조회
     @GetMapping("/read")
@@ -200,7 +187,7 @@ public class MypageController {
     /**
      * 회원 정보 수정
      **/
-    @PutMapping("/modify")
+    @PostMapping("/modify")
     @ResponseBody
     public boolean update(@RequestBody MemberJoinDTO dto) {
 
@@ -220,13 +207,17 @@ public class MypageController {
         memberService.userInfoUpdate(dto);
 
         /** ========== 변경된 세션 등록 ========== **/
-        /* 1. 새로운 UsernamePasswordAuthenticationToken 생성하여 AuthenticationManager 을 이용해 등록 */
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(dto.getMid(), dto.getMpw())
-        );
+        Authentication currentAuthentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) currentAuthentication.getPrincipal();
 
-        /* 2. SecurityContextHolder 안에 있는 Context를 호출해 변경된 Authentication으로 설정 */
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        // 사용자 정보 업데이트
+        userDetails.setUsername(dto.getMid());
+        userDetails.setPassword(dto.getMpw());
+
+        // 변경된 Authentication으로 SecurityContextHolder 업데이트
+        Authentication updatedAuthentication = new UsernamePasswordAuthenticationToken(userDetails, dto.getMpw(), userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(updatedAuthentication);
+
         return true;
     }
 

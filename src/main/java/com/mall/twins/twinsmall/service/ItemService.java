@@ -11,6 +11,7 @@ import com.mall.twins.twinsmall.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -100,5 +101,10 @@ public class ItemService {
         return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 
+    /* 페이징 추가 */
+    public Page<Item> getList(int page){
+        Pageable pageable = PageRequest.of(page, 12);
+        return this.itemRepository.findAll(pageable);
+    }
 
 }

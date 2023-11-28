@@ -5,64 +5,85 @@
 
 <div layout:fragment="script">
     <script type="text/javascript">
-        function memberUpdate(){
+        function memberUpdate() {
             console.log("memberUpdate 실행");
 
-            const data = {
+            let data = {
                 mid: $('#mid').val(),
                 mname: $('#mname').val(),
                 mphone: $('#mphone').val(),
                 mbirth: $('#mbirth').val(),
                 memail: $('#memail').val(),
-                mpw: $('#mpw').val()
-                };
+                mpw: null  // mpw에 null 값을 할당
+            };
 
-                // 공백 및 빈 문자열 체크
-                if(!data.mname || data.mname.trim() === "" || !data.mphone || data.mphone.trim() === ""
-                || !data.mbirth || data.mbirth.trim() === "" || !data.memail || data.memail.trim() === ""
-                || !data.mpw || data.mpw.trim() === ""){
-                    alert("공백 또는 입력하지 않은 부분이 있습니다.");
-                    return false;
-                }
-
-                const confirmCheck = confirm("수정하시겠습니까?");
-
-                if(confirmCheck == true){
-                    $.ajax({
-                        type: 'PUT',
-                        url: '/mypage/modify',
-                        contentType: 'application/json; charset=utf-8',
-                        data: JSON.stringify(data)
-                    }).done(function(result){
-                        if(result){
-                            alert("회원 수정이 완료되었습니다.");
-                            window.location.href="/mypage/read";
-                        } else {
-                            alert("이미 등록된 이메일/전화번호입니다. 다시 입력해주세요.");
-                            $('#mphone').focus();
-                            $('#memail').focus();
-                        }
-                    }).fail(function(error){
-                        alert(JSON.stringify(error));
-                    });
-                }
+            if ($('#mpw').val().trim() !== "") {
+                // mpw 입력값이 비어있지 않은 경우에만 값을 할당
+                data.mpw = $('#mpw').val();
             }
+
+
+            // 공백 및 빈 문자열 체크
+            if (!data.mname || data.mname.trim() === "" || !data.mphone || data.mphone.trim() === ""
+                || !data.mbirth || data.mbirth.trim() === "" || !data.memail || data.memail.trim() === "") {
+                alert("공백 또는 입력하지 않은 부분이 있습니다.");
+                return false;
+            }
+
+            const confirmCheck = confirm("수정하시겠습니까?");
+
+            if (confirmCheck == true) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/mypage/modify',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data)
+                }).done(function (result) {
+                    if (result) {
+                        alert("회원 수정이 완료되었습니다.");
+                        window.location.href = "/mypage/read";
+                    } else {
+                        alert("이미 등록된 이메일/전화번호입니다. 다시 입력해주세요.");
+                        $('#mphone').focus();
+                        $('#memail').focus();
+                    }
+                }).fail(function (error) {
+                    alert(JSON.stringify(error));
+                });
+            }
+        }
 
         var actionForm = $("form[role='form']"); //form 태그 객체
 
-        $(".deleteBtn").click(function(){
+        $(".deleteBtn").click(function () {
             console.log("Delete button clicked");
 
-            if(!confirm("탈퇴하시겠습니까?")){
+            if (!confirm("탈퇴하시겠습니까?")) {
                 return;
             }
 
             actionForm
                 .attr("action", "/mypage/delete")
-                .attr("method","post")
+                .attr("method", "post")
                 .submit();
 
         });
+
+        function togglePasswordChange() {
+            var passwordInput = $("#mpw");
+            var checkBox = $("#search");
+
+            // 체크박스의 체크 여부에 따라 비밀번호 입력란 활성/비활성화
+            passwordInput.prop("disabled", !checkBox.prop("checked"));
+
+            // 체크박스가 체크되어 있다면 포커스를 해당 입력란으로 이동
+            if (checkBox.prop("checked")) {
+                passwordInput.focus();
+            } else {
+                // 체크가 해제되면 비밀번호 입력란의 값을 빈 문자열로 설정 (초기화)
+                passwordInput.val('');
+            }
+        }
 
     </script>
 </div>
@@ -85,46 +106,101 @@
                 <div class="overlap">
                     <div class="text-wrapper-3">아이디 (수정 불가능)</div>
                 </div>
-                <input type="text" class="input" name="mid" th:field="*{mid}" th:id="mid" th:value="${member.mid}" readonly>
+                <input type="text" class="input" name="mid" th:field="*{mid}" th:id="mid" th:value="${member.mid}"
+                       readonly>
                 <div class="overlap-2">
                     <div class="text-wrapper-5">이름</div>
                 </div>
-                <input type="text" class="input-2" name="mname" th:field="*{mname}" th:id="mname" th:value="${member.mname}">
+                <input type="text" class="input-2" name="mname" th:field="*{mname}" th:id="mname"
+                       th:value="${member.mname}">
                 <div class="overlap-3">
                     <div class="text-wrapper-7">핸드폰번호</div>
                 </div>
-                <input type="text" class="input-3" name="mphone" th:field="*{mphone}" th:id="mphone" th:value="${member.mphone}">
+                <input type="text" class="input-3" name="mphone" th:field="*{mphone}" th:id="mphone"
+                       th:value="${member.mphone}">
                 <div class="overlap-4">
                     <div class="text-wrapper-9">생년월일</div>
                 </div>
-                <input type="text" class="input-4" name="mbirth" th:field="*{mbirth}" th:id="mbirth" th:value="${member.mbirth}">
+                <input type="text" class="input-4" name="mbirth" th:field="*{mbirth}" th:id="mbirth"
+                       th:value="${member.mbirth}">
                 <div class="overlap-5">
-                  <div class="text-wrapper-11">변경할 비밀번호</div>
+                    <div class="text-wrapper-11">
+                        <input type="checkbox" id="search" name="search_total"  onclick="togglePasswordChange()">
+                    </div>
+                    <label class="text-wrapper-10" for="search">비밀번호 변경</label>
                 </div>
-                <input type="text" class="input-5" name="mpw" th:id="mpw" placeholder="변경할 비밀번호를 입력하세요.">
+                <input type="password" class="input-5" name="mpw" th:id="mpw" placeholder="변경할 비밀번호를 입력하세요." disabled>
                 <div class="overlap-6">
                     <div class="text-wrapper-13">Email</div>
                 </div>
-                <input type="text" class="input-6" name="memail" th:field="*{memail}" th:id="memail" th:value="${member.memail}">
+                <input type="text" class="input-6" name="memail" th:field="*{memail}" th:id="memail"
+                       th:value="${member.memail}">
 
                 <div class="div-wrapper">
                     <button type="button" class="text-wrapper-18 deleteBtn">탈퇴하기</button>
                 </div>
                 <div class="frame">
-                    <a th:href="@{/mypage/read}" class="text-wrapper-27" >취소하기</a>
+                    <a th:href="@{/mypage/read}" class="text-wrapper-27">취소하기</a>
                 </div>
                 <div class="frame-2">
                     <button type="button" value="회원 정보 수정" th:onclick="memberUpdate()"
-                            class="text-wrapper-17">수정완료</button>
+                            class="text-wrapper-17">수정완료
+                    </button>
                 </div>
             </form>
         </div>
     </div>
+    <div class="mypage-footer">
+        <footer class="footer">
+            <div class="overlap-5">
+                <div class="div-container">
+                    <p class="based-on-the-life-s">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</p>
+                    <p class="text-wrapper-11">we always strives to provide First, Unique,</p>
+                    <div class="overlap-6">
+                        <p class="text-wrapper-12">and New F·U·N experiences to provide</p>
+                        <p class="text-wrapper-13">customers with a better life.</p>
+                    </div>
+                    <a th:href="@{/templates/item/item.html}">
+                        <div class="heading-shopping">SHOPPING</div>
+                        <div class="list-item-link">Refrigerator</div>
+                        <div class="list-item-link-2">TV</div>
+                        <div class="list-item-link-3">Laptop</div>
+                        <div class="list-item-link-sale">Washing Machine</div>
+                        <div class="list-item-link-4">Air Purifier</div>
+                        <div class="list-item-link-5">Air Conditioner</div>
+                        <div class="list-item-link-6">Cleaner</div>
+                        <div class="heading-newletter">OTHERS</div>
+                        <div class="div-footer-copyright">
+                            <div class="overlap-group-2">
+                                <div class="text-wrapper-14">Copyright ©</div>
+                                <p class="text-wrapper-15">20232020 All rights reserved | This template is made with</p>
+                                <div class="symbol-3"></div>
+                                <div class="by">by</div>
+                                <div class="link-colorlib">Colorlib</div>
+                            </div>
+                        </div>
+                        <div class="list-item-link-7">About us</div>
+                        <div class="list-item-link-8">FAQ</div>
+                        <div class="list-item-link-9">Contact</div>
+                        <p class="element">
+                <span class="span"
+                >개인정보처리방침<br/>이벤트 개인정보처리방침<br/>영상정보처리기기운영관리방침<br/><br/>대표번호 :
+                </span>
+                            <a href="tel:02-3777-1114" target="_blank" rel="noopener noreferrer"
+                            ><span class="text-wrapper-16">02-</span></a
+                            >
+                            <span class="span"
+                            >1234-1234<br/>전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 :
+                  발신자부담)<br/>제품 및 서비스 문의는 긴급 문의 건에 한해 24시간 운영합니다.<br/>주소 : 경기도
+                  수원시 경기도 수원시 팔달구 덕영대로 899 (매산로 1가, 세진브론즈빌 304호)<br/><br/>본 사이트의 모든
+                  콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.</span
+                            >
+                        </p>
+                    </a>
+                </div>
+                <img class="img" src="/img/link-logo-png.png"/>
+            </div>
+        </footer>
+    </div>
 </div>
-
-<!--else if(!/(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?=\S+$).{8,16}/.test(data.password)){
-                    alert("비밀번호는 8~16자리수여야 합니다. 영문 대소문자, 숫자, 특수문자를 1개 이상 포함해야 합니다.");
-                    $('#password').focus();
-                    return false;
-                }-->
 </html>

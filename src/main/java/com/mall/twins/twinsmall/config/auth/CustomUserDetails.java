@@ -2,6 +2,7 @@ package com.mall.twins.twinsmall.config.auth;
 
 import com.mall.twins.twinsmall.entity.Member;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -11,6 +12,7 @@ import java.util.Collection;
 import java.util.Map;
 
 @Getter
+@Setter
 public class CustomUserDetails implements UserDetails, OAuth2User {
 
     private Member member;
@@ -50,6 +52,11 @@ public class CustomUserDetails implements UserDetails, OAuth2User {
         return member.getMid();
     }
 
+
+    public void setUsername(String newMid) { this.member.setMid(newMid); }
+
+    public void setPassword(String newPassword) { this.member.setMpw(newPassword); }
+
     /* 계정 만료 여부 : 만료 */
     @Override
     public boolean isAccountNonExpired() {
@@ -83,4 +90,5 @@ public class CustomUserDetails implements UserDetails, OAuth2User {
     public Map<String, Object> getAttributes() {
         return null;
     }
+
 }

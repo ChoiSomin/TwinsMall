@@ -38,4 +38,3 @@ public interface ShippingService {
     // 기본배송지 수정
     /*void modifySdefault(String mid);*/
 }
-

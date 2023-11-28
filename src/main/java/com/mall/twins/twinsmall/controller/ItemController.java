@@ -3,8 +3,14 @@ package com.mall.twins.twinsmall.controller;
 import com.mall.twins.twinsmall.dto.ItemFormDto;
 import com.mall.twins.twinsmall.dto.ItemSearchDto;
 import com.mall.twins.twinsmall.dto.MainItemDto;
+import com.mall.twins.twinsmall.dto.PageRequestDTO;
 import com.mall.twins.twinsmall.entity.Item;
+import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.entity.Notice;
+import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.ItemService;
+import com.mall.twins.twinsmall.service.MemberService;
+import com.mall.twins.twinsmall.service.MemberServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -29,11 +35,43 @@ import java.util.Optional;
 public class ItemController {
 
     private final ItemService itemService;
+    private final MemberService memberService;
+    private final MemberRepository memberRepository;
 
     @GetMapping(value = "/item/register")
     public String itemRegister(Model model) {
         model.addAttribute("itemFormDto", new ItemFormDto());
         return "item/register";
+    }
+
+    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+    public String adminMember(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+
+        Page<Item> items =
+                itemService.getAdminItemPage(itemSearchDto, pageable);
+        model.addAttribute("items", items);
+        model.addAttribute("itemSearchDto", itemSearchDto);
+        model.addAttribute("maxPage", 5);
+
+        return "admin/itemMng";
+    }
+
+    @GetMapping(value = "/admin/memberList")
+    public String adminPage(PageRequestDTO pageRequestDTO, @RequestParam(value="page", defaultValue="0") int page, Model model){
+
+        log.info("Member list...." + pageRequestDTO);
+
+        Page<Member> paging = this.memberService.getList(page);
+        List<Member> memberList = this.memberRepository.findAll();
+
+        model.addAttribute("member", memberService.getMemberList(pageRequestDTO));
+        model.addAttribute("paging", paging);
+        model.addAttribute("memberList", memberList);
+
+        log.info(memberService.getMemberList(pageRequestDTO));
+
+        return "admin/memberList";
     }
 
     @PostMapping(value = "/item/register")
@@ -95,27 +133,6 @@ public class ItemController {
         return "redirect:/";
     }
 
-    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
-    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page")Optional<Integer> page, Model model){
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
-
-        Page<Item> items =
-                itemService.getAdminItemPage(itemSearchDto, pageable);
-                model.addAttribute("items", items);
-                model.addAttribute("itemSearchDto", itemSearchDto);
-                model.addAttribute("maxPage", 5);
-
-                return "item/itemMng";
-
-    }
-
-    @GetMapping(value = "/item/{itemId}")
-    public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
-        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
-        model.addAttribute("item", itemFormDto);
-        return "item/itemDtl";
-    }
-
     @GetMapping(value = "/item/list")
     public String product(@RequestParam(name = "pname", required = false) String pname,
                           @RequestParam(name = "pcate", required = false) String pcate,
@@ -131,7 +148,7 @@ public class ItemController {
             itemSearchDto.setPname(pname);
         }
 
-        log.info("ItemSearchDto: {}", itemSearchDto);
+        log.info("It emSearchDto: {}", itemSearchDto);
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 12);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
@@ -142,7 +159,6 @@ public class ItemController {
 
         return "item/list";
     }
-
 
     @GetMapping(value = "/item/detail/{itemId}")
     public String productDetail(Model model, @PathVariable("itemId") Long itemId, Principal principal){
