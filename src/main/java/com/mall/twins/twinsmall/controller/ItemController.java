@@ -148,7 +148,7 @@ public class ItemController {
             itemSearchDto.setPname(pname);
         }
 
-        log.info("It emSearchDto: {}", itemSearchDto);
+        log.info("ItemSearchDto: {}", itemSearchDto);
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 12);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);

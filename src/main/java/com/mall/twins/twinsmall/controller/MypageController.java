@@ -85,17 +85,19 @@ public class MypageController {
 
         log.info(sno);
 
-        return "redirect:/shipping/shipping/list";
+        return "redirect:/mypage/shipping/list";
     }
 
 
-    @GetMapping("/shipping/{sno}")
-    public String read(Model model) {
+    @GetMapping("/shipping/read{sno}")
+    public String read(long sno, Model model){
 
-        model.addAttribute("shippingDTO", new ShippingDto());
+        ShippingDto shippingDto = shippingService.readOne(sno);
+
+        model.addAttribute("shippingDto", shippingDto);
 
 
-        return "shipping/shipping";
+        return "shipping/shippingRead";
     }
 
     @GetMapping("/shipping/modify")
@@ -132,7 +134,7 @@ public class MypageController {
 
         redirectAttributes.addFlashAttribute("msg", sno);
 
-        return "redirect:/shipping/shipping/list";
+        return "redirect:/mypage/shipping/list";
     }
 
     // 회원 정보 조회

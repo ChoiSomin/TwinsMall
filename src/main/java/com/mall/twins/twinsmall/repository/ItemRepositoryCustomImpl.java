@@ -9,6 +9,7 @@ import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.QItem;
 import com.mall.twins.twinsmall.entity.QItemImg;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -106,30 +107,38 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
-        if (itemSearchDto.getPname() != null && !itemSearchDto.getPname().isEmpty()) {
-            booleanBuilder.and(item.pname.contains(itemSearchDto.getPname()));
+        // ItemService 클래스 내의 getMainItemPage 메서드
+
+        OrderSpecifier<?> orderSpecifier;
+        if (pageable.getSort().isSorted()) {
+            orderSpecifier = pageable.getSort().stream()
+                    .findFirst()
+                    .map(order -> {
+                        if (order.getProperty().equals("pprice")) {
+                            return order.isAscending() ? item.pprice.asc() : item.pprice.desc();
+                        }
+                        return item.id.desc(); // 기본적으로 ID로 내림차순 정렬
+                    })
+                    .orElse(item.id.desc());
+        } else {
+            orderSpecifier = item.id.desc(); // 기본적으로 ID로 내림차순 정렬
         }
 
-        if (itemSearchDto.getPcate() != null && !itemSearchDto.getPcate().isEmpty()) {
-            booleanBuilder.and(item.pcate.eq(itemSearchDto.getPcate()));
-        }
 
         List<MainItemDto> content = queryFactory
-                .select(
-                        new QMainItemDto(
-                                item.id,
-                                item.pname,
-                                item.pdesc,
-                                itemImg.iimgurl,
-                                item.pprice,
-                                item.pcate,
-                                item.pstock)
-                )
+                .select(new QMainItemDto(
+                        item.id,
+                        item.pname,
+                        item.pdesc,
+                        itemImg.iimgurl,
+                        item.pprice,
+                        item.pcate,
+                        item.pstock))
                 .from(itemImg)
                 .join(itemImg.item, item) // itemImg와 item을 내부 조인함
                 .where(itemImg.iimgrep.eq("Y")) // 상품 이미지의 경우 대표 이미지만 불러옴
-                .where(pnameLike(itemSearchDto.getSearchQuery()))
-                .orderBy(item.id.desc())
+                .where(booleanBuilder)
+                .orderBy(orderSpecifier)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -137,11 +146,10 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
         long total = queryFactory
                 .select(Wildcard.count)
                 .from(itemImg)
-                .join(itemImg.item, item) 
+                .join(itemImg.item, item)
                 .where(itemImg.iimgrep.eq("Y"))
                 .where(pnameLike(itemSearchDto.getSearchQuery()))
-                .fetchOne()
-                ;
+                .fetchOne();
 
         return new PageImpl<>(content, pageable, total);
     }
