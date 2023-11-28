@@ -1137,12 +1137,14 @@
 /* 추가된 부분 */
 .pagination li {
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 20px;
+    cursor: pointer;
 }
 
 /* 추가된 부분 */
 .pagination a {
     text-decoration: none;
+    color: #000000;
 }
 
 /* FOOTER */

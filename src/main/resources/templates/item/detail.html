@@ -162,7 +162,7 @@
             <button type="button" class="text-wrapper-4" onclick="order()">주문하기</button>
         </div>
         </div>
-        <input type="text" id="itemStatus" th:value="${item.pstatus}" class="text-right">품절
+        <input type="hidden" id="itemStatus" th:value="${item.pstatus}" class="text-right">
         <div class="frame">
             <div class="tabpanel-heading">상품 정보</div>
             <p class="tabpanel-a-pocket-PC">

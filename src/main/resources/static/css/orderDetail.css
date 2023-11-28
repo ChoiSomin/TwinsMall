@@ -352,7 +352,7 @@
 .mypage-order-detail .overlap {
   position: absolute;
   width: 1124px;
-  height: 1405px;
+  height: 0px;
   top: 357px;
   left: 578px;
 }
@@ -841,7 +841,7 @@
   position: absolute;
   width: 364px;
   height: 35px;
-  top: 1353px;
+  top: 720px;
   left: 410px;
 }
 
@@ -1323,7 +1323,7 @@
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 1200px;
+    top: 1350px;
     left: 0;
     background-color: #111111;
 }

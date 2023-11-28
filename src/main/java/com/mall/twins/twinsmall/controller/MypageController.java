@@ -52,6 +52,7 @@ public class MypageController {
 
         model.addAttribute("shippingDTO", shippingService.readAll(mid));
 
+        log.info("shippingService.readAll(mid)");
 
         return "shipping/shipping";
     }
@@ -75,7 +76,7 @@ public class MypageController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
-            return "redirect:/shipping/shippingRegister";
+            return "/mypage/shipping/list";
         }
 
         shippingDto.setMid(loggedId);
@@ -85,17 +86,19 @@ public class MypageController {
 
         log.info(sno);
 
-        return "redirect:/shipping/shipping/list";
+        return "/mypage/shipping/list";
     }
 
 
-    @GetMapping("/shipping/{sno}")
-    public String read(Model model) {
+    @GetMapping("/shipping/read{sno}")
+    public String read(long sno, Model model){
 
-        model.addAttribute("shippingDTO", new ShippingDto());
+        ShippingDto shippingDto = shippingService.readOne(sno);
+
+        model.addAttribute("shippingDto", shippingDto);
 
 
-        return "shipping/shipping";
+        return "shipping/shippingRead";
     }
 
     @GetMapping("/shipping/modify")
@@ -106,7 +109,7 @@ public class MypageController {
         model.addAttribute("shippingDto", shippingDto);
 
 
-        return "shipping/shippingModify";
+        return "mypage/shippingModify";
     }
 
     @PostMapping("/shipping/modify")
@@ -120,7 +123,7 @@ public class MypageController {
         redirectAttributes.addAttribute("sno", shippingDto.getSno());
 
         // Redirect 시, URL에 'sno' 값을 포함하여 리다이렉트합니다.
-        return "redirect:/mypage/shipping/read";
+        return "redirect:/shipping/shipping/read";
     }
 
     @PostMapping("/shipping/remove")
@@ -132,7 +135,7 @@ public class MypageController {
 
         redirectAttributes.addFlashAttribute("msg", sno);
 
-        return "redirect:/mypage/shipping/list";
+        return "redirect:/shipping/shipping/list";
     }
 
     // 회원 정보 조회

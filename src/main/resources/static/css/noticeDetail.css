@@ -265,6 +265,7 @@
     color: #000000;
     font-size: 35px;
     letter-spacing: 0;
+    top: -10px;
 }
 
 .notice-detail .cell-wrapper {
@@ -292,7 +293,9 @@
 }
 
 .notice-detail .text-2 {
-    position: relative;
+    position: absolute;
+    width: 950px;
+    height: 450px;
     flex: 1;
     align-self: stretch;
     margin-top: -1px;
@@ -302,6 +305,8 @@
     font-size: 25px;
     letter-spacing: 0;
     line-height: 1.5;
+    left: 15px;
+    top: 30px;
 }
 
 .notice-detail .div-wrapper {
@@ -362,7 +367,7 @@
     position: absolute;
     width: 100px;
     height: 35px;
-    top: 638px;
+    top: 700px;
     left: 380px;
     background-color: #d9d9d9;
     border-radius: 7px;

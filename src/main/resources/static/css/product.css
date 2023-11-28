@@ -499,7 +499,7 @@
     position: absolute;
     width: 116px;
     height: 27px;
-    top: 0;
+    top: -3px;
     left: 747px;
     background-color: #ffffff;
     border-radius: 5px;
@@ -817,8 +817,9 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    top: 1695px;
+    top: 1650px;
     left: 402px;
+    font-size: 20px;
     /*border-radius: 15px;
     border: 1px solid;
     border-color: #111111;*/
@@ -1317,7 +1318,7 @@
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 2250px;
+    top: 2200px;
     left: 0;
     background-color: #111111;
 }
