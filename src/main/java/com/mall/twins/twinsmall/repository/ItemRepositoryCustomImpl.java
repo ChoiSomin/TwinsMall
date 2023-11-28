@@ -114,6 +114,10 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
             booleanBuilder.and(item.pcate.eq(itemSearchDto.getPcate()));
         }
 
+        booleanBuilder.and(item.pstatus.ne(ItemSellStatus.valueOf(ItemSellStatus.PAUSE.name())));
+
+        log.info("booleanBuilder: {}", booleanBuilder);
+
         List<MainItemDto> content = queryFactory
                 .select(
                         new QMainItemDto(
@@ -123,11 +127,12 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                                 itemImg.iimgurl,
                                 item.pprice,
                                 item.pcate,
-                                item.pstock)
+                                item.pstock,
+                                item.pstatus)
                 )
                 .from(itemImg)
                 .join(itemImg.item, item) // itemImg와 item을 내부 조인함
-                .where(itemImg.iimgrep.eq("Y")) // 상품 이미지의 경우 대표 이미지만 불러옴
+                .where(itemImg.iimgrep.eq("Y"), booleanBuilder) // 상품 이미지의 경우 대표 이미지만 불러옴
                 .where(pnameLike(itemSearchDto.getSearchQuery()))
                 .orderBy(item.id.desc())
                 .offset(pageable.getOffset())

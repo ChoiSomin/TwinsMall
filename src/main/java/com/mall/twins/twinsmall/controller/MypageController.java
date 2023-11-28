@@ -120,7 +120,7 @@ public class MypageController {
         redirectAttributes.addAttribute("sno", shippingDto.getSno());
 
         // Redirect 시, URL에 'sno' 값을 포함하여 리다이렉트합니다.
-        return "redirect:/shipping/read";
+        return "redirect:/mypage/shipping/read";
     }
 
     @PostMapping("/shipping/remove")
@@ -132,7 +132,7 @@ public class MypageController {
 
         redirectAttributes.addFlashAttribute("msg", sno);
 
-        return "redirect:/shipping/shipping/list";
+        return "redirect:/mypage/shipping/list";
     }
 
     // 회원 정보 조회

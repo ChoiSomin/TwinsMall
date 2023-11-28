@@ -195,11 +195,14 @@
             </script>
 
             <th:block th:each="item, status: ${items.getContent()}">
-                <!--<th:block th:each="item, status: ${items.getContent()}">-->
                 <div class="div-product-item">
+                    <a th:href="@{/item/detail/} + ${item.id}">
                     <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}">
                     <div class="heading-piqu-biker">[[${item.pname}]]</div>
-                    <div class="heading" data-th-text="| ${#numbers.formatInteger(item.pprice, 3, 'COMMA')} 원 |"></div>
+
+                    <div th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="heading" data-th-text="| ${#numbers.formatInteger(item.pprice, 3, 'COMMA')} 원 |"></div>
+                    <div th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SOLD_OUT}" class="heading">품절</div>
+                    </a>
                 </div>
             </th:block>
 

@@ -533,7 +533,7 @@
     text-align: center;
     letter-spacing: 0;
     line-height: 26px;
-    top: 17px;
+    top: 0px;
     left: 45px;
 }
 
@@ -590,7 +590,7 @@
     letter-spacing: 0;
     line-height: 26px;
     left: 90px;
-    top: 17px;
+    top: 0px;
 }
 
 .admin .text-4 {
@@ -606,7 +606,7 @@
      letter-spacing: 0;
      line-height: 26px;
      left: 150px;
-     top: 17px;
+     top: 0px;
  }
 
  .admin .text-5 {
@@ -622,7 +622,7 @@
      letter-spacing: 0;
      line-height: 26px;
      left: -7px;
-     top: 17px;
+     top: 0px;
  }
 
 .admin .cell-8 {
