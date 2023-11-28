@@ -195,11 +195,12 @@
             </script>
 
             <th:block th:each="item, status: ${items.getContent()}">
-                <!--<th:block th:each="item, status: ${items.getContent()}">-->
                 <div class="div-product-item">
+                    <a th:href="@{/item/detail/} + ${item.id}">
                     <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}">
                     <div class="heading-piqu-biker">[[${item.pname}]]</div>
                     <div class="heading" data-th-text="| ${#numbers.formatInteger(item.pprice, 3, 'COMMA')} 원 |"></div>
+                    </a>
                 </div>
             </th:block>
 

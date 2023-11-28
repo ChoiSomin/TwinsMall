@@ -25,6 +25,12 @@
 
         function order() {
             var username = [[${username}]];
+            var userRole = [[${userRole}]];
+
+            if (userRole === 'ADMIN') {
+            alert('권한이 없습니다!');
+            return;
+            }
 
             var url = "/order";
             var paramData = {
@@ -61,6 +67,12 @@
         function addCart() {
 
             var username = [[${username}]];
+            var userRole = [[${userRole}]];
+
+            if (userRole === 'ADMIN') {
+                alert('권한이 없습니다!');
+                return;
+            }
 
             var url = "/cart";
             var paramData = {
@@ -112,8 +124,8 @@
                 <img class="i-fa-play-wrapper"
                      th:if="${item.itemImgDtoList != null and item.itemImgDtoList.size() > 1 and item.itemImgDtoList[4] != null}"
                      th:style="'background-image: url(' + ${item.itemImgDtoList[4]?.iimgurl ?: ''} + ')'">
-                <!--<img class="tabpanel-product-big"
-                     th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'">-->
+                <img class="tabpanel-product-big"
+                     th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'">
             </div>
         </div>
         <div class="heading" data-th-text="|￦ ${#numbers.formatInteger(item.pprice, 3, 'COMMA')}  |"></div>
@@ -127,12 +139,10 @@
         <div class="link">
             <button type="button" class="text-wrapper-4" onclick="addCart()">장바구니 담기
             </button>
-            <!--<div >ADD TO CART</div>-->
         </div>
         <div class="heading-hooded">[[${item.pname}]]</div>
         <div class="link-2">
             <button type="button" class="text-wrapper-4" onclick="order()">주문하기</button>
-            <!--<div>BUY</div>-->
         </div>
         </div>
         <div th:unless="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="text-right">
