@@ -104,42 +104,10 @@ public class CartController {
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
 
-    /*@PostMapping("/checkout")
-    public @ResponseBody ResponseEntity checkout(@RequestBody CartDetailDto cartDetailDto, Principal principal , Model model) {
-
-        log.info("cartDetailList : " + cartDetailDto);
-
-        model.addAttribute("cartItems",cartDetailDto);
-
-        return new ResponseEntity<>(cartDetailDto, HttpStatus.OK);
-    }*/
-
-    /*@GetMapping("/checkout")
-    public ResponseEntity<CartOrderDto> checkoutget(@RequestBody CartOrderDto cartOrderDtoList, Principal principal , Model model) {
-
-        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
-
-        log.info("CartOrderDto : " + cartOrderDtoList);
-
-        model.addAttribute("cartItems",cartDetailList);
-
-        return new ResponseEntity<>(cartOrderDtoList, HttpStatus.OK);
-    }*/
-
-    /*@GetMapping(value = "/checkout")
-    public String checkout(Principal principal, Model model){
-        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
-
-        log.info("cartDetailList : " + cartDetailList);
-
-        model.addAttribute("cartItems",cartDetailList);
-
-        return "checkout";
-    }*/
-
     @GetMapping("/checkout")
     public String checkout(@RequestParam(name = "orderData") String orderData, Model model) {
         log.info("orderData: " + orderData);
+
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -149,10 +117,33 @@ public class CartController {
 
             // 숫자로 변환
             List<CartItemDto> cartItems = cartDetailDto.getCartDetailDto();
-            cartItems.forEach(item -> item.setPrice(String.valueOf(Integer.parseInt(item.getPrice().replaceAll("[^0-9]", "")))));
+
+
+
+            // 총 주문 금액 초기화
+            int orderTotalPrice = 0;
+
+            // 상품 가격 및 배송비를 숫자로 변환하여 총 주문 금액에 더함
+            for (CartItemDto item : cartItems) {
+                // 가격에서 숫자만 추출하여 변환
+                String priceWithoutNonDigit = item.getPrice().replaceAll("[^0-9]", "");
+                item.setPrice(priceWithoutNonDigit);
+
+                // 총 주문 금액에 상품 가격 추가
+                orderTotalPrice += Integer.parseInt(priceWithoutNonDigit);
+            }
+
+            // 배송비 추가
+            orderTotalPrice += 3500;
+
+            log.info("cartItems" + cartItems);
+            for (CartItemDto item : cartItems) {
+                log.info("CartItem: " + item);
+            }
 
             // 여기서 주문 처리 페이지에 필요한 데이터를 모델에 추가
             model.addAttribute("cartItems", cartItems);
+            model.addAttribute("totalOrderPrice", orderTotalPrice);
         } catch (JsonMappingException e) {
             throw new RuntimeException(e);
         } catch (JsonProcessingException e) {

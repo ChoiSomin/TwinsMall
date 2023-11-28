@@ -1,8 +1,6 @@
 package com.mall.twins.twinsmall.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,7 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@JsonIgnoreProperties(ignoreUnknown=true)
 public class CartDetailDto {
 
     private Long cartItemId;    //장바구니 상품 아이디
@@ -24,6 +21,11 @@ public class CartDetailDto {
     private int count; //수량
 
     private String imgUrl;  //상품이미지 경로
+
+    private String orderTotalPrice;
+
+    private List<Long> cartItemIds; //배열 추가
+
 
     public CartDetailDto(Long cartItemId, String itemNm, int price, int count, String imgUrl){
         this.cartItemId = cartItemId;
@@ -38,6 +40,17 @@ public class CartDetailDto {
     }
 
     private List<CartItemDto> cartDetailDto;
+
+    public String getOrderTotalPrice() {
+
+        return orderTotalPrice;
+    }
+
+    public void setOrderTotalPrice(String orderTotalPrice) {
+        this.orderTotalPrice = orderTotalPrice;
+    }
+
+
 
 
 }
