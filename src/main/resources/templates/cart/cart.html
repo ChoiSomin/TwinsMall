@@ -101,11 +101,8 @@
     <script th:inline="javascript">
 
         $(document).ready(function () {
+            checkCartItems();
 
-            if ($("tr").length === 0) {
-                alert('장바구니가 비어있습니다!');
-                window.location.href = '/';
-            }
             $("input[name=cartChkBox]").change(function () {
                 getOrderTotalPrice();
             });
@@ -113,6 +110,13 @@
 
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function checkCartItems() {
+            if ($(".table-body-row").length === 0) {
+                alert('장바구니가 비어있습니다!');
+                window.location.href = '/';
+            }
         }
 
         function getOrderTotalPrice() {
