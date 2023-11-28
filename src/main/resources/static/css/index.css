@@ -170,7 +170,7 @@
   position: absolute;
   width: 1920px;
   height: 802px;
-  top: 160px;
+  top: 140px;
   left: 0;
   background-image: url(../img/frame-38.png);
   background-size: cover;
@@ -264,7 +264,7 @@
 .index .element {
   position: absolute;
   width: 1344px;
-  height: 1012px;
+  height: 0px;
   top: 1052px;
   left: 288px;
 }
@@ -514,6 +514,7 @@
 .index .bestsellers {
   position: absolute;
   width: 1170px;
+  height: 1300px;
   top: 2118px;
   left: 375px;
   display: flex;
@@ -523,6 +524,7 @@
 
 .index .list-item-new {
   width: 100%; /* 전체 너비를 사용하도록 변경 */
+  position: relative;
   text-align: center; /* 가운데 정렬 */
   font-family: "Nunito Sans", Helvetica;
   font-weight: 700;
@@ -532,6 +534,7 @@
   letter-spacing: 0;
   line-height: 36px;
   white-space: nowrap;
+  top: 70px;
 }
 
 .index .div-product-item {
@@ -1005,7 +1008,7 @@
   position: absolute;
   width: 1119px;
   height: 522px;
-  top: 3176px;
+  top: 3400px;
   left: 415px;
 }
 
@@ -1117,8 +1120,8 @@
 .index .footer {
   position: absolute;
   width: 1920px;
-  height: 390px;
-  top: 3876px;
+  height: 420px;
+  top: 4200px;
   left: 0;
   background-color: #111111;
 }

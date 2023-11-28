@@ -89,6 +89,7 @@
             <div class="list-item-new">New Arrivals</div>
             <th:block th:each="item, status: ${items.getContent()}">
                 <div class="div-product-item">
+                    <a th:href="@{/item/detail/} + ${item.id}">
                     <div class="div-product-item-pic">
                         <div class="overlap-group-5">
                             <img th:src="${item.iimgurl}" class="element-2" th:alt="${item.pname}">
@@ -97,6 +98,7 @@
                     <div class="heading-piqu-biker">[[${item.pname}]]</div>
                     <div class="heading-5"
                          data-th-text="| ${#numbers.formatInteger(item.pprice, 3, 'COMMA')} 원 |"></div>
+                    </a>
                 </div>
             </th:block>
         </div>
