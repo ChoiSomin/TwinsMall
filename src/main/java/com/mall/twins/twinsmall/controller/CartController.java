@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mall.twins.twinsmall.dto.CartDetailDto;
 import com.mall.twins.twinsmall.dto.CartItemDto;
 import com.mall.twins.twinsmall.dto.CartOrderDto;
+import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.CartService;
@@ -148,6 +149,7 @@ public class CartController {
 
             // 여기서 주문 처리 페이지에 필요한 데이터를 모델에 추가
             model.addAttribute("member", member);
+            model.addAttribute("shippingDto", new ShippingDto());
             model.addAttribute("cartItems", cartItems);
             model.addAttribute("totalOrderPrice", orderTotalPrice);
         } catch (JsonMappingException e) {

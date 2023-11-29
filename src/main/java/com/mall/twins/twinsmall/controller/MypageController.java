@@ -61,7 +61,7 @@ public class MypageController {
     public String shippingRegister(Model model) {
 
         model.addAttribute("shippingDto", new ShippingDto());
-        log.info("register ");
+        log.info("register");
         return "shipping/shippingRegister";
     }
 
