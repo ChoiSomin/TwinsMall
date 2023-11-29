@@ -30,7 +30,7 @@
                          th:attr="data-itemnm=${cartItem.itemNm}"/>
                     <div class="data">
                         <div class="heading-t-shirt"><span th:id="'itemNm_' + ${cartItem.cartItemId}"
-                                                           th:text="${cartItem.itemNm}"></span></div>
+                                                           th:data-name="${cartItem.itemNm}" th:text="${cartItem.itemNm}"></span></div>
                         <div class="heading">
                             <span th:id="'price_' + ${cartItem.cartItemId}" th:data-price="${cartItem.price}"
                                   data-th-text="| ${#numbers.formatInteger(cartItem.price, 3, 'COMMA')} 원 |" style="display: none;">
@@ -83,6 +83,10 @@
 
         <th:block layout:fragment="script">
             <script th:inline="javascript">
+
+                var selectedItems = [];
+                var cartItemIds = []; // 추가: 선택된 아이템들의 cartItemId를 저장하는 배열
+
                 $(document).ready(function () {
                     checkCartItems();
 
@@ -108,7 +112,7 @@
                         var subTotalPrice = price * count;
                         orderTotalPrice += subTotalPrice;
                     });
-
+                    console.log("orderTotalPrice:", orderTotalPrice);
                     return orderTotalPrice;
                 }
 
@@ -117,7 +121,17 @@
                     var cartItemId = obj.id.split('_')[1];
                     var price = $("#price_" + cartItemId).data("price");
                     var totalPrice = price * count;
+
+                    console.log("count:", count);
+                    console.log("cartItemId:", cartItemId);
+                    console.log("price:", price);
+                    console.log("totalPrice:", totalPrice);
+
                     $("#totalPrice_" + cartItemId).html(totalPrice + "원");
+
+                    // 주문 데이터 업데이트
+                    updateOrderData(cartItemId, count);
+
                     var orderTotalPrice = getOrderTotalPrice();
                     $("#orderTotalPrice").html(orderTotalPrice + '원');
                 }
@@ -158,9 +172,18 @@
                     });
                 }
 
+                function updateOrderData(cartItemId, count) {
+                    // 선택된 아이템 배열에서 해당 cartItemId를 찾아 업데이트
+                    for (var i = 0; i < selectedItems.length; i++) {
+                        if (selectedItems[i].cartItemId === cartItemId) {
+                            selectedItems[i].count = count;
+                            break;
+                        }
+                    }
+                }
+
                 function orders() {
-                    var selectedItems = [];
-                    var cartItemIds = []; // 추가: 선택된 아이템들의 cartItemId를 저장하는 배열
+
 
                     $("input[name='cartChkBox']:checked").each(function () {
                         var cartItemId = $(this).val();
@@ -172,7 +195,7 @@
                             cartItemId: cartItemId,
                             itemNm: itemNm,
                             count: quantity,
-                            price: price,
+                            price: price*quantity,
                             imgUrl: ''
                         };
 
@@ -191,9 +214,7 @@
                     // 페이지 이동 시 데이터를 함께 전달
                     window.location.href = "/checkout?orderData=" + encodeURIComponent(JSON.stringify(cartDetailDto))
                         + "&cartItemId=" + encodeURIComponent(cartItemIds);
-                    ;
                 }
-
 
             </script>
         </th:block>

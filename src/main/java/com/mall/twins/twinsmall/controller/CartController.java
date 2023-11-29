@@ -8,6 +8,7 @@ import com.mall.twins.twinsmall.dto.CartDetailDto;
 import com.mall.twins.twinsmall.dto.CartItemDto;
 import com.mall.twins.twinsmall.dto.CartOrderDto;
 import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.CartService;
 import com.mall.twins.twinsmall.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ public class CartController {
 
     private final CartService cartService;
 
-    private final MemberService memberService;
+    private final MemberRepository memberRepository;
 
     @PostMapping(value = "/cart")
     public @ResponseBody ResponseEntity order(@RequestBody @Valid CartItemDto cartItemDto,
@@ -105,7 +106,13 @@ public class CartController {
     }
 
     @GetMapping("/checkout")
-    public String checkout(@RequestParam(name = "orderData") String orderData, Model model) {
+    public String checkout(@RequestParam(name = "orderData") String orderData, Model model, Principal principal) {
+
+        log.info("유저 아이디 : " + principal.getName());
+
+        String mid = principal.getName();
+        Member member = memberRepository.findByMid(mid);
+
         log.info("orderData: " + orderData);
 
 
@@ -140,6 +147,7 @@ public class CartController {
             }
 
             // 여기서 주문 처리 페이지에 필요한 데이터를 모델에 추가
+            model.addAttribute("member", member);
             model.addAttribute("cartItems", cartItems);
             model.addAttribute("totalOrderPrice", orderTotalPrice);
         } catch (JsonMappingException e) {

@@ -5,12 +5,6 @@
 
 <div layout:fragment="content">
 
-  <style>
-    .footer .footer {
-        top: 1108px;
-    }
-  </style>
-
   <div class="check-out">
     <div class="top">
       <div class="heading-check-out">Check Out</div>
@@ -27,7 +21,7 @@
         <div class="text-wrapper-3">주문자 정보</div>
       </div>
       <div class="text-wrapper-4">이름</div>
-      <input class="input" type="text" name="name">
+      <input class="input" type="text" name="name" th:value="${member.mname}" readonly>
       <div class="text-wrapper-5">핸드폰 번호</div>
       <div class="overlap">
         <div class="text-wrapper-6">주소</div>
@@ -35,7 +29,7 @@
           <div class="div-placeholder-wrapper">
             <input class="div-placeholder" placeholder="Street Address" type="text"/>
           </div>
-          <img class="group" src="img/group-318.png"/>
+          <img class="group" src="/img/group-318.png"/>
         </div>
       </div>
       <div class="input-2">
@@ -45,13 +39,13 @@
       <div class="input-3"></div>
       <div class="text-wrapper-8">Email</div>
       <div class="input-4"></div>
-      <div class="input-5"></div>
+      <input class="input-5" type="text" name="phone" th:value="${member.mphone}" readonly>
       <div class="heading-2">
         <div class="text-wrapper-3">받는 분</div>
         <div class="group-2">
-          <input type="checkbox" id="keep" name="remember-me" class="input_keep" value="off">
-          <label for="keep" class="text-wrapper-9">주문자와 동일</label>
-
+          <input type="button" id="keep" name="remember-me" class="input_keep"
+                 onclick="openModal()">
+          <label for="keep" class="text-wrapper-9">배송지</label>
         </div>
       </div>
     </div>
@@ -67,7 +61,8 @@
         </div>
         <div class="list-item">
           <div class="text-wrapper-13"><span th:text="${cartItem.itemNm}"></span></div>
-          <div class="text-wrapper-14" th:text="${cartItem.price}"></div>
+          <div class="text-wrapper-14"><span th:text="${cartItem.price}"></span></div>
+
         </div>
       </div>
 
@@ -86,17 +81,38 @@
       </button>
     </div>
   </div>
+  <!-- 배송지 정보 모달 -->
+  <div id="deliveryModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <!-- 모달 내용을 여기에 추가 -->
+      <!-- 예: 배송지 정보를 표시하는 폼 등 -->
+    </div>
+  </div>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // 페이지 로드 시, URL 매개변수에서 cartItemId를 읽어와서 처리
-        var urlParams = new URLSearchParams(window.location.search);
-        var cartItemId = urlParams.get('cartItemId');
+            // 페이지 로드 시, URL 매개변수에서 cartItemId를 읽어와서 처리
+            var urlParams = new URLSearchParams(window.location.search);
+            var cartItemId = urlParams.get('cartItemId');
 
-        if (cartItemId) {
-            // 이제 cartItemId를 사용하여 Checkout 페이지에서 필요한 처리를 수행
-            console.log("카트 아이템 ID:", cartItemId);
+            if (cartItemId) {
+                // 이제 cartItemId를 사용하여 Checkout 페이지에서 필요한 처리를 수행
+                console.log("카트 아이템 ID:", cartItemId);
+
+                console.log("주문자 이름:", "${member.mname}");
+                console.log("주문자 핸드폰 번호:", "${member.mphone}");
+            }
+        });
+
+        // 모달 열기
+        function openModal() {
+            document.getElementById('deliveryModal').style.display = 'block';
         }
-    });
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('deliveryModal').style.display = 'none';
+        }
   </script>
 </div>
 </html>
