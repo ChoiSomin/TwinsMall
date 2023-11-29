@@ -1259,6 +1259,18 @@
 
 .check-out .input-6 {
     font-size: 15px;
+    width: 299px;
+    top: 223px;
+    left: 15px;
+    position: absolute;
+    height: 50px;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #e1e1e1;
+}
+
+.check-out .input-7 {
+    font-size: 15px;
 }
 
 /* FOOTER */

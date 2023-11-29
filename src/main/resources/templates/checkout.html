@@ -100,7 +100,6 @@
                       <input type="hidden" id="sample6_address" th:field="*{address}">
                       <input type="hidden" id="sample6_extraAddress">
                       <input type="text" class="div-placeholder"  id="combinedAddress" disabled>
-                        <!--<input placeholder="Street Address" type="text" readonly>-->
                     </div>
                     <input class="input-10" id="sample6_postcode" th:value="*{zonecode}" readonly>
                     <input type="button" class="group" onclick="openDaumPostcode()" value="우편번호 찾기">
@@ -109,7 +108,7 @@
             <div class="input-2">
                 <div class="div-placeholder-2">
                   <p class="p">
-                    <input class="input-6" type="text" id="sample6_detailAddress" th:field="*{saddress}"
+                    <input class="input-7" type="text" id="sample6_detailAddress" th:field="*{saddress}"
                            placeholder="상세주소">
                   </p>
                 </div>
@@ -124,7 +123,7 @@
                 <div class="group-2">
                     <input type="button" id="keep" name="remember-me" class="input_keep"
                            onclick="openModal()">
-                    <label for="keep" class="text-wrapper-9">배송지</label>
+                    <label for="keep" class="text-wrapper-9">내 배송지</label>
                 </div>
             </div>
             </form>
