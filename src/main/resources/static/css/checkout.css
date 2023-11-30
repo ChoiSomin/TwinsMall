@@ -832,18 +832,21 @@
 
 .check-out .text-wrapper-21 {
   position: absolute;
-  width: 98px;
-  height: 19px;
-  top: 14px;
-  left: 101px;
+  width: 208px;
+  height: 40px;
+  top: 460px;
+  left: 78px;
   font-family: "Nunito Sans-Bold", Helvetica;
   font-weight: 700;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 18px;
   text-align: center;
   letter-spacing: 0;
   line-height: 21px;
   white-space: nowrap;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .check-out .footer {
@@ -1271,6 +1274,12 @@
 
 .check-out .input-7 {
     font-size: 15px;
+}
+
+.check-out .input-8 {
+    font-size: 15px;
+    position: absolute;
+    top: 223px;
 }
 
 /* FOOTER */

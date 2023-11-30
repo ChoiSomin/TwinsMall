@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layout/layout}">
 
 <head>
@@ -46,6 +46,7 @@
                     <div class="overlap-group">
                         <div class="text-wrapper-4">배송지명</div>
                         <div class="text-wrapper-5">*</div>
+                        <label class="text-wrapper-25"><input type="checkbox" th:field="*{sdefault}" name="isDefault" checked="checked" value="1">기본배송지</label>
                     </div>
                     <input class="input" th:field="*{sname}" type="text" placeholder="배송지명을 입력해주세요">
                 </div>
@@ -137,8 +138,7 @@
 
                 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-
-                <<div class="frame-11">
+                <div class="frame-11">
                 <div class="frame-12">
                     <button class="text-wrapper-18" type="reset">다시입력</button>
                 </div>

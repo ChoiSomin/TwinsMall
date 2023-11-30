@@ -20,6 +20,8 @@ public interface ShippingService {
 
     Long register(ShippingDto ShippingDTO);
 
+    void updateDefaultShipping(String mid);
+
     // 조회 (아이디 별로 전체)
     List<ShippingDto> readAll(String mid);
 

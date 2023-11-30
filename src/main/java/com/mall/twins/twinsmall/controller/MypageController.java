@@ -76,17 +76,21 @@ public class MypageController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
-            return "/mypage/shipping/list";
+            return "/shipping/shipping";
         }
 
         shippingDto.setMid(loggedId);
 
+        // 기존의 기본 배송지 해제
+        shippingService.updateDefaultShipping(loggedId);
+
         Long sno = shippingService.register(shippingDto);
+
         redirectAttributes.addFlashAttribute("result", sno);
 
         log.info(sno);
 
-        return "/mypage/shipping/list";
+        return "redirect:/mypage/shipping/list";
     }
 
 
@@ -109,7 +113,7 @@ public class MypageController {
         model.addAttribute("shippingDto", shippingDto);
 
 
-        return "mypage/shippingModify";
+        return "shipping/shippingModify";
     }
 
     @PostMapping("/shipping/modify")
@@ -123,7 +127,7 @@ public class MypageController {
         redirectAttributes.addAttribute("sno", shippingDto.getSno());
 
         // Redirect 시, URL에 'sno' 값을 포함하여 리다이렉트합니다.
-        return "redirect:/shipping/shipping/read";
+        return "shipping/read";
     }
 
     @PostMapping("/shipping/remove")
@@ -135,7 +139,7 @@ public class MypageController {
 
         redirectAttributes.addFlashAttribute("msg", sno);
 
-        return "redirect:/shipping/shipping/list";
+        return "shipping/shipping";
     }
 
     // 회원 정보 조회

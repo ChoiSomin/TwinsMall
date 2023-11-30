@@ -25,6 +25,12 @@ public interface ShippingRepository extends JpaRepository<Shipping, Long>, Query
     // sno(기본키)로 데이터를 가져온다.
     Optional<Shipping> findBySno(Long sno);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE Shipping s SET s.sdefault = NULL WHERE s.member.mid = :mid")
+    void updateDefaultShipping(@Param("mid") String mid);
+
+
     /*List<Shipping> findAllByMid(String mid);*/
 
 

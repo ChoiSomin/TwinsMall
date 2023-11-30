@@ -391,6 +391,21 @@
     line-height: 25px;
 }
 
+.shipping-register .text-wrapper-25 {
+    width: 59px;
+    height: 25px;
+    top: 3px;
+    left: 80px;
+    font-family: "Nunito Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #111111;
+    font-size: 15px;
+    white-space: nowrap;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
 .shipping-register .text-wrapper-5 {
     width: 7px;
     height: 20px;

@@ -69,6 +69,48 @@
         }).open();
     }
 
+    function orders(){
+
+        var url = "/checkout/orders";
+
+        var dataList = new Array();
+        var paramData = new Object();
+
+        $("input[name=cartChkBox]:checked").each(function() {
+            var cartItemId = $(this).val();
+            var data = new Object();
+            data["cartItemId"] = cartItemId;
+            dataList.push(data);
+        });
+
+        paramData['cartOrderDtoList'] = dataList;
+
+        var param = JSON.stringify(paramData);
+
+        $.ajax({
+            url      : url,
+            type     : "POST",
+            contentType : "application/json",
+            data     : param,
+            dataType : "json",
+            cache   : false,
+            success  : function(result, status){
+                alert("주문이 완료 되었습니다.");
+                location.href='/orders';
+            },
+            error : function(jqXHR, status, error){
+
+                if(jqXHR.status == '401'){
+                    alert('로그인 후 이용해주세요');
+                    location.href='/members/login';
+                } else{
+                    alert(jqXHR.responseJSON.message);
+                }
+
+            }
+        });
+    }
+
   </script>
 </div>
 
@@ -113,10 +155,10 @@
                   </p>
                 </div>
             </div>
-            <div class="text-wrapper-7">핸드폰 번호</div>
-            <div class="input-3"></div>
-            <div class="text-wrapper-8">Email</div>
-            <div class="input-4"></div>
+            <div class="text-wrapper-7">Email</div>
+            <div class="input-3">
+                <input class="input-8" type="text" placeholder="이메일을 입력해주세요">
+            </div>
             <input class="input-5" type="text" name="phone" th:value="${member.mphone}" readonly>
             <div class="heading-2">
                 <div class="text-wrapper-3">받는 분</div>
@@ -156,7 +198,7 @@
                 </div>
             </div>
             <button class="button">
-                <div class="text-wrapper-21">PLACE ORDER</div>
+                <button type="button" class="text-wrapper-21" onclick="orders()">PLACE ORDER</button>
             </button>
         </div>
     </div>

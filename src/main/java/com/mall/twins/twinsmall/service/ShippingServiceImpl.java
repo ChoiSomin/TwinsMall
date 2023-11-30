@@ -55,6 +55,13 @@ public class ShippingServiceImpl implements ShippingService{
         return shippingRepository.save(shipping).getSno();
     }
 
+    // 기본 배송지 업데이트
+    @Override
+    public void updateDefaultShipping(String mid) {
+        // 현재 기본 배송지를 해제하는 로직 추가
+        shippingRepository.updateDefaultShipping(mid);
+    }
+
 
     // 조회 -> mid(사용자 아이디)로 배송 주소 DTO 전체 리스트 리턴
     @Override
