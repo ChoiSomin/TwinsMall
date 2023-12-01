@@ -153,6 +153,28 @@ public class ShippingServiceImpl implements ShippingService{
 
     }
 
+    @Override
+    public ShippingDto getDefaultAddress(String mid) {
+        // 여기에 해당 mid에 해당하는 회원의 기본 배송지 정보를 가져오는 로직을 작성
+
+        log.info("service mid : " + mid);
+        Member member = memberRepository.findByMid(mid);
+
+        log.info("service member : " + member);
+
+        if (member != null) {
+            ShippingDto shippingList = shippingRepository.getDefaultAddress(mid);
+
+            log.info("service shippingList : " + shippingList);
+
+            return shippingList;
+        } else {
+            // 회원이 존재하지 않을 경우 또는 기본 배송지 정보가 없을 경우 예외처리 또는 기본 값 반환
+            throw new RuntimeException("해당 회원의 기본 배송지 정보를 찾을 수 없습니다.");
+        }
+
+    }
+
    /* @Override
     public void modifySdefault(String mid) {
 

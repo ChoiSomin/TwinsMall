@@ -37,6 +37,8 @@ public interface ShippingService {
     // 삭제
     void remove(Long sno);
 
+    ShippingDto getDefaultAddress(String mid);
+
     // 기본배송지 수정
     /*void modifySdefault(String mid);*/
 }

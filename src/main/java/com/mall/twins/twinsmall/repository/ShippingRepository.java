@@ -1,5 +1,6 @@
 package com.mall.twins.twinsmall.repository;
 
+import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Item;
 import com.mall.twins.twinsmall.entity.Shipping;
 import com.querydsl.core.BooleanBuilder;
@@ -21,6 +22,10 @@ public interface ShippingRepository extends JpaRepository<Shipping, Long>, Query
     @Transactional
     @Query("SELECT s FROM Shipping s WHERE s.member.mid = :mid")
     List<Shipping> listOfShipping(String mid);
+
+    @Transactional
+    @Query("SELECT s FROM Shipping s WHERE s.member.mid = :mid AND s.sdefault != NULL")
+    ShippingDto getDefaultAddress(String mid);
 
     // sno(기본키)로 데이터를 가져온다.
     Optional<Shipping> findBySno(Long sno);

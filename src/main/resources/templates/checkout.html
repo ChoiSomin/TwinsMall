@@ -111,6 +111,56 @@
         });
     }
 
+    var isDefaultAddressLoaded = false; // 기본 배송지 정보를 로드했는지 여부를 추적하는 변수
+
+    function loadDefaultAddress() {
+        var mid = "[[${member.mid}]]"; // 회원 아이디
+
+        console.log("[[${member.mid}]]");
+
+        $.ajax({
+            url: "/api/getDefaultAddress", // 기본 배송지 정보를 가져오는 API 엔드포인트
+            type: "GET",
+            data: { mid: mid }, // mid를 서버에 전달
+            dataType: "json",
+            success: function (ShippingDto) {
+                // 서버에서 받은 기본 배송지 정보를 폼에 채우기
+                document.getElementById("sample6_detailAddress").value = ShippingDto.saddress;
+                document.getElementById("combinedAddress").value = ShippingDto.address;
+
+                // 기본 배송지 정보를 로드했음을 표시
+                isDefaultAddressLoaded = true;
+
+            },
+            error: function (error) {
+                console.error("Error loading default address:", error);
+            }
+        });
+    }
+
+    // 체크박스 클릭 시 기본 배송지 정보 불러오기
+    document.getElementById("setDefaultAddress").addEventListener("change", function () {
+        if (this.checked) {
+            // 기본 배송지 체크박스가 체크되었을 때
+            loadDefaultAddress();
+        } else {
+            // 기본 배송지 체크박스가 체크 해제되었을 때
+            // 기본 배송지 정보를 로드한 경우에만 초기화
+            if (isDefaultAddressLoaded) {
+                resetForm();
+            }
+        }
+    });
+
+    function resetForm() {
+        // 폼의 값을 완전히 초기화
+        document.getElementById("sample6_detailAddress").value = "";
+        document.getElementById("combinedAddress").value = "";
+
+        // 기본 배송지 정보를 로드한 상태를 재설정
+        isDefaultAddressLoaded = false;
+    }
+
   </script>
 </div>
 
@@ -165,7 +215,8 @@
                 <div class="group-2">
                     <input type="button" id="keep" name="remember-me" class="input_keep"
                            onclick="openModal()">
-                    <label for="keep" class="text-wrapper-9">내 배송지</label>
+                    <input type="checkbox" id="setDefaultAddress" name="setDefaultAddress">
+                    <label for="setDefaultAddress" class="text-wrapper-9">기본 배송지</label>
                 </div>
             </div>
             </form>

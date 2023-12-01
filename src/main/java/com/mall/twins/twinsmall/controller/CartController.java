@@ -12,6 +12,7 @@ import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.CartService;
 import com.mall.twins.twinsmall.service.MemberService;
+import com.mall.twins.twinsmall.service.ShippingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -37,6 +38,8 @@ public class CartController {
     private final CartService cartService;
 
     private final MemberRepository memberRepository;
+
+    private final ShippingService shippingService;
 
     @PostMapping(value = "/cart")
     public @ResponseBody ResponseEntity order(@RequestBody @Valid CartItemDto cartItemDto,
@@ -175,5 +178,19 @@ public class CartController {
 
         Long orderId = cartService.orderCartItem(cartOrderDtoList, principal.getName());
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
+    }
+
+    @GetMapping("/api/getDefaultAddress")
+    @ResponseBody
+    public ResponseEntity<ShippingDto> getDefaultAddress(@RequestParam String mid) {
+        // 여기에 해당 mid에 해당하는 기본 배송지 정보를 가져오는 로직을 작성
+
+        log.info("controller mid : " + mid);
+
+        ShippingDto shippingDto = shippingService.getDefaultAddress(mid);
+
+        log.info(shippingDto);
+
+        return ResponseEntity.ok(shippingDto);
     }
 }
