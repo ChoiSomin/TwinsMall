@@ -85,6 +85,19 @@
 
         paramData['cartOrderDtoList'] = dataList;
 
+        // 결합된 주소 값을 가져오기
+        var zonecode = document.getElementById("sample6_postcode").value;
+        var address = document.getElementById("combinedAddress").value;
+        var detailAddress = document.getElementById("sample6_detailAddress").value;
+
+        // 주소를 조합하여 결합된 주소 생성
+        var combinedAddress = address + ' ' + detailAddress + ' / ' + zonecode;
+
+        // 결합된 주소를 paramData 객체에 추가
+        paramData['address'] = combinedAddress;
+
+        console.log(combinedAddress);
+
         var param = JSON.stringify(paramData);
 
         $.ajax({
@@ -124,27 +137,34 @@
             data: { mid: mid }, // mid를 서버에 전달
             dataType: "json",
             success: function (ShippingDto) {
-                // 서버에서 받은 기본 배송지 정보를 폼에 채우기
-                document.getElementById("sample6_detailAddress").value = ShippingDto.saddress;
-                document.getElementById("combinedAddress").value = ShippingDto.address;
+            // 서버에서 받은 기본 배송지 정보를 폼에 채우기
+            document.getElementById("sample6_detailAddress").value = ShippingDto.saddress;
+            document.getElementById("sample6_postcode").value = ShippingDto.zonecode;
+            document.getElementById("combinedAddress").value = ShippingDto.address;
 
-                // 기본 배송지 정보를 로드했음을 표시
-                isDefaultAddressLoaded = true;
+            // 기본 배송지 정보를 로드했음을 표시
+            isDefaultAddressLoaded = true;
 
+            // 폼 필드를 읽기 전용으로 설정
+            document.getElementById("sample6_detailAddress").readOnly = true;
+            document.getElementById("combinedAddress").readOnly = true;
             },
             error: function (error) {
-                console.error("Error loading default address:", error);
+                console.error("기본 주소를 불러오는 중 오류 발생:", error);
             }
         });
     }
 
     // 체크박스 클릭 시 기본 배송지 정보 불러오기
     document.getElementById("setDefaultAddress").addEventListener("change", function () {
-        if (this.checked) {
-            // 기본 배송지 체크박스가 체크되었을 때
+        if (this.checked) { // 기본 배송지 체크박스가 체크되었을 때
             loadDefaultAddress();
-        } else {
-            // 기본 배송지 체크박스가 체크 해제되었을 때
+        } else { // 기본 배송지 체크박스가 체크 해제되었을 때
+
+            // 폼 필드를 작성 가능하도록 설정
+            document.getElementById("sample6_detailAddress").readOnly = false;
+            document.getElementById("combinedAddress").readOnly = false;
+
             // 기본 배송지 정보를 로드한 경우에만 초기화
             if (isDefaultAddressLoaded) {
                 resetForm();
@@ -178,7 +198,7 @@
                 <div class="symbol-3"></div>
                 <p class="have-a-coupon-click">Have a coupon? Click here to enter your code</p>
             </div>
-            <form method="post" th:action="@{/mypage/shipping/register}" enctype="multipart/form-data" th:object="${shippingDto}">
+            <form method="post" enctype="multipart/form-data" th:object="${shippingDto}">
             <div class="div-wrapper">
                 <div class="text-wrapper-3">주문자 정보</div>
             </div>

@@ -1,8 +1,13 @@
 package com.mall.twins.twinsmall.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mall.twins.twinsmall.dto.OrderDto;
 import com.mall.twins.twinsmall.dto.OrderHistDto;
+import com.mall.twins.twinsmall.dto.ShippingDto;
+import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,10 +34,14 @@ public class OrderController {
 
     private final OrderService orderService;
 
+    private final MemberRepository memberRepository;
+
     @PostMapping(value = "/order")
     //RequestBody: HTTP요청의 본문 body에 담긴 내용을 자바 객체로 전달
     //ResponseBody : 자바 객체를 HTTP요청의 body로 전달
     public @ResponseBody ResponseEntity order (@RequestBody @Valid OrderDto orderDto, BindingResult bindingResult, Principal principal){
+
+        log.info("orderDto : " + orderDto);
 
         if(bindingResult.hasErrors()){//주문 정보를 받는 orderDTO 객체에 데이터 바인딩시 에러가 있는지 검사
             StringBuilder sb = new StringBuilder();
@@ -52,10 +61,42 @@ public class OrderController {
         return new ResponseEntity<Long>(ono, HttpStatus.OK);    //결과값으로 생성된 주문번호와 요청이 성공했다는 HTTP응답 상ㅌ태코드 반환
     }
 
+    @GetMapping(value = "/detail/checkout")
+    public String orderDetailItem(@RequestParam(name = "orderData") String orderData, Model model, Principal principal) {
+        log.info("유저 아이디: " + principal.getName());
+
+        String mid = principal.getName();
+        Member member = memberRepository.findByMid(mid);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            // JSON 데이터에서 바로 OrderDTO를 읽어옴
+            OrderDto orderDTO = objectMapper.readValue(orderData, OrderDto.class);
+
+            log.info("OrderDto : " + orderDTO);
+
+            int orderTotalPrice = orderDTO.getCount() * orderDTO.getPrice();
+
+            log.info("orderTotalPrice : " + orderTotalPrice);
+
+            // 여기서 주문 처리 페이지에 필요한 데이터를 모델에 추가
+            model.addAttribute("member", member);
+            model.addAttribute("shippingDto", new ShippingDto());
+            model.addAttribute("cartItems", orderDTO);
+            model.addAttribute("totalOrderPrice", orderTotalPrice);
+
+            // checkout 페이지로 이동
+            return "checkout";
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @GetMapping(value = {"/orders","/orders/{page}"})
     public String orderHist(@PathVariable("page") Optional<Integer> page, Principal principal, Model model){
         //한번에 가지고 올 주문의 개수는 4개로 설정
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0,4);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0,10);
 
         //현재로그인한 회원은 이메일과 페이징 객체를 파라미터로 전달하여 화면에 전달한 주문 목록 데이터를 리터값으로 받습니다.
         Page<OrderHistDto> orderHistDtoList = orderService.getOrderList(principal.getName(), pageable);
@@ -85,9 +126,6 @@ public class OrderController {
                               Principal principal, Model model, Pageable pageable) {
 
         String mid = principal.getName();
-
-
-
 
         Pageable pageRequest = PageRequest.of(page, 10); // 적절한 페이지 정보 설정
         Page<OrderHistDto> orderHistDtoList = orderService.getOrderListByOrderId(mid, ono, pageRequest);

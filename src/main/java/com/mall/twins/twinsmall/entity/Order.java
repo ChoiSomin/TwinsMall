@@ -3,6 +3,7 @@ package com.mall.twins.twinsmall.entity;
 import com.mall.twins.twinsmall.constant.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 @Getter @Setter
+@Log4j2
 public class Order extends BaseEntity {
 
     @Id
@@ -27,9 +29,7 @@ public class Order extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus ostatus; //주문상태
 
-    private int totalPrice;
-
-    private Integer addressNo;
+    private String address;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL
             , orphanRemoval = true, fetch = FetchType.LAZY)
@@ -55,6 +55,25 @@ public class Order extends BaseEntity {
 
         order.setOstatus(OrderStatus.ORDER); // 주문 상태 변경
         order.setOdate(LocalDateTime.now()); // 현재 시간을 주문 시간으로 변경
+
+        log.info("Order entity : " + order);
+        return order;
+    }
+
+    public static Order createCheckoutOrder(Member member, List<OrderItem> orderItemList, String address) {
+        Order order = new Order();
+        order.setMember(member); // 상품을 주문한 회원의 정보
+
+        for(OrderItem orderItem : orderItemList) {
+            order.addOrderItem(orderItem);
+            // 장바구니에는 여러 상품이 담길 수 있어서 리스트 형태로 값을 받음
+        }
+
+        order.setOstatus(OrderStatus.ORDER); // 주문 상태 변경
+        order.setOdate(LocalDateTime.now()); // 현재 시간을 주문 시간으로 변경
+        order.setAddress(address);
+
+        log.info("Order entity : " + order);
         return order;
     }
 

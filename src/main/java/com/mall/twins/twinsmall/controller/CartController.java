@@ -4,10 +4,7 @@ package com.mall.twins.twinsmall.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mall.twins.twinsmall.dto.CartDetailDto;
-import com.mall.twins.twinsmall.dto.CartItemDto;
-import com.mall.twins.twinsmall.dto.CartOrderDto;
-import com.mall.twins.twinsmall.dto.ShippingDto;
+import com.mall.twins.twinsmall.dto.*;
 import com.mall.twins.twinsmall.entity.Member;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.CartService;
@@ -22,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -168,6 +166,14 @@ public class CartController {
     @PostMapping(value = "/checkout/orders")
     public @ResponseBody ResponseEntity checkoutOrder(@RequestBody CartOrderDto cartOrderDto, Principal principal){
 
+        log.info("controller : " + cartOrderDto.getAddress());
+
+        String address = cartOrderDto.getAddress();
+
+        if(cartOrderDto.getAddress() == null){
+            return new ResponseEntity<String>("오류입니다.", HttpStatus.FORBIDDEN);
+        }
+
         List<CartOrderDto> cartOrderDtoList = cartOrderDto.getCartOrderDtoList();
 
         for (CartOrderDto cartOrder : cartOrderDtoList) {
@@ -176,14 +182,14 @@ public class CartController {
             }
         }
 
-        Long orderId = cartService.orderCartItem(cartOrderDtoList, principal.getName());
+        Long orderId = cartService.orderCheckoutItem(cartOrderDtoList, principal.getName(), address);
+
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
 
     @GetMapping("/api/getDefaultAddress")
     @ResponseBody
     public ResponseEntity<ShippingDto> getDefaultAddress(@RequestParam String mid) {
-        // 여기에 해당 mid에 해당하는 기본 배송지 정보를 가져오는 로직을 작성
 
         log.info("controller mid : " + mid);
 

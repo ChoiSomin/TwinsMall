@@ -14,5 +14,7 @@ public class CartOrderDto {
 
     private Long cartItemId;
 
+    private String address;
+
     private List<CartOrderDto> cartOrderDtoList;
 }

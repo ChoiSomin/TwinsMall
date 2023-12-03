@@ -129,4 +129,24 @@ public class CartServiceImpl implements CartService {
         }
         return orderId;
     }
+
+    @Override
+    public Long orderCheckoutItem(List<CartOrderDto> cartOrderDtoList, String mid, String address) {
+        List<OrderDto> orderDtoList = new ArrayList<>();
+        for(CartOrderDto cartOrderDto : cartOrderDtoList){
+            CartItem cartItem = cartItemRepository.findById(cartOrderDto.getCartItemId()).orElseThrow(EntityNotFoundException::new);
+
+            OrderDto orderDto = new OrderDto();
+            orderDto.setItemId(cartItem.getItem().getId());
+            orderDto.setCount(cartItem.getCount());
+            orderDtoList.add(orderDto);
+        }
+        Long orderId = orderService.checkoutOrders(orderDtoList, mid, address);
+
+        for(CartOrderDto cartOrderDto : cartOrderDtoList){
+            CartItem cartItem = cartItemRepository.findById(cartOrderDto.getCartItemId()).orElseThrow(EntityNotFoundException::new);
+            cartItemRepository.delete(cartItem);
+        }
+        return orderId;
+    }
 }

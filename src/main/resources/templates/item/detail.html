@@ -16,20 +16,16 @@
             });
         });
 
-        function calculateTotalPrice() {
-
-            var count = $("#count").val();
-            var price = $("#price").val();
-            var totalPrice = price * count;
-            $("#totalPrice").html(totalPrice + '원');
-
-        }
-
         function order() {
 
             var username = [[${username}]];
             var userRole = [[${userRole}]];
             var itemStatus = document.getElementById('itemStatus').value;
+
+            if (username == null) {
+                 alert('로그인 후 이용해주세요');
+                 location.href = '/member/login';
+            }
 
             if (itemStatus === 'SOLD_OUT') {
                 alert('품절 상품입니다!');
@@ -41,36 +37,23 @@
                 return;
             }
 
-            var url = "/order";
-            var paramData = {
-                itemId: $("#itemId").val(),
-                count: $("#count").val()
+            var itemId = $("#itemId").val();
+            var count = $("#count").val();
+
+            var priceString = $("#price").text();
+            var price = parseInt(priceString.replace(/[^\d]/g, ''), 10); // 숫자만 남기고 나머지 제거
+
+            var itemNm = $("#itemNm").text();
+
+            var postData = {
+                itemId: itemId,
+                count: count,
+                price: price,
+                itemNm: itemNm
             };
 
-            var param = JSON.stringify(paramData);
-
-            $.ajax({
-                url: url,
-                type: "POST",
-                contentType: "application/json",
-                data: param,
-                dataType: "json",
-                cache: false,
-                success: function (result, status) {
-                    alert("주문이 완료 되었습니다.");
-                    location.href = '/';
-                },
-                error: function (jqXHR, status, error) {
-
-                    if (username == null) {
-                        alert('로그인 후 이용해주세요');
-                        location.href = '/member/login';
-                    } else {
-                        alert(jqXHR.responseText);
-                    }
-
-                }
-            });
+            // 주문 페이지로 이동
+            window.location.href = "/detail/checkout?orderData=" + encodeURIComponent(JSON.stringify(postData));
         }
 
         function addCart() {
@@ -145,10 +128,10 @@
                      th:style="'background-image: url(' + ${item.itemImgDtoList[0].iimgurl} + ')'">
             </div>
         </div>
-        <div class="heading" data-th-text="|￦ ${#numbers.formatInteger(item.pprice, 3, 'COMMA')}  |"></div>
+        <div class="heading" th:id="price" data-th-text="|￦ ${#numbers.formatInteger(item.pprice, 3, 'COMMA')}  |"></div>
 
         <div class="input">
-            <input type="number" name="count" id="count" class="div-pro-qty" value="1" min="1"
+            <input type="number" name="count" th:id="count" class="div-pro-qty" value="1" min="1"
                    style="text-align : center">
         </div>
 
@@ -157,7 +140,7 @@
             <button type="button" class="text-wrapper-4" onclick="addCart()">장바구니 담기
             </button>
         </div>
-        <div class="heading-hooded">[[${item.pname}]]</div>
+        <div class="heading-hooded" id="itemNm">[[${item.pname}]]</div>
         <div class="link-2">
             <button type="button" class="text-wrapper-4" onclick="order()">주문하기</button>
         </div>

@@ -24,4 +24,6 @@ public interface CartService {
     void deleteCartItem(Long cartItemId);
 
     Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String mid);
+
+    Long orderCheckoutItem(List<CartOrderDto> cartOrderDtoList, String mid, String address);
 }

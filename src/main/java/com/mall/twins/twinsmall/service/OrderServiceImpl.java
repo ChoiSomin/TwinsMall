@@ -36,18 +36,21 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Long order(OrderDto orderDto, String mid) {
 
+        log.info("order service getCount : " + orderDto.getCount());
 
         //주문할 상품을 조회
         Item item = itemRepository.findById(orderDto.getItemId())
                 .orElseThrow(() -> new EntityNotFoundException("Item not found"));
 
-        //현재 로그인한 회원의 아이드를 ㅣ용하여 회원정보 조회
+        //현재 로그인한 회원의 아이디를 이용하여 회원정보 조회
         Member member = memberRepository.findByMid(mid);
 
         List<OrderItem> orderItemList = new ArrayList<>();
         //주문할 상품 엔티티와 주문수량을 이용하여 주문 상품 엔티티 생성
         OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getCount());
         orderItemList.add(orderItem);
+
+        log.info("OrderService orderItemList : " + orderItemList);
 
         //회원정보와 주문할 상품리스트 정보를 이용하여 주문 엔티티 생성
         Order order = Order.createOrder(member, orderItemList);
@@ -70,12 +73,15 @@ public class OrderServiceImpl implements OrderService{
         for(Order order : orders){
             OrderHistDto orderHistDto = new OrderHistDto(order);
             List<OrderItem> orderItems = order.getOrderItems();
-            for(OrderItem orderItem : orderItems){
+            /*for(OrderItem orderItem : orderItems){
                 //주문한 상품의 대표 이미지를 조회합니다.
                 ItemImg itemImg = itemImgRepository.findByIdAndIimgrep(orderItem.getItem().getId(),"Y");
                 OrderItemDto orderItemDto = new OrderItemDto(orderItem, itemImg.getIimgurl());
                 orderHistDto.addOrderItemDto(orderItemDto);
-            }
+            }*/
+
+            log.info("OrderService : " + orderHistDto.getOrdertotalPrice());
+
             orderHistDtos.add(orderHistDto);
         }
         //페이지 구현 객체를 생성하여 반환합니다.
@@ -117,6 +123,24 @@ public class OrderServiceImpl implements OrderService{
             orderItemList.add(orderItem);
         }
         Order order = Order.createOrder(member,orderItemList);
+        orderRepository.save(order);
+        return order.getOno();
+    }
+
+    @Override
+    public Long checkoutOrders(List<OrderDto> orderDtoList, String mid, String address) {
+
+        Member member = memberRepository.findByMid(mid);
+
+        List<OrderItem> orderItemList = new ArrayList<>();
+
+        for(OrderDto orderDto : orderDtoList){
+            Item item = itemRepository.findById(orderDto.getItemId()).orElseThrow(EntityNotFoundException::new);
+
+            OrderItem orderItem = OrderItem.createOrderItem(item,orderDto.getCount());
+            orderItemList.add(orderItem);
+        }
+        Order order = Order.createCheckoutOrder(member, orderItemList, address);
         orderRepository.save(order);
         return order.getOno();
     }

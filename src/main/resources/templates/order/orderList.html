@@ -3,6 +3,23 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<div layout:fragment="script">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var totalOrderPrice = document.getElementById('totalOrderPrice');
+            console.log("총 주문 금액:", totalOrderPrice);
+
+            if (totalOrderPrice) {
+                console.log("총 주문 금액:", totalOrderPrice);
+            }
+        });
+
+    </script>
+</div>
+
 <div layout:fragment="content">
 
     <div class="mypage-order">

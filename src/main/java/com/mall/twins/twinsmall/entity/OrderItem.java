@@ -2,10 +2,13 @@ package com.mall.twins.twinsmall.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
+
 import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@Log4j2
 public class OrderItem extends BaseEntity {
 
     @Id
@@ -27,12 +30,18 @@ public class OrderItem extends BaseEntity {
     private int oiquantity; // 주문 수량
 
     public static OrderItem createOrderItem(Item item, int count){
+
+        log.info("OrderItem entity count : " + count);
+
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setOiquantity(count);
         orderItem.setOiprice(item.getPprice());
 
         item.removeStock(count);
+
+        log.info("OrderItem entity : " + orderItem);
+
         return orderItem;
     } // 주문할 상품의 정보를 담은 객체 생성
 

@@ -20,6 +20,10 @@ public class OrderDto {
     @NotNull(message = "상품 이름은 필수 입력값입니다.")
     private Long itemId;
 
+    private String itemNm;
+
+    private int price;
+
     @Min(value = 1, message = "최소 주문 수량은 1개 입니다.")
     @Max(value = 5, message = "최대 주문 수량은 5개 입니다.")
     private int count;
