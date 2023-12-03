@@ -217,7 +217,7 @@
     position: absolute;
     width: 317px;
     height: 48px;
-    top: 292px;
+    top: 325px;
     left: 885px;
     font-family: "Nunito Sans-Bold", Helvetica;
     font-weight: 700;
@@ -369,7 +369,7 @@
     position: absolute;
     width: 1450px;
     height: 609px;
-    top: 381px;
+    top: 430px;
     left: 359px;
 }
 
@@ -533,7 +533,7 @@
     text-align: center;
     letter-spacing: 0;
     line-height: 26px;
-    top: 17px;
+    top: 0px;
     left: 45px;
 }
 
@@ -590,7 +590,7 @@
     letter-spacing: 0;
     line-height: 26px;
     left: 90px;
-    top: 17px;
+    top: 0px;
 }
 
 .admin .text-4 {
@@ -606,7 +606,7 @@
      letter-spacing: 0;
      line-height: 26px;
      left: 150px;
-     top: 17px;
+     top: 0px;
  }
 
  .admin .text-5 {
@@ -622,7 +622,7 @@
      letter-spacing: 0;
      line-height: 26px;
      left: -7px;
-     top: 17px;
+     top: 0px;
  }
 
 .admin .cell-8 {
@@ -1045,13 +1045,29 @@
     left: 0;
 }
 
+.admin .itemMng-paging{
+    font-size: 17px;
+    top: 80px;
+    position: relative;
+}
+
+.admin .searching {
+    position: relative;
+    font-size: 50px;
+    top: 75px;
+}
+
+.admin .form-control {
+    font-size: 17px;
+}
+
 /* FOOTER */
 
 .itemMng-footer .footer {
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 1500px;
+    top: 1450px;
     left: 0;
     background-color: #111111;
 }

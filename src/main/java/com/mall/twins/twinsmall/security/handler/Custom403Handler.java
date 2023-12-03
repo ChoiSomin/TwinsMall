@@ -3,6 +3,7 @@ package com.mall.twins.twinsmall.security.handler;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import javax.servlet.ServletException;
@@ -13,12 +14,31 @@ import java.io.IOException;
 @Log4j2
 public class Custom403Handler implements AccessDeniedHandler {
 
+    private String errorPage;
+
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
 
         log.info("Custom403Handler.handle() 403 에러 페이지 처리 ");
 
-        response.setStatus(HttpStatus.FORBIDDEN.value());   // 403 에러 값 받음
+        /*response.setStatus(HttpStatus.FORBIDDEN.value());   // 403 에러 값 받음*/
+
+        response.sendRedirect(request.getContextPath() + errorPage);
+
+        if (response.isCommitted()) {
+            return;
+        }
+
+        if(this.errorPage == null) {
+            response.sendError(HttpStatus.FORBIDDEN.value(), HttpStatus.FORBIDDEN.getReasonPhrase());
+            return;
+        }
+
+        request.setAttribute(WebAttributes.ACCESS_DENIED_403, accessDeniedException);
+
+        response.setStatus(HttpStatus.FORBIDDEN.value());
+
+        request.getRequestDispatcher(this.errorPage).forward(request, response);
 
         // JSON 요청이었는지 확인
         String contentType = request.getHeader("Content-type");
@@ -30,5 +50,9 @@ public class Custom403Handler implements AccessDeniedHandler {
             response.sendRedirect("/member/login?error=ACCESS_DENIED");
         }
 
+    }
+
+    public Custom403Handler(){
+        this.errorPage = "/auth/accessDenied";
     }
 }

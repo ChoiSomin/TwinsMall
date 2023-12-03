@@ -499,7 +499,7 @@
     position: absolute;
     width: 116px;
     height: 27px;
-    top: 0;
+    top: -3px;
     left: 747px;
     background-color: #ffffff;
     border-radius: 5px;
@@ -648,7 +648,7 @@
 }
 
 .product .div-product-item-pic-3 {
-    background-image: url(./img/div-product-item-pic-3.png);
+    background-image: url(../img/div-product-item-pic-3.png);
     position: absolute;
     width: 262px;
     height: 260px;
@@ -697,7 +697,7 @@
 }
 
 .product .span-label-wrapper {
-    background-image: url(./img/div-product-item-pic-2.png);
+    background-image: url(../img/div-product-item-pic-2.png);
     position: absolute;
     width: 262px;
     height: 260px;
@@ -754,7 +754,7 @@
 }
 
 .product .div-product-item-pic-4 {
-    background-image: url(./img/div-product-item-pic-1.png);
+    background-image: url(../img/div-product-item-pic-1.png);
     position: absolute;
     width: 262px;
     height: 260px;
@@ -788,7 +788,7 @@
 }
 
 .product .div-product-item-pic-5 {
-    background-image: url(./img/div-product-item-pic.png);
+    background-image: url(../img/div-product-item-pic.png);
     position: absolute;
     width: 262px;
     height: 260px;
@@ -817,8 +817,9 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    top: 1695px;
+    top: 1650px;
     left: 402px;
+    font-size: 20px;
     /*border-radius: 15px;
     border: 1px solid;
     border-color: #111111;*/
@@ -1317,7 +1318,7 @@
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 2250px;
+    top: 2200px;
     left: 0;
     background-color: #111111;
 }

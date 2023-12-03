@@ -250,8 +250,8 @@
     position: absolute;
     width: 124px;
     height: 36px;
-    top: 970px;
-    left: 639px;
+    top: 965px;
+    left: 620px;
     font-family: "Nunito Sans", Helvetica;
     font-weight: 700;
     color: #0d0d0d;
@@ -882,7 +882,7 @@
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 1500px;
+    top: 2050px;
     left: 0;
     background-color: #111111;
 }
@@ -1123,6 +1123,7 @@
     height: 25px;
     top: 20px;
     left: 282px;
+    font-size: 17px;
 }
 
 .footer .text-wrapper-14 {

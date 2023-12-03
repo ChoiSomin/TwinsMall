@@ -508,6 +508,21 @@
     white-space: nowrap;
 }
 
+.mypage-shipping .text-22 {
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    margin-top: -1px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #0004ff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 26px;
+    white-space: nowrap;
+}
+
 .mypage-shipping .cell-5 {
     width: 200px;
     align-self: stretch;
@@ -971,7 +986,7 @@
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 1500px;
+    top: 1200px;
     left: 0;
     background-color: #111111;
 }

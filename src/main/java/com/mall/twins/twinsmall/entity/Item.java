@@ -43,6 +43,7 @@ public class Item extends BaseEntity {
     private String pdesc; // 상품 상세 설명
 
     @Enumerated(EnumType.STRING)  // enum 타입 매핑
+    @Column(name = "pstatus")
     private ItemSellStatus pstatus; //상품 판매 상태
 
     public void updateItem(ItemFormDto itemFormDto){

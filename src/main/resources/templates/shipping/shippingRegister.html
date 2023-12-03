@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layout/layout}">
 
 <head>
@@ -46,6 +46,7 @@
                     <div class="overlap-group">
                         <div class="text-wrapper-4">배송지명</div>
                         <div class="text-wrapper-5">*</div>
+                        <label class="text-wrapper-25"><input type="checkbox" th:field="*{sdefault}" name="isDefault" checked="checked" value="1">기본배송지</label>
                     </div>
                     <input class="input" th:field="*{sname}" type="text" placeholder="배송지명을 입력해주세요">
                 </div>
@@ -62,7 +63,7 @@
                         <div class="text-wrapper-11">받는분 H.P</div>
                         <div class="text-wrapper-12">*</div>
                     </div>
-                    <input class="input" th:field="*{sphone}" type="text" placeholder="받는 분을 입력해주세요">
+                    <input class="input" th:field="*{sphone}" type="text" placeholder="전화번호를 입력해주세요">
                 </div>
 
                 <!--우편번호 입력하기-->
@@ -137,13 +138,12 @@
 
                 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-
-                <<div class="frame-11">
+                <div class="frame-11">
                 <div class="frame-12">
                     <button class="text-wrapper-18" type="reset">다시입력</button>
                 </div>
                 <div class="frame-13">
-                    <div th:href="@{/}" class="text-wrapper-19">취소하기</div>
+                    <a th:href="@{/mypage/shipping/list}" class="text-wrapper-19">취소하기</a>
                 </div>
                 <div class="frame-14">
                     <button type="submit" class="text-wrapper-18">작성하기</button>
@@ -151,58 +151,58 @@
             </div>
             </form>
         </div>
-    </div>
-    <div class="shippingRegister-footer">
-        <footer class="footer">
-            <div class="overlap-5">
-                <div class="div-container">
-                    <p class="based-on-the-life-s">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</p>
-                    <p class="text-wrapper-11">we always strives to provide First, Unique,</p>
-                    <div class="overlap-6">
-                        <p class="text-wrapper-12">and New F·U·N experiences to provide</p>
-                        <p class="text-wrapper-13">customers with a better life.</p>
-                    </div>
-                    <a th:href="@{/templates/item/item.html}">
-                        <div class="heading-shopping">SHOPPING</div>
-                        <div class="list-item-link">Refrigerator</div>
-                        <div class="list-item-link-2">TV</div>
-                        <div class="list-item-link-3">Laptop</div>
-                        <div class="list-item-link-sale">Washing Machine</div>
-                        <div class="list-item-link-4">Air Purifier</div>
-                        <div class="list-item-link-5">Air Conditioner</div>
-                        <div class="list-item-link-6">Cleaner</div>
-                        <div class="heading-newletter">OTHERS</div>
-                        <div class="div-footer-copyright">
-                            <div class="overlap-group-2">
-                                <div class="text-wrapper-14">Copyright ©</div>
-                                <p class="text-wrapper-15">20232020 All rights reserved | This template is made with</p>
-                                <div class="symbol-3"></div>
-                                <div class="by">by</div>
-                                <div class="link-colorlib">Colorlib</div>
-                            </div>
+        <div class="shippingRegister-footer">
+            <footer class="footer">
+                <div class="overlap-5">
+                    <div class="div-container">
+                        <p class="based-on-the-life-s">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</p>
+                        <p class="text-wrapper-11">we always strives to provide First, Unique,</p>
+                        <div class="overlap-6">
+                            <p class="text-wrapper-12">and New F·U·N experiences to provide</p>
+                            <p class="text-wrapper-13">customers with a better life.</p>
                         </div>
-                        <div class="list-item-link-7">About us</div>
-                        <div class="list-item-link-8">FAQ</div>
-                        <div class="list-item-link-9">Contact</div>
-                        <p class="element">
+                        <a th:href="@{/templates/item/item.html}">
+                            <div class="heading-shopping">SHOPPING</div>
+                            <div class="list-item-link">Refrigerator</div>
+                            <div class="list-item-link-2">TV</div>
+                            <div class="list-item-link-3">Laptop</div>
+                            <div class="list-item-link-sale">Washing Machine</div>
+                            <div class="list-item-link-4">Air Purifier</div>
+                            <div class="list-item-link-5">Air Conditioner</div>
+                            <div class="list-item-link-6">Cleaner</div>
+                            <div class="heading-newletter">OTHERS</div>
+                            <div class="div-footer-copyright">
+                                <div class="overlap-group-2">
+                                    <div class="text-wrapper-14">Copyright ©</div>
+                                    <p class="text-wrapper-15">20232020 All rights reserved | This template is made with</p>
+                                    <div class="symbol-3"></div>
+                                    <div class="by">by</div>
+                                    <div class="link-colorlib">Colorlib</div>
+                                </div>
+                            </div>
+                            <div class="list-item-link-7">About us</div>
+                            <div class="list-item-link-8">FAQ</div>
+                            <div class="list-item-link-9">Contact</div>
+                            <p class="element">
                 <span class="span"
                 >개인정보처리방침<br/>이벤트 개인정보처리방침<br/>영상정보처리기기운영관리방침<br/><br/>대표번호 :
                 </span>
-                            <a href="tel:02-3777-1114" target="_blank" rel="noopener noreferrer"
-                            ><span class="text-wrapper-16">02-</span></a
-                            >
-                            <span class="span"
-                            >1234-1234<br/>전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 :
+                                <a href="tel:02-3777-1114" target="_blank" rel="noopener noreferrer"
+                                ><span class="text-wrapper-16">02-</span></a
+                                >
+                                <span class="span"
+                                >1234-1234<br/>전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 :
                   발신자부담)<br/>제품 및 서비스 문의는 긴급 문의 건에 한해 24시간 운영합니다.<br/>주소 : 경기도
                   수원시 경기도 수원시 팔달구 덕영대로 899 (매산로 1가, 세진브론즈빌 304호)<br/><br/>본 사이트의 모든
                   콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.</span
-                            >
-                        </p>
-                    </a>
+                                >
+                            </p>
+                        </a>
+                    </div>
+                    <img class="img" src="/img/link-logo-png.png"/>
                 </div>
-                <img class="img" src="/img/link-logo-png.png"/>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
 </div>
 </html>

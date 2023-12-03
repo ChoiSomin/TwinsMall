@@ -677,7 +677,7 @@
     position: absolute;
     width: 100px;
     height: 35px;
-    top: 889px;
+    top: 950px;
     left: 331px;
     background-color: #d9d9d9;
     border-radius: 7px;
@@ -707,7 +707,7 @@
     position: absolute;
     width: 100px;
     height: 35px;
-    top: 889px;
+    top: 950px;
     left: 198px;
     background-color: #f68181;
     border-radius: 7px;
@@ -738,7 +738,7 @@
     position: absolute;
     width: 100px;
     height: 35px;
-    top: 889px;
+    top: 950px;
     left: 464px;
     background-color: #c0e8c4;
     border-radius: 7px;
@@ -1308,7 +1308,7 @@
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 1500px;
+    top: 1510px;
     left: 0;
     background-color: #111111;
 }

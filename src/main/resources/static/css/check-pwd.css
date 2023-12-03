@@ -428,6 +428,7 @@
     /* 테두리 속성을 없애는 CSS */
     border: none;
     outline: none; /* 포커스 테두리도 제거하려면 추가 */
+    cursor: pointer;
 }
 
 

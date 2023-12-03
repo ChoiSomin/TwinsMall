@@ -39,6 +39,7 @@ public class ShippingDto<E> {
     @NotEmpty
     private String sphone;   // 휴대폰 번호
 
+    private Boolean sdefault;
 
     private List<E> dtoList;
 

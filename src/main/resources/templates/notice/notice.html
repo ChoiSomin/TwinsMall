@@ -4,33 +4,6 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout/layout}">
 
-<div layout:fragment="script">
-    <!--<script type="text/javascript">
-
-      var msg = [[${msg}]];
-
-      console.log(msg);
-
-      if (msg) {
-        $(".modal").modal();
-      }
-
-      var searchForm = $("#searchForm");
-
-      $('#btn-search').click(function (e) {
-
-        searchForm.submit();
-
-      });
-
-      $('.btn-clear').click(function (e) {
-
-        searchForm.empty().submit();
-
-      });
-  -->
-    </script>
-</div>
 <div layout:fragment="content">
     <div class="notice">
         <div class="top">
@@ -88,7 +61,6 @@
                         <div class="row-2">
                             <div class="cell-2">
                                 <div class="content-2">
-                                    <!--<div th:text="${notice.totalElements - (notice.number * notice.size) - loop.index}"></div>-->
                                     <div class="text" th:text="${(notice.page - 1) * notice.size + loop.index + 1}"></div><!-- 최신게시물이 1 -->
                                 </div>
                             </div>
@@ -158,7 +130,7 @@
             </div>
         </div>
     </div>
-    <div class="footer">
+    <div class="notice-footer">
         <footer class="footer">
             <div class="overlap-5">
                 <div class="div-container">

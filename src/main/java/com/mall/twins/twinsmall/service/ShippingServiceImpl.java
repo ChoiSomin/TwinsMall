@@ -55,6 +55,13 @@ public class ShippingServiceImpl implements ShippingService{
         return shippingRepository.save(shipping).getSno();
     }
 
+    // 기본 배송지 업데이트
+    @Override
+    public void updateDefaultShipping(String mid) {
+        // 현재 기본 배송지를 해제하는 로직 추가
+        shippingRepository.updateDefaultShipping(mid);
+    }
+
 
     // 조회 -> mid(사용자 아이디)로 배송 주소 DTO 전체 리스트 리턴
     @Override
@@ -143,6 +150,28 @@ public class ShippingServiceImpl implements ShippingService{
     public void remove(Long sno) {
 
         shippingRepository.deleteById(sno);
+
+    }
+
+    @Override
+    public ShippingDto getDefaultAddress(String mid) {
+        // 여기에 해당 mid에 해당하는 회원의 기본 배송지 정보를 가져오는 로직을 작성
+
+        log.info("service mid : " + mid);
+        Member member = memberRepository.findByMid(mid);
+
+        log.info("service member : " + member);
+
+        if (member != null) {
+            ShippingDto shippingList = shippingRepository.getDefaultAddress(mid);
+
+            log.info("service shippingList : " + shippingList);
+
+            return shippingList;
+        } else {
+            // 회원이 존재하지 않을 경우 또는 기본 배송지 정보가 없을 경우 예외처리 또는 기본 값 반환
+            throw new RuntimeException("해당 회원의 기본 배송지 정보를 찾을 수 없습니다.");
+        }
 
     }
 

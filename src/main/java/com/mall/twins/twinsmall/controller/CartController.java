@@ -7,9 +7,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mall.twins.twinsmall.dto.CartDetailDto;
 import com.mall.twins.twinsmall.dto.CartItemDto;
 import com.mall.twins.twinsmall.dto.CartOrderDto;
+import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.CartService;
 import com.mall.twins.twinsmall.service.MemberService;
+import com.mall.twins.twinsmall.service.ShippingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -34,7 +37,9 @@ public class CartController {
 
     private final CartService cartService;
 
-    private final MemberService memberService;
+    private final MemberRepository memberRepository;
+
+    private final ShippingService shippingService;
 
     @PostMapping(value = "/cart")
     public @ResponseBody ResponseEntity order(@RequestBody @Valid CartItemDto cartItemDto,
@@ -104,42 +109,16 @@ public class CartController {
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
 
-    /*@PostMapping("/checkout")
-    public @ResponseBody ResponseEntity checkout(@RequestBody CartDetailDto cartDetailDto, Principal principal , Model model) {
-
-        log.info("cartDetailList : " + cartDetailDto);
-
-        model.addAttribute("cartItems",cartDetailDto);
-
-        return new ResponseEntity<>(cartDetailDto, HttpStatus.OK);
-    }*/
-
-    /*@GetMapping("/checkout")
-    public ResponseEntity<CartOrderDto> checkoutget(@RequestBody CartOrderDto cartOrderDtoList, Principal principal , Model model) {
-
-        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
-
-        log.info("CartOrderDto : " + cartOrderDtoList);
-
-        model.addAttribute("cartItems",cartDetailList);
-
-        return new ResponseEntity<>(cartOrderDtoList, HttpStatus.OK);
-    }*/
-
-    /*@GetMapping(value = "/checkout")
-    public String checkout(Principal principal, Model model){
-        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
-
-        log.info("cartDetailList : " + cartDetailList);
-
-        model.addAttribute("cartItems",cartDetailList);
-
-        return "checkout";
-    }*/
-
     @GetMapping("/checkout")
-    public String checkout(@RequestParam(name = "orderData") String orderData, Model model) {
+    public String checkout(@RequestParam(name = "orderData") String orderData, Model model, Principal principal) {
+
+        log.info("유저 아이디 : " + principal.getName());
+
+        String mid = principal.getName();
+        Member member = memberRepository.findByMid(mid);
+
         log.info("orderData: " + orderData);
+
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -149,10 +128,33 @@ public class CartController {
 
             // 숫자로 변환
             List<CartItemDto> cartItems = cartDetailDto.getCartDetailDto();
-            cartItems.forEach(item -> item.setPrice(String.valueOf(Integer.parseInt(item.getPrice().replaceAll("[^0-9]", "")))));
+
+            // 총 주문 금액 초기화
+            int orderTotalPrice = 0;
+
+            // 상품 가격 및 배송비를 숫자로 변환하여 총 주문 금액에 더함
+            for (CartItemDto item : cartItems) {
+                // 가격에서 숫자만 추출하여 변환
+                String priceWithoutNonDigit = item.getPrice().replaceAll("[^0-9]", "");
+                item.setPrice(priceWithoutNonDigit);
+
+                // 총 주문 금액에 상품 가격 추가
+                orderTotalPrice += Integer.parseInt(priceWithoutNonDigit);
+            }
+
+            // 배송비 추가
+            orderTotalPrice += 3500;
+
+            log.info("cartItems" + cartItems);
+            for (CartItemDto item : cartItems) {
+                log.info("CartItem: " + item);
+            }
 
             // 여기서 주문 처리 페이지에 필요한 데이터를 모델에 추가
+            model.addAttribute("member", member);
+            model.addAttribute("shippingDto", new ShippingDto());
             model.addAttribute("cartItems", cartItems);
+            model.addAttribute("totalOrderPrice", orderTotalPrice);
         } catch (JsonMappingException e) {
             throw new RuntimeException(e);
         } catch (JsonProcessingException e) {
@@ -161,5 +163,34 @@ public class CartController {
 
         // checkout.html로 이동
         return "checkout";
+    }
+
+    @PostMapping(value = "/checkout/orders")
+    public @ResponseBody ResponseEntity checkoutOrder(@RequestBody CartOrderDto cartOrderDto, Principal principal){
+
+        List<CartOrderDto> cartOrderDtoList = cartOrderDto.getCartOrderDtoList();
+
+        for (CartOrderDto cartOrder : cartOrderDtoList) {
+            if(!cartService.validateCartItem(cartOrder.getCartItemId(), principal.getName())){
+                return new ResponseEntity<String>("주문 권한이 없습니다.", HttpStatus.FORBIDDEN);
+            }
+        }
+
+        Long orderId = cartService.orderCartItem(cartOrderDtoList, principal.getName());
+        return new ResponseEntity<Long>(orderId, HttpStatus.OK);
+    }
+
+    @GetMapping("/api/getDefaultAddress")
+    @ResponseBody
+    public ResponseEntity<ShippingDto> getDefaultAddress(@RequestParam String mid) {
+        // 여기에 해당 mid에 해당하는 기본 배송지 정보를 가져오는 로직을 작성
+
+        log.info("controller mid : " + mid);
+
+        ShippingDto shippingDto = shippingService.getDefaultAddress(mid);
+
+        log.info(shippingDto);
+
+        return ResponseEntity.ok(shippingDto);
     }
 }

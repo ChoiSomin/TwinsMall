@@ -23,4 +23,17 @@ public class CartItemDto {
     private String price;
 
     private String imgUrl;
+
+    @Override
+    public String toString() {
+        return "CartItemDto{" +
+                "cartItemId='" + cartItemId + '\'' +
+                ", itemNm='" + itemNm + '\'' +
+                ", count=" + count +
+                ", price='" + price + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
+    }
+
+
 }

@@ -394,9 +394,9 @@
   left: 21px;
   border: none;
   background: none;
-  font-family: "Nunito Sans-Regular", Helvetica;
+  font-family: "Nunito Sans-Bold", Helvetica;
   font-weight: 400;
-  color: #b7b7b7;
+  color: #000000;
   font-size: 14px;
   letter-spacing: 0;
   line-height: normal;
@@ -406,10 +406,13 @@
 
 .check-out .group {
   position: absolute;
-  width: 80px;
+  width: 100px;
   height: 30px;
-  top: 0;
-  left: 661px;
+  top: -10px;
+  left: 650px;
+  cursor: pointer;
+  color: #000000;
+  font-family: "Nunito Sans-Bold", Helvetica;
 }
 
 .check-out .input-2 {
@@ -635,7 +638,7 @@
   height: 26px;
   top: 157px;
   overflow: hidden;
-  position: absolute;
+  position: relative;
   width: 300px;
   left: 30px;
 }
@@ -782,13 +785,13 @@
 .check-out .text-wrapper-19 {
   width: 62px;
   height: 40px;
-  left: 238px;
+  left: 220px;
   font-family: "Nunito Sans-Bold", Helvetica;
   font-weight: 700;
   color: #e53637;
   line-height: 40px;
   position: absolute;
-  top: -1px;
+  top: 8px;
   font-size: 16px;
   letter-spacing: 0;
   white-space: nowrap;
@@ -829,18 +832,21 @@
 
 .check-out .text-wrapper-21 {
   position: absolute;
-  width: 98px;
-  height: 19px;
-  top: 14px;
-  left: 101px;
+  width: 208px;
+  height: 40px;
+  top: 460px;
+  left: 78px;
   font-family: "Nunito Sans-Bold", Helvetica;
   font-weight: 700;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 18px;
   text-align: center;
   letter-spacing: 0;
   line-height: 21px;
   white-space: nowrap;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .check-out .footer {
@@ -1250,13 +1256,39 @@
   left: 0;
 }
 
+.check-out .input-10 {
+    display: none;
+}
+
+.check-out .input-6 {
+    font-size: 15px;
+    width: 299px;
+    top: 223px;
+    left: 15px;
+    position: absolute;
+    height: 50px;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #e1e1e1;
+}
+
+.check-out .input-7 {
+    font-size: 15px;
+}
+
+.check-out .input-8 {
+    font-size: 15px;
+    position: absolute;
+    top: 17px;
+}
+
 /* FOOTER */
 
 .checkout-footer .footer {
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 1300px;
+    top: 1250px;
     left: 0;
     background-color: #111111;
 }

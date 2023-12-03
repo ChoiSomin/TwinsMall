@@ -29,6 +29,8 @@ public class Order extends BaseEntity {
 
     private int totalPrice;
 
+    private Integer addressNo;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL
             , orphanRemoval = true, fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new ArrayList<>();

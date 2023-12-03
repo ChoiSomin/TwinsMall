@@ -30,12 +30,12 @@ public class Shipping{
     @Column(nullable = false, length = 500)
     private String address; // 주소
 
-
     private String saddress; // 상세주소
 
     @Column(nullable = false)
     private String sphone; // 휴대폰 번호
 
+    private Boolean sdefault;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mid")

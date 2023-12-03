@@ -20,6 +20,8 @@ public interface ShippingService {
 
     Long register(ShippingDto ShippingDTO);
 
+    void updateDefaultShipping(String mid);
+
     // 조회 (아이디 별로 전체)
     List<ShippingDto> readAll(String mid);
 
@@ -34,6 +36,8 @@ public interface ShippingService {
 
     // 삭제
     void remove(Long sno);
+
+    ShippingDto getDefaultAddress(String mid);
 
     // 기본배송지 수정
     /*void modifySdefault(String mid);*/

@@ -337,7 +337,7 @@
 }
 
 .cart .table-body-row {
-  position: absolute;
+  position: relative;
   width: 750px;
   height: 151px;
   top: 50px;
@@ -372,7 +372,7 @@
   font-family: "Nunito Sans", Helvetica;
   font-weight: 600;
   color: #111111;
-  font-size: 15px;
+  font-size: 20px;
   letter-spacing: 0;
   line-height: 18px;
   white-space: nowrap;
@@ -648,7 +648,7 @@
   position: absolute;
   width: 280px;
   height: 40px;
-  top: 106px;
+  top: 80px;
   left: 40px;
   overflow: hidden;
 }
@@ -1116,7 +1116,7 @@
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 1250px;
+    top: 1300px;
     left: 0;
     background-color: #111111;
 }
