@@ -95,7 +95,7 @@ public class OrderController {
 
     @GetMapping(value = {"/orders","/orders/{page}"})
     public String orderHist(@PathVariable("page") Optional<Integer> page, Principal principal, Model model){
-        //한번에 가지고 올 주문의 개수는 4개로 설정
+        //한번에 가지고 올 주문의 개수는 10개로 설정
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0,10);
 
         //현재로그인한 회원은 이메일과 페이징 객체를 파라미터로 전달하여 화면에 전달한 주문 목록 데이터를 리터값으로 받습니다.
@@ -126,9 +126,12 @@ public class OrderController {
                               Principal principal, Model model, Pageable pageable) {
 
         String mid = principal.getName();
+        Member member = memberRepository.findByMid(mid);
 
         Pageable pageRequest = PageRequest.of(page, 10); // 적절한 페이지 정보 설정
         Page<OrderHistDto> orderHistDtoList = orderService.getOrderListByOrderId(mid, ono, pageRequest);
+
+        model.addAttribute("member", member);
         model.addAttribute("orders", orderHistDtoList);
         model.addAttribute("order", ono);
         model.addAttribute("currentPage", page);

@@ -57,10 +57,10 @@ public class indexController {
         return "accessDenied";
     }
 
-    /*@GetMapping("/checkout")
+    @GetMapping("/aboutus")
     public void checkout() {
-        log.info("checkout....");
+        log.info("aboutus....");
 
-    }*/
+    }
 
 }

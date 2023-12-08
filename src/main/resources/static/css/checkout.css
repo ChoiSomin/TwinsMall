@@ -623,7 +623,7 @@
   width: 36px;
   height: 24px;
   top: -1px;
-  left: 264px;
+  left: 240px;
   font-family: "Nunito Sans-Regular", Helvetica;
   font-weight: 400;
   color: #111111;
@@ -659,14 +659,15 @@
 }
 
 .check-out .text-wrapper-14 {
-  width: 56px;
+  width: 295px;
   height: 26px;
-  left: 244px;
+  left: 0px;
   font-family: "Nunito Sans-Regular", Helvetica;
   font-weight: 400;
   color: #111111;
   line-height: 26px;
-  position: absolute;
+  position: relative;
+  text-align: right;
   top: -1px;
   font-size: 16px;
   letter-spacing: 0;
@@ -783,14 +784,15 @@
 }
 
 .check-out .text-wrapper-19 {
-  width: 62px;
+  width: 295px;
   height: 40px;
-  left: 220px;
+  left: 0px;
   font-family: "Nunito Sans-Bold", Helvetica;
   font-weight: 700;
   color: #e53637;
   line-height: 40px;
-  position: absolute;
+  position: relative;
+  text-align: right;
   top: 8px;
   font-size: 16px;
   letter-spacing: 0;

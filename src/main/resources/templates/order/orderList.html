@@ -82,8 +82,8 @@
                             </div>
                             <div class="cell-4">
                                 <div class="content-2">
-                                    <div class="text-4"
-                                         data-th-text="| ${#numbers.formatInteger(orders.ordertotalPrice, 3, 'COMMA')} 원 |"></div>
+                                    <!-- 주문 총액에서 3500원을 더한 결과를 출력 -->
+                                    <div class="text-4" data-th-text="| ${#numbers.formatInteger(orders.ordertotalPrice + 3500, 3, 'COMMA')} 원 |"></div>
                                 </div>
                             </div>
 

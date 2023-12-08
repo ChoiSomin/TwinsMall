@@ -76,12 +76,17 @@
         var dataList = new Array();
         var paramData = new Object();
 
-        $("input[name=cartChkBox]:checked").each(function() {
-            var cartItemId = $(this).val();
+        document.querySelectorAll('input[name="cartItemId"]').forEach(function (input) {
+            var cartItemId = input.value;
+
+            // 데이터 객체에 추가
             var data = new Object();
             data["cartItemId"] = cartItemId;
             dataList.push(data);
         });
+
+        // dataList 배열에는 모든 cartItemId가 저장되어 있음
+        console.log(dataList);
 
         paramData['cartOrderDtoList'] = dataList;
 
@@ -225,10 +230,6 @@
                   </p>
                 </div>
             </div>
-            <div class="text-wrapper-7">Email</div>
-            <div class="input-3">
-                <input class="input-8" type="text" placeholder="이메일을 입력해주세요">
-            </div>
             <input class="input-5" type="text" name="phone" th:value="${member.mphone}" readonly>
             <div class="heading-2">
                 <div class="text-wrapper-3">받는 분</div>
@@ -244,6 +245,7 @@
 
         <div class="order">
             <div th:each="cartItem : ${cartItems}">
+                <input type="hidden" name="cartItemId" th:value="${cartItem.cartItemId}">
                 <div class="heading-3">
                     <div class="text-wrapper-10">결제상세</div>
                 </div>
@@ -253,8 +255,7 @@
                 </div>
                 <div class="list-item">
                     <div class="text-wrapper-13"><span th:text="${cartItem.itemNm}"></span></div>
-                    <div class="text-wrapper-14"><span th:text="${cartItem.price}"></span></div>
-
+                    <div class="text-wrapper-14"><span th:text="${#numbers.formatInteger(cartItem.price, 0, 'COMMA')} + '원'"></span></div>
                 </div>
             </div>
 
@@ -265,7 +266,7 @@
                 </div>
                 <div class="item-2">
                     <div class="text-wrapper-20">총 주문 금액</div>
-                    <div class="text-wrapper-19" th:text="${totalOrderPrice} + '원'"></div>
+                    <div class="text-wrapper-19" th:id="totalOrderPrice"><span th:text="${#numbers.formatInteger(totalOrderPrice, 0, 'COMMA')} + '원'"></span></div>
                 </div>
             </div>
             <button class="button">
@@ -273,15 +274,6 @@
             </button>
         </div>
     </div>
-    <!-- 배송지 정보 모달 -->
-    <div id="deliveryModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <!-- 모달 내용을 여기에 추가 -->
-            <!-- 예: 배송지 정보를 표시하는 폼 등 -->
-        </div>
-    </div>
-
 
     <div class="checkout-footer">
         <footer class="footer">

@@ -57,30 +57,32 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="div-wrapper">
-                                        <div class="content">
-                                            <div class="text">주문자</div>
-                                        </div>
-                                    </div>
-                                    <div class="cell-2">
-                                        <div class="content">
-                                            <div class="text-4" th:text="${member.mname}"></div>
-                                        </div>
-                                    </div>
-                                    <div class="cell-3">
-                                        <div class="content">
-                                            <div class="text-3">TEL</div>
-                                        </div>
-                                    </div>
-                                    <div class="cell-2">
-                                        <div class="content">
-                                            <div class="text-4" th:text="${member.mphone}"></div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </th:block>
+                    </th:block>
+                    <div class="row">
+                        <div class="div-wrapper">
+                            <div class="content">
+                                <div class="text">주문자</div>
+                            </div>
+                        </div>
+                        <div class="cell-2">
+                            <div class="content">
+                                <input class="text-4" th:text="${member.mname}">
+                            </div>
+                        </div>
+                        <div class="cell-3">
+                            <div class="content">
+                                <div class="text-3">TEL</div>
+                            </div>
+                        </div>
+                        <div class="cell-2">
+                            <div class="content">
+                                <div class="text-4" th:text="${member.mphone}"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="view-2">
                     <div class="table-2">

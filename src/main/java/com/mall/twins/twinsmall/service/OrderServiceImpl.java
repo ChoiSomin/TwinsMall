@@ -130,16 +130,24 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Long checkoutOrders(List<OrderDto> orderDtoList, String mid, String address) {
 
-        Member member = memberRepository.findByMid(mid);
+        log.info("OrderServiceImpl 진입");
 
+        Member member = memberRepository.findByMid(mid);
         List<OrderItem> orderItemList = new ArrayList<>();
 
-        for(OrderDto orderDto : orderDtoList){
+        for (OrderDto orderDto : orderDtoList) {
             Item item = itemRepository.findById(orderDto.getItemId()).orElseThrow(EntityNotFoundException::new);
 
-            OrderItem orderItem = OrderItem.createOrderItem(item,orderDto.getCount());
+            log.info("orderDto.getCount : " + orderDto.getCount());
+
+            OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getCount());
+
+            // OrderItem을 추가하기 전에 현재의 orderItemList 상태를 로그로 출력
+            log.info("Current OrderItemList: " + orderItemList);
+
             orderItemList.add(orderItem);
         }
+
         Order order = Order.createCheckoutOrder(member, orderItemList, address);
         orderRepository.save(order);
         return order.getOno();
@@ -154,11 +162,11 @@ public class OrderServiceImpl implements OrderService{
         for(Order order : orders){
             OrderHistDto orderHistDto = new OrderHistDto(order);
             List<OrderItem> orderItems = order.getOrderItems();
-            for(OrderItem orderItem : orderItems){
+            /*for(OrderItem orderItem : orderItems){
                 ItemImg itemImg = itemImgRepository.findByIdAndIimgrep(orderItem.getItem().getId(),"Y");
                 OrderItemDto orderItemDto = new OrderItemDto(orderItem, itemImg.getIimgurl());
                 orderHistDto.addOrderItemDto(orderItemDto);
-            }
+            }*/
             orderHistDtos.add(orderHistDto);
         }
 
