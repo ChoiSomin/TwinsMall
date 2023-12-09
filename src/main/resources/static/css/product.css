@@ -294,6 +294,7 @@
     height: 24px;
     top: 0;
     left: 0;
+    cursor: pointer;
 }
 
 .product .categories {
@@ -341,6 +342,7 @@
     position: relative;
     height: 225px;
     top: 10px;
+    cursor: pointer;
 }
 
 .product .item-link-men {
@@ -503,6 +505,7 @@
     left: 747px;
     background-color: #ffffff;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .product .text-wrapper-6 {
