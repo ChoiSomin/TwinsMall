@@ -230,7 +230,7 @@
                   </p>
                 </div>
             </div>
-            <input class="input-5" type="text" name="phone" th:value="${member.mphone}" readonly>
+            <input class="input-5" type="text" name="phone" th:value="${#strings.substring(member.mphone, 0, 3) + '-' + #strings.substring(member.mphone, 3, 7) + '-' + #strings.substring(member.mphone, 7)}" readonly>
             <div class="heading-2">
                 <div class="text-wrapper-3">받는 분</div>
                 <div class="group-2">
@@ -262,7 +262,7 @@
             <div class="list">
                 <div class="item">
                     <div class="text-wrapper-18">배송비</div>
-                    <div class="text-wrapper-19">3500원</div>
+                    <div class="text-wrapper-19">3,500원</div>
                 </div>
                 <div class="item-2">
                     <div class="text-wrapper-20">총 주문 금액</div>

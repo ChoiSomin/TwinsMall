@@ -434,6 +434,7 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0;
+  top: 6px;
 }
 
 .mypage-order-detail .content-wrapper {
@@ -456,11 +457,12 @@
   margin-top: -1px;
   font-family: "Inter", Helvetica;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 15.6px;
   color: #000000;
   text-align: center;
   letter-spacing: 0;
+  top: 9px;
 }
 
 .mypage-order-detail .text-3 {
@@ -474,6 +476,7 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0;
+  top: 6px;
 }
 
 .mypage-order-detail .div-wrapper {

@@ -69,7 +69,7 @@
                         </div>
                         <div class="cell-2">
                             <div class="content">
-                                <input class="text-4" th:text="${member.mname}">
+                                <div class="text-2" th:text="${member.mname}"></div>
                             </div>
                         </div>
                         <div class="cell-3">
@@ -79,7 +79,7 @@
                         </div>
                         <div class="cell-2">
                             <div class="content">
-                                <div class="text-4" th:text="${member.mphone}"></div>
+                                <div class="text-2" th:text="${#strings.substring(member.mphone, 0, 3) + '-' + #strings.substring(member.mphone, 3, 7) + '-' + #strings.substring(member.mphone, 7)}"></div>
                             </div>
                         </div>
                     </div>
