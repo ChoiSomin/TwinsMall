@@ -3,40 +3,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
-<th:block layout:fragment="script">
-    <script th:inline="javascript">
-
-        $(document).ready(function () {
-            $("#searchBtn").on("click", function (e) {
-                e.preventDefault();
-                page(0);
-            });
-        });
-
-        function page(page){
-            var searchDateType = $("#searchDateType").val();
-            var searchSellStatus = $("#searchSellStatus").val();
-            var searchBy = $("#searchBy").val();
-            var searchQuery = $("#searchQuery").val();
-
-            location.href="/item/list?page=" + page +
-                "&searchDateType=" + searchDateType +
-                "&searchSellStatus=" + searchSellStatus +
-                "&searchBy=" + searchBy +
-                "&searchQuery=" + searchQuery;
-        }
-
-    </script>
-
-</th:block>
-
 <div layout:fragment="content" id='wrapper'>
-
     <div class="product">
         <div class="shop">
             <div class="heading-shop">Shop</div>
             <div class="link-home">Home</div>
-            <div class="symbol"> ></div>
+            <div class="symbol"></div>
             <div class="text-wrapper-3">Shop</div>
         </div>
         <!--검색기능-->
@@ -48,9 +20,9 @@
                 </div>
             </div>
         </form>
-
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+
+            document.addEventListener('DOMContentLoaded', function() {
                 var form = document.querySelector('form[action="/item/list"]');
                 if (form) {
                     // 이전에 검색한 내용이 URL에 있다면 검색창에 설정
@@ -61,7 +33,7 @@
                         pnameInput.value = pname;
                     }
 
-                    form.addEventListener('submit', function (event) {
+                    form.addEventListener('submit', function(event) {
                         event.preventDefault(); // 기본 제출 동작 방지
 
                         var pnameInput = form.querySelector('#pnameInput');
@@ -89,7 +61,7 @@
                 <div class="link" onclick="toggleList()">
                     <div class="categories">CATEGORIES</div>
                 </div>
-                <div class="pseudo-1" onclick="toggleList()"></div>
+                <div class="symbol-div-nice-select" onclick="toggleList()"></div>
             </div>
             <div class="div-card-body" id="listContainer" style="display: none;">
                 <div class="list">
@@ -123,11 +95,13 @@
                         var pnameValue = pnameInput.value;
                         var url = new URL('/item/list', window.location.href);
 
-                        // pname 파라미터 값 설정
-                        var searchParams = new URLSearchParams(url.search);
-                        if (searchParams.has('pname')) {
-                            pnameValue = searchParams.get('pname');
+                        // 기존 pname 값이 있는 경우 해당 값을 유지하도록 설정
+                        var existingPname = url.searchParams.get('pname');
+                        if (existingPname !== null) {
+                            pnameValue = existingPname;
                         }
+
+                        // pname 파라미터 값 설정
                         url.searchParams.set('pname', pnameValue);
 
                         // pcate 파라미터 값 설정
@@ -141,7 +115,9 @@
             }
 
 
+
         </script>
+
 
 
         <!--오름차순 정렬-->
@@ -153,58 +129,54 @@
             </div>
 
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    var form = document.querySelector('form[action="/item/list"]');
-                    if (form) {
-                        // 이전에 검색한 내용이 URL에 있다면 검색창에 설정
-                        var url = new URL(window.location.href);
-                        var pname = url.searchParams.get('pname');
-                        var pnameInput = form.querySelector('#pnameInput');
-                        if (pname && pnameInput) {
-                            pnameInput.value = pname;
+                document.addEventListener("DOMContentLoaded", function() {
+                    const pseudoElement = document.querySelector('.pseudo');
+                    const sortTextElement = document.querySelector('.text-wrapper-6');
+                    let ascendingOrder = true;
+
+                    // 페이지 로드 시 'sort' 값 확인하여 정렬 방식 설정
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const currentSortOrder = urlParams.get('sort');
+                    if (currentSortOrder === 'desc') {
+                        ascendingOrder = false;
+                        sortTextElement.textContent = 'High To Low';
+                    }
+
+                    pseudoElement.addEventListener('click', function() {
+                        ascendingOrder = !ascendingOrder;
+                        if (ascendingOrder) {
+                            sortTextElement.textContent = 'Low To High';
+                            updateURL('asc'); // 정렬 값을 'asc'로 지정하여 URL 업데이트
+                        } else {
+                            sortTextElement.textContent = 'High To Low';
+                            updateURL('desc'); // 정렬 값을 'desc'로 지정하여 URL 업데이트
                         }
+                    });
 
-                        form.addEventListener('submit', function (event) {
-                            event.preventDefault(); // 기본 제출 동작 방지
-
-                            var pnameInput = form.querySelector('#pnameInput');
-                            if (pnameInput) {
-                                var pnameValue = pnameInput.value;
-                                var url = new URL('/item/list', window.location.href);
-
-                                // pname 파라미터 값 설정
-                                url.searchParams.set('pname', pnameValue);
-
-                                // 새 URL을 사용하여 페이지 이동 (또는 필요한 작업 수행)
-                                window.location.href = url.toString();
-                            }
-                        });
-                    } else {
-                        console.error("Form not found");
+                    // URL 업데이트 함수 정의
+                    function updateURL(sortOrder) {
+                        urlParams.set('sort', sortOrder); // 'sort' 파라미터에 정렬 값을 설정
+                        const currentUrl = window.location.pathname + '?' + urlParams.toString();
+                        window.location.href = currentUrl; // 새로운 URL로 이동
                     }
                 });
-
-                // URL 업데이트 함수 정의
-                function updateURL(sortOrder) {
-                    urlParams.set('sort', sortOrder); // 'sort' 파라미터에 정렬 값을 설정
-                    const currentUrl = window.location.pathname + '?' + urlParams.toString();
-                    window.location.href = currentUrl; // 새로운 URL로 이동
-                };
 
 
             </script>
 
+
             <th:block th:each="item, status: ${items.getContent()}">
                 <div class="div-product-item">
                     <a th:href="@{/item/detail/} + ${item.id}">
-                    <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}">
-                    <div class="heading-piqu-biker">[[${item.pname}]]</div>
+                        <img th:src="${item.iimgurl}" class="div-product-item-pic" th:alt="${item.pname}">
+                        <div class="heading-piqu-biker">[[${item.pname}]]</div>
 
-                    <div th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="heading" data-th-text="| ${#numbers.formatInteger(item.pprice, 3, 'COMMA')} 원 |"></div>
-                    <div th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SOLD_OUT}" class="heading">품절</div>
+                        <div th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SELL}" class="heading" data-th-text="| ${#numbers.formatInteger(item.pprice, 3, 'COMMA')} 원 |"></div>
+                        <div th:if="${item.pstatus == T(com.mall.twins.twinsmall.constant.ItemSellStatus).SOLD_OUT}" class="heading">품절</div>
                     </a>
                 </div>
             </th:block>
+
 
             <div class="div-wrapper">
                 <div th:with="start=${(items.number/maxPage)*maxPage +1},
