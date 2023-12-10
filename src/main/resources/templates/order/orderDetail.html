@@ -163,7 +163,7 @@
                         <th:block th:each="orderItem : ${order.orderItemDtoList}">
                             <div class="table-body-row">
                                 <img class="data-cart-jpg" th:src="${orderItem.imgUrl}"
-                                     th:alt="${orderItem.itemNm}"/>
+                                     th:alt="${orderItem.itemNm}">
                                 <div class="data">
                                     <div class="heading-t-shirt">
                                         <span th:text="${orderItem.itemNm}"></span>
@@ -178,13 +178,14 @@
                                 </div>
                                 <div class="data-2">
                                             <span class="totaltotal"
-                                                  th:text="${orderItem.orderPrice*orderItem.count}+'원'"></span>
+                                                  data-th-text="| ${#numbers.formatInteger(orderItem.orderPrice*orderItem.count, 3, 'COMMA')} 원 |">
+                                            </span>
                                 </div>
                             </div>
                         </th:block>
                     </th:block>
                 </div>
-                <div class="row-wrapper">
+                <!--<div class="row-wrapper">
                     <div class="row">
                         <div class="cell">
                             <div class="content">
@@ -208,7 +209,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="view-4">
                 <div class="frame-2">
                     <a href="#">

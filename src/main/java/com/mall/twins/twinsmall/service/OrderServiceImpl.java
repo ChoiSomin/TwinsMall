@@ -163,11 +163,20 @@ public class OrderServiceImpl implements OrderService{
         for(Order order : orders){
             OrderHistDto orderHistDto = new OrderHistDto(order);
             List<OrderItem> orderItems = order.getOrderItems();
-            /*for(OrderItem orderItem : orderItems){
-                ItemImg itemImg = itemImgRepository.findByIdAndIimgrep(orderItem.getItem().getId(),"Y");
-                OrderItemDto orderItemDto = new OrderItemDto(orderItem, itemImg.getIimgurl());
-                orderHistDto.addOrderItemDto(orderItemDto);
-            }*/
+
+            for (OrderItem orderItem : orderItems) {
+                Item item = orderItem.getItem();
+                if (item != null) {
+                    ItemImg itemImg = itemImgRepository.findByIdAndIimgrep(item.getId(), "Y");
+                    if (itemImg == null) {
+                        // 로깅: 이미지를 찾지 못한 경우
+                        log.warn("Image not found for Item with ID: {}", item.getId());
+                    }
+                    String iimgurl = (itemImg != null) ? itemImg.getIimgurl() : null;
+                    OrderItemDto orderItemDto = new OrderItemDto(orderItem, iimgurl);
+                    orderHistDto.addOrderItemDto(orderItemDto);
+                }
+            }
             orderHistDtos.add(orderHistDto);
         }
 
