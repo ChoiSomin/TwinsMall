@@ -157,6 +157,7 @@ public class OrderServiceImpl implements OrderService{
     @Transactional(readOnly = true)
     public Page<OrderHistDto> getOrderListByOrderId(String mid, Long ono, Pageable pageable) {
         List<Order> orders = orderRepository.findOrdersByMember_MidAndOno(mid, ono, pageable);
+
         List<OrderHistDto> orderHistDtos = new ArrayList<>();
 
         for(Order order : orders){
@@ -171,6 +172,7 @@ public class OrderServiceImpl implements OrderService{
         }
 
         return new PageImpl<>(orderHistDtos, pageable, orders.size());
+
     }
 
 

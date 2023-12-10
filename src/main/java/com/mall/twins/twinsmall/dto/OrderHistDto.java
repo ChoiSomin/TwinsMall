@@ -19,6 +19,8 @@ public class OrderHistDto {
 
     private MemberJoinDTO memberJoinDTO;
 
+    private String address;
+
     private int ordertotalPrice;
     //주문 상품 리스트
     private List<OrderItemDto> orderItemDtoList = new ArrayList<>();
@@ -29,6 +31,7 @@ public class OrderHistDto {
         this.orderStatus = order.getOstatus();
         this.ordertotalPrice = order.getTotalPrice();
         this.memberJoinDTO = new MemberJoinDTO();
+        this.address = order.getAddress();
     }
 
     public void addOrderItemDto(OrderItemDto orderItemDto){

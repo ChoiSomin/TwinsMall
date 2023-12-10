@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="content-wrapper">
                                         <div class="content">
-                                            <div class="text-2" th:text="${order.orderId}"> </div>
+                                            <div class="text-2" th:text="${order.orderId}"></div>
                                         </div>
                                     </div>
                                     <div class="cell">
@@ -57,7 +57,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </th:block>
                     </th:block>
@@ -79,71 +78,80 @@
                         </div>
                         <div class="cell-2">
                             <div class="content">
-                                <div class="text-2" th:text="${#strings.substring(member.mphone, 0, 3) + '-' + #strings.substring(member.mphone, 3, 7) + '-' + #strings.substring(member.mphone, 7)}"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="view-2">
-                    <div class="table-2">
-                        <div class="row">
-                            <div class="cell">
-                                <div class="content">
-                                    <div class="text">배송번호</div>
-                                </div>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <div class="text-2"></div>
-                                </div>
-                            </div>
-                            <div class="cell">
-                                <div class="content">
-                                    <div class="text-3">주문상태</div>
-                                </div>
-                            </div>
-                            <div class="content-wrapper">
-                                <div class="content">
-                                    <div class="text-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="div-wrapper">
-                                <div class="content">
-                                    <div class="text">받는분</div>
-                                </div>
-                            </div>
-                            <div class="cell-2">
-                                <div class="content">
-                                    <div class="text-4"></div>
-                                </div>
-                            </div>
-                            <div class="cell-3">
-                                <div class="content">
-                                    <div class="text">받는분 TEL</div>
-                                </div>
-                            </div>
-                            <div class="cell-2">
-                                <div class="content">
-                                    <div class="text-4"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="div-wrapper">
-                                <div class="content">
-                                    <div class="text">배송주소</div>
-                                </div>
-                            </div>
-                            <div class="cell-2">
-                                <div class="content">
-                                    <div class="text-4"></div>
+                                <div class="text-2"
+                                     th:text="${#strings.substring(member.mphone, 0, 3) + '-'
+                                     + #strings.substring(member.mphone, 3, 7) + '-'
+                                     + #strings.substring(member.mphone, 7)}">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <th:block th:each="order : ${orders.getContent()}">
+                    <div class="view-2">
+                        <div class="table-2">
+                            <div class="row">
+                                <div class="cell">
+                                    <div class="content">
+                                        <div class="text">배송번호</div>
+                                    </div>
+                                </div>
+                                <div class="content-wrapper">
+                                    <div class="content">
+                                        <div class="text-2" th:text="${order.orderId}"></div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="content">
+                                        <div class="text-3">주문상태</div>
+                                    </div>
+                                </div>
+                                <div class="content-wrapper">
+                                    <div class="content">
+                                        <div class="text-2" th:text="${order.orderStatus}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="div-wrapper">
+                                    <div class="content">
+                                        <div class="text">받는분</div>
+                                    </div>
+                                </div>
+                                <div class="cell-2">
+                                    <div class="content">
+                                        <div class="text-2" th:text="${member.mname}"></div>
+                                    </div>
+                                </div>
+                                <div class="cell-3">
+                                    <div class="content">
+                                        <div class="text">받는분 TEL</div>
+                                    </div>
+                                </div>
+                                <div class="cell-2">
+                                    <div class="content">
+                                        <div class="text-2" th:text="${#strings.substring(member.mphone, 0, 3) + '-'
+                                            + #strings.substring(member.mphone, 3, 7) + '-'
+                                            + #strings.substring(member.mphone, 7)}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="div-wrapper">
+                                    <div class="content">
+                                        <div class="text">배송주소</div>
+                                    </div>
+                                </div>
+                                <div class="cell-2">
+                                    <div class="content">
+                                        <div class="text-2" th:text="${#strings.substring(order.address, 0, order.address.lastIndexOf('/') - 1)}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
                 <div class="view-3">
                     <div class="table-header">
                         <div class="row-cell-product">주문상품</div>
@@ -203,13 +211,17 @@
             </div>
             <div class="view-4">
                 <div class="frame-2">
-                    <div class="text-wrapper-4">문의하기</div>
+                    <a href="#">
+                        <div class="text-wrapper-4">문의하기</div>
+                    </a>
                 </div>
                 <div class="frame-3">
                     <div class="text-wrapper-5">주문취소</div>
                 </div>
                 <div class="frame-4">
-                    <div class="text-wrapper-4">리뷰쓰기</div>
+                    <a href="#">
+                        <div class="text-wrapper-4">리뷰쓰기</div>
+                    </a>
                 </div>
             </div>
         </div>
