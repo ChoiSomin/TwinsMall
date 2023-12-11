@@ -121,14 +121,14 @@ public class OrderController {
         return new ResponseEntity<Long>(ono,HttpStatus.OK);
     }
 
-    @GetMapping(value = {"order/orderDetail/{ono}"})
+    @GetMapping(value = {"order/orderDetail/{ono}","order/orderDetail/{ono}/{page}"})
     public String orderDetail(@PathVariable Long ono, @RequestParam(name = "page", defaultValue = "0") int page,
                               Principal principal, Model model, Pageable pageable) {
 
         String mid = principal.getName();
         Member member = memberRepository.findByMid(mid);
 
-        Pageable pageRequest = PageRequest.of(page, 10); // 적절한 페이지 정보 설정
+        Pageable pageRequest = PageRequest.of(page, 2); // 적절한 페이지 정보 설정
         Page<OrderHistDto> orderHistDtoList = orderService.getOrderListByOrderId(mid, ono, pageRequest);
 
         model.addAttribute("member", member);
