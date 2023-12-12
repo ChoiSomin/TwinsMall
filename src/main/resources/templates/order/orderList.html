@@ -99,6 +99,28 @@
                             </div>
                         </div>
                     </th:block>
+
+                </div>
+                <div class="frame-120" th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})" >
+                    <ul class="pagination justify-content-center">
+
+                        <li class="link" th:classappend="${orders.number eq 0}?'disabled':''">
+                            <a th:href="@{'/orders/' + ${orders.number-1}}" aria-label='Previous' class="page-link">
+                                <span aria-hidden='true'>Previous</span>
+                            </a>
+                        </li>
+
+                        <li class="link-2" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq page-1}?'active':''">
+                            <a th:href="@{'/orders/' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+                        </li>
+
+                        <li class="link-3" th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''">
+                            <a th:href="@{'/orders/' + ${orders.number+1}}" aria-label='Next' class="page-link">
+                                <span aria-hidden='true'>Next</span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
             </div>
         </div>

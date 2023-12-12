@@ -114,28 +114,29 @@ public class OrderController {
     public @ResponseBody ResponseEntity cancelOrder(@PathVariable("ono") Long ono, Principal principal){
         //자바스크립트에서 취소할 주문 번호는 조작이 가능하므로 다른 사람의 주문을 취소하지 못하도록 주문 취소 권한을 검사한다.
         if(!orderService.validateOrder(ono,principal.getName())){
-            return new ResponseEntity<String>("주문취소 권한이 없습니다.", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<String>("주문 취소 권한이 없습니다.", HttpStatus.FORBIDDEN);
         }
         //주문 취소 로직을 호출한다.
         orderService.cancelOrder(ono);
         return new ResponseEntity<Long>(ono,HttpStatus.OK);
     }
 
-    @GetMapping(value = {"order/orderDetail/{ono}"})
-    public String orderDetail(@PathVariable Long ono, @RequestParam(name = "page", defaultValue = "0") int page,
-                              Principal principal, Model model, Pageable pageable) {
+    @GetMapping(value = {"order/orderDetail/{ono}","order/orderDetail/{ono}/{page}"})
+    public String orderDetail(@PathVariable Long ono, @PathVariable("page") Optional<Integer> page,
+                              Principal principal, Model model) {
 
         String mid = principal.getName();
         Member member = memberRepository.findByMid(mid);
 
-        Pageable pageRequest = PageRequest.of(page, 10); // 적절한 페이지 정보 설정
-        Page<OrderHistDto> orderHistDtoList = orderService.getOrderListByOrderId(mid, ono, pageRequest);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+        Page<OrderHistDto> ordersHistDtoList = orderService.getOrderList(member.getMid(), pageable);
 
         model.addAttribute("member", member);
-        model.addAttribute("orders", orderHistDtoList);
+        model.addAttribute("orders", ordersHistDtoList);
         model.addAttribute("order", ono);
         model.addAttribute("currentPage", page);
         model.addAttribute("maxPage", 5);
+
         return "order/orderDetail";
     }
 }

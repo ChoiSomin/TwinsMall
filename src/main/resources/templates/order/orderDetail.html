@@ -3,6 +3,69 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+
+        $(document).ready(function(){
+            $("#searchBtn").on("click",function(e) {
+                e.preventDefault();
+                page(0);
+            });
+        });
+
+        function page(page){
+            var searchDateType = $("#searchDateType").val();
+            var searchSellStatus = $("#searchSellStatus").val();
+            var searchBy = $("#searchBy").val();
+            var searchQuery = $("#searchQuery").val();
+
+            location.href="/order/orderDetail/{ono}/" + page + "?searchDateType=" + searchDateType
+                + "&searchSellStatus=" + searchSellStatus
+                + "&searchBy=" + searchBy
+                + "&searchQuery=" + searchQuery
+                + "&currentPage=" + [[${currentPage}]];
+        }
+
+        function cancelOrder(orderId) {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            var url = "/order/" + orderId + "/cancel";
+            var paramData = {
+                orderId: orderId,
+            };
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: param,
+                beforeSend: function (xhr) {
+                    /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                    xhr.setRequestHeader(header, token);
+                },
+                dataType: "json",
+                cache: false,
+                success: function (result, status) {
+                    alert("주문이 취소 되었습니다.");
+                    location.href = '/orders/' + [[${page}]];
+                },
+                error: function (jqXHR, status, error) {
+                    if (jqXHR.status == '401') {
+                        alert('로그인 후 이용해주세요');
+                        location.href = '/members/login';
+                    } else {
+                        alert(jqXHR.responseText);
+                    }
+                }
+            });
+        }
+
+    </script>
+</th:block>
+
 <div layout:fragment="content">
 
     <div class="mypage-order-detail">
@@ -145,7 +208,8 @@
                                 </div>
                                 <div class="cell-2">
                                     <div class="content">
-                                        <div class="text-2" th:text="${#strings.substring(order.address, 0, order.address.lastIndexOf('/') - 1)}"></div>
+                                        <div class="text-2"
+                                             th:text="${#strings.substring(order.address, 0, order.address.lastIndexOf('/') - 1)}"></div>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +227,7 @@
                         <th:block th:each="orderItem : ${order.orderItemDtoList}">
                             <div class="table-body-row">
                                 <img class="data-cart-jpg" th:src="${orderItem.imgUrl}"
-                                     th:alt="${orderItem.itemNm}">
+                                     th:alt="${orderItem.itemNm}"/>
                                 <div class="data">
                                     <div class="heading-t-shirt">
                                         <span th:text="${orderItem.itemNm}"></span>
@@ -210,92 +274,103 @@
                     </div>
                 </div>
             </div>-->
-            <div class="view-4">
-                <div class="frame-2">
-                    <a href="#">
-                        <div class="text-wrapper-4">문의하기</div>
-                    </a>
-                </div>
-                <div class="frame-3">
-                    <div class="text-wrapper-5">주문취소</div>
-                </div>
-                <div class="frame-4">
-                    <a href="#">
-                        <div class="text-wrapper-4">리뷰쓰기</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            window.onload = function () {
-                // 모든 주문 항목의 총 가격 계산
-                var totalOrderPrice = 0;
-                var totaltotaElements = document.querySelectorAll('.totaltotal');
-
-                totaltotaElements.forEach(function (element) {
-                    var priceText = element.textContent.replace('원', '');
-                    totalOrderPrice += parseInt(priceText);
-                });
-
-                // 총 결제 금액 업데이트
-                var orderTotalPriceElement = document.getElementById('orderTotalPrice');
-                orderTotalPriceElement.textContent = totalOrderPrice + '원';
-            };
-        </script>
-    </div>
-    <div class="orderDetail-footer">
-        <footer class="footer">
-            <div class="overlap-5">
-                <div class="div-container">
-                    <p class="based-on-the-life-s">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</p>
-                    <p class="text-wrapper-11">we always strives to provide First, Unique,</p>
-                    <div class="overlap-6">
-                        <p class="text-wrapper-12">and New F·U·N experiences to provide</p>
-                        <p class="text-wrapper-13">customers with a better life.</p>
-                    </div>
-                    <a th:href="@{/templates/item/item.html}">
-                        <div class="heading-shopping">SHOPPING</div>
-                        <div class="list-item-link">Refrigerator</div>
-                        <div class="list-item-link-2">TV</div>
-                        <div class="list-item-link-3">Laptop</div>
-                        <div class="list-item-link-sale">Washing Machine</div>
-                        <div class="list-item-link-4">Air Purifier</div>
-                        <div class="list-item-link-5">Air Conditioner</div>
-                        <div class="list-item-link-6">Cleaner</div>
-                        <div class="heading-newletter">OTHERS</div>
-                        <div class="div-footer-copyright">
-                            <div class="overlap-group-2">
-                                <div class="text-wrapper-14">Copyright ©</div>
-                                <p class="text-wrapper-15">20232020 All rights reserved | This template is made with</p>
-                                <div class="symbol-3"></div>
-                                <div class="by">by</div>
-                                <div class="link-colorlib">Colorlib</div>
-                            </div>
+                <div class="view-4">
+                    <!--<th:block th:each="order : ${orders.getContent()}">
+                        <div class="frame-2">
+                            <a href="#">
+                                <div class="text-wrapper-4">문의하기</div>
+                            </a>
                         </div>
-                        <div class="list-item-link-7">About us</div>
-                        <div class="list-item-link-8">FAQ</div>
-                        <div class="list-item-link-9">Contact</div>
-                        <p class="element">
+                        <div class="frame-3">
+                            <button type="button" class="text-wrapper-5" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
+                        </div>
+                        <div class="frame-4">
+                            <a href="#">
+                                <div class="text-wrapper-4">리뷰쓰기</div>
+                            </a>
+                        </div>
+                    </th:block>-->
+                    <div th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})" >
+                        <ul class="pagination justify-content-center">
+
+                            <li class="page-item" th:classappend="${orders.number eq 0}?'disabled':''">
+                                <a th:href="@{'/orders/' + ${orders.number-1}}" aria-label='Previous' class="page-link">
+                                    <span aria-hidden='true'>Previous</span>
+                                </a>
+                            </li>
+
+                            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq page-1}?'active':''">
+                                <a th:href="@{'/orders/' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+                            </li>
+
+                            <li class="page-item" th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''">
+                                <a th:href="@{'/orders/' + ${orders.number+1}}" aria-label='Next' class="page-link">
+                                    <span aria-hidden='true'>Next</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div class="orderDetail-footer">
+            <footer class="footer">
+                <div class="overlap-5">
+                    <div class="div-container">
+                        <p class="based-on-the-life-s">Based on the &#39;Life&#39;s Good&#39; brand philosophy,</p>
+                        <p class="text-wrapper-11">we always strives to provide First, Unique,</p>
+                        <div class="overlap-6">
+                            <p class="text-wrapper-12">and New F·U·N experiences to provide</p>
+                            <p class="text-wrapper-13">customers with a better life.</p>
+                        </div>
+                        <a th:href="@{/templates/item/item.html}">
+                            <div class="heading-shopping">SHOPPING</div>
+                            <div class="list-item-link">Refrigerator</div>
+                            <div class="list-item-link-2">TV</div>
+                            <div class="list-item-link-3">Laptop</div>
+                            <div class="list-item-link-sale">Washing Machine</div>
+                            <div class="list-item-link-4">Air Purifier</div>
+                            <div class="list-item-link-5">Air Conditioner</div>
+                            <div class="list-item-link-6">Cleaner</div>
+                            <div class="heading-newletter">OTHERS</div>
+                            <div class="div-footer-copyright">
+                                <div class="overlap-group-2">
+                                    <div class="text-wrapper-14">Copyright ©</div>
+                                    <p class="text-wrapper-15">20232020 All rights reserved | This template is made
+                                        with</p>
+                                    <div class="symbol-3"></div>
+                                    <div class="by">by</div>
+                                    <div class="link-colorlib">Colorlib</div>
+                                </div>
+                            </div>
+                            <div class="list-item-link-7">About us</div>
+                            <div class="list-item-link-8">FAQ</div>
+                            <div class="list-item-link-9">Contact</div>
+                            <p class="element">
                 <span class="span"
                 >개인정보처리방침<br/>이벤트 개인정보처리방침<br/>영상정보처리기기운영관리방침<br/><br/>대표번호 :
                 </span>
-                            <a href="tel:02-3777-1114" target="_blank" rel="noopener noreferrer"
-                            ><span class="text-wrapper-16">02-</span></a
-                            >
-                            <span class="span"
-                            >1234-1234<br/>전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 :
+                                <a href="tel:02-3777-1114" target="_blank" rel="noopener noreferrer"
+                                ><span class="text-wrapper-16">02-</span></a
+                                >
+                                <span class="span"
+                                >1234-1234<br/>전화상담 시간은 평일 09:00 ~ 18:00 (주말, 공휴일 휴무) 입니다. (통화요금 :
                   발신자부담)<br/>제품 및 서비스 문의는 긴급 문의 건에 한해 24시간 운영합니다.<br/>주소 : 경기도
                   수원시 경기도 수원시 팔달구 덕영대로 899 (매산로 1가, 세진브론즈빌 304호)<br/><br/>본 사이트의 모든
                   콘텐츠는 저작권법의 보호를 받는 바, 무단 전재, 복사, 배포 등을 금합니다.</span
-                            >
-                        </p>
-                    </a>
+                                >
+                            </p>
+                        </a>
+                    </div>
+                    <img class="img" src="/img/link-logo-png.png"/>
                 </div>
-                <img class="img" src="/img/link-logo-png.png"/>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
 </div>
-
 </html>

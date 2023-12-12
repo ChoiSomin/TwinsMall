@@ -557,7 +557,7 @@
 }
 
 .mypage-order-detail .view-3 {
-  position: absolute;
+  position: relative;
   width: 1100px;
   height: 800px;
   top: 340px;
@@ -621,7 +621,7 @@
 }
 
 .mypage-order-detail .table-body-row {
-  position: absolute;
+  position: relative;
   width: 1033px;
   height: 151px;
   top: 83px;
@@ -632,7 +632,7 @@
 }
 
 .mypage-order-detail .data-cart-jpg {
-  position: absolute;
+  position: relative;
   width: 90px;
   height: 90px;
   top: 30px;
@@ -845,7 +845,7 @@
   position: absolute;
   width: 364px;
   height: 35px;
-  top: 720px;
+  top: 1330px;
   left: 410px;
 }
 
@@ -1321,13 +1321,19 @@
   left: 0;
 }
 
+.mypage-order-detail .orderDetail-paging{
+  font-size: 17px;
+  top: 1600px;
+  position: relative;
+}
+
 /* FOOTER */
 
 .orderDetail-footer .footer {
     position: absolute;
     width: 1920px;
     height: 400px;
-    top: 1350px;
+    top: 1750px;
     left: 0;
     background-color: #111111;
 }

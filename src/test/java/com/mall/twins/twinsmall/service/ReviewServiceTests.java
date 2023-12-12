@@ -1,10 +1,5 @@
 package com.mall.twins.twinsmall.service;
 
-import com.mall.twins.twinsmall.dto.ReviewFormDto;
-import com.mall.twins.twinsmall.entity.Review;
-import com.mall.twins.twinsmall.entity.ReviewImage;
-import com.mall.twins.twinsmall.repository.ReviewImgRepository;
-import com.mall.twins.twinsmall.repository.ReviewRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
