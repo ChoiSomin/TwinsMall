@@ -165,7 +165,8 @@
                                 </div>
                                 <div class="content-wrapper">
                                     <div class="content">
-                                        <div class="text-2" th:text="${order.orderStatus}"></div>
+                                        <div class="text-2" th:if="${order.orderStatus == T(com.mall.twins.twinsmall.constant.OrderStatus).ORDER}">주문완료</div>
+                                        <div class="text-2" th:if="${order.orderStatus == T(com.mall.twins.twinsmall.constant.OrderStatus).CANCEL}">주문취소</div>
                                     </div>
                                 </div>
                             </div>
@@ -283,17 +284,8 @@
                                onclick="cancelOrder(this.getAttribute('data-orderid'))">주문취소</a>
                         </div>
                         <div class="frame-3" th:if="${order.orderStatus == T(com.mall.twins.twinsmall.constant.OrderStatus).CANCEL}">
-                            <a href="#" class="text-wrapper-5" th:attr="data-orderid=${order.orderId}"
-                               onclick="cancelOrder(this.getAttribute('data-orderid'))">취소완료</a>
+                            <a href="#" class="text-wrapper-5">취소완료</a>
                         </div>
-                        <!--<div class="blog__details__tags"
-                             th:if="${order.orderStatus == T(com.no3.game.constant.OrderStatus).ORDER}">
-                            <a href="#" class="blog__details__tags" th:attr="data-orderid=${order.orderId}"
-                               onclick="cancelOrder(this.getAttribute('data-orderid'))">Cancel Order</a>
-                        </div>
-                        <div class="blog__details__tags"
-                             th:unless="${order.orderStatus == T(com.no3.game.constant.OrderStatus).ORDER}">
-                            <a href="#">(Cancel complete)</a>-->
                         <div class="frame-4">
                             <a href="#">
                                 <div class="text-wrapper-4">리뷰쓰기</div>
