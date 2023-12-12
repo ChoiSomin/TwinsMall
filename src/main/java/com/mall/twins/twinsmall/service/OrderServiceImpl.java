@@ -180,9 +180,8 @@ public class OrderServiceImpl implements OrderService{
             orderHistDtos.add(orderHistDto);
         }
 
-        return new PageImpl<>(orderHistDtos, pageable, orders.size());
+        return new PageImpl<OrderHistDto>(orderHistDtos, pageable, orders.size());
 
     }
-
 
 }

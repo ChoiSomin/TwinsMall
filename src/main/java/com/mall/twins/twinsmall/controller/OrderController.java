@@ -5,8 +5,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mall.twins.twinsmall.dto.OrderDto;
 import com.mall.twins.twinsmall.dto.OrderHistDto;
+import com.mall.twins.twinsmall.dto.OrderItemDto;
 import com.mall.twins.twinsmall.dto.ShippingDto;
 import com.mall.twins.twinsmall.entity.Member;
+import com.mall.twins.twinsmall.entity.Order;
 import com.mall.twins.twinsmall.repository.MemberRepository;
 import com.mall.twins.twinsmall.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -128,8 +130,8 @@ public class OrderController {
         String mid = principal.getName();
         Member member = memberRepository.findByMid(mid);
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
-        Page<OrderHistDto> ordersHistDtoList = orderService.getOrderList(member.getMid(), pageable);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
+        Page<OrderHistDto> ordersHistDtoList = orderService.getOrderListByOrderId(member.getMid(), ono, pageable);
 
         model.addAttribute("member", member);
         model.addAttribute("orders", ordersHistDtoList);

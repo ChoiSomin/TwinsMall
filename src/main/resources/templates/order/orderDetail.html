@@ -27,8 +27,6 @@
         }
 
         function cancelOrder(orderId) {
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
 
             var url = "/order/" + orderId + "/cancel";
             var paramData = {
@@ -42,15 +40,11 @@
                 type: "POST",
                 contentType: "application/json",
                 data: param,
-                beforeSend: function (xhr) {
-                    /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
-                    xhr.setRequestHeader(header, token);
-                },
                 dataType: "json",
                 cache: false,
                 success: function (result, status) {
                     alert("주문이 취소 되었습니다.");
-                    location.href = '/orders/' + [[${page}]];
+                    location.href = '/orders/';
                 },
                 error: function (jqXHR, status, error) {
                     if (jqXHR.status == '401') {
@@ -224,31 +218,34 @@
                     </div>
                     <!-- orderId를 출력 -->
                     <th:block th:each="order : ${orders.getContent()}">
-                        <th:block th:each="orderItem : ${order.orderItemDtoList}">
-                            <div class="table-body-row">
-                                <img class="data-cart-jpg" th:src="${orderItem.imgUrl}"
-                                     th:alt="${orderItem.itemNm}"/>
-                                <div class="data">
-                                    <div class="heading-t-shirt">
-                                        <span th:text="${orderItem.itemNm}"></span>
-                                    </div>
-                                </div>
-                                <div class="data-input">
-                                    <div class="div-2">
-                                        <div class="text-wrapper-3">
-                                            <span th:text="${orderItem.count}+ '개'"></span>
+                        <!-- OrderHistDto에서 orderItemDtoList를 페이징 처리 -->
+                        <th:block th:with="orderItemsPage=${order.orderItemDtoList.subList(0, 3)}">
+                            <th:block th:each="orderItem : ${orderItemsPage}">
+                                <div class="table-body-row">
+                                    <img class="data-cart-jpg" th:src="${orderItem.imgUrl}" th:alt="${orderItem.itemNm}"/>
+                                    <div class="data">
+                                        <div class="heading-t-shirt">
+                                            <span th:text="${orderItem.itemNm}"></span>
                                         </div>
                                     </div>
+                                    <div class="data-input">
+                                        <div class="div-2">
+                                            <div class="text-wrapper-3">
+                                                <span th:text="${orderItem.count + '개'}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="data-2">
+                                        <span class="totaltotal" data-th-text="| ${#numbers.formatInteger(orderItem.orderPrice*orderItem.count, 3, 'COMMA')} 원 |"></span>
+                                    </div>
                                 </div>
-                                <div class="data-2">
-                                            <span class="totaltotal"
-                                                  data-th-text="| ${#numbers.formatInteger(orderItem.orderPrice*orderItem.count, 3, 'COMMA')} 원 |">
-                                            </span>
-                                </div>
-                            </div>
+                            </th:block>
                         </th:block>
                     </th:block>
+
+
                 </div>
+
                 <!--<div class="row-wrapper">
                     <div class="row">
                         <div class="cell">
@@ -275,47 +272,38 @@
                 </div>
             </div>-->
                 <div class="view-4">
-                    <!--<th:block th:each="order : ${orders.getContent()}">
+                    <th:block th:each="order : ${orders.getContent()}">
                         <div class="frame-2">
                             <a href="#">
                                 <div class="text-wrapper-4">문의하기</div>
                             </a>
                         </div>
-                        <div class="frame-3">
-                            <button type="button" class="text-wrapper-5" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
+                        <div class="frame-3" th:if="${order.orderStatus == T(com.mall.twins.twinsmall.constant.OrderStatus).ORDER}">
+                            <a href="#" class="text-wrapper-5" th:attr="data-orderid=${order.orderId}"
+                               onclick="cancelOrder(this.getAttribute('data-orderid'))">주문취소</a>
                         </div>
+                        <div class="frame-3" th:if="${order.orderStatus == T(com.mall.twins.twinsmall.constant.OrderStatus).CANCEL}">
+                            <a href="#" class="text-wrapper-5" th:attr="data-orderid=${order.orderId}"
+                               onclick="cancelOrder(this.getAttribute('data-orderid'))">취소완료</a>
+                        </div>
+                        <!--<div class="blog__details__tags"
+                             th:if="${order.orderStatus == T(com.no3.game.constant.OrderStatus).ORDER}">
+                            <a href="#" class="blog__details__tags" th:attr="data-orderid=${order.orderId}"
+                               onclick="cancelOrder(this.getAttribute('data-orderid'))">Cancel Order</a>
+                        </div>
+                        <div class="blog__details__tags"
+                             th:unless="${order.orderStatus == T(com.no3.game.constant.OrderStatus).ORDER}">
+                            <a href="#">(Cancel complete)</a>-->
                         <div class="frame-4">
                             <a href="#">
                                 <div class="text-wrapper-4">리뷰쓰기</div>
                             </a>
                         </div>
-                    </th:block>-->
-                    <div th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})" >
-                        <ul class="pagination justify-content-center">
+                    </th:block>
 
-                            <li class="page-item" th:classappend="${orders.number eq 0}?'disabled':''">
-                                <a th:href="@{'/orders/' + ${orders.number-1}}" aria-label='Previous' class="page-link">
-                                    <span aria-hidden='true'>Previous</span>
-                                </a>
-                            </li>
-
-                            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq page-1}?'active':''">
-                                <a th:href="@{'/orders/' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
-                            </li>
-
-                            <li class="page-item" th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''">
-                                <a th:href="@{'/orders/' + ${orders.number+1}}" aria-label='Next' class="page-link">
-                                    <span aria-hidden='true'>Next</span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
                 </div>
 
             </div>
-
-
 
         </div>
         <div class="orderDetail-footer">

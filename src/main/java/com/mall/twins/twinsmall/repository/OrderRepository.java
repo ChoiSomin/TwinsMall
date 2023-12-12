@@ -16,5 +16,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("select count (o) from Order o where o.member.mid = :mid")
     Long countOrder(@Param("mid") String mid);
 
-    List<Order> findOrdersByMember_MidAndOno(String mid, Long ono, Pageable pageable);
+    @Query("select o from Order o where o.member.mid = :mid AND o.ono = :ono")
+    List<Order> findOrdersByMember_MidAndOno(@Param("mid")String mid, Long ono, Pageable pageable);
 }
