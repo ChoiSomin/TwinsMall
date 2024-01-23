@@ -537,19 +537,19 @@ body {
   vertical-align: top;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 {
-  box-sizing: border-box;
+  /*box-sizing: border-box;
   padding: 2.09rem 5.55rem 0rem 5.4rem;
   width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
+  flex-shrink: 0;*/
   position: absolute;
   top: 650px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 {
-  margin: 0rem 16rem 0.2rem 0rem;
-  display: flex;
+  /*margin: 0rem 16rem 0.2rem 0rem;
+  display: flex;*/
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1.1999999682;
@@ -559,8 +559,8 @@ body {
   flex-shrink: 0;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-john-smith-Zku {
-  margin: 0.02rem 16.2rem 0rem 0rem;
-  display: flex;
+  /*margin: 0.02rem 16.2rem 0rem 0rem;
+  display: flex;*/
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1.1999999682;
@@ -569,22 +569,11 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
   position: absolute;
-  left: 590px;
+  left: -200px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-christine-wise-rzu {
-  margin: 0rem 16rem 0.2rem 0rem;
-  display: flex;
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1.1999999682;
-  color: #111111;
-  font-family: Nunito Sans, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-sean-robbins-9DK {
-  margin-right: 18.2rem;
-  display: flex;
+  /*margin: 0rem 16rem 0.2rem 0rem;
+  display: flex;*/
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1.1999999682;
@@ -593,7 +582,20 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
   position: absolute;
-  left: 1200px;
+  left: -550px;
+}
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-sean-robbins-9DK {
+  /*margin-right: 18.2rem;
+  display: flex;*/
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1999999682;
+  color: #111111;
+  font-family: Nunito Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: absolute;
+  left: 70px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .auto-group-xpnh-Goj {
   margin: 0.1rem 4.9rem 0rem 0rem;
@@ -602,7 +604,7 @@ body {
   position: relative;
   flex-shrink: 0;
 }
-.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .auto-group-xpnh-Goj .heading-4-sean-robbins-CxH {
+.aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .heading-4-sean-robbins-CxH {
   width: 12.7rem;
   height: 2.9rem;
   position: absolute;
@@ -616,7 +618,7 @@ body {
   font-family: Nunito Sans, 'Source Sans Pro';
   white-space: nowrap;
   position: absolute;
-  left: 320px;
+  left: 380px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-nhey-e89 .auto-group-xpnh-Goj .heading-4-sean-robbins-vNV {
   width: 13.5rem;
@@ -643,14 +645,14 @@ body {
   flex-shrink: 0;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH {
-  margin: 0rem 4.6rem 0rem 2.5rem;
+  /*margin: 0rem 4.6rem 0rem 2.5rem;
   width: calc(100% - 7.1rem);
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  flex-shrink: 0;*/
   position: absolute;
-  top: 80px;
-  left: 235px;
+  top: 45px;
+  left: 0px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .full-stack-5ub {
   margin: 0.025rem 21.9rem 0rem 0rem;
@@ -663,7 +665,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
   position: absolute;
-  left: 325px;
+  left: -206px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .backend-L4q {
   margin: 0rem 24.6rem 0.025rem 0rem;
@@ -676,7 +678,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
   position: absolute;
-  left: 624px;
+  left: -545px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .manager-Evu {
   margin: 0.025rem 26rem 0rem 0rem;
@@ -689,7 +691,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
   position: absolute;
-  left: 960px;
+  left: 90px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .manager-Sn5 {
   margin: 0.025rem 19.1rem 0rem 0rem;
@@ -702,7 +704,7 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
   position: absolute;
-  left: 1232px;
+  left: 370px;
 }
 .aboutus-GvM .auto-group-6lyx-XDK .item--U1P .auto-group-dvjf-jG5 .auto-group-mhnh-NkH .manager-PBX {
   margin-top: 0.025rem;
