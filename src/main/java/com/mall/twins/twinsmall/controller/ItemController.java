@@ -94,7 +94,7 @@ public class ItemController {
             return "item/register";
         }
 
-        return "redirect:/admin/itemMng";
+        return "redirect:/admin/items";
     }
 
     @GetMapping(value = "/admin/item/{ItemId}")

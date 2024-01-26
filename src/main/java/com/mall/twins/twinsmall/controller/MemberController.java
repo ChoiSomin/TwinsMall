@@ -36,7 +36,6 @@ public class MemberController {
 
     private final MemberService memberService;
     private final MemberServiceImpl memberServiceImpl;
-    private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final CheckPasswordEqualValidator checkPasswordEqualValidator;
 
